@@ -1,0 +1,4 @@
+interface IAboutCompany {
+    aboutCompany: string;
+  }
+  

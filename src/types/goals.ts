@@ -1,0 +1,4 @@
+interface IGoals {
+    goals: string;
+  }
+  
