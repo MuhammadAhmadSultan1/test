@@ -1,0 +1,4 @@
+interface ITargetAudience {
+    targetAudience: string;
+  }
+  
