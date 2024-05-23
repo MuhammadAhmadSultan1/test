@@ -1,44 +1,41 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Oval } from "react-loader-spinner";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 import CustomButton from "../../components/customButton";
 import { HeaderLogo } from "../../components/headerLogo";
-// import InputField from "../../components/inputField";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-
-// import { useForm } from "react-hook-form";
-// import { yupResolver } from "@hookform/resolvers/yup";
-// import { goalSchema } from "../../schema";
 import { setUserCardInfo } from "../../redux/slices/userInfo";
-import { Oval } from "react-loader-spinner";
 import TextareaField from "../../components/textareaField";
+import { goalSchema } from "../../schema";
 
 const Goals = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const userCard = useAppSelector((state) => state?.userCard);
 
-  const [goals, setGoals] = useState<string>(userCard?.goals ?? '');
+  const [goals] = useState<string>(userCard?.goals ?? '');
   const [loading, setLoading] = useState<boolean>(false);
 
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm<IGoals>({
-  //   resolver: yupResolver(goalSchema),
-  // });
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<IGoals>({
+    resolver: yupResolver(goalSchema),
+  });
 
-  // console.log("errors---->", errors);
 
-  const onClickContinue = () => {
+  const onSubmit: SubmitHandler<IGoals> = () => {
     const userCard = {
       goals,
     };
     dispatch(setUserCardInfo(userCard));
     setLoading(true)
-    // navigate(GOALS)
-  }
+  };
+
 
   const onGoBack = () => {
     const userCard = {
@@ -56,27 +53,28 @@ const Goals = () => {
 
       {!loading ? <>
         <h2 className="text-black text-center text-3xl my-8 font-semibold">What is the goal of this merchandise you are purchasing?</h2>
-        <div className="mt-5">
+        <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
+
           <TextareaField
             label="Your Goals"
             placeholder='Type your goals here'
-            value={goals}
-            onChange={(e: any) => setGoals(e.target.value)}
             height={190}
             borderRadius={20}
-          // error={'company name is required'} 
+            error={errors.goals?.message}
+            register={register}
+            registerKey={'goals'}
           />
-        </div>
 
-        <div className="mt-10 mb-10 flex gap-10 justify-center">
-          <CustomButton borderWidth="0" bgColor="red" onClick={() => onGoBack()}>
-            Go Back
-          </CustomButton>
+          <div className="mt-10 mb-10 flex gap-10 justify-center">
+            <CustomButton borderWidth="0" bgColor="red" onClick={() => onGoBack()}>
+              Go Back
+            </CustomButton>
 
-          <CustomButton borderWidth="0" bgColor="red" onClick={() => onClickContinue()}>
-            Continue
-          </CustomButton>
-        </div>
+            <CustomButton borderWidth="0" bgColor="blue" type='submit'>
+              Continue
+            </CustomButton>
+          </div>
+        </form>
       </> :
         <>
           <div className="mt-40">
@@ -84,7 +82,7 @@ const Goals = () => {
               visible={true}
               height="120"
               width="120"
-              color="#0343DF" 
+              color="#0343DF"
               secondaryColor="#EFEFEF"
               ariaLabel="oval-loading"
               wrapperClass=""

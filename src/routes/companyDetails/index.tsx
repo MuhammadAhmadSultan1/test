@@ -16,27 +16,20 @@ const CompanyDetails = () => {
   const dispatch = useAppDispatch();
   const userCard = useAppSelector((state) => state?.userCard);
 
-  const [companyName, setCompanyName] = useState<string>(userCard?.companyName ?? '');
-  const [website, setWebsite] = useState(userCard?.website ?? '');
-  const [clientInitials, setClientInitials] = useState(userCard?.clientInitials ?? '');
+  const [companyName] = useState<string>(userCard?.companyName ?? '');
+  const [website] = useState(userCard?.website ?? '');
+  const [clientInitials] = useState(userCard?.clientInitials ?? '');
 
   const {
     handleSubmit,
+    register,
     formState: { errors },
   } = useForm<ICompanyDetails>({
     resolver: yupResolver(companyDetailsSchema),
   });
-  console.log("errors---->",errors);
-  
 
   const onSubmit: SubmitHandler<ICompanyDetails> = (formData) => {
     console.log("formData------->", formData);
-
-    // dispatch(setUserInfo(formData));
-    // navigate(SERVICES);
-  };
-
-  const onClickContinue = () => {
     const userCard = {
       companyName,
       website,
@@ -44,7 +37,8 @@ const CompanyDetails = () => {
     };
     dispatch(setUserCardInfo(userCard));
     navigate(SERVICES)
-  }
+  };
+
 
   const onGoBack = () => {
     const userCard = {
@@ -66,35 +60,45 @@ const CompanyDetails = () => {
         <InputField
           label="Company Name"
           placeholder="Enter company name"
-          value={companyName}
-          onChange={(e: any) => setCompanyName(e?.target?.value)}
+          // value={companyName}
+          // onChange={(e: any) => setCompanyName(e?.target?.value)}
           error={errors.companyName?.message}
+          register={register}
+          registerKey={'companyName'}
         />
 
         <InputField
           label="Website"
           placeholder="Enter website URL"
-          value={website}
-          onChange={(e: any) => setWebsite(e?.target?.value)}
+          // value={website}
+          // onChange={(e: any) => setWebsite(e?.target?.value)}
+          registerKey={'website'}
+          register={register}
+          error={errors.website?.message}
+
         />
 
         <InputField
           label="Client's Initials"
           placeholder="Enter Initials"
-          value={clientInitials}
-          onChange={(e: any) => setClientInitials(e?.target?.value)}
+          // value={clientInitials}
+          // onChange={(e: any) => setClientInitials(e?.target?.value)}
+          registerKey={'clientInitials'}
+          register={register}
+          error={errors.clientInitials?.message}
+
         />
+
+        <div className="mt-10 mb-10 flex gap-10 justify-center">
+          <CustomButton borderWidth="0" bgColor="red" onClick={() => onGoBack()}>
+            Go Back
+          </CustomButton>
+
+          <CustomButton borderWidth="0" bgColor="blue" type='submit'>
+            Continue
+          </CustomButton>
+        </div>
       </form>
-
-      <div className="mt-10 mb-10 flex gap-10 justify-center">
-        <CustomButton borderWidth="0" bgColor="red" onClick={() => onGoBack()}>
-          Go Back
-        </CustomButton>
-
-        <CustomButton borderWidth="0" bgColor="blue" onClick={() => onClickContinue()}>
-          Continue
-        </CustomButton>
-      </div>
     </div>
   );
 };

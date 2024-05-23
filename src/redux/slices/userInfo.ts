@@ -9,6 +9,7 @@ const initialState: IUserCard = {
   targetAudience:"",
   aboutCompany:"",
   goals:"",
+  logo:""
 };
 
 const userSlice = createSlice({

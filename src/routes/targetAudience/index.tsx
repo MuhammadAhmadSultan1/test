@@ -8,10 +8,10 @@ import { ServicesButton } from "./components";
 import { COMPETITOR } from "../../config/paths";
 
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-// import { yupResolver } from "@hookform/resolvers/yup";
-// import { useForm } from "react-hook-form";
-// import { targetAudienceSchema } from "../../schema";
 import { setUserCardInfo } from "../../redux/slices/userInfo";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { targetAudienceSchema } from "../../schema";
 
 const TargetAudience = () => {
   const navigate = useNavigate();
@@ -23,24 +23,22 @@ const TargetAudience = () => {
   const [targetAudienceArray, setTargetAudienceArray] = useState<string[]>([]);
 
 
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm<ITargetAudience>({
-  //   resolver: yupResolver(targetAudienceSchema),
-  // });
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<ITargetAudience>({
+    resolver: yupResolver(targetAudienceSchema),
+  });
 
-  // console.log("errors---->", errors);
-
-  const onClickContinue = () => {
+  const onSubmit: SubmitHandler<ITargetAudience> = (formData) => {
+    console.log("formData------->", formData);
     const userCard = {
       targetAudience,
     };
     dispatch(setUserCardInfo(userCard));
     navigate(COMPETITOR)
-  }
-
+  };
 
   const onGoBack = () => {
     const userCard = {
@@ -66,36 +64,33 @@ const TargetAudience = () => {
       <HeaderLogo />
 
       <h2 className="text-black text-center text-3xl my-8 font-semibold">Who is your target audience?</h2>
-      <div className="mt-5">
+
+      <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
         <InputField
           label="Target audience:"
           placeholder='e.g. residential homeowners, commercial clients...'
-          value={targetAudience}
-          onChange={(e: any) => setTargetAudience(e?.target?.value)}
           onKeyDown={handleEnterKeyPress}
-        // error={'company name is required'} 
+          error={errors.targetAudience?.message}
+          register={register}
+          registerKey={'targetAudience'}
         />
-      </div>
 
-      <div className="flex flex-wrap gap-4 mt-5">
-        {targetAudienceArray?.map((name, index) => (
-          <ServicesButton key={index} name={name} />
-        ))}
-      </div>
+        <div className="flex flex-wrap gap-4 mt-5">
+          {targetAudienceArray?.map((name, index) => (
+            <ServicesButton key={index} name={name} />
+          ))}
+        </div>
 
-      <div className="mt-10 mb-10 flex gap-10 justify-center">
-        <CustomButton borderWidth="0" bgColor="red" onClick={() => onGoBack()}>
-          Go Back
-        </CustomButton>
+        <div className="mt-10 mb-10 flex gap-10 justify-center">
+          <CustomButton borderWidth="0" bgColor="red" onClick={() => onGoBack()}>
+            Go Back
+          </CustomButton>
 
-        <CustomButton borderWidth="0" bgColor="red" onClick={() => onClickContinue()}>
-          Continue
-        </CustomButton>
-      </div>
-
-      {/* <div className="mt-5">
-        <h4 className=" text-black">Here is an example of target audience, include these points for better results.</h4>
-      </div> */}
+          <CustomButton borderWidth="0" bgColor="blue" type='submit'>
+            Continue
+          </CustomButton>
+        </div>
+      </form>
     </div>
   );
 };
