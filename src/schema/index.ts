@@ -2,17 +2,30 @@ import * as yup from "yup";
 
 export const companyDetailsSchema = yup.object().shape({
   companyName: yup.string().required("Company name is required"),
-  website: yup.string().required("Website is required"),
-  clientInitials: yup.string().required("Client Initials is required"),
 });
 
+export const emailSchema = yup.object().shape({
+  email: yup.string().required("Email is required").email("Invalid email format"),
+});
+
+export const websiteSchema = yup.object().shape({
+  website: yup.string().required("Website is required")
+});
+
+// export const serviceNameSchema = yup.object().shape({
+//   serviceName: yup.string().required("Service name is required"),
+// });
 export const serviceNameSchema = yup.object().shape({
-  serviceName: yup.string().required("Service name is required"),
+  serviceNameArray: yup.array().min(0).required("Service name is required"),
+})
+
+// export const targetAudienceSchema = yup.object().shape({
+//   targetAudience: yup.string().required("Target Audience is required"),
+// });
+export const targetAudienceSchema = yup.object().shape({
+  targetAudienceArray: yup.array().min(0).required("Target Audience is required"),
 });
 
-export const targetAudienceSchema = yup.object().shape({
-  targetAudience: yup.string().required("Target Audience is required"),
-});
 
 export const aboutCompanySchema = yup.object().shape({
   aboutCompany: yup.string().required("About company is required"),

@@ -1,12 +1,14 @@
 import { FC, ReactNode, ButtonHTMLAttributes } from "react";
+import SpinnerSvg from "../../assets/spinnersvg";
 
 interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  isLoading?: boolean,
   borderWidth: string;
-  bgColor: string;
+  bgColor?: string;
   children: ReactNode;
 }
 
-const CustomButton: FC<CustomButtonProps> = ({ borderWidth, bgColor, onClick, children, type = 'button', ...rest }) => {
+const CustomButton: FC<CustomButtonProps> = ({ borderWidth, bgColor, onClick, children, type = 'button', isLoading, ...rest }) => {
   // Fixed properties
   const height = 12;
   const width = 49;
@@ -17,7 +19,7 @@ const CustomButton: FC<CustomButtonProps> = ({ borderWidth, bgColor, onClick, ch
     w-${width}
     rounded-${borderRadius}
     border-${borderWidth}
-    bg-[${bgColor}]
+    bg-black-50
     text-white
     text-center
     px-4
@@ -30,8 +32,15 @@ const CustomButton: FC<CustomButtonProps> = ({ borderWidth, bgColor, onClick, ch
   `;
 
   return (
-    <button type={type} onClick={onClick} className={`btn ${buttonStyles}`} {...rest}>
+    <button disabled={isLoading} type={type} onClick={onClick} className={`btn ${buttonStyles} flex`} {...rest}>
+
       {children}
+
+      {
+        isLoading &&
+        <SpinnerSvg />
+      }
+
     </button>
   );
 };

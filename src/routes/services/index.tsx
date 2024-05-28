@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import CustomButton from "../../components/customButton";
 import { HeaderLogo } from "../../components/headerLogo";
@@ -8,12 +10,9 @@ import { ServicesButton } from "./components";
 import { TARGETAUDIENCE } from "../../config/paths";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setUserCardInfo, } from "../../redux/slices/userInfo";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { serviceNameSchema } from "../../schema";
-// import { useForm } from "react-hook-form";
-// import { yupResolver } from "@hookform/resolvers/yup";
-// import { serviceNameSchema } from "../../schema";
+import CustomStepper from "../../components/stepper";
+
 
 const Services = () => {
   const navigate = useNavigate();
@@ -21,38 +20,46 @@ const Services = () => {
   const userCard = useAppSelector((state) => state?.userCard);
 
 
-  const [serviceName, setServiceName] = useState<string>(userCard?.serviceName ?? 'ok')
-  const [serviceNamesArray, setServiceNamesArray] = useState<string[]>([]);
+  const [serviceName, setServiceName] = useState<string>(userCard?.serviceName ?? '')
+  const [serviceNameArray, setServiceNameArray] = useState<string[]>(userCard?.serviceNameArray ?? []);
+
+  const defaultValues: IServiceNameArray = { serviceNameArray: userCard?.serviceNameArray ?? [] };
 
   const {
     handleSubmit,
-    register,
     formState: { errors },
-  } = useForm<IServiceName>({
+  } = useForm<IServiceNameArray>({
     resolver: yupResolver(serviceNameSchema),
+    defaultValues
   });
 
-  const onSubmit: SubmitHandler<IServiceName> = () => {
+  const onSubmit: SubmitHandler<IServiceNameArray> = () => {
+    console.log("called");
+
     const userCard = {
-      serviceName,
+      serviceNameArray,
     };
     dispatch(setUserCardInfo(userCard));
     navigate(TARGETAUDIENCE)
   };
 
   const onGoBack = () => {
-    const userCard = {
-      serviceName,
-    };
-    dispatch(setUserCardInfo(userCard));
+    // const userCard = {
+    //   serviceName,
+    // };
+    // dispatch(setUserCardInfo(userCard));
     navigate(-1)
   }
 
   const handleEnterKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    // console.log("getValues------>", getValues());
+
     if (e.key === 'Enter') {
+      // const { serviceName } = getValues()
       if (serviceName) {
-        setServiceNamesArray([...serviceNamesArray, serviceName]);
-        setServiceName('');
+        setServiceNameArray([...serviceNameArray, serviceName]);
+        setServiceName("")
+        // setValue('serviceName', '')
       }
     }
   };
@@ -60,6 +67,9 @@ const Services = () => {
   return (
     <div className="max-w-[470px] mx-auto flex items-center flex-col">
       <HeaderLogo />
+      <div>
+        <CustomStepper activeStep={4} />
+      </div>
 
       <h2 className="text-black text-center text-3xl my-8 font-semibold">Tell us about your products or services</h2>
 
@@ -68,13 +78,16 @@ const Services = () => {
           label="Product or service:"
           placeholder='Type product or service name'
           onKeyDown={handleEnterKeyPress}
-          error={errors.serviceName?.message}
-          register={register}
-          registerKey={'serviceName'}
+          error={errors.serviceNameArray?.message}
+          value={serviceName}
+          onChange={(e: any) => setServiceName(e?.target?.value)}
+
+        // register={register}
+        // registerKey={'serviceName'}
         />
 
         <div className="flex flex-wrap gap-4 mt-5">
-          {serviceNamesArray?.map((name, index) => (
+          {serviceNameArray?.map((name, index) => (
             <ServicesButton key={index} name={name} />
           ))}
         </div>

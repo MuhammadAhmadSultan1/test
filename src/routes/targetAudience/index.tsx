@@ -12,39 +12,46 @@ import { setUserCardInfo } from "../../redux/slices/userInfo";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { targetAudienceSchema } from "../../schema";
+import CustomStepper from "../../components/stepper";
 
 const TargetAudience = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const userCard = useAppSelector((state) => state?.userCard);
 
+  console.log({ userCard });
+
+
 
   const [targetAudience, setTargetAudience] = useState<string>(userCard?.targetAudience ?? '');
-  const [targetAudienceArray, setTargetAudienceArray] = useState<string[]>([]);
+  const [targetAudienceArray, setTargetAudienceArray] = useState<string[]>(userCard?.targetAudienceArray ?? []);
+
+  const defaultValues: ITargetAudienceArray = { targetAudienceArray: userCard?.targetAudienceArray ?? [] };
+
 
 
   const {
     handleSubmit,
-    register,
     formState: { errors },
-  } = useForm<ITargetAudience>({
+  } = useForm<ITargetAudienceArray>({
     resolver: yupResolver(targetAudienceSchema),
+    defaultValues
   });
 
-  const onSubmit: SubmitHandler<ITargetAudience> = (formData) => {
+  const onSubmit: SubmitHandler<ITargetAudienceArray> = (formData) => {
     console.log("formData------->", formData);
     const userCard = {
-      targetAudience,
+      targetAudienceArray,
     };
     dispatch(setUserCardInfo(userCard));
     navigate(COMPETITOR)
   };
 
   const onGoBack = () => {
-    const userCard = {
-      targetAudience,
-    };
-    dispatch(setUserCardInfo(userCard));
+    // const userCard = {
+    //   targetAudience,
+    // };
+    // dispatch(setUserCardInfo(userCard));
     navigate(-1)
   }
 
@@ -62,6 +69,9 @@ const TargetAudience = () => {
     <div className="max-w-[470px] mx-auto flex items-center flex-col h-screen font-sans">
 
       <HeaderLogo />
+      <div>
+        <CustomStepper activeStep={5} />
+      </div>
 
       <h2 className="text-black text-center text-3xl my-8 font-semibold">Who is your target audience?</h2>
 
@@ -70,9 +80,11 @@ const TargetAudience = () => {
           label="Target audience:"
           placeholder='e.g. residential homeowners, commercial clients...'
           onKeyDown={handleEnterKeyPress}
-          error={errors.targetAudience?.message}
-          register={register}
-          registerKey={'targetAudience'}
+          error={errors.targetAudienceArray?.message}
+          value={targetAudience}
+          onChange={(e: any) => setTargetAudience(e?.target?.value)}
+        // register={register}
+        // registerKey={'targetAudience'}
         />
 
         <div className="flex flex-wrap gap-4 mt-5">

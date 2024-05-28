@@ -4,6 +4,8 @@ import storage from "redux-persist/lib/storage";
 import sessionStorage from "redux-persist/lib/storage/session";
 
 import userSlice from "./slices/userInfo";
+import { baseApi } from "../services/baseApi";
+
 
 const persistUserConfig = {
   key: "userCard",
@@ -17,6 +19,8 @@ const persistSessionConfig = {
 
 const rootReducer = combineReducers({
   userCard: persistReducer(persistUserConfig, userSlice),
+  [baseApi.reducerPath]: baseApi.reducer,
+
 });
 
 const persistedReducer = persistReducer(persistSessionConfig, rootReducer);
@@ -25,7 +29,9 @@ const persistedReducer = persistReducer(persistSessionConfig, rootReducer);
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }),
+    getDefaultMiddleware({ serializableCheck: false }).concat(
+      baseApi.middleware
+    ),
 });
 
 // Persistor to persist the store

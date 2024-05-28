@@ -1,7 +1,7 @@
 import { ITextInput } from '../../types/inputField';
 
 export default function InputField(props: ITextInput) {
-    const { label, placeholder, error, height, borderRadius, onKeyDown, registerKey, register } = props;
+    const { label, placeholder, error, height, borderRadius, onKeyDown, registerKey, defaultValue, register, onChange, value } = props;
     return (
         <div className='mt-5'>
             <h3 className="text-black text-lg pl-5">{label}</h3>
@@ -14,7 +14,10 @@ export default function InputField(props: ITextInput) {
                     borderRadius: borderRadius ? borderRadius : '30px',
                 }}
                 onKeyDown={onKeyDown} // Add onKeyPress event here
-                {...register(registerKey)}
+                {...(register && registerKey ? register(registerKey) : {})}
+                {...(onChange ? { onChange } : {})}
+                {...(value != undefined ? { value } : {})}
+                defaultValue={defaultValue}
             />
             {error && (
                 <p className="text-red-500 text-right pr-5 text-sm mt-2">{error}</p>

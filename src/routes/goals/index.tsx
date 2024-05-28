@@ -10,13 +10,16 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setUserCardInfo } from "../../redux/slices/userInfo";
 import TextareaField from "../../components/textareaField";
 import { goalSchema } from "../../schema";
+import CustomStepper from "../../components/stepper";
 
 const Goals = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const userCard = useAppSelector((state) => state?.userCard);
 
-  const [goals] = useState<string>(userCard?.goals ?? '');
+  // const [goals] = useState<string>(userCard?.goals ?? '');
+  const defaultValues: IGoals = { goals: userCard?.goals ?? '' };
+
   const [loading, setLoading] = useState<boolean>(false);
 
   const {
@@ -25,10 +28,12 @@ const Goals = () => {
     formState: { errors },
   } = useForm<IGoals>({
     resolver: yupResolver(goalSchema),
+    defaultValues
   });
 
 
-  const onSubmit: SubmitHandler<IGoals> = () => {
+  const onSubmit: SubmitHandler<IGoals> = (formData) => {
+    const { goals } = formData
     const userCard = {
       goals,
     };
@@ -38,10 +43,10 @@ const Goals = () => {
 
 
   const onGoBack = () => {
-    const userCard = {
-      goals,
-    };
-    dispatch(setUserCardInfo(userCard));
+    // const userCard = {
+    //   goals,
+    // };
+    // dispatch(setUserCardInfo(userCard));
     navigate(-1)
   }
 
@@ -50,7 +55,9 @@ const Goals = () => {
     <div className="max-w-470px mx-auto flex items-center flex-col h-screen font-sans mt-0">
 
       <HeaderLogo />
-
+      <div>
+        <CustomStepper activeStep={6} />
+      </div>
       {!loading ? <>
         <h2 className="text-black text-center text-3xl my-8 font-semibold">What is the goal of this merchandise you are purchasing?</h2>
         <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>

@@ -1,11 +1,17 @@
 export interface IUserCard {
     companyName?: string;
+    email?: string;
     website?: string;
     clientInitials?: string;
-    serviceName?: string
-    targetAudience?: string
-    aboutCompany?: string
-    goals?: string
-    logo?: string
+    serviceName?: string;
+    serviceNameArray?: string[];
+    targetAudience?: string;
+    targetAudienceArray?: string[];
+    aboutCompany?: string;
+    goals?: string;
+    logo?: string;
+    sessionId?: string;
+    logoURL?: string,
+    colors?: string[];
 
 }

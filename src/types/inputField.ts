@@ -8,8 +8,8 @@ export interface ITextInput {
   height?: number;
   borderRadius?: number;
   error?: string;
+  defaultValue?: string,
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-
-  registerKey: string;
-  register: UseFormRegister<any>
+  registerKey?: string | undefined;
+  register?: UseFormRegister<any> | undefined
 }

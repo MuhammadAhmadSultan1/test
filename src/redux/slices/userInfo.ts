@@ -3,13 +3,19 @@ import { IUserCard } from "../../types/user";
 
 const initialState: IUserCard = {
   companyName: '',
+  email: "",
   website: "",
   clientInitials: "",
-  serviceName:"",
-  targetAudience:"",
-  aboutCompany:"",
-  goals:"",
-  logo:""
+  serviceName: "",
+  serviceNameArray: [],
+  targetAudience: "",
+  targetAudienceArray: [],
+  aboutCompany: "",
+  goals: "",
+  logo: "",
+  sessionId: "",
+  logoURL: "",
+  colors: [],
 };
 
 const userSlice = createSlice({

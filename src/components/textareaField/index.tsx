@@ -13,7 +13,7 @@ export default function TextareaField(props: ITextInput) {
                     borderRadius: borderRadius,
                     resize: 'none'
                 }}
-                {...register(registerKey)}
+                {...(register && registerKey ? register(registerKey) : {})}
             />
             {error && (
                 <p className="text-red-500 text-right pr-5 text-sm">{error}</p>

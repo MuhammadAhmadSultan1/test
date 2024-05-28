@@ -1,4 +1,0 @@
-interface IServiceName {
-    serviceName: string;
-  }
-  

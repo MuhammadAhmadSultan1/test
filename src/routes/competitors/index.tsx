@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -10,13 +9,15 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setUserCardInfo } from "../../redux/slices/userInfo";
 import TextareaField from "../../components/textareaField";
 import { aboutCompanySchema } from "../../schema";
+import CustomStepper from "../../components/stepper";
 
 const Competitors = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const userCard = useAppSelector((state) => state?.userCard);
 
-  const [aboutCompany] = useState<string>(userCard?.aboutCompany ?? '');
+  const defaultValues: IAboutCompany = { aboutCompany: userCard?.aboutCompany ?? '' };
+
 
   const {
     handleSubmit,
@@ -24,9 +25,12 @@ const Competitors = () => {
     formState: { errors },
   } = useForm<IAboutCompany>({
     resolver: yupResolver(aboutCompanySchema),
+    defaultValues
   });
 
-  const onSubmit: SubmitHandler<IAboutCompany> = () => {
+  const onSubmit: SubmitHandler<IAboutCompany> = (formData) => {
+    console.log("formData------->", formData);
+    const { aboutCompany } = formData
     const userCard = {
       aboutCompany,
     };
@@ -35,10 +39,10 @@ const Competitors = () => {
   };
 
   const onGoBack = () => {
-    const userCard = {
-      aboutCompany,
-    };
-    dispatch(setUserCardInfo(userCard));
+    // const userCard = {
+    //   aboutCompany,
+    // };
+    // dispatch(setUserCardInfo(userCard));
     navigate(-1)
   }
 
@@ -47,6 +51,10 @@ const Competitors = () => {
     <div className="max-w-470px mx-auto flex items-center flex-col h-screen font-sans">
 
       <HeaderLogo />
+      <div>
+        <CustomStepper activeStep={6} />
+      </div>
+
 
       <h2 className="text-black text-center text-3xl my-8 font-semibold">Why would someone choose this company over competitors?</h2>
 
