@@ -1,26 +1,16 @@
-import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import InputField from '../../components/inputField';
-import { HeaderLogo } from '../../components/headerLogo';
 import CustomButton from '../../components/customButton';
-import { WEBSITE, } from '../../config/paths';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setUserCardInfo, } from '../../redux/slices/userInfo';
 import { emailSchema } from '../../schema';
-import CustomStepper from '../../components/stepper';
 
-const UserEmail = () => {
-  const navigate = useNavigate();
+const UserEmail = ({ onClickNext, onClickBack }: ICommonProps) => {
   const dispatch = useAppDispatch();
   const userCard = useAppSelector((state) => state?.userCard);
-
   const defaultValues: IEmail = { email: userCard?.email ?? '' };
-
-
-  console.log("userCard---->", userCard);
-
 
   const {
     handleSubmit,
@@ -37,27 +27,22 @@ const UserEmail = () => {
       email,
     };
     dispatch(setUserCardInfo(userCard));
-    navigate(WEBSITE)
+    onClickNext?.();
   };
 
-
   const onGoBack = () => {
+    onClickBack?.()
+
     // const userCard = {
     //   email,
     // };
     // dispatch(setUserCardInfo(userCard));
-    navigate(-1)
   }
   return (
     <div className="max-w-screen-sm mx-auto flex flex-col items-center h-screen">
-      <HeaderLogo />
-      <div>
-        <CustomStepper activeStep={2} />
-      </div>
-      <h2 className="text-black text-center text-3xl my-8 font-semibold">Email</h2>
+      <h2 className="text-black text-center text-3xl my-8 font-semibold">Company Details</h2>
 
       <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
-
         <InputField
           label="Email"
           placeholder="Enter Email"
@@ -75,6 +60,7 @@ const UserEmail = () => {
             Continue
           </CustomButton>
         </div>
+
       </form>
     </div>
   );

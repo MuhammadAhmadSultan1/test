@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import * as Konva from "react-konva";
 import { Stage } from "konva/lib/Stage";
-import type { Text } from "konva/lib/shapes/Text.ts";
+// import type { Text } from "konva/lib/shapes/Text.ts";
 import { Html } from 'react-konva-utils';
 
 import CustomImage from "../../../customImage";
@@ -12,21 +12,21 @@ import LOGO from "../../../../assets/logo.png";
 
 export default function FrontOne() {
 
-    const [text, setText] = useState("My Print Source");
+    // const [text, setText] = useState("My Print Source");
     // const [desp, setDesp] = useState("It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).");
 
-    const textReff = useRef<Text>(null);
+    // const textReff = useRef<Text>(null);
     const stageRef = useRef<Stage>(null);
 
-    const onChange = (text: string) => {
-        setText(text);
-    };
+    // const onChange = (text: string) => {
+    //     setText(text);
+    // };
 
-    const removeTextarea = (textarea: HTMLTextAreaElement) => {
-        window.removeEventListener("click", () => { });
-        textarea.parentNode?.removeChild(textarea);
-        textReff.current?.show();
-    };
+    // const removeTextarea = (textarea: HTMLTextAreaElement) => {
+    //     window.removeEventListener("click", () => { });
+    //     textarea.parentNode?.removeChild(textarea);
+    //     textReff.current?.show();
+    // };
 
     // const onTextDblClick = () => {
     //     if (textReff.current && stageRef.current) {

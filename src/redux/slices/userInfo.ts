@@ -16,6 +16,9 @@ const initialState: IUserCard = {
   sessionId: "",
   logoURL: "",
   colors: [],
+  clientName: "",
+  address:"",
+  designation:"",
 };
 
 const userSlice = createSlice({

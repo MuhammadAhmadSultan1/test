@@ -5,56 +5,52 @@ import InputField from '../../components/inputField';
 import CustomButton from '../../components/customButton';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setUserCardInfo, } from '../../redux/slices/userInfo';
-import { companyDetailsSchema } from '../../schema';
+import { addressSchema, } from '../../schema';
 
-
-const CompanyDetails = ({ onClickNext, onClickBack }: ICommonProps) => {
+const Address = ({ onClickNext, onClickBack }: ICommonProps) => {
   const dispatch = useAppDispatch();
   const userCard = useAppSelector((state) => state?.userCard);
 
-
-  const defaultValues: ICompanyDetails = { companyName: userCard?.companyName ?? '' };
-
-  console.log("userCard------>", userCard);
-
+  const defaultValues: IAddress = { address: userCard?.address ?? '' };
 
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<ICompanyDetails>({
-    resolver: yupResolver(companyDetailsSchema),
-    defaultValues,
+  } = useForm<IAddress>({
+    resolver: yupResolver(addressSchema),
+    defaultValues
   });
 
-  const onSubmit: SubmitHandler<ICompanyDetails> = (formData) => {
-    const { companyName } = formData
+  const onSubmit: SubmitHandler<IAddress> = (formData) => {
+    const { address } = formData
     const userCard = {
-      companyName,
+      address,
     };
     dispatch(setUserCardInfo(userCard));
     onClickNext?.();
+
   };
 
 
   const onGoBack = () => {
     onClickBack?.()
     // const userCard = {
-    //   companyName,
+    //   email,
     // };
     // dispatch(setUserCardInfo(userCard));
   }
   return (
     <div className="max-w-screen-sm mx-auto flex flex-col items-center h-screen">
-
       <h2 className="text-black text-center text-3xl my-8 font-semibold">Company Details</h2>
+
       <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
         <InputField
-          label="Company Name"
-          placeholder="Enter company name"
-          error={errors.companyName?.message}
+          label="Address"
+          placeholder="Enter Address"
+          error={errors.address?.message}
           register={register}
-          registerKey={'companyName'}
+          registerKey={'address'}
         />
 
         <div className="mt-10 mb-10 flex gap-10 justify-center">
@@ -65,11 +61,11 @@ const CompanyDetails = ({ onClickNext, onClickBack }: ICommonProps) => {
           <CustomButton borderWidth="0" bgColor="blue" type='submit'>
             Continue
           </CustomButton>
-
         </div>
+
       </form>
     </div>
   );
 };
 
-export default CompanyDetails;
+export default Address;

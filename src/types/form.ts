@@ -18,6 +18,19 @@ interface IEmail {
     email: string;
 }
 
+interface IClientName {
+    clientName: string;
+}
+
+interface IAddress {
+    address: string;
+}
+
+interface IDesignation {
+    designation: string;
+}
+
+
 interface IGoals {
     goals: string;
 }
@@ -40,4 +53,10 @@ interface ITargetAudienceArray {
 
 interface IWebsite {
     website: string;
+}
+
+
+interface ICommonProps {
+    onClickNext?: Function;
+    onClickBack?: Function;
 }

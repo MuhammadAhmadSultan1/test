@@ -5,42 +5,39 @@ import InputField from '../../components/inputField';
 import CustomButton from '../../components/customButton';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setUserCardInfo, } from '../../redux/slices/userInfo';
-import { companyDetailsSchema } from '../../schema';
+import { clientNameSchema } from '../../schema';
 
-
-const CompanyDetails = ({ onClickNext, onClickBack }: ICommonProps) => {
+const ClientName = ({ onClickNext, onClickBack }: ICommonProps) => {
   const dispatch = useAppDispatch();
   const userCard = useAppSelector((state) => state?.userCard);
 
-
-  const defaultValues: ICompanyDetails = { companyName: userCard?.companyName ?? '' };
-
-  console.log("userCard------>", userCard);
-
+  const defaultValues: IClientName = { clientName: userCard?.clientName ?? '' };
 
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<ICompanyDetails>({
-    resolver: yupResolver(companyDetailsSchema),
-    defaultValues,
+  } = useForm<IClientName>({
+    resolver: yupResolver(clientNameSchema),
+    defaultValues
   });
 
-  const onSubmit: SubmitHandler<ICompanyDetails> = (formData) => {
-    const { companyName } = formData
+  const onSubmit: SubmitHandler<IClientName> = (formData) => {
+    const { clientName } = formData
     const userCard = {
-      companyName,
+      clientName,
     };
     dispatch(setUserCardInfo(userCard));
     onClickNext?.();
+
   };
 
 
   const onGoBack = () => {
     onClickBack?.()
+
     // const userCard = {
-    //   companyName,
+    //   email,
     // };
     // dispatch(setUserCardInfo(userCard));
   }
@@ -48,13 +45,14 @@ const CompanyDetails = ({ onClickNext, onClickBack }: ICommonProps) => {
     <div className="max-w-screen-sm mx-auto flex flex-col items-center h-screen">
 
       <h2 className="text-black text-center text-3xl my-8 font-semibold">Company Details</h2>
+
       <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
         <InputField
-          label="Company Name"
-          placeholder="Enter company name"
-          error={errors.companyName?.message}
+          label="Client Name"
+          placeholder="Enter Client Name"
+          error={errors.clientName?.message}
           register={register}
-          registerKey={'companyName'}
+          registerKey={'clientName'}
         />
 
         <div className="mt-10 mb-10 flex gap-10 justify-center">
@@ -72,4 +70,4 @@ const CompanyDetails = ({ onClickNext, onClickBack }: ICommonProps) => {
   );
 };
 
-export default CompanyDetails;
+export default ClientName;

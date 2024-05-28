@@ -12,18 +12,31 @@ export const websiteSchema = yup.object().shape({
   website: yup.string().required("Website is required")
 });
 
+export const clientNameSchema = yup.object().shape({
+  clientName: yup.string().required("Client name is required"),
+});
+
+export const addressSchema = yup.object().shape({
+  address: yup.string().required("Address is required"),
+});
+
+export const designationSchema = yup.object().shape({
+  designation: yup.string().required("Designation is required"),
+});
+
+
 // export const serviceNameSchema = yup.object().shape({
 //   serviceName: yup.string().required("Service name is required"),
 // });
 export const serviceNameSchema = yup.object().shape({
-  serviceNameArray: yup.array().min(0).required("Service name is required"),
+  serviceNameArray: yup.array().min(1, "Minimum one service is required").required("Service name is required"),
 })
 
 // export const targetAudienceSchema = yup.object().shape({
 //   targetAudience: yup.string().required("Target Audience is required"),
 // });
 export const targetAudienceSchema = yup.object().shape({
-  targetAudienceArray: yup.array().min(0).required("Target Audience is required"),
+  targetAudienceArray: yup.array().min(1, "Minimum one target is required").required("Target Audience is required"),
 });
 
 

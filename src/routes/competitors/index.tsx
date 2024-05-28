@@ -1,21 +1,15 @@
-import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import CustomButton from "../../components/customButton";
-import { HeaderLogo } from "../../components/headerLogo";
-import { GOALS } from "../../config/paths";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setUserCardInfo } from "../../redux/slices/userInfo";
 import TextareaField from "../../components/textareaField";
 import { aboutCompanySchema } from "../../schema";
-import CustomStepper from "../../components/stepper";
 
-const Competitors = () => {
-  const navigate = useNavigate();
+const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
   const dispatch = useAppDispatch();
   const userCard = useAppSelector((state) => state?.userCard);
-
   const defaultValues: IAboutCompany = { aboutCompany: userCard?.aboutCompany ?? '' };
 
 
@@ -29,33 +23,26 @@ const Competitors = () => {
   });
 
   const onSubmit: SubmitHandler<IAboutCompany> = (formData) => {
-    console.log("formData------->", formData);
     const { aboutCompany } = formData
     const userCard = {
       aboutCompany,
     };
     dispatch(setUserCardInfo(userCard));
-    navigate(GOALS)
+    onClickNext?.();
   };
 
   const onGoBack = () => {
+    onClickBack?.()
     // const userCard = {
     //   aboutCompany,
     // };
     // dispatch(setUserCardInfo(userCard));
-    navigate(-1)
+
   }
 
 
   return (
     <div className="max-w-470px mx-auto flex items-center flex-col h-screen font-sans">
-
-      <HeaderLogo />
-      <div>
-        <CustomStepper activeStep={6} />
-      </div>
-
-
       <h2 className="text-black text-center text-3xl my-8 font-semibold">Why would someone choose this company over competitors?</h2>
 
       <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
@@ -78,8 +65,8 @@ const Competitors = () => {
             Continue
           </CustomButton>
         </div>
-      </form>
 
+      </form>
     </div>
   );
 };
