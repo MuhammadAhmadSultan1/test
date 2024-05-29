@@ -3,11 +3,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CompanyDetails from "./routes/companyDetails/index";
 
 import {
+  ADDRESS,
+  CLIENTNAME,
   COMPANYDETAILS,
   COMPETITOR,
+  DESIGNATION,
   EMAIL,
   GOALS,
-  HOME,
+  MAIN,
   SERVICES,
   TARGETAUDIENCE,
   UPLOADLOGO,
@@ -20,12 +23,18 @@ import Competitors from "./routes/competitors";
 import Goals from "./routes/goals";
 import UserEmail from "./routes/email";
 import Website from "./routes/website";
+import ClientName from "./routes/clientName";
+import Address from "./routes/address";
+import Designation from "./routes/designation";
+import Main from "./routes/main";
 import { FrontOne } from "./components/cards/One/front";
 
 export const App = () => {
   return (
     <Router>
       <Routes>
+        <Route path={MAIN} element={<Main />} />
+
         <Route path={UPLOADLOGO} element={<UploadLogo />} />
         <Route path={COMPANYDETAILS} element={<CompanyDetails />} />
         <Route path={SERVICES} element={<Services />} />
@@ -35,8 +44,11 @@ export const App = () => {
 
         <Route path={EMAIL} element={<UserEmail />} />
         <Route path={WEBSITE} element={<Website />} />
+        <Route path={CLIENTNAME} element={<ClientName />} />
+        <Route path={ADDRESS} element={<Address />} />
+        <Route path={DESIGNATION} element={<Designation />} />
 
-        <Route path={HOME} element={<FrontOne />} />
+        <Route path={"/edit"} element={<FrontOne />} />
       </Routes>
     </Router>
   );

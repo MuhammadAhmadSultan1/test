@@ -1,20 +1,17 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import uploadImage from "../../assets/upload.png";
 import CustomButton from "../../components/customButton";
-import { HeaderLogo } from "../../components/headerLogo";
-import { COMPANYDETAILS } from "../../config/paths";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, } from "../../redux/hooks";
 import { setUserCardInfo } from "../../redux/slices/userInfo";
 import { useUserSessionMutation } from "../../services/session";
 import { useUploadLogoMutation } from "../../services/general";
-import CustomStepper from "../../components/stepper";
 
-const UploadLogo = () => {
-  const navigate = useNavigate();
+
+const UploadLogo = ({ onClickNext }: ICommonProps) => {
   const dispatch = useAppDispatch();
-  const userCard = useAppSelector((state) => state?.userCard);
+  // const userCard = useAppSelector((state) => state?.userCard);
 
   const [userSession, { }] = useUserSessionMutation();
   const [uploadLogo, { error }] = useUploadLogoMutation();
@@ -22,18 +19,44 @@ const UploadLogo = () => {
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [fileName, setFileName] = useState<string>(userCard?.logo ?? '');
   const [loading, setLoading] = useState<boolean>(false);
   const [sessionIdLocal, setSessionIdLocal] = useState<string>('');
 
 
   useEffect(() => {
-    // getSessionToken()
+    getSessionToken();
+    // cleatAllStates();
+
   }, [])
+
+  // const cleatAllStates = () => {
+  //   const userCard = {
+  //     companyName: '',
+  //     email: "",
+  //     website: "",
+  //     clientInitials: "",
+  //     serviceName: "",
+  //     serviceNameArray: [],
+  //     targetAudience: "",
+  //     targetAudienceArray: [],
+  //     aboutCompany: "",
+  //     goals: "",
+  //     logo: "",
+  //     sessionId: "",
+  //     logoURL: "",
+  //     colors: [],
+  //     address: "",
+  //     clientName: "",
+  //     designation: "",
+  //   };
+  //   dispatch(setUserCardInfo(userCard));
+
+  // }
 
   const getSessionToken = () => {
     let data = {}
     userSession(data).then((result) => {
+      console.log("result?.data?.content----->", result?.data?.content);
       if (result) {
         const userCard = {
           sessionId: result?.data?.content?.sessionId,
@@ -56,7 +79,7 @@ const UploadLogo = () => {
         setSelectedFile(null);
         return;
       }
-      setFileName(file?.name)
+      // setFileName(file?.name)
       setSelectedFile(file);
       setErrorMessage('')
 
@@ -71,44 +94,34 @@ const UploadLogo = () => {
   };
 
   const handleContinue = () => {
-    navigate(COMPANYDETAILS);
+    if (selectedFile) {
+      setLoading(true)
+      const formData = new FormData();
+      formData.append('sessionId', sessionIdLocal);
+      formData.append('logoAttachment', selectedFile);
 
-    // if (selectedFile) {
-    //   setLoading(true)
-    //   const formData = new FormData();
-    //   formData.append('sessionId', sessionIdLocal);
-    //   formData.append('logoAttachment', selectedFile);
+      uploadLogo(formData).then((result) => {
+        if (result?.data) {
+          const userCard = {
+            logoURL: result?.data?.content?.logoUrl,
+            colors: result?.data?.colors
+          };
+          dispatch(setUserCardInfo(userCard));
+          setLoading(false)
+          onClickNext?.();
+        } else {
+          setLoading(false)
+          console.log("error----->", error);
+          setErrorMessage('Something went wrong');
 
-    //   uploadLogo(formData).then((result) => {
-    //     console.log("result------>", result);
-
-    //     if (result?.data) {
-    //       const userCard = {
-    //         logoURL: result?.data?.content?.logoUrl,
-    //         colors: result?.data?.colors
-    //       };
-    //       dispatch(setUserCardInfo(userCard));
-    //       setLoading(false)
-    //       navigate(COMPANYDETAILS);
-
-    //     } else {
-    //       setLoading(false)
-    //       console.log("error----->", error);
-    //       setErrorMessage('Something went wrong');
-
-    //     }
-    //   });
-    // } else {
-    //   setErrorMessage("Logo is required");
-    // }
+        }
+      });
+    } else {
+      setErrorMessage("Logo is required");
+    }
   };
   return (
     <div className="max-w-470px mx-auto flex items-center flex-col h-screen font-sans">
-
-      <HeaderLogo />
-      <div>
-        <CustomStepper activeStep={0} />
-      </div>
 
       <h2 className="text-black text-center text-3xl my-8 font-semibold">Upload your logo</h2>
       <div className="max-w-566 max-h-224 bg-gray-100 flex justify-center items-center flex-col rounded-3xl">

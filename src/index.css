@@ -77,4 +77,10 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+
+}
+
+.stepper button,
+.stepper span {
+  cursor: default !important
 }

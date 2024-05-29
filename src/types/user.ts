@@ -13,5 +13,8 @@ export interface IUserCard {
     sessionId?: string;
     logoURL?: string,
     colors?: string[];
+    clientName?: string;
+    address?: string;
+    designation?: string;
 
 }
