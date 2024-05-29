@@ -5,7 +5,7 @@ export default function CustomStepper(props: { activeStep: number }) {
 
     return (
         <Stepper
-            className=""
+            className="stepper"
             steps={[{ label: '' }, { label: '' }, { label: '' }, { label: '' }, { label: '' }, { label: '' }, { label: '' }, { label: '' },
             { label: '' }, { label: '' }, { label: '' },]}
             activeStep={activeStep}
