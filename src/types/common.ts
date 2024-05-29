@@ -14,21 +14,28 @@ export interface ISessionResponse {
   colors: string[];
 }
 
-// export type TFieldName =
-//   | "name"
-//   | "designation"
-//   | "phoneNumber"
-//   | "website"
-//   | "email"
-//   | "address";
+export interface IColorScheme {
+  primary: string;
+  secondary: string;
+  text: string;
+}
 
 export interface IRef {
   name: Text | null;
   designation: Text | null;
+  phone: Text | null;
+  email: Text | null;
+  website: Text | null;
+  address: Text | null;
+}
+
+interface ITextProperties {
+  text: string;
+  fontSize: number;
 }
 
 export type TFieldName = keyof IRef;
-export type TTextField = Record<TFieldName, string>;
+export type TTextField = Record<TFieldName, ITextProperties>;
 
 // interface ITextPosition {
 //   x: number;

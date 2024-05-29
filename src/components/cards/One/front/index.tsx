@@ -1,38 +1,68 @@
 import { useState, useRef } from "react";
 import * as Konva from "react-konva";
 import { Stage } from "konva/lib/Stage";
-// import type { Text } from "konva/lib/shapes/Text.ts";
-// import { Html } from "react-konva-utils";
 
 import CustomImage from "../../../customImage";
-// import { UnionSvg } from "./svg/customSvg";
-// import { IRef } from "../../../../types/card1";
 
-import LOGO from "../../../../assets/logo.png";
-import card1Front from "../../../../assets/card1Front.svg";
-import blackRec from "../../../../assets/blackRec.svg";
+import { useGetCardSvgs } from "./svg/useGetCardSvgs";
+
 import { IRef, TFieldName, TTextField } from "../../../../types/common";
 import { onTextDblClick } from "../../../../utils/changeTextHandler";
 
-// interface IRef {
-//   name: Text | null;
-// }
+import LOGO from "../../../../assets/logo.png";
 
-export default function FrontOne() {
+export const FrontOne = () => {
   const [text, setText] = useState<TTextField>({
-    name: "My Print Source",
-    designation: "Project Manager",
+    name: {
+      text: "My Print Source",
+      fontSize: 16,
+    },
+    designation: {
+      text: "Project Manager",
+      fontSize: 10,
+    },
+    email: {
+      text: "test@gmail.com",
+      fontSize: 8,
+    },
+    phone: {
+      text: "+92 123 456 7890",
+      fontSize: 8,
+    },
+    website: {
+      text: "www.website.com",
+      fontSize: 8,
+    },
+    address: {
+      text: "X park view, DHA Phase 8 Lahore Pakistan",
+      fontSize: 8,
+    },
   });
-  // const [desp, setDesp] = useState("It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).");
+
+  const colorScheme = {
+    primary: "#004CE0",
+    secondary: "#323232",
+    text: "#FFFFFF",
+  };
+
+  const { svg1, svg2, phoneSvg, websiteSvg, emailSvg, addressSvg } =
+    useGetCardSvgs(colorScheme);
 
   const textReff = useRef<IRef>({
     name: null,
     designation: null,
+    email: null,
+    address: null,
+    phone: null,
+    website: null,
   });
   const stageRef = useRef<Stage>(null);
 
   const onChange = (value: string, fieldName: TFieldName) => {
-    setText((prev) => ({ ...prev, [fieldName]: value }));
+    setText((prev) => ({
+      ...prev,
+      [fieldName]: { ...prev[fieldName], text: value },
+    }));
   };
 
   const removeTextarea = (
@@ -49,54 +79,12 @@ export default function FrontOne() {
     textarea: HTMLTextAreaElement,
     fieldName: TFieldName
   ) => {
-    setText((prev) => ({ ...prev, [fieldName]: value }));
+    setText((prev) => ({
+      ...prev,
+      [fieldName]: { ...prev[fieldName], text: value },
+    }));
     removeTextarea(textarea, fieldName);
   };
-
-  // const onTextDblClick = () => {
-  //   if (textReff.current && textReff.current.name && stageRef.current) {
-  //     const textPosition = textReff.current.name.absolutePosition();
-  //     // so position of textarea will be the sum of positions above:
-  //     const areaPosition = {
-  //       x: stageRef.current.container().offsetLeft + textPosition.x,
-  //       y: stageRef.current.container().offsetTop + textPosition.y,
-  //     };
-  //     const textarea = document.createElement("textarea");
-  //     textarea.style.position = "absolute";
-  //     textarea.style.top = areaPosition.y + "px";
-  //     textarea.style.left = areaPosition.x + "px";
-  //     textarea.style.color = "white";
-  //     textarea.style.background = "none";
-  //     textarea.style.outline = "none";
-  //     textarea.style.resize = "none";
-  //     textarea.style.border = "none";
-  //     textarea.style.padding = "0px";
-  //     textarea.style.margin = "0px";
-  //     textarea.style.overflow = "hidden";
-  //     textarea.style.height = "auto";
-  //     textarea.style.lineHeight = textReff.current.name
-  //       .lineHeight()
-  //       .toString();
-  //     textarea.style.fontFamily = textReff.current.name.fontFamily();
-  //     textarea.value = text;
-  //     textarea.addEventListener("keydown", (e) => {
-  //       textarea.style.height = "auto";
-  //       if (e.code === "Enter" && !e.shiftKey) {
-  //         setText(textarea.value);
-  //         removeTextarea(textarea);
-  //       }
-  //       // on esc do not set value back to node
-  //       if (e.code === "Escape") {
-  //         removeTextarea(textarea);
-  //       }
-  //     });
-  //     textarea.addEventListener("change", () => {
-  //       onChange(textarea.value);
-  //     });
-
-  //     document.getElementById("test")?.append(textarea);
-  //   }
-  // };
 
   const dblClickHandler = (fieldName: TFieldName) => {
     const textPosition = textReff.current[fieldName]?.absolutePosition();
@@ -115,7 +103,7 @@ export default function FrontOne() {
         y: stageRef.current.container().offsetTop + textPosition.y,
       };
       onTextDblClick({
-        currentText: text[fieldName],
+        currentText: text[fieldName].text,
         fieldName: fieldName,
         areaPosition: areaPosition,
         container: "test",
@@ -140,67 +128,122 @@ export default function FrontOne() {
         >
           <Konva.Layer>
             <CustomImage height={49} width={89} x={225} y={30} url={LOGO} />
-            <Konva.Group y={65}>
-              <CustomImage x={0} y={0} url={card1Front} />
+            <Konva.Group y={67}>
+              <CustomImage x={0} y={0} svgString={svg1} />
               <Konva.Text
                 ref={(ref) => (textReff.current.name = ref)}
-                text={text.name}
+                text={text.name.text}
                 x={15}
                 y={7}
                 align="top"
-                // height={90}
-                // width={296}
-                fontSize={16}
-                fill="white"
-                // style={{ zIndex: "100" }}
-                //   draggable
-                // getStrokeScaleEnabled
-                // _useBufferCanvas
+                fontSize={text.name.fontSize}
+                fill={colorScheme.text}
                 onDblClick={() => {
                   if (textReff.current && textReff.current.name) {
                     textReff.current.name.hide();
-                    // inputRef.current.parentNode?.removeChild(inputRef.current);
-                    // onTextDblClick();
                     dblClickHandler("name");
                   }
                 }}
               />
               <Konva.Text
                 ref={(ref) => (textReff.current.designation = ref)}
-                text={text.designation}
+                text={text.designation.text}
                 x={15}
                 y={24}
                 align="top"
-                // height={50}
-                // width={296}
-                fontSize={10}
-                fill="white"
-                // style={{ zIndex: "100" }}
-                //   draggable
-                // getStrokeScaleEnabled
-                // _useBufferCanvas
+                fontSize={text.designation.fontSize}
+                fill={colorScheme.text}
                 onDblClick={() => {
                   if (textReff.current && textReff.current.designation) {
                     textReff.current.designation.hide();
-                    // inputRef.current.parentNode?.removeChild(inputRef.current);
                     dblClickHandler("designation");
                   }
                 }}
               />
             </Konva.Group>
 
-            <Konva.Group y={105}>
-              <CustomImage x={0} y={0} url={blackRec} />
+            <Konva.Group y={106}>
+              <CustomImage x={0} y={0} svgString={svg2} />
+              <Konva.Group y={20}>
+                <Konva.Group y={0} x={15}>
+                  <CustomImage x={0} y={0} svgString={phoneSvg} />
+                  <Konva.Text
+                    ref={(ref) => (textReff.current.phone = ref)}
+                    text={text.phone.text}
+                    x={25}
+                    y={6}
+                    align="top"
+                    fontSize={text.phone.fontSize}
+                    fill={colorScheme.text}
+                    onDblClick={() => {
+                      if (textReff.current && textReff.current.phone) {
+                        textReff.current.phone.hide();
+                        dblClickHandler("phone");
+                      }
+                    }}
+                  />
+                </Konva.Group>
+                <Konva.Group y={0} x={120}>
+                  <CustomImage x={0} y={0} svgString={websiteSvg} />
+                  <Konva.Text
+                    ref={(ref) => (textReff.current.website = ref)}
+                    text={text.website.text}
+                    x={25}
+                    y={6}
+                    align="top"
+                    fontSize={text.website.fontSize}
+                    fill={colorScheme.text}
+                    onDblClick={() => {
+                      if (textReff.current && textReff.current.website) {
+                        textReff.current.website.hide();
+                        dblClickHandler("website");
+                      }
+                    }}
+                  />
+                </Konva.Group>
+                <Konva.Group y={30} x={15}>
+                  <CustomImage x={0} y={0} svgString={emailSvg} />
+                  <Konva.Text
+                    ref={(ref) => (textReff.current.email = ref)}
+                    text={text.email.text}
+                    x={25}
+                    y={6}
+                    align="top"
+                    fontSize={text.email.fontSize}
+                    fill={colorScheme.text}
+                    onDblClick={() => {
+                      if (textReff.current && textReff.current.email) {
+                        textReff.current.email.hide();
+                        dblClickHandler("email");
+                      }
+                    }}
+                  />
+                </Konva.Group>
+                <Konva.Group y={30} x={120}>
+                  <CustomImage x={0} y={0} svgString={addressSvg} />
+                  <Konva.Text
+                    ref={(ref) => (textReff.current.address = ref)}
+                    text={text.address.text}
+                    width={98}
+                    lineHeight={1.2}
+                    x={25}
+                    y={5}
+                    align="top"
+                    fontSize={text.address.fontSize}
+                    fill={colorScheme.text}
+                    onDblClick={() => {
+                      if (textReff.current && textReff.current.address) {
+                        textReff.current.address.hide();
+                        dblClickHandler("address");
+                      }
+                    }}
+                  />
+                </Konva.Group>
+              </Konva.Group>
             </Konva.Group>
           </Konva.Layer>
-
-          {/* <Konva.Layer y={105}></Konva.Layer> */}
-
-          {/* <Konva.Layer y={144}>
-          
-        </Konva.Layer> */}
         </Konva.Stage>
       </div>
     </div>
   );
-}
+};
