@@ -9,13 +9,6 @@ export const WEBSITE = "/website";
 export const CLIENTNAME = "/clientName";
 export const ADDRESS = "/address";
 export const DESIGNATION = "/designation";
-
+export const TEMPLATES = "/templates";
 
 export const MAIN = "/";
-
-
-
-
-
-
-

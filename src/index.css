@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  @apply box-border text-fontColor;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -35,7 +39,6 @@ a:hover {
 
 body {
   margin: 0;
-
 }
 
 h1 {
@@ -77,10 +80,22 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-
 }
 
 .stepper button,
 .stepper span {
-  cursor: default !important
+  cursor: default !important;
+}
+
+.primary,
+.outlined {
+  @apply flex max-w-32 max-h-12 items-center justify-center px-8 py-4 rounded-full text-sm hover:bg-opacity-70 transition-all focus:outline-0;
+}
+
+.primary {
+  @apply text-white bg-primary;
+}
+
+.outlined {
+  @apply border border-darkOutline text-fontColor bg-backgroundColor;
 }
