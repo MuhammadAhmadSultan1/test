@@ -29,13 +29,27 @@ export interface IRef {
   address: Text | null;
 }
 
-interface ITextProperties {
+export interface ITextProperties {
   text: string;
-  fontSize: number;
+  fontSize: number; // 10 - 12 - 14
+  fontStyle: string; // italic - normal
+  fill: string;
 }
 
 export type TFieldName = keyof IRef;
 export type TTextField = Record<TFieldName, ITextProperties>;
+
+export enum FONT_WEIGHT {
+
+  NORMAL = 'normal',
+}
+
+export enum FONT_STYLE {
+  ITALIC = 'italic',
+  BOLD = 'bold',
+  NORMAL = 'normal',
+  BOLD_ITALIC = 'bold italic',
+}
 
 // interface ITextPosition {
 //   x: number;

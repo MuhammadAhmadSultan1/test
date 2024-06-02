@@ -16,5 +16,5 @@ export interface IUserCard {
     clientName?: string;
     address?: string;
     designation?: string;
-
+    showHeaderAndStepper?: boolean
 }

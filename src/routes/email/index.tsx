@@ -6,6 +6,7 @@ import CustomButton from '../../components/customButton';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setUserCardInfo, } from '../../redux/slices/userInfo';
 import { emailSchema } from '../../schema';
+import { Button } from '../../components/button';
 
 const UserEmail = ({ onClickNext, onClickBack }: ICommonProps) => {
   const dispatch = useAppDispatch();
@@ -52,13 +53,8 @@ const UserEmail = ({ onClickNext, onClickBack }: ICommonProps) => {
         />
 
         <div className="mt-10 mb-10 flex gap-10 justify-center">
-          <CustomButton borderWidth="0" bgColor="red" onClick={() => onGoBack()}>
-            Go Back
-          </CustomButton>
-
-          <CustomButton borderWidth="0" bgColor="blue" type='submit'>
-            Continue
-          </CustomButton>
+          <Button label="Go Back" varient="outlined" attributes={{ onClick: onGoBack }} />
+          <Button label="Continue" varient="primary" attributes={{ type: 'submit' }} />
         </div>
 
       </form>

@@ -2,16 +2,17 @@ import { useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 
 import uploadImage from "../../assets/upload.png";
-import CustomButton from "../../components/customButton";
-import { useAppDispatch, } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector, } from "../../redux/hooks";
 import { setUserCardInfo } from "../../redux/slices/userInfo";
 import { useUserSessionMutation } from "../../services/session";
 import { useUploadLogoMutation } from "../../services/general";
+import { Button } from "../../components/button";
+import CustomButton from "../../components/customButton";
 
 
 const UploadLogo = ({ onClickNext }: ICommonProps) => {
   const dispatch = useAppDispatch();
-  // const userCard = useAppSelector((state) => state?.userCard);
+  const userCard = useAppSelector((state) => state?.userCard);
 
   const [userSession, { }] = useUserSessionMutation();
   const [uploadLogo, { error }] = useUploadLogoMutation();
@@ -25,33 +26,33 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
 
   useEffect(() => {
     getSessionToken();
-    // cleatAllStates();
-
+    cleatAllStates();
   }, [])
 
-  // const cleatAllStates = () => {
-  //   const userCard = {
-  //     companyName: '',
-  //     email: "",
-  //     website: "",
-  //     clientInitials: "",
-  //     serviceName: "",
-  //     serviceNameArray: [],
-  //     targetAudience: "",
-  //     targetAudienceArray: [],
-  //     aboutCompany: "",
-  //     goals: "",
-  //     logo: "",
-  //     sessionId: "",
-  //     logoURL: "",
-  //     colors: [],
-  //     address: "",
-  //     clientName: "",
-  //     designation: "",
-  //   };
-  //   dispatch(setUserCardInfo(userCard));
+  const cleatAllStates = () => {
+    const userCard = {
+      companyName: '',
+      email: "",
+      website: "",
+      clientInitials: "",
+      serviceName: "",
+      serviceNameArray: [],
+      targetAudience: "",
+      targetAudienceArray: [],
+      aboutCompany: "",
+      goals: "",
+      logo: "",
+      sessionId: "",
+      logoURL: "",
+      colors: [],
+      address: "",
+      clientName: "",
+      designation: "",
+      showHeaderAndStepper: true
+    };
+    dispatch(setUserCardInfo(userCard));
 
-  // }
+  }
 
   const getSessionToken = () => {
     let data = {}
@@ -84,6 +85,7 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
       setErrorMessage('')
 
     } else {
+      if (selectedFile) return
       setErrorMessage('Please select a valid image file (png, jpg, jpeg)');
       setSelectedFile(null);
     }
@@ -101,6 +103,8 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
       formData.append('logoAttachment', selectedFile);
 
       uploadLogo(formData).then((result) => {
+        // console.log("uploadLogo----->", result);
+
         if (result?.data) {
           const userCard = {
             logoURL: result?.data?.content?.logoUrl,
@@ -113,7 +117,6 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
           setLoading(false)
           console.log("error----->", error);
           setErrorMessage('Something went wrong');
-
         }
       });
     } else {
@@ -148,9 +151,8 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
       </div>
 
       <div className="mt-10 mb-10 flex gap-10 justify-center">
-        <CustomButton isLoading={loading} borderWidth="0" bgColor="blue" onClick={handleContinue}>
-          Continue
-        </CustomButton>
+        <Button label="Continue" varient="primary" isLoading={true} attributes={{ onClick: handleContinue }} />
+        {/* <CustomButton isLoading={true}/> */}
       </div>
     </div>
   );

@@ -31,17 +31,18 @@ const Main = () => {
     const onClickBack = () => {
         setCurrentStep(currentStep - 1)
     }
-
-
-
+    // max-w-screen-sm
     return (
-        <div className="max-w-screen-sm mx-auto flex flex-col items-center h-screen">
+        <div className=" mx-auto flex flex-col items-center h-screen container mx-auto ">
 
-            <HeaderLogo />
-
-            <div>
-                <CustomStepper activeStep={currentStep} />
-            </div>
+            {userCard?.showHeaderAndStepper &&
+                <>
+                    <HeaderLogo />
+                    <div>
+                        <CustomStepper activeStep={currentStep} />
+                    </div>
+                </>
+            }
 
             {currentStep === 0 && <UploadLogo onClickNext={onClickNext} onClickBack={onClickBack} />}
             {currentStep === 1 && <CompanyDetails onClickNext={onClickNext} onClickBack={onClickBack} />}

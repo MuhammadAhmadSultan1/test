@@ -17,8 +17,9 @@ const initialState: IUserCard = {
   logoURL: "",
   colors: [],
   clientName: "",
-  address:"",
-  designation:"",
+  address: "",
+  designation: "",
+  showHeaderAndStepper: true
 };
 
 const userSlice = createSlice({

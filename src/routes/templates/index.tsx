@@ -1,5 +1,5 @@
 import { HorizontalCards } from "./bussinessCards/horizontal";
 
-export const Templates = () => {
-  return <HorizontalCards />;
+export const Templates = ({ onClickBack }: ICommonProps) => {
+  return <HorizontalCards onClickBack={onClickBack} />;
 };

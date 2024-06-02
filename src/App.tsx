@@ -30,6 +30,7 @@ import Designation from "./routes/designation";
 import Main from "./routes/main";
 import { FrontOne } from "./components/cards/One/front";
 import { Templates } from "./routes/templates";
+import Editor from "./routes/editor";
 
 export const App = () => {
   return (
@@ -52,6 +53,7 @@ export const App = () => {
 
         <Route path={"/edit"} element={<FrontOne />} />
         <Route path={TEMPLATES} element={<Templates />} />
+        <Route path={"/q"} element={<Editor />} />
       </Routes>
     </Router>
   );

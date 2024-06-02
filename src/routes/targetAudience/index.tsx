@@ -9,6 +9,7 @@ import { setUserCardInfo } from "../../redux/slices/userInfo";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { targetAudienceSchema } from "../../schema";
+import { Button } from "../../components/button";
 
 const TargetAudience = ({ onClickNext, onClickBack }: ICommonProps) => {
   const dispatch = useAppDispatch();
@@ -79,13 +80,8 @@ const TargetAudience = ({ onClickNext, onClickBack }: ICommonProps) => {
         </div>
 
         <div className="mt-10 mb-10 flex gap-10 justify-center">
-          <CustomButton borderWidth="0" bgColor="red" onClick={() => onGoBack()}>
-            Go Back
-          </CustomButton>
-
-          <CustomButton borderWidth="0" bgColor="blue" type='submit'>
-            Continue
-          </CustomButton>
+          <Button label="Go Back" varient="outlined" attributes={{ onClick: onGoBack }} />
+          <Button label="Continue" varient="primary" attributes={{ type: 'submit' }} />
         </div>
 
       </form>
