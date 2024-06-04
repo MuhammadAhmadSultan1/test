@@ -1,62 +1,60 @@
 interface IAboutCompany {
-    aboutCompany: string;
+  aboutCompany: string;
 }
 
 interface ICompanyDetails {
-    companyName: string;
+  companyName: string;
 }
 
 interface IAboutCompany {
-    aboutCompany: string;
+  aboutCompany: string;
 }
 
 interface IAboutCompany {
-    aboutCompany: string;
+  aboutCompany: string;
 }
 
 interface IEmail {
-    email: string;
+  email: string;
 }
 
 interface IClientName {
-    clientName: string;
+  clientName: string;
 }
 
 interface IAddress {
-    address: string;
+  address: string;
 }
 
 interface IDesignation {
-    designation: string;
+  designation: string;
 }
 
-
 interface IGoals {
-    goals: string;
+  goals: string;
 }
 
 interface IServiceName {
-    serviceName: string;
+  serviceName: string;
 }
 
 interface IServiceNameArray {
-    serviceNameArray: string[];
+  serviceNameArray: string[];
 }
 
 interface ITargetAudience {
-    targetAudience: string;
+  targetAudience: string;
 }
 
 interface ITargetAudienceArray {
-    targetAudienceArray: string[];
+  targetAudienceArray: string[];
 }
 
 interface IWebsite {
-    website: string;
+  website: string;
 }
 
-
 interface ICommonProps {
-    onClickNext?: Function;
-    onClickBack?: Function;
+  onClickNext?: Function;
+  onClickBack?: Function;
 }

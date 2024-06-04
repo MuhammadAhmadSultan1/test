@@ -2,121 +2,205 @@ import { useState } from "react";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { Card1 } from "./card1";
-import { Card2 } from "./card2";
-import { Card3 } from "./card3";
-
 import { RadioButton } from "../../../../components/radioButton";
 
-import { ICardProps } from "../../../../types/card";
+import { ICanvasCardProps } from "../../../../types/card";
 import { IHorizontalCard } from "../../../../types/horizontalCards";
 
-import logo from "../../../../assets/logo.png";
+// import logo from "../../../../assets/logo.png";
 import { Button } from "../../../../components/button";
-import Editor from "../../../editor";
+// import Editor from "../../../editor";
+import { CardOptionWrapper } from "../../../../components/cardOptionWarpper";
+import CardComponent from "../../../../components/cards/One/front/cardComponent";
+import CardTow from "../../../../components/cards/businessCards/cardTow/front";
+import CardThree from "../../../../components/cards/businessCards/cardThree/front";
+import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
+import { setSelectCard } from "../../../../redux/slices/selectedCard";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { selectCardSchema } from "../../../../schema";
 
-export const HorizontalCards = ({ onClickBack }: ICommonProps) => {
+export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
+  // const [showEditor, setShowEditor] = useState<boolean>(false);
 
-  const [showEditor, setShowEditor] = useState<boolean>(false);
+  const selectedCard = useAppSelector((state) => state.selectedCard);
 
   const [selected, setSelected] = useState({
-    card1: false,
-    card2: false,
-    card3: false,
+    card1: selectedCard.path === "components/cards/One/front/cardComponent",
+    card2: selectedCard.path === "components/cards/businessCards/cardTow/front",
+    card3:
+      selectedCard.path === "components/cards/businessCards/cardThree/front",
   });
 
-  const cardData: ICardProps = {
-    //TODO: dummy data will be replaced by the user inputted data
-    logoUrl: logo,
-    name: "Jamie Maclaren",
-    designation: "Project Manager",
-    phoneNumber: "+92 123 456 7890",
-    website: "www.website.com",
-    email: "test@gmail.com",
-    address: "X park view, DHA Phase 8 Lahore Pakistan",
+  const dispatch = useAppDispatch();
+
+  const testCardData: ICanvasCardProps = {
+    logo: {
+      url: "",
+      width: 20,
+      height: 10,
+    },
+    name: {
+      text: "Jamie Maclaren",
+      color: "#ffffff",
+      fontSize: 16,
+      fontWeight: 600,
+      lineHeight: 1.2,
+    },
+    designation: {
+      text: "Project Manager",
+      color: "#ffffff",
+      fontSize: 10,
+      fontWeight: 400,
+      lineHeight: 0.8,
+    },
+    phone: {
+      text: "+92 123 456 7890",
+      color: "#ffffff",
+      fontSize: 8,
+      fontWeight: 400,
+      lineHeight: 0.8,
+    },
+    website: {
+      text: "www.website.com",
+      color: "#ffffff",
+      fontSize: 8,
+      fontWeight: 400,
+      lineHeight: 0.8,
+    },
+    email: {
+      text: "test@gmail.com",
+      color: "#ffffff",
+      fontSize: 8,
+      fontWeight: 400,
+      lineHeight: 0.8,
+    },
+    address: {
+      text: "X park view, DHA Phase 8 Lahore Pakistan",
+      color: "#ffffff",
+      fontSize: 8,
+      fontWeight: 400,
+      lineHeight: 0.8,
+    },
+    description: {
+      text: "X park view, DHA Phase 8 Lahore Pakistan",
+      color: "#ffffff",
+      fontSize: 8,
+      fontWeight: 400,
+      lineHeight: 0.8,
+    },
+    selected: false,
   };
 
-  const { register, handleSubmit } = useForm<IHorizontalCard>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IHorizontalCard>({
+    resolver: yupResolver(selectCardSchema),
+  });
 
   const onSubmit: SubmitHandler<IHorizontalCard> = (formData) => {
-    console.log("Selected Card", formData);
+    try {
+      dispatch(setSelectCard(formData.selectedCard));
+      if (onClickNext) {
+        onClickNext();
+      }
+    } catch (e) {
+      console.log("Error", e);
+    }
   };
 
   const onGoBack = () => {
-    onClickBack?.()
-  }
-
-  const onPressTemplate = () => {
-    setShowEditor(true)
-  }
-
-  const showTemplates = () => {
-    setShowEditor(false)
-  }
-
+    onClickBack?.();
+  };
 
   return (
-    <>
-      {!showEditor ?
-        <div className="flex flex-col w-full h-[100dvh] justify-evenly items-center">
-          <img src={logo} alt="logo" className="max-w-44 max-h-24" />
-          <div className="flex flex-col items-center gap-4">
-            <h2 className="text-4xl font-extrabold">Select one template</h2>
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="flex flex-col w-full justify-center gap-10"
-            >
-              <div className="flex md:flex-row flex-col w-full justify-center py-5 px-5 gap-4">
-                <RadioButton
-                  Component={<Card1 {...cardData} selected={selected.card1} />}
-                  register={register("selectedCard")}
-                  value="horizontal-one"
-                  onChange={() => {
-                    setSelected(() => ({
-                      card1: true,
-                      card2: false,
-                      card3: false,
-                    }));
-                  }}
-                />
-                <RadioButton
-                  Component={<Card2 {...cardData} selected={selected.card2} />}
-                  register={register("selectedCard")}
-                  value="horizontal-two"
-                  onChange={() => {
-                    setSelected(() => ({
-                      card1: false,
-                      card2: true,
-                      card3: false,
-                    }));
-                  }}
-                />
-                <RadioButton
-                  Component={<Card3 {...cardData} selected={selected.card3} />}
-                  register={register("selectedCard")}
-                  value="horizontal-three"
-                  onChange={() => {
-                    setSelected(() => ({
-                      card1: false,
-                      card2: false,
-                      card3: true,
-                    }));
-                  }}
-                />
-              </div>
-
-              <div className="flex w-full justify-center gap-4">
-                <Button label="Go Back" varient="outlined" attributes={{ onClick: onGoBack }} />
-                <Button label="Continue" varient="primary" attributes={{ onClick: onPressTemplate }} />
-              </div>
-            </form>
-          </div>
+    <div className="flex flex-col items-center gap-4">
+      <h2 className="text-4xl font-extrabold">Select one template</h2>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col w-full justify-center"
+      >
+        <div className="flex md:flex-row flex-col w-full justify-center py-5 px-5 gap-4">
+          <RadioButton
+            Component={
+              <CardOptionWrapper selected={selected.card1}>
+                <CardComponent {...testCardData} />
+              </CardOptionWrapper>
+            }
+            register={register("selectedCard")}
+            value="components/cards/One/front/cardComponent"
+            attributes={{
+              defaultChecked:
+                selectedCard.path ===
+                "components/cards/One/front/cardComponent",
+            }}
+            onChange={() => {
+              setSelected(() => ({
+                card1: true,
+                card2: false,
+                card3: false,
+              }));
+            }}
+          />
+          <RadioButton
+            Component={
+              <CardOptionWrapper selected={selected.card2}>
+                <CardTow {...testCardData} />
+              </CardOptionWrapper>
+            }
+            register={register("selectedCard")}
+            value="components/cards/businessCards/cardTow/front"
+            attributes={{
+              defaultChecked:
+                selectedCard.path ===
+                "components/cards/businessCards/cardTow/front",
+            }}
+            onChange={() => {
+              setSelected(() => ({
+                card1: false,
+                card2: true,
+                card3: false,
+              }));
+            }}
+          />
+          <RadioButton
+            Component={
+              <CardOptionWrapper selected={selected.card3}>
+                <CardThree {...testCardData} />
+              </CardOptionWrapper>
+            }
+            register={register("selectedCard")}
+            value="components/cards/businessCards/cardThree/front"
+            attributes={{
+              defaultChecked:
+                selectedCard.path ===
+                "components/cards/businessCards/cardThree/front",
+            }}
+            onChange={() => {
+              setSelected(() => ({
+                card1: false,
+                card2: false,
+                card3: true,
+              }));
+            }}
+          />
         </div>
-        :
+        {errors.selectedCard && (
+          <p className="text-red-500 text-right pr-5 text-sm">
+            {errors.selectedCard.message}
+          </p>
+        )}
 
-        //in this there will be color selection screen but right now im adding the editor
-        <Editor onClickBack={showTemplates} />
-      }
-    </>
+        <div className="flex w-full justify-center gap-4 mt-10">
+          <Button
+            label="Go Back"
+            varient="outlined"
+            attributes={{ onClick: onGoBack }}
+          />
+          <Button label="Continue" varient="primary" />
+        </div>
+      </form>
+    </div>
   );
 };

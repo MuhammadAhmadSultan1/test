@@ -39,16 +39,20 @@ export interface ITextProperties {
 export type TFieldName = keyof IRef;
 export type TTextField = Record<TFieldName, ITextProperties>;
 
-export enum FONT_WEIGHT {
+export interface IColorVariation {
+  primary?: string;
+  secondary?: string;
+}
 
-  NORMAL = 'normal',
+export enum FONT_WEIGHT {
+  NORMAL = "normal",
 }
 
 export enum FONT_STYLE {
-  ITALIC = 'italic',
-  BOLD = 'bold',
-  NORMAL = 'normal',
-  BOLD_ITALIC = 'bold italic',
+  ITALIC = "italic",
+  BOLD = "bold",
+  NORMAL = "normal",
+  BOLD_ITALIC = "bold italic",
 }
 
 // interface ITextPosition {

@@ -13,7 +13,7 @@ import {
   MAIN,
   SERVICES,
   TARGETAUDIENCE,
-  TEMPLATES,
+  // TEMPLATES,
   UPLOADLOGO,
   WEBSITE,
 } from "./config/paths";
@@ -29,8 +29,9 @@ import Address from "./routes/address";
 import Designation from "./routes/designation";
 import Main from "./routes/main";
 import { FrontOne } from "./components/cards/One/front";
-import { Templates } from "./routes/templates";
+// import { Templates } from "./routes/templates";
 import Editor from "./routes/editor";
+// import { Variations } from "./routes/variations";
 
 export const App = () => {
   return (
@@ -52,8 +53,9 @@ export const App = () => {
         <Route path={DESIGNATION} element={<Designation />} />
 
         <Route path={"/edit"} element={<FrontOne />} />
-        <Route path={TEMPLATES} element={<Templates />} />
+        {/* <Route path={TEMPLATES} element={<Templates />} /> */}
         <Route path={"/q"} element={<Editor />} />
+        {/* <Route path="/variations" element={<Variations />} /> */}
       </Routes>
     </Router>
   );

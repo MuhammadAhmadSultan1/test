@@ -5,7 +5,8 @@ import sessionStorage from "redux-persist/lib/storage/session";
 
 import userSlice from "./slices/userInfo";
 import { baseApi } from "../services/baseApi";
-
+import selectedCard from "./slices/selectedCard";
+import selectedColorVariation from "./slices/selectedColorVariation";
 
 const persistUserConfig = {
   key: "userCard",
@@ -19,8 +20,9 @@ const persistSessionConfig = {
 
 const rootReducer = combineReducers({
   userCard: persistReducer(persistUserConfig, userSlice),
+  selectedCard: selectedCard,
+  selectedColorVariation: selectedColorVariation,
   [baseApi.reducerPath]: baseApi.reducer,
-
 });
 
 const persistedReducer = persistReducer(persistSessionConfig, rootReducer);
@@ -39,4 +41,3 @@ export const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-
