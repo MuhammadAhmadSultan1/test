@@ -37,7 +37,6 @@ const Main = () => {
     <div className=" mx-auto flex flex-col items-center h-screen container ">
       <HeaderLogo />
       <div>
-        {currentStep}
         {currentStep < 11 && <CustomStepper activeStep={currentStep} />}
       </div>
 
