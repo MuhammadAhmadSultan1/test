@@ -21,7 +21,7 @@ const Main = () => {
   // const navigate = useNavigate();
   // const dispatch = useAppDispatch();
   const userCard = useAppSelector((state) => state?.userCard);
-  const [currentStep, setCurrentStep] = useState<number>(0);
+  const [currentStep, setCurrentStep] = useState<number>(10);
 
   console.log("userCard----->", userCard);
 
@@ -34,15 +34,12 @@ const Main = () => {
   };
   // max-w-screen-sm
   return (
-    <div className=" mx-auto flex flex-col items-center h-screen container mx-auto ">
-      {userCard?.showHeaderAndStepper && (
-        <>
-          <HeaderLogo />
-          <div>
-            {currentStep <= 10 && <CustomStepper activeStep={currentStep} />}
-          </div>
-        </>
-      )}
+    <div className=" mx-auto flex flex-col items-center h-screen container ">
+      <HeaderLogo />
+      <div>
+        {currentStep}
+        {currentStep < 11 && <CustomStepper activeStep={currentStep} />}
+      </div>
 
       {currentStep === 0 && (
         <UploadLogo onClickNext={onClickNext} onClickBack={onClickBack} />
