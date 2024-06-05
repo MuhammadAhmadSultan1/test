@@ -37,12 +37,12 @@ export default function CardComponent(props: ICanvasCardProps) {
   });
   const stageRef = useRef<Stage>(null);
 
-  const onChange = (value: string, fieldName: TFieldName) => {
-    setText((prev) => ({
-      ...prev,
-      [fieldName]: { ...prev[fieldName], text: value },
-    }));
-  };
+  // const onChange = (value: string, fieldName: TFieldName) => {
+  //   setText((prev) => ({
+  //     ...prev,
+  //     [fieldName]: { ...prev[fieldName], text: value },
+  //   }));
+  // };
 
   const removeTextarea = (
     textarea: HTMLTextAreaElement,
@@ -58,38 +58,29 @@ export default function CardComponent(props: ICanvasCardProps) {
     textarea: HTMLTextAreaElement,
     fieldName: TFieldName
   ) => {
-    setText((prev) => ({
-      ...prev,
-      [fieldName]: { ...prev[fieldName], text: value },
-    }));
+    if (value) {
+      setText((prev) => ({
+        ...prev,
+        [fieldName]: { ...prev[fieldName], text: value },
+      }));
+    }
     removeTextarea(textarea, fieldName);
   };
 
   const dblClickHandler = (fieldName: TFieldName) => {
     const textPosition = textReff.current[fieldName]?.absolutePosition();
-    const lineHeight = textReff.current[fieldName]?.lineHeight().toString();
-    const fontFamily = textReff.current[fieldName]?.fontFamily();
-    const fontSize = textReff.current[fieldName]?.fontSize();
-    if (
-      stageRef.current &&
-      textPosition &&
-      lineHeight &&
-      fontFamily &&
-      fontSize
-    ) {
+    if (stageRef.current && textPosition) {
       const areaPosition = {
         x: stageRef.current.container().offsetLeft + textPosition.x,
         y: stageRef.current.container().offsetTop + textPosition.y,
       };
       onTextDblClick({
+        textRef: textReff,
         currentText: text[fieldName].text,
         fieldName: fieldName,
         areaPosition: areaPosition,
-        container: "test",
-        lineHeight: lineHeight,
-        fontFamily: fontFamily,
-        fontSize: fontSize,
-        onChange: onChange,
+        container: "canvas",
+        // onChange: onChange,
         onEnter: onEnter,
         onEscape: removeTextarea,
       });
@@ -102,7 +93,7 @@ export default function CardComponent(props: ICanvasCardProps) {
       width={336}
       height={192}
       style={{ backgroundColor: "#ffff" }}
-      id="waterMark"
+      id="canvas"
     >
       <Konva.Layer imageSmoothingEnabled>
         <CustomImage height={49} width={89} x={225} y={30} url={LOGO} />
@@ -116,6 +107,8 @@ export default function CardComponent(props: ICanvasCardProps) {
             align="top"
             fontSize={text.name.fontSize}
             fill={text.name.color}
+            width={122}
+            height={19}
             // fontStyle={name.fontStyle}
             // onClick={() => onClickTextItem("name")}
             onDblClick={() => {
@@ -133,6 +126,8 @@ export default function CardComponent(props: ICanvasCardProps) {
             align="top"
             fontSize={text.designation.fontSize}
             fill={text.designation.color}
+            width={78}
+            height={12}
             // fontStyle={designation.fontStyle}
             // onClick={() => onClickTextItem("designation")}
             onDblClick={() => {
@@ -160,6 +155,8 @@ export default function CardComponent(props: ICanvasCardProps) {
                 align="top"
                 fontSize={text.phone.fontSize}
                 fill={text.phone.color}
+                width={70}
+                height={10}
                 // fontStyle={phone.fontStyle}
                 onDblClick={() => {
                   if (textReff.current && textReff.current.phone && editable) {
@@ -179,6 +176,8 @@ export default function CardComponent(props: ICanvasCardProps) {
                 align="top"
                 fontSize={text.website.fontSize}
                 fill={text.website.color}
+                width={70}
+                height={10}
                 // fontStyle={website.fontStyle}
                 onDblClick={() => {
                   if (
@@ -202,6 +201,8 @@ export default function CardComponent(props: ICanvasCardProps) {
                 align="top"
                 fontSize={text.email.fontSize}
                 fill={text.email.color}
+                width={70}
+                height={10}
                 // fontStyle={email.fontStyle}
                 onDblClick={() => {
                   if (textReff.current && textReff.current.email && editable) {
@@ -217,6 +218,7 @@ export default function CardComponent(props: ICanvasCardProps) {
                 ref={(ref) => (textReff.current.address = ref)}
                 text={text.address.text}
                 width={98}
+                height={20}
                 lineHeight={1.2}
                 x={25}
                 y={5}

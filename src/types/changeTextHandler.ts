@@ -1,4 +1,4 @@
-import { TFieldName } from "./common";
+import { IRef, TFieldName } from "./common";
 
 interface IAreaPosition {
   x: number;
@@ -8,16 +8,14 @@ interface IAreaPosition {
 export interface IChangeTextHanlerProps {
   currentText: string;
   areaPosition: IAreaPosition;
-  lineHeight: string;
-  fontFamily: string;
   container: string;
   fieldName: TFieldName;
-  fontSize: number;
+  textRef: React.MutableRefObject<IRef>;
   onEnter: (
     value: string,
     textarea: HTMLTextAreaElement,
     fieldName: TFieldName
   ) => void;
   onEscape: (textarea: HTMLTextAreaElement, fieldName: TFieldName) => void;
-  onChange: (value: string, fieldName: TFieldName) => void;
+  // onChange: (value: string, fieldName: TFieldName) => void;
 }

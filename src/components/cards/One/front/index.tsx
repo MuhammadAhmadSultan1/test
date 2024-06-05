@@ -6,7 +6,13 @@ import CustomImage from "../../../customImage";
 
 import { useGetCardSvgs } from "./svg/useGetCardSvgs";
 
-import { FONT_STYLE, IRef, ITextProperties, TFieldName, TTextField } from "../../../../types/common";
+import {
+  FONT_STYLE,
+  IRef,
+  ITextProperties,
+  TFieldName,
+  TTextField,
+} from "../../../../types/common";
 import { onTextDblClick } from "../../../../utils/changeTextHandler";
 
 import LOGO from "../../../../assets/logo.png";
@@ -17,8 +23,6 @@ const colorScheme = {
   secondary: "#323232",
   text: "#FFFFFF",
 };
-
-
 
 export const FrontOne = () => {
   const [text, setText] = useState<TTextField>({
@@ -60,15 +64,17 @@ export const FrontOne = () => {
     },
   });
 
-  const [selectedTextKey, setSelectedTextKey] = useState<TFieldName>('name');
-  const [selectedTextItem, setSelectedTextItem] = useState<ITextProperties | undefined>(undefined);
+  const [selectedTextKey, setSelectedTextKey] = useState<TFieldName>("name");
+  const [selectedTextItem, setSelectedTextItem] = useState<
+    ITextProperties | undefined
+  >(undefined);
 
   const { svg1, svg2, phoneSvg, websiteSvg, emailSvg, addressSvg } =
     useGetCardSvgs(colorScheme);
 
   useEffect(() => {
     setSelectedTextItem(text[selectedTextKey]);
-  }, [text])
+  }, [text]);
 
   const textReff = useRef<IRef>({
     name: null,
@@ -91,7 +97,7 @@ export const FrontOne = () => {
     textarea: HTMLTextAreaElement,
     fieldName: TFieldName
   ) => {
-    window.removeEventListener("click", () => { });
+    window.removeEventListener("click", () => {});
     textarea.parentNode?.removeChild(textarea);
     textReff.current[fieldName]?.show();
   };
@@ -113,12 +119,15 @@ export const FrontOne = () => {
     const lineHeight = textReff.current[fieldName]?.lineHeight().toString();
     const fontFamily = textReff.current[fieldName]?.fontFamily();
     const fontSize = textReff.current[fieldName]?.fontSize();
+
+    const fillColor = textReff.current[fieldName]?.getAttr("fill");
     if (
       stageRef.current &&
       textPosition &&
       lineHeight &&
       fontFamily &&
-      fontSize
+      fontSize &&
+      fillColor
     ) {
       const areaPosition = {
         x: stageRef.current.container().offsetLeft + textPosition.x,
@@ -132,6 +141,7 @@ export const FrontOne = () => {
         lineHeight: lineHeight,
         fontFamily: fontFamily,
         fontSize: fontSize,
+        fillColor: fillColor,
         onChange: onChange,
         onEnter: onEnter,
         onEscape: removeTextarea,
@@ -155,9 +165,9 @@ export const FrontOne = () => {
       ...text,
       [selectedTextKey]: {
         ...textItem,
-      }
+      },
     });
-  }
+  };
 
   const onClickItalic = () => {
     if (!selectedTextKey) return;
@@ -175,9 +185,9 @@ export const FrontOne = () => {
       ...text,
       [selectedTextKey]: {
         ...textItem,
-      }
+      },
     });
-  }
+  };
 
   const onChangeTextSize = (event: any) => {
     const selectedFontSize: number = +event?.target?.value;
@@ -190,9 +200,9 @@ export const FrontOne = () => {
       ...text,
       [selectedTextKey]: {
         ...textItem,
-      }
+      },
     });
-  }
+  };
 
   const onChangeTextColor = (event: any) => {
     const selectedFontColor: string = event?.target?.value;
@@ -205,18 +215,16 @@ export const FrontOne = () => {
       ...text,
       [selectedTextKey]: {
         ...textItem,
-      }
+      },
     });
-  }
+  };
   const onClickTextItem = (textKey: TFieldName) => {
     setSelectedTextKey(textKey);
     setSelectedTextItem(text[textKey]);
   };
 
-
   return (
     <div id="test" className="flex flex-col w-full justify-center">
-
       <CustomToolbar
         onClickBold={onClickBold}
         onClickItalic={onClickItalic}
@@ -245,14 +253,13 @@ export const FrontOne = () => {
                 fontSize={text.name.fontSize}
                 fill={text.name.fill}
                 fontStyle={text.name.fontStyle}
-                onClick={() => onClickTextItem('name')}
+                onClick={() => onClickTextItem("name")}
                 onDblClick={() => {
                   if (textReff.current && textReff.current.name) {
                     textReff.current.name.hide();
                     dblClickHandler("name");
                   }
                 }}
-
               />
               <Konva.Text
                 ref={(ref) => (textReff.current.designation = ref)}
@@ -263,7 +270,7 @@ export const FrontOne = () => {
                 fontSize={text.designation.fontSize}
                 fill={text.designation.fill}
                 fontStyle={text.designation.fontStyle}
-                onClick={() => onClickTextItem('designation')}
+                onClick={() => onClickTextItem("designation")}
                 onDblClick={() => {
                   if (textReff.current && textReff.current.designation) {
                     textReff.current.designation.hide();

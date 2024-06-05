@@ -13,17 +13,14 @@ import Services from "../services";
 import TargetAudience from "../targetAudience";
 import Competitors from "../competitors";
 import Goals from "../goals";
-import { useAppSelector } from "../../redux/hooks";
 import { Templates } from "../templates";
 import { Variations } from "../variations";
+import { CustomizeTemplate } from "../customizeTemplate";
 
 const Main = () => {
   // const navigate = useNavigate();
   // const dispatch = useAppDispatch();
-  const userCard = useAppSelector((state) => state?.userCard);
-  const [currentStep, setCurrentStep] = useState<number>(10);
-
-  console.log("userCard----->", userCard);
+  const [currentStep, setCurrentStep] = useState<number>(0);
 
   const onClickNext = () => {
     setCurrentStep(currentStep + 1);
@@ -79,6 +76,7 @@ const Main = () => {
       {currentStep === 12 && (
         <Variations onClickNext={onClickNext} onClickBack={onClickBack} />
       )}
+      {currentStep === 13 && <CustomizeTemplate />}
     </div>
   );
 };

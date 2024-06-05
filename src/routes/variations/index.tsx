@@ -99,7 +99,7 @@ export const Variations = (props: ICommonProps) => {
     selected: false,
   };
 
-  const MarkdownPreview = useMemo(
+  const SelectedCard = useMemo(
     () => lazy(() => import(`../../${selectedCard.path}`)),
     [selectedCard.path]
   );
@@ -129,14 +129,14 @@ export const Variations = (props: ICommonProps) => {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col w-full justify-center gap-10"
+        className="flex flex-col w-full justify-center"
       >
         <div className="flex md:flex-row flex-col w-full justify-center py-5 px-5 gap-4">
           <RadioButton
             Component={
               <CardOptionWrapper selected={selectedVariation.card1}>
                 <Suspense fallback={"loading...."}>
-                  <MarkdownPreview
+                  <SelectedCard
                     {...testCardData}
                     primary={colorVaraitions.primary[0]}
                     secondary={colorVaraitions.secondary[0]}
@@ -162,7 +162,7 @@ export const Variations = (props: ICommonProps) => {
             Component={
               <CardOptionWrapper selected={selectedVariation.card2}>
                 <Suspense fallback={"loading...."}>
-                  <MarkdownPreview
+                  <SelectedCard
                     {...testCardData}
                     primary={colorVaraitions.primary[1]}
                     secondary={colorVaraitions.secondary[1]}
@@ -188,7 +188,7 @@ export const Variations = (props: ICommonProps) => {
             Component={
               <CardOptionWrapper selected={selectedVariation.card3}>
                 <Suspense>
-                  <MarkdownPreview
+                  <SelectedCard
                     {...testCardData}
                     primary={colorVaraitions.primary[2]}
                     secondary={colorVaraitions.secondary[2]}
@@ -217,7 +217,7 @@ export const Variations = (props: ICommonProps) => {
           </p>
         )}
 
-        <div className="flex w-full justify-center gap-4">
+        <div className="flex w-full justify-center gap-4 mt-10">
           <Button
             label="Go Back"
             varient="outlined"
