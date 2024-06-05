@@ -102,9 +102,7 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
   const onSubmit: SubmitHandler<IHorizontalCard> = (formData) => {
     try {
       dispatch(setSelectCard(formData.selectedCard));
-      console.log("here1", onClickNext);
       if (onClickNext) {
-        console.log("here");
         onClickNext();
       }
     } catch (e) {
