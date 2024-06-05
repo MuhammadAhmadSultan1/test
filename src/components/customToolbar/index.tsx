@@ -1,34 +1,37 @@
-import { FONT_STYLE, ITextProperties } from "../../types/common";
+import { FONT_STYLE, ITextProperties, TEXT_DECORATION } from "../../types/common";
 
 import bold from "../../assets/bold.png";
 import italic from "../../assets/italic.png";
-import colorPicker from "../../assets/colorPicker.png";
-import { useRef } from "react";
+import underLine from "../../assets/underLine.png";
+// import colorPicker from "../../assets/colorPicker.png";
+// import { useRef } from "react";
 
 
 interface ICustomToolbarProps {
     onChangeTextSize: (event: any) => void,
     onClickBold: () => void,
     onClickItalic: () => void,
-    onChangeTextColor: (event: any) => void,
+    onClickUnderline: () => void,
+    // onChangeTextColor: (event: any) => void,
     selectedStyles: ITextProperties | undefined
 }
 
 const selectedStyleClasses: string = ' !bg-sky-100';
 
-export const CustomToolbar = ({ onChangeTextSize, onClickBold, onClickItalic, onChangeTextColor, selectedStyles }: ICustomToolbarProps) => {
-    const colorInputRef = useRef<HTMLInputElement>(null);
+export const CustomToolbar = ({ onChangeTextSize, onClickBold, onClickItalic, onClickUnderline, selectedStyles }: ICustomToolbarProps) => {
+    // const colorInputRef = useRef<HTMLInputElement>(null);
 
     const isFontBold: boolean = selectedStyles?.fontStyle === FONT_STYLE.BOLD || selectedStyles?.fontStyle === FONT_STYLE.BOLD_ITALIC;
     const isFontItalic: boolean = selectedStyles?.fontStyle === FONT_STYLE.ITALIC || selectedStyles?.fontStyle === FONT_STYLE.BOLD_ITALIC;
+    const isFontUnderline: boolean = selectedStyles?.textDecoration === TEXT_DECORATION.UNDERLINE ;
 
-    const handleColorIconClick = () => {
-        if (colorInputRef.current) {
-            colorInputRef.current.click();
-        }
-    };
+    // const handleColorIconClick = () => {
+    //     if (colorInputRef.current) {
+    //         colorInputRef.current.click();
+    //     }
+    // };
 
-    // console.log({ selectedStyles });
+    console.log({ selectedStyles });
 
 
     return (
@@ -69,8 +72,16 @@ export const CustomToolbar = ({ onChangeTextSize, onClickBold, onClickItalic, on
                 />
             </button>
 
-            {/* <input type="color" id="favcolor" name="favcolor" value={selectedStyles?.fill} onChange={onChangeTextColor} /> */}
-            <div className="relative">
+
+            <button onClick={onClickUnderline} style={{ outline: 'none' }} className={`w-6 h-6 bg-transparent text-base leading-4 text-black p-0 ring-0 mr-5 rounded-sm ${isFontUnderline ? selectedStyleClasses : ''}`}>
+                <img
+                    className="object-contain"
+                    src={underLine}
+                    style={{ width: '20px', height: '20px', marginTop: 0, }}
+                />
+            </button>
+
+            {/* <div className="relative">
                 <input
                     type="color"
                     id="favcolor"
@@ -91,7 +102,7 @@ export const CustomToolbar = ({ onChangeTextSize, onClickBold, onClickItalic, on
                         style={{ width: '20px', height: '20px', marginTop: 0, }}
                     />
                 </button>
-            </div>
+            </div> */}
         </div>
     );
 }

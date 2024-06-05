@@ -34,6 +34,7 @@ export interface ITextProperties {
   fontSize: number; // 10 - 12 - 14
   fontStyle: string; // italic - normal
   fill: string;
+  textDecoration: string;
 }
 
 export type TFieldName = keyof IRef;
@@ -53,6 +54,12 @@ export enum FONT_STYLE {
   BOLD = "bold",
   NORMAL = "normal",
   BOLD_ITALIC = "bold italic",
+
+}
+
+export enum TEXT_DECORATION {
+  UNDERLINE = "underline",
+  EMPTY = '',
 }
 
 // interface ITextPosition {

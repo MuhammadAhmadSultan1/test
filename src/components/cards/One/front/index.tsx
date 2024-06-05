@@ -6,13 +6,7 @@ import CustomImage from "../../../customImage";
 
 import { useGetCardSvgs } from "./svg/useGetCardSvgs";
 
-import {
-  FONT_STYLE,
-  IRef,
-  ITextProperties,
-  TFieldName,
-  TTextField,
-} from "../../../../types/common";
+import { FONT_STYLE, IRef, ITextProperties, TEXT_DECORATION, TFieldName, TTextField } from "../../../../types/common";
 import { onTextDblClick } from "../../../../utils/changeTextHandler";
 
 import LOGO from "../../../../assets/logo.png";
@@ -31,36 +25,47 @@ export const FrontOne = () => {
       fontSize: 16,
       fontStyle: FONT_STYLE.NORMAL,
       fill: colorScheme.text,
+      textDecoration: TEXT_DECORATION?.EMPTY,
     },
     designation: {
       text: "Project Manager",
       fontSize: 10,
       fontStyle: FONT_STYLE.NORMAL,
       fill: colorScheme.text,
+      textDecoration: TEXT_DECORATION?.EMPTY,
+
     },
     email: {
       text: "test@gmail.com",
       fontSize: 8,
       fontStyle: FONT_STYLE.NORMAL,
       fill: colorScheme.text,
+      textDecoration: TEXT_DECORATION?.EMPTY,
+
     },
     phone: {
       text: "+92 123 456 7890",
       fontSize: 8,
       fontStyle: FONT_STYLE.NORMAL,
       fill: colorScheme.text,
+      textDecoration: TEXT_DECORATION?.EMPTY,
+
     },
     website: {
       text: "www.website.com",
       fontSize: 8,
       fontStyle: FONT_STYLE.NORMAL,
       fill: colorScheme.text,
+      textDecoration: TEXT_DECORATION?.EMPTY,
+
     },
     address: {
       text: "X park view, DHA Phase 8 Lahore Pakistan",
       fontSize: 8,
       fontStyle: FONT_STYLE.NORMAL,
       fill: colorScheme.text,
+      textDecoration: TEXT_DECORATION?.EMPTY,
+
     },
   });
 
@@ -187,7 +192,36 @@ export const FrontOne = () => {
         ...textItem,
       },
     });
-  };
+  }
+
+  const onClickUnderline = () => {
+    if (!selectedTextKey) return;
+    const possibleConditionValue = {
+      [TEXT_DECORATION.UNDERLINE]: TEXT_DECORATION?.EMPTY,
+      [TEXT_DECORATION?.EMPTY]: TEXT_DECORATION.UNDERLINE,
+
+      // [FONT_STYLE.NORMAL]: FONT_STYLE.UNDERLINE,
+
+      // [FONT_STYLE.BOLD]: FONT_STYLE.BOLD_UNDERLINE,
+      // [FONT_STYLE.ITALIC]: FONT_STYLE.ITALIC_UNDERLINE,
+
+      // [FONT_STYLE.BOLD_UNDERLINE]: FONT_STYLE.BOLD,
+      // [FONT_STYLE.ITALIC_UNDERLINE]: FONT_STYLE.ITALIC,
+
+      // [FONT_STYLE.BOLD_ITALIC_UNDERLINE]: FONT_STYLE.BOLD_ITALIC,
+      // [FONT_STYLE.BOLD_ITALIC]: FONT_STYLE.BOLD_ITALIC_UNDERLINE,
+
+    };
+    const textItem: ITextProperties = text[selectedTextKey];
+    // @ts-ignore
+    textItem.textDecoration = possibleConditionValue[textItem?.textDecoration];
+    setText({
+      ...text,
+      [selectedTextKey]: {
+        ...textItem,
+      }
+    });
+  }
 
   const onChangeTextSize = (event: any) => {
     const selectedFontSize: number = +event?.target?.value;
@@ -204,20 +238,20 @@ export const FrontOne = () => {
     });
   };
 
-  const onChangeTextColor = (event: any) => {
-    const selectedFontColor: string = event?.target?.value;
-    if (!selectedTextKey) return;
+  // const onChangeTextColor = (event: any) => {
+  //   const selectedFontColor: string = event?.target?.value;
+  //   if (!selectedTextKey) return;
 
-    const textItem: ITextProperties = text[selectedTextKey];
-    textItem.fill = selectedFontColor;
+  //   const textItem: ITextProperties = text[selectedTextKey];
+  //   textItem.fill = selectedFontColor;
 
-    setText({
-      ...text,
-      [selectedTextKey]: {
-        ...textItem,
-      },
-    });
-  };
+  //   setText({
+  //     ...text,
+  //     [selectedTextKey]: {
+  //       ...textItem,
+  //     }
+  //   });
+  // }
   const onClickTextItem = (textKey: TFieldName) => {
     setSelectedTextKey(textKey);
     setSelectedTextItem(text[textKey]);
@@ -228,8 +262,10 @@ export const FrontOne = () => {
       <CustomToolbar
         onClickBold={onClickBold}
         onClickItalic={onClickItalic}
+        onClickUnderline={onClickUnderline}
         onChangeTextSize={onChangeTextSize}
-        onChangeTextColor={onChangeTextColor}
+
+        // onChangeTextColor={onChangeTextColor}
         selectedStyles={selectedTextItem}
       />
 
@@ -253,7 +289,8 @@ export const FrontOne = () => {
                 fontSize={text.name.fontSize}
                 fill={text.name.fill}
                 fontStyle={text.name.fontStyle}
-                onClick={() => onClickTextItem("name")}
+                textDecoration={text.name.textDecoration}
+                onClick={() => onClickTextItem('name')}
                 onDblClick={() => {
                   if (textReff.current && textReff.current.name) {
                     textReff.current.name.hide();
@@ -270,7 +307,8 @@ export const FrontOne = () => {
                 fontSize={text.designation.fontSize}
                 fill={text.designation.fill}
                 fontStyle={text.designation.fontStyle}
-                onClick={() => onClickTextItem("designation")}
+                textDecoration={text.designation.textDecoration}
+                onClick={() => onClickTextItem('designation')}
                 onDblClick={() => {
                   if (textReff.current && textReff.current.designation) {
                     textReff.current.designation.hide();
@@ -294,6 +332,7 @@ export const FrontOne = () => {
                     fontSize={text.phone.fontSize}
                     fill={text.phone.fill}
                     fontStyle={text.phone.fontStyle}
+                    
                     onDblClick={() => {
                       if (textReff.current && textReff.current.phone) {
                         textReff.current.phone.hide();
