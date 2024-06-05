@@ -2,7 +2,6 @@ import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import CustomButton from "../../components/customButton";
 import InputField from "../../components/inputField";
 import { ServicesButton } from "./components";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -17,9 +16,6 @@ const Services = ({ onClickNext, onClickBack }: ICommonProps) => {
 
 
   const [serviceName, setServiceName] = useState<string>(userCard?.serviceName ?? '')
-
-  // const [serviceNameArray, setServiceNameArray] = useState<string[]>(userCard?.serviceNameArray ?? []);
-
   const defaultValues: IServiceNameArray = { serviceNameArray: userCard?.serviceNameArray ?? [] };
 
 

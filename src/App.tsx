@@ -28,9 +28,9 @@ import ClientName from "./routes/clientName";
 import Address from "./routes/address";
 import Designation from "./routes/designation";
 import Main from "./routes/main";
-import { FrontOne } from "./components/cards/One/front";
+// import { FrontOne } from "./components/cards/One/front";
 // import { Templates } from "./routes/templates";
-import Editor from "./routes/editor";
+// import Editor from "./routes/editor";
 // import { Variations } from "./routes/variations";
 
 export const App = () => {
@@ -52,9 +52,9 @@ export const App = () => {
         <Route path={ADDRESS} element={<Address />} />
         <Route path={DESIGNATION} element={<Designation />} />
 
-        <Route path={"/edit"} element={<FrontOne />} />
+        {/* <Route path={"/edit"} element={<FrontOne />} /> */}
         {/* <Route path={TEMPLATES} element={<Templates />} /> */}
-        <Route path={"/q"} element={<Editor />} />
+        {/* <Route path={"/q"} element={<Editor />} /> */}
         {/* <Route path="/variations" element={<Variations />} /> */}
       </Routes>
     </Router>

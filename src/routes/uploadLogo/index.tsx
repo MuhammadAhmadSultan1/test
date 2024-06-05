@@ -106,6 +106,9 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
   };
 
   const handleContinue = () => {
+    if (userCard?.logoURL && !selectedFile) {
+      onClickNext?.();
+    }
     if (selectedFile) {
       setLoading(true)
       const formData = new FormData();
@@ -113,6 +116,7 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
       formData.append('logoAttachment', selectedFile);
 
       uploadLogo(formData).then((result) => {
+        console.log("result?.data------>", result?.data);
         if (result?.data) {
           const userCard = {
             logoURL: result?.data?.content?.logoUrl,
@@ -134,8 +138,6 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
       setErrorMessage("Logo is required");
     }
   };
-
-  console.log({ selectedFile });
 
   return (
     <div className="max-w-470px mx-auto flex items-center flex-col h-screen font-sans">
@@ -163,9 +165,9 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
               <>
                 <img
                   className="object-cover cursor-pointer"
-                  src={uploadImage}
+                  src={userCard?.logoURL || uploadImage}
                   alt="Upload Icon"
-                  style={{ width: '58px', height: '50.39px', marginTop: 40, color: '#444444' }}
+                  style={{ width: userCard?.logoURL ? '78px' : '70.39', height: userCard?.logoURL ? '70px' : '50.39px', marginTop: 40, color: '#444444', borderRadius: userCard?.logoURL && 8 }}
                   onClick={handleImageClick}
                 />
                 <h4 className="mt-5 text-[20px] font-semibold font-weight-[600] text-[#9E9E9E]">Choose file</h4>
