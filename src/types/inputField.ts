@@ -12,4 +12,5 @@ export interface ITextInput {
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   registerKey?: string | undefined;
   register?: UseFormRegister<any> | undefined
+  prefix?: string
 }

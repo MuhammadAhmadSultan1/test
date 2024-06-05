@@ -51,7 +51,7 @@ const TargetAudience = ({ onClickNext, onClickBack }: ICommonProps) => {
 
   const handleEnterKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      if (targetAudience) {
+      if (targetAudience.trim()) {
         setValue('targetAudienceArray', [...targetAudienceArray, targetAudience]);
         setTargetAudience('');
       }
@@ -82,6 +82,24 @@ const TargetAudience = ({ onClickNext, onClickBack }: ICommonProps) => {
         <div className="mt-10 mb-10 flex gap-10 justify-center">
           <Button label="Go Back" varient="outlined" attributes={{ onClick: onGoBack }} />
           <Button label="Continue" varient="primary" attributes={{ type: 'submit' }} />
+        </div>
+
+
+
+        <div className="mt-10">
+          <div>
+            Here is an example of target audience, include these points for better results.
+          </div>
+          <ul className="list-disc mt-2 text-sm font-bold text-[#A1A1A1] leading-5 list-inside">
+            <li className="text-[#A1A1A1]">Age: 25-45</li>
+            <li className="text-[#A1A1A1]">Lifestyle: Urban</li>
+            <li className="text-[#A1A1A1]">Values: Sustainability</li>
+            <li className="text-[#A1A1A1]">Activities: Yoga/fitness</li>
+            <li className="text-[#A1A1A1]">Location: Metropolitan areas</li>
+            <li className="text-[#A1A1A1]">Preferences: Eco-friendly products</li>
+            <li className="text-[#A1A1A1]">Needs: Stylish yoga mats</li>
+            <li className="text-[#A1A1A1]">Goals: Enhance wellness journey</li>
+          </ul>
         </div>
 
       </form>

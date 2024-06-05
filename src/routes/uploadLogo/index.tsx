@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
 
 import uploadImage from "../../assets/upload.png";
 import { useAppDispatch, useAppSelector, } from "../../redux/hooks";
@@ -7,7 +6,8 @@ import { setUserCardInfo } from "../../redux/slices/userInfo";
 import { useUserSessionMutation } from "../../services/session";
 import { useUploadLogoMutation } from "../../services/general";
 import { Button } from "../../components/button";
-import CustomButton from "../../components/customButton";
+
+import { successToast } from "../../utils/toaster";
 
 
 const UploadLogo = ({ onClickNext }: ICommonProps) => {
@@ -23,11 +23,24 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [sessionIdLocal, setSessionIdLocal] = useState<string>('');
 
+  const [preview, setPreview] = useState('');
+
 
   useEffect(() => {
     getSessionToken();
-    cleatAllStates();
+    // cleatAllStates();
   }, [])
+
+
+  useEffect(() => {
+    if (selectedFile instanceof File) {
+      const reader = new FileReader();
+      reader.readAsDataURL(selectedFile);
+      reader.onload = () => {
+        setPreview(reader.result as string);
+      };
+    }
+  }, [selectedFile]);
 
   const cleatAllStates = () => {
     const userCard = {
@@ -74,18 +87,15 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
   const handleFileChange = (event: any) => {
     const file = event.target.files[0];
     if (file && (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg')) {
-
       if (file.size > 10 * 1024 * 1024) {
         setErrorMessage('File size must be less than 10 MB');
         setSelectedFile(null);
         return;
       }
-      // setFileName(file?.name)
       setSelectedFile(file);
-      setErrorMessage('')
-
+      setErrorMessage('');
     } else {
-      if (selectedFile) return
+      if (selectedFile) return;
       setErrorMessage('Please select a valid image file (png, jpg, jpeg)');
       setSelectedFile(null);
     }
@@ -103,16 +113,17 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
       formData.append('logoAttachment', selectedFile);
 
       uploadLogo(formData).then((result) => {
-        // console.log("uploadLogo----->", result);
-
         if (result?.data) {
           const userCard = {
             logoURL: result?.data?.content?.logoUrl,
             colors: result?.data?.colors
           };
           dispatch(setUserCardInfo(userCard));
+          successToast('Logo uploaded successfully');
           setLoading(false)
-          onClickNext?.();
+          setTimeout(() => {
+            onClickNext?.();
+          }, 2500);
         } else {
           setLoading(false)
           console.log("error----->", error);
@@ -123,21 +134,49 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
       setErrorMessage("Logo is required");
     }
   };
+
+  console.log({ selectedFile });
+
   return (
     <div className="max-w-470px mx-auto flex items-center flex-col h-screen font-sans">
 
-      <h2 className="text-black text-center text-3xl my-8 font-semibold">Upload your logo</h2>
+      <h2 className="text-center text-4xl my-8 font-extrabold text-[#282828]">Upload your logo</h2>
       <div className="max-w-566 max-h-224 bg-gray-100 flex justify-center items-center flex-col rounded-3xl">
-        <img
-          className="object-cover cursor-pointer"
-          src={uploadImage}
-          alt="Upload Icon"
-          style={{ width: '58px', height: '50.39px', marginTop: 40, }}
-          onClick={handleImageClick}
-        />
-        <h4 className='mt-5 text-20px text-gray-600  font-semibold '>   {selectedFile ? selectedFile?.name : 'Choose file'}</h4>
+        <div>
+          <input
+            type="file"
+            id="fileInput"
+            onChange={handleFileChange}
+            style={{ display: 'none' }}
+          />
+          <div className="flex flex-col items-center">
+            {selectedFile ? (
+              <img
+                className="object-cover cursor-pointer"
+                src={preview}
+                alt="Selected Image"
+                style={{ width: '78px', height: '70.39px', marginTop: 40, borderRadius: 8 }}
+                onClick={handleImageClick}
 
-        <h4 className='mt-6 text-14px text-gray-400 font-semibold px-20 pb-10'>Maximum resolution 300 DPI and size must me less than 10 MB</h4>
+              />
+            ) : (
+              <>
+                <img
+                  className="object-cover cursor-pointer"
+                  src={uploadImage}
+                  alt="Upload Icon"
+                  style={{ width: '58px', height: '50.39px', marginTop: 40, color: '#444444' }}
+                  onClick={handleImageClick}
+                />
+                <h4 className="mt-5 text-[20px] font-semibold font-weight-[600] text-[#9E9E9E]">Choose file</h4>
+              </>
+            )}
+            <h4 className='mt-5 text-20px text-gray-600  font-semibold '>
+              {selectedFile ? selectedFile.name : ''}
+            </h4>
+          </div>
+        </div>
+        <h4 className="mt-6 text-[14px] font-semibold font-weight-[600] text-[#444444] px-20 pb-10">Maximum resolution 300 DPI and size must be less than 10 MB</h4>
 
         {errorMessage && <p className="text-red-500 mb-3">{errorMessage}</p>}
 
@@ -151,7 +190,7 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
       </div>
 
       <div className="mt-10 mb-10 flex gap-10 justify-center">
-        <Button label="Continue" varient="primary" isLoading={true} attributes={{ onClick: handleContinue }} />
+        <Button label="Continue" varient="primary" isLoading={loading} attributes={{ onClick: handleContinue, className: "!max-w-max" }} />
         {/* <CustomButton isLoading={true}/> */}
       </div>
     </div>

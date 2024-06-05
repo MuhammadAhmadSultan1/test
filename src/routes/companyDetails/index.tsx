@@ -22,6 +22,7 @@ const CompanyDetails = ({ onClickNext, onClickBack }: ICommonProps) => {
   const {
     handleSubmit,
     register,
+    getValues,
     formState: { errors },
   } = useForm<ICompanyDetails>({
     resolver: yupResolver(companyDetailsSchema),
@@ -39,6 +40,12 @@ const CompanyDetails = ({ onClickNext, onClickBack }: ICommonProps) => {
 
 
   const onGoBack = () => {
+    const companyName = getValues('companyName');
+    console.log({ companyName });
+    const userCard = {
+      companyName,
+    };
+    dispatch(setUserCardInfo(userCard));
     onClickBack?.()
   }
   return (

@@ -36,10 +36,6 @@ const Website = ({ onClickNext, onClickBack }: ICommonProps) => {
 
   const onGoBack = () => {
     onClickBack?.()
-    // const userCard = {
-    //   website,
-    // };
-    // dispatch(setUserCardInfo(userCard));
   }
   return (
     <div className="max-w-screen-sm mx-auto flex flex-col items-center h-screen">
@@ -52,6 +48,7 @@ const Website = ({ onClickNext, onClickBack }: ICommonProps) => {
           error={errors.website?.message}
           register={register}
           registerKey={'website'}
+          prefix="https://"
         />
 
         <div className="mt-10 mb-10 flex gap-10 justify-center">

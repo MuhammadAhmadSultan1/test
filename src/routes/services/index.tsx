@@ -46,22 +46,28 @@ const Services = ({ onClickNext, onClickBack }: ICommonProps) => {
   const serviceNameArray = getValues('serviceNameArray');
 
   const onGoBack = () => {
+
     onClickBack?.()
-    // const userCard = {
-    //   serviceName,
-    // };
-    // dispatch(setUserCardInfo(userCard));
+    const userCard = {
+      serviceNameArray,
+    };
+    dispatch(setUserCardInfo(userCard));
   }
 
   const handleEnterKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      if (serviceName) {
+      if (serviceName.trim()) {
         setValue('serviceNameArray', [...serviceNameArray, serviceName])
         setServiceName("")
       }
       e.preventDefault();
     }
   };
+
+  const onClickItem = (index: Number) => {
+    const newArray = serviceNameArray.filter((item, idx) => idx !== index);
+    setValue('serviceNameArray', newArray, { shouldValidate: true, })
+  }
 
   return (
     <div className="max-w-[470px] mx-auto flex items-center flex-col">
@@ -79,7 +85,7 @@ const Services = ({ onClickNext, onClickBack }: ICommonProps) => {
 
         <div className="flex flex-wrap gap-4 mt-5">
           {serviceNameArray?.map((name, index) => (
-            <ServicesButton key={index} name={name} />
+            <ServicesButton onClick={() => onClickItem(index)} key={index} name={name} />
           ))}
         </div>
 

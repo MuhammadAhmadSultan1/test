@@ -1,30 +1,27 @@
 import * as yup from "yup";
 
 export const companyDetailsSchema = yup.object().shape({
-  companyName: yup.string().required("Company name is required"),
+  companyName: yup.string().trim().required("Company name is required"),
 });
 
 export const emailSchema = yup.object().shape({
-  email: yup
-    .string()
-    .required("Email is required")
-    .email("Invalid email format"),
+  email: yup.string().trim().required("Email is required").email("Invalid email format"),
 });
 
 export const websiteSchema = yup.object().shape({
-  website: yup.string().required("Website is required"),
+  website: yup.string().trim().url("Please enter a valid URL").required("Website is required")
 });
 
 export const clientNameSchema = yup.object().shape({
-  clientName: yup.string().required("Client name is required"),
+  clientName: yup.string().trim().required("Client name is required"),
 });
 
 export const addressSchema = yup.object().shape({
-  address: yup.string().required("Address is required"),
+  address: yup.string().trim().required("Address is required"),
 });
 
 export const designationSchema = yup.object().shape({
-  designation: yup.string().required("Designation is required"),
+  designation: yup.string().trim().required("Designation is required"),
 });
 
 // export const serviceNameSchema = yup.object().shape({
@@ -48,11 +45,11 @@ export const targetAudienceSchema = yup.object().shape({
 });
 
 export const aboutCompanySchema = yup.object().shape({
-  aboutCompany: yup.string().required("About company is required"),
+  aboutCompany: yup.string().trim().required("About company is required"),
 });
 
 export const goalSchema = yup.object().shape({
-  goals: yup.string().required("Goal is required"),
+  goals: yup.string().trim().required("Goal is required"),
 });
 
 export const selectCardSchema = yup.object().shape({
