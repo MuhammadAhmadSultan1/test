@@ -1,7 +1,7 @@
-import React from 'react';
+// import React from 'react';
 
 import dummyLogo from "../../assets/dummylogo.png";
-import CustomButton from '../../components/customButton';
+// import CustomButton from '../../components/customButton';
 import { FrontOne } from '../../components/cards/One/front';
 import { Button } from '../../components/button';
 

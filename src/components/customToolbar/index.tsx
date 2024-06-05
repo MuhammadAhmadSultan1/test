@@ -28,7 +28,7 @@ export const CustomToolbar = ({ onChangeTextSize, onClickBold, onClickItalic, on
         }
     };
 
-    console.log({ selectedStyles });
+    // console.log({ selectedStyles });
 
 
     return (

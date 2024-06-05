@@ -13,17 +13,15 @@ import Services from "../services";
 import TargetAudience from "../targetAudience";
 import Competitors from "../competitors";
 import Goals from "../goals";
-import { useAppSelector } from "../../redux/hooks";
+// import { useAppSelector } from "../../redux/hooks";
 import { Templates } from "../templates";
 import { Variations } from "../variations";
 
 const Main = () => {
   // const navigate = useNavigate();
   // const dispatch = useAppDispatch();
-  const userCard = useAppSelector((state) => state?.userCard);
+  // const userCard = useAppSelector((state) => state?.userCard);
   const [currentStep, setCurrentStep] = useState<number>(0);
-
-  console.log("userCard----->", userCard);
 
   const onClickNext = () => {
     setCurrentStep(currentStep + 1);

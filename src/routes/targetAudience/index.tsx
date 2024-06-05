@@ -16,7 +16,6 @@ const TargetAudience = ({ onClickNext, onClickBack }: ICommonProps) => {
   const userCard = useAppSelector((state) => state?.userCard);
 
   const [targetAudience, setTargetAudience] = useState<string>(userCard?.targetAudience ?? '');
-  // const [targetAudienceArray, setTargetAudienceArray] = useState<string[]>(userCard?.targetAudienceArray ?? []);
   const defaultValues: ITargetAudienceArray = { targetAudienceArray: userCard?.targetAudienceArray ?? [] };
 
   const {
@@ -42,11 +41,10 @@ const TargetAudience = ({ onClickNext, onClickBack }: ICommonProps) => {
 
   const onGoBack = () => {
     onClickBack?.()
-    // const userCard = {
-    //   targetAudience,
-
-    // };
-    // dispatch(setUserCardInfo(userCard));
+    const userCard = {
+      targetAudienceArray,
+    };
+    dispatch(setUserCardInfo(userCard));
   }
 
   const handleEnterKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -58,6 +56,12 @@ const TargetAudience = ({ onClickNext, onClickBack }: ICommonProps) => {
       e.preventDefault();
     }
   };
+
+  const onClickItem = (index: Number) => {
+    const newArray = targetAudienceArray.filter((item, idx) => idx !== index);
+    setValue('targetAudienceArray', newArray, { shouldValidate: true, })
+  }
+
 
 
   return (
@@ -75,7 +79,7 @@ const TargetAudience = ({ onClickNext, onClickBack }: ICommonProps) => {
         />
         <div className="flex flex-wrap gap-4 mt-5">
           {targetAudienceArray?.map((name, index) => (
-            <ServicesButton key={index} name={name} />
+            <ServicesButton onClick={() => onClickItem(index)} key={index} name={name} />
           ))}
         </div>
 
