@@ -21,7 +21,7 @@ const Main = () => {
   // const navigate = useNavigate();
   // const dispatch = useAppDispatch();
   const userCard = useAppSelector((state) => state?.userCard);
-  const [currentStep, setCurrentStep] = useState<number>(10);
+  const [currentStep, setCurrentStep] = useState<number>(0);
 
   console.log("userCard----->", userCard);
 
