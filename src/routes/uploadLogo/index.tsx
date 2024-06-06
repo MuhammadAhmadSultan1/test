@@ -42,30 +42,30 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
     }
   }, [selectedFile]);
 
-  const cleatAllStates = () => {
-    const userCard = {
-      companyName: '',
-      email: "",
-      website: "",
-      clientInitials: "",
-      serviceName: "",
-      serviceNameArray: [],
-      targetAudience: "",
-      targetAudienceArray: [],
-      aboutCompany: "",
-      goals: "",
-      logo: "",
-      sessionId: "",
-      logoURL: "",
-      colors: [],
-      address: "",
-      clientName: "",
-      designation: "",
-      showHeaderAndStepper: true
-    };
-    dispatch(setUserCardInfo(userCard));
+  // const cleatAllStates = () => {
+  //   const userCard = {
+  //     companyName: '',
+  //     email: "",
+  //     website: "",
+  //     clientInitials: "",
+  //     serviceName: "",
+  //     serviceNameArray: [],
+  //     targetAudience: "",
+  //     targetAudienceArray: [],
+  //     aboutCompany: "",
+  //     goals: "",
+  //     logo: "",
+  //     sessionId: "",
+  //     logoURL: "",
+  //     colors: [],
+  //     address: "",
+  //     clientName: "",
+  //     designation: "",
+  //     showHeaderAndStepper: true
+  //   };
+  //   dispatch(setUserCardInfo(userCard));
 
-  }
+  // }
 
   const getSessionToken = () => {
     let data = {}

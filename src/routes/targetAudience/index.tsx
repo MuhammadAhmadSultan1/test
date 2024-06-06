@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import CustomButton from "../../components/customButton";
 import InputField from "../../components/inputField";
 import { ServicesButton } from "./components";
 
@@ -58,7 +57,10 @@ const TargetAudience = ({ onClickNext, onClickBack }: ICommonProps) => {
   };
 
   const onClickItem = (index: Number) => {
-    const newArray = targetAudienceArray.filter((item, idx) => idx !== index);
+    const newArray = targetAudienceArray.filter((item, idx) => {
+      console.log({ item });
+      idx !== index
+    });
     setValue('targetAudienceArray', newArray, { shouldValidate: true, })
   }
 

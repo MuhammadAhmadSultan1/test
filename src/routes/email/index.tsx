@@ -2,7 +2,6 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import InputField from '../../components/inputField';
-import CustomButton from '../../components/customButton';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setUserCardInfo, } from '../../redux/slices/userInfo';
 import { emailSchema } from '../../schema';
