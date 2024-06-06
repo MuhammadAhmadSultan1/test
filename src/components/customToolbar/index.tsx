@@ -3,36 +3,21 @@ import { FONT_STYLE, ITextProperties, TEXT_DECORATION } from "../../types/common
 import bold from "../../assets/bold.png";
 import italic from "../../assets/italic.png";
 import underLine from "../../assets/underLine.png";
-// import colorPicker from "../../assets/colorPicker.png";
-// import { useRef } from "react";
-
-
 interface ICustomToolbarProps {
     onChangeTextSize: (event: any) => void,
     onClickBold: () => void,
     onClickItalic: () => void,
     onClickUnderline: () => void,
-    // onChangeTextColor: (event: any) => void,
     selectedStyles: ITextProperties | undefined
 }
 
 const selectedStyleClasses: string = ' !bg-sky-100';
 
 export const CustomToolbar = ({ onChangeTextSize, onClickBold, onClickItalic, onClickUnderline, selectedStyles }: ICustomToolbarProps) => {
-    // const colorInputRef = useRef<HTMLInputElement>(null);
 
     const isFontBold: boolean = selectedStyles?.fontStyle === FONT_STYLE.BOLD || selectedStyles?.fontStyle === FONT_STYLE.BOLD_ITALIC;
     const isFontItalic: boolean = selectedStyles?.fontStyle === FONT_STYLE.ITALIC || selectedStyles?.fontStyle === FONT_STYLE.BOLD_ITALIC;
-    const isFontUnderline: boolean = selectedStyles?.textDecoration === TEXT_DECORATION.UNDERLINE ;
-
-    // const handleColorIconClick = () => {
-    //     if (colorInputRef.current) {
-    //         colorInputRef.current.click();
-    //     }
-    // };
-
-    console.log({ selectedStyles });
-
+    const isFontUnderline: boolean = selectedStyles?.textDecoration === TEXT_DECORATION.UNDERLINE;
 
     return (
         <div className="flex justify-center items-center border border-solid border-[#808080] w-full p-2">
@@ -80,29 +65,6 @@ export const CustomToolbar = ({ onChangeTextSize, onClickBold, onClickItalic, on
                     style={{ width: '20px', height: '20px', marginTop: 0, }}
                 />
             </button>
-
-            {/* <div className="relative">
-                <input
-                    type="color"
-                    id="favcolor"
-                    name="favcolor"
-                    value={selectedStyles?.fill}
-                    onChange={onChangeTextColor}
-                    ref={colorInputRef}
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                />
-                <button
-                    type="button"
-                    onClick={handleColorIconClick}
-                    className="w-6 h-6 bg-transparent text-base leading-4 text-black p-0 ring-0 mr-5 rounded-sm flex items-center justify-center"
-                >
-                    <img
-                        className="object-contain"
-                        src={colorPicker}
-                        style={{ width: '20px', height: '20px', marginTop: 0, }}
-                    />
-                </button>
-            </div> */}
         </div>
     );
 }

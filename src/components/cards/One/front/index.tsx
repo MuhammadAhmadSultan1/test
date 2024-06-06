@@ -70,9 +70,7 @@ export const FrontOne = () => {
   });
 
   const [selectedTextKey, setSelectedTextKey] = useState<TFieldName>("name");
-  const [selectedTextItem, setSelectedTextItem] = useState<
-    ITextProperties | undefined
-  >(undefined);
+  const [selectedTextItem, setSelectedTextItem] = useState<ITextProperties | undefined>(undefined);
 
   const { svg1, svg2, phoneSvg, websiteSvg, emailSvg, addressSvg } =
     useGetCardSvgs(colorScheme);
@@ -91,18 +89,12 @@ export const FrontOne = () => {
   });
   const stageRef = useRef<Stage>(null);
 
-  const onChange = (value: string, fieldName: TFieldName) => {
-    setText((prev) => ({
-      ...prev,
-      [fieldName]: { ...prev[fieldName], text: value },
-    }));
-  };
 
   const removeTextarea = (
     textarea: HTMLTextAreaElement,
     fieldName: TFieldName
   ) => {
-    window.removeEventListener("click", () => {});
+    window.removeEventListener("click", () => { });
     textarea.parentNode?.removeChild(textarea);
     textReff.current[fieldName]?.show();
   };
@@ -143,11 +135,7 @@ export const FrontOne = () => {
         fieldName: fieldName,
         areaPosition: areaPosition,
         container: "test",
-        lineHeight: lineHeight,
-        fontFamily: fontFamily,
-        fontSize: fontSize,
-        fillColor: fillColor,
-        onChange: onChange,
+        textRef: textReff,
         onEnter: onEnter,
         onEscape: removeTextarea,
       });
@@ -200,17 +188,6 @@ export const FrontOne = () => {
       [TEXT_DECORATION.UNDERLINE]: TEXT_DECORATION?.EMPTY,
       [TEXT_DECORATION?.EMPTY]: TEXT_DECORATION.UNDERLINE,
 
-      // [FONT_STYLE.NORMAL]: FONT_STYLE.UNDERLINE,
-
-      // [FONT_STYLE.BOLD]: FONT_STYLE.BOLD_UNDERLINE,
-      // [FONT_STYLE.ITALIC]: FONT_STYLE.ITALIC_UNDERLINE,
-
-      // [FONT_STYLE.BOLD_UNDERLINE]: FONT_STYLE.BOLD,
-      // [FONT_STYLE.ITALIC_UNDERLINE]: FONT_STYLE.ITALIC,
-
-      // [FONT_STYLE.BOLD_ITALIC_UNDERLINE]: FONT_STYLE.BOLD_ITALIC,
-      // [FONT_STYLE.BOLD_ITALIC]: FONT_STYLE.BOLD_ITALIC_UNDERLINE,
-
     };
     const textItem: ITextProperties = text[selectedTextKey];
     // @ts-ignore
@@ -238,20 +215,6 @@ export const FrontOne = () => {
     });
   };
 
-  // const onChangeTextColor = (event: any) => {
-  //   const selectedFontColor: string = event?.target?.value;
-  //   if (!selectedTextKey) return;
-
-  //   const textItem: ITextProperties = text[selectedTextKey];
-  //   textItem.fill = selectedFontColor;
-
-  //   setText({
-  //     ...text,
-  //     [selectedTextKey]: {
-  //       ...textItem,
-  //     }
-  //   });
-  // }
   const onClickTextItem = (textKey: TFieldName) => {
     setSelectedTextKey(textKey);
     setSelectedTextItem(text[textKey]);
@@ -264,8 +227,6 @@ export const FrontOne = () => {
         onClickItalic={onClickItalic}
         onClickUnderline={onClickUnderline}
         onChangeTextSize={onChangeTextSize}
-
-        // onChangeTextColor={onChangeTextColor}
         selectedStyles={selectedTextItem}
       />
 
@@ -332,7 +293,7 @@ export const FrontOne = () => {
                     fontSize={text.phone.fontSize}
                     fill={text.phone.fill}
                     fontStyle={text.phone.fontStyle}
-                    
+
                     onDblClick={() => {
                       if (textReff.current && textReff.current.phone) {
                         textReff.current.phone.hide();

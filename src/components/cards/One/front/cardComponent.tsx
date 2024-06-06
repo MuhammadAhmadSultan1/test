@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import * as Konva from "react-konva";
 import { Stage } from "konva/lib/Stage";
@@ -6,8 +6,11 @@ import { Stage } from "konva/lib/Stage";
 import { useGetCardSvgs } from "./svg/useGetCardSvgs";
 
 import {
+  FONT_STYLE,
   //   FONT_STYLE,
   IRef,
+  ITextProperties,
+  TEXT_DECORATION,
   TFieldName,
   //   ITextProperties,
   //   TFieldName,
@@ -19,13 +22,24 @@ import CustomImage from "../../../customImage";
 import LOGO from "../../../../assets/logo.png";
 import { ICanvasCardProps } from "../../../../types/card";
 import { onTextDblClick } from "../../../../utils/changeTextHandler";
+import { CustomToolbar } from "../../../customToolbar";
 
 export default function CardComponent(props: ICanvasCardProps) {
   const { editable, primary, secondary } = props;
   const [text, setText] = useState<ICanvasCardProps>(props);
 
-  const { svg1, svg2, phoneSvg, websiteSvg, emailSvg, addressSvg } =
-    useGetCardSvgs({ primary, secondary });
+  console.log({text});
+  
+
+  // const [selectedTextKey, setSelectedTextKey] = useState<TFieldName>("name");
+  // const [selectedTextItem, setSelectedTextItem] = useState<ITextProperties | undefined>(undefined);
+
+  const { svg1, svg2, phoneSvg, websiteSvg, emailSvg, addressSvg } = useGetCardSvgs({ primary, secondary });
+
+  // useEffect(() => {
+  //   setSelectedTextItem(text[selectedTextKey]);
+  // }, [text]);
+
 
   const textReff = useRef<IRef>({
     name: null,
@@ -37,18 +51,11 @@ export default function CardComponent(props: ICanvasCardProps) {
   });
   const stageRef = useRef<Stage>(null);
 
-  // const onChange = (value: string, fieldName: TFieldName) => {
-  //   setText((prev) => ({
-  //     ...prev,
-  //     [fieldName]: { ...prev[fieldName], text: value },
-  //   }));
-  // };
-
   const removeTextarea = (
     textarea: HTMLTextAreaElement,
     fieldName: TFieldName
   ) => {
-    window.removeEventListener("click", () => {});
+    window.removeEventListener("click", () => { });
     textarea.parentNode?.removeChild(textarea);
     textReff.current[fieldName]?.show();
   };
@@ -88,6 +95,7 @@ export default function CardComponent(props: ICanvasCardProps) {
   };
 
   return (
+
     <Konva.Stage
       ref={stageRef}
       width={336}
@@ -109,7 +117,7 @@ export default function CardComponent(props: ICanvasCardProps) {
             fill={text.name.color}
             width={122}
             height={19}
-            // fontStyle={name.fontStyle}
+            // fontStyle={text.name.t}
             // onClick={() => onClickTextItem("name")}
             onDblClick={() => {
               if (textReff.current && textReff.current.name && editable) {
