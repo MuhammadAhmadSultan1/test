@@ -45,6 +45,8 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
       fontSize: 16,
       fontWeight: 600,
       lineHeight: 1.2,
+      fontStyle: "normal",
+      textDecoration: "empty string",
     },
     designation: {
       text: "Project Manager",
@@ -52,6 +54,8 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
       fontSize: 10,
       fontWeight: 400,
       lineHeight: 0.8,
+      fontStyle: "normal",
+      textDecoration: "empty string",
     },
     phone: {
       text: "+92 123 456 7890",
@@ -59,6 +63,8 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
       fontSize: 8,
       fontWeight: 400,
       lineHeight: 0.8,
+      fontStyle: "normal",
+      textDecoration: "empty string",
     },
     website: {
       text: "www.website.com",
@@ -66,6 +72,8 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
       fontSize: 8,
       fontWeight: 400,
       lineHeight: 0.8,
+      fontStyle: "normal",
+      textDecoration: "empty string",
     },
     email: {
       text: "test@gmail.com",
@@ -73,6 +81,8 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
       fontSize: 8,
       fontWeight: 400,
       lineHeight: 0.8,
+      fontStyle: "normal",
+      textDecoration: "empty string",
     },
     address: {
       text: "X park view, DHA Phase 8 Lahore Pakistan",
@@ -80,6 +90,8 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
       fontSize: 8,
       fontWeight: 400,
       lineHeight: 0.8,
+      fontStyle: "normal",
+      textDecoration: "empty string",
     },
     description: {
       text: "X park view, DHA Phase 8 Lahore Pakistan",
@@ -87,6 +99,8 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
       fontSize: 8,
       fontWeight: 400,
       lineHeight: 0.8,
+      fontStyle: "normal",
+      textDecoration: "empty string",
     },
     selected: false,
   };
@@ -125,7 +139,7 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
           <RadioButton
             Component={
               <CardOptionWrapper selected={selected.card1}>
-                <CardComponent {...testCardData} />
+                <CardComponent text={testCardData} editable={false} />
               </CardOptionWrapper>
             }
             register={register("selectedCard")}
@@ -146,7 +160,7 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
           <RadioButton
             Component={
               <CardOptionWrapper selected={selected.card2}>
-                <CardTow {...testCardData} />
+                <CardTow text={testCardData} editable={false} />
               </CardOptionWrapper>
             }
             register={register("selectedCard")}
@@ -167,7 +181,7 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
           <RadioButton
             Component={
               <CardOptionWrapper selected={selected.card3}>
-                <CardThree {...testCardData} />
+                <CardThree text={testCardData} editable={false} />
               </CardOptionWrapper>
             }
             register={register("selectedCard")}

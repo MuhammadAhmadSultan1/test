@@ -1,97 +1,24 @@
-import { useRef, useState } from "react";
-
 import * as Konva from "react-konva";
-import { Stage } from "konva/lib/Stage";
 
 import { useGetCardSvgs } from "./svg/useGetCardSvgs";
 
 import CustomImage from "../../../../customImage";
 
-import { ICanvasCardProps } from "../../../../../types/card";
-
-import { onTextDblClick } from "../../../../../utils/changeTextHandler";
+import { TCanvasCardProps } from "../../../../../types/card";
 
 import LOGO from "../../../../../assets/logo.png";
-import { IRef, TFieldName } from "../../../../../types/common";
 
-export default function CardTow(props: ICanvasCardProps) {
-  const { editable, primary, secondary } = props;
-  const [text, setText] = useState<ICanvasCardProps>(props);
-
-  // const colorScheme = {
-  //   primary: "#004CE0",
-  //   secondary: "#323232",
-  //   text: "#FFFFFF",
-  // };
+export default function CardTow(props: TCanvasCardProps) {
+  const { editable, primary, secondary, text } = props;
 
   const { footerSvg, headerSvg, centerSvg } = useGetCardSvgs({
     primary,
     secondary,
   });
 
-  const textReff = useRef<IRef>({
-    name: null,
-    designation: null,
-    email: null,
-    address: null,
-    phone: null,
-    website: null,
-  });
-  const stageRef = useRef<Stage>(null);
-
-  // const onChange = (value: string, fieldName: TFieldName) => {
-  //   setText((prev) => ({
-  //     ...prev,
-  //     [fieldName]: { ...prev[fieldName], text: value },
-  //   }));
-  // };
-
-  const removeTextarea = (
-    textarea: HTMLTextAreaElement,
-    fieldName: TFieldName
-  ) => {
-    window.removeEventListener("click", () => {});
-    textarea.parentNode?.removeChild(textarea);
-    textReff.current[fieldName]?.show();
-  };
-
-  const onEnter = (
-    value: string,
-    textarea: HTMLTextAreaElement,
-    fieldName: TFieldName
-  ) => {
-    if (value) {
-      setText((prev) => ({
-        ...prev,
-        [fieldName]: { ...prev[fieldName], text: value },
-      }));
-    }
-    removeTextarea(textarea, fieldName);
-  };
-
-  const dblClickHandler = (fieldName: TFieldName) => {
-    const textPosition = textReff.current[fieldName]?.absolutePosition();
-    if (stageRef.current && textPosition) {
-      const areaPosition = {
-        x: stageRef.current.container().offsetLeft + textPosition.x,
-        y: stageRef.current.container().offsetTop + textPosition.y,
-      };
-      onTextDblClick({
-        textRef: textReff,
-        currentText: text[fieldName].text,
-        fieldName: fieldName,
-        areaPosition: areaPosition,
-        container: "canvas",
-        // onChange: onChange,
-        onEnter: onEnter,
-        onEscape: removeTextarea,
-      });
-    }
-  };
-
   return (
     <Konva.Stage
-      ref={stageRef}
+      ref={props.editable ? props.stageRef : undefined}
       width={336}
       height={192}
       style={{ backgroundColor: "#ffff" }}
@@ -106,7 +33,11 @@ export default function CardTow(props: ICanvasCardProps) {
         </Konva.Group>
         <Konva.Group x={190} y={20}>
           <Konva.Text
-            ref={(ref) => (textReff.current.name = ref)}
+            ref={
+              props.editable
+                ? (ref) => (props.textRef.current.name = ref)
+                : undefined
+            }
             text={text.name.text}
             x={15}
             y={7}
@@ -115,15 +46,26 @@ export default function CardTow(props: ICanvasCardProps) {
             fill={"#000000"}
             width={122}
             height={19}
+            fontStyle={text.name.fontStyle}
+            textDecoration={text.name.textDecoration}
             onDblClick={() => {
-              if (textReff.current && textReff.current.name && editable) {
-                textReff.current.name.hide();
-                dblClickHandler("name");
+              if (
+                props.editable &&
+                props.textRef.current &&
+                props.textRef.current.name &&
+                editable
+              ) {
+                props.textRef.current.name.hide();
+                props.dblClickHandler("name");
               }
             }}
           />
           <Konva.Text
-            ref={(ref) => (textReff.current.designation = ref)}
+            ref={
+              props.editable
+                ? (ref) => (props.textRef.current.designation = ref)
+                : undefined
+            }
             text={text.designation.text}
             x={15}
             y={24}
@@ -132,22 +74,29 @@ export default function CardTow(props: ICanvasCardProps) {
             fill={"#000000"}
             width={70}
             height={10}
+            fontStyle={text.designation.fontStyle}
+            textDecoration={text.designation.textDecoration}
             // fontStyle={designation.fontStyle}
             // onClick={() => onClickTextItem("designation")}
             onDblClick={() => {
               if (
-                textReff.current &&
-                textReff.current.designation &&
+                props.editable &&
+                props.textRef.current &&
+                props.textRef.current.designation &&
                 editable
               ) {
-                textReff.current.designation.hide();
-                dblClickHandler("designation");
+                props.textRef.current.designation.hide();
+                props.dblClickHandler("designation");
               }
             }}
           />
           <Konva.Group y={80}>
             <Konva.Text
-              ref={(ref) => (textReff.current.phone = ref)}
+              ref={
+                props.editable
+                  ? (ref) => (props.textRef.current.phone = ref)
+                  : undefined
+              }
               text={text.phone.text}
               x={15}
               y={7}
@@ -156,15 +105,26 @@ export default function CardTow(props: ICanvasCardProps) {
               fill={"#000000"}
               width={70}
               height={10}
+              fontStyle={text.phone.fontStyle}
+              textDecoration={text.phone.textDecoration}
               onDblClick={() => {
-                if (textReff.current && textReff.current.phone && editable) {
-                  textReff.current.phone.hide();
-                  dblClickHandler("phone");
+                if (
+                  props.editable &&
+                  props.textRef.current &&
+                  props.textRef.current.phone &&
+                  editable
+                ) {
+                  props.textRef.current.phone.hide();
+                  props.dblClickHandler("phone");
                 }
               }}
             />
             <Konva.Text
-              ref={(ref) => (textReff.current.website = ref)}
+              ref={
+                props.editable
+                  ? (ref) => (props.textRef.current.website = ref)
+                  : undefined
+              }
               text={text.website.text}
               x={15}
               y={18}
@@ -173,17 +133,28 @@ export default function CardTow(props: ICanvasCardProps) {
               fill={"#000000"}
               width={70}
               height={10}
+              fontStyle={text.website.fontStyle}
+              textDecoration={text.website.textDecoration}
               // fontStyle={.website.fontStyle}
               // onClick={() => onClickTextItem(".website")}
               onDblClick={() => {
-                if (textReff.current && textReff.current.website && editable) {
-                  textReff.current.website.hide();
-                  dblClickHandler("website");
+                if (
+                  props.editable &&
+                  props.textRef.current &&
+                  props.textRef.current.website &&
+                  editable
+                ) {
+                  props.textRef.current.website.hide();
+                  props.dblClickHandler("website");
                 }
               }}
             />
             <Konva.Text
-              ref={(ref) => (textReff.current.email = ref)}
+              ref={
+                props.editable
+                  ? (ref) => (props.textRef.current.email = ref)
+                  : undefined
+              }
               text={text.email.text}
               x={15}
               y={29}
@@ -192,15 +163,26 @@ export default function CardTow(props: ICanvasCardProps) {
               fill={"#000000"}
               width={70}
               height={10}
+              fontStyle={text.email.fontStyle}
+              textDecoration={text.email.textDecoration}
               onDblClick={() => {
-                if (textReff.current && textReff.current.email && editable) {
-                  textReff.current.email.hide();
-                  dblClickHandler("email");
+                if (
+                  props.editable &&
+                  props.textRef.current &&
+                  props.textRef.current.email &&
+                  editable
+                ) {
+                  props.textRef.current.email.hide();
+                  props.dblClickHandler("email");
                 }
               }}
             />
             <Konva.Text
-              ref={(ref) => (textReff.current.address = ref)}
+              ref={
+                props.editable
+                  ? (ref) => (props.textRef.current.address = ref)
+                  : undefined
+              }
               text={text.address.text}
               x={15}
               y={40}
@@ -209,10 +191,17 @@ export default function CardTow(props: ICanvasCardProps) {
               align="top"
               fontSize={text.address.fontSize}
               fill={"#000000"}
+              fontStyle={text.address.fontStyle}
+              textDecoration={text.address.textDecoration}
               onDblClick={() => {
-                if (textReff.current && textReff.current.address && editable) {
-                  textReff.current.address.hide();
-                  dblClickHandler("address");
+                if (
+                  props.editable &&
+                  props.textRef.current &&
+                  props.textRef.current.address &&
+                  editable
+                ) {
+                  props.textRef.current.address.hide();
+                  props.dblClickHandler("address");
                 }
               }}
             />
