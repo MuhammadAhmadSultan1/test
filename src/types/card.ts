@@ -1,3 +1,6 @@
+import { Stage } from "konva/lib/Stage";
+import { IRef, TFieldName } from "./common";
+
 export interface ICardProps {
   logoUrl: string;
   name: string;
@@ -9,11 +12,13 @@ export interface ICardProps {
   selected?: boolean;
 }
 
-interface IAttribute {
+export interface IAttribute {
   text: string;
   color: string;
   fontSize: number;
   fontWeight: number;
+  fontStyle: "normal" | "bold" | "italic" | "bold italic";
+  textDecoration: "empty string" | "underline" | "line-through";
   // fontFamily: string;
   lineHeight: number;
   svgColor?: string;
@@ -39,3 +44,20 @@ export interface ICanvasCardProps {
   primary?: string;
   secondary?: string;
 }
+
+export type TCanvasCardProps = {
+  text: ICanvasCardProps;
+  selected?: boolean;
+  primary?: string;
+  secondary?: string;
+} & (
+  | {
+      editable: true;
+      textRef: React.MutableRefObject<IRef>;
+      stageRef: React.RefObject<Stage>;
+      dblClickHandler: (fieldName: TFieldName) => void;
+    }
+  | {
+      editable: false;
+    }
+);

@@ -1,103 +1,21 @@
-import { useEffect, useRef, useState } from "react";
-
 import * as Konva from "react-konva";
-import { Stage } from "konva/lib/Stage";
 
 import { useGetCardSvgs } from "./svg/useGetCardSvgs";
-
-import {
-  FONT_STYLE,
-  //   FONT_STYLE,
-  IRef,
-  ITextProperties,
-  TEXT_DECORATION,
-  TFieldName,
-  //   ITextProperties,
-  //   TFieldName,
-  //   TTextField,
-} from "../../../../types/common";
 
 import CustomImage from "../../../customImage";
 
 import LOGO from "../../../../assets/logo.png";
-import { ICanvasCardProps } from "../../../../types/card";
-import { onTextDblClick } from "../../../../utils/changeTextHandler";
-import { CustomToolbar } from "../../../customToolbar";
+import { TCanvasCardProps } from "../../../../types/card";
 
-export default function CardComponent(props: ICanvasCardProps) {
-  const { editable, primary, secondary } = props;
-  const [text, setText] = useState<ICanvasCardProps>(props);
+export default function CardComponent(props: TCanvasCardProps) {
+  const { editable, primary, secondary, text } = props;
 
-  console.log({text});
-  
-
-  // const [selectedTextKey, setSelectedTextKey] = useState<TFieldName>("name");
-  // const [selectedTextItem, setSelectedTextItem] = useState<ITextProperties | undefined>(undefined);
-
-  const { svg1, svg2, phoneSvg, websiteSvg, emailSvg, addressSvg } = useGetCardSvgs({ primary, secondary });
-
-  // useEffect(() => {
-  //   setSelectedTextItem(text[selectedTextKey]);
-  // }, [text]);
-
-
-  const textReff = useRef<IRef>({
-    name: null,
-    designation: null,
-    email: null,
-    address: null,
-    phone: null,
-    website: null,
-  });
-  const stageRef = useRef<Stage>(null);
-
-  const removeTextarea = (
-    textarea: HTMLTextAreaElement,
-    fieldName: TFieldName
-  ) => {
-    window.removeEventListener("click", () => { });
-    textarea.parentNode?.removeChild(textarea);
-    textReff.current[fieldName]?.show();
-  };
-
-  const onEnter = (
-    value: string,
-    textarea: HTMLTextAreaElement,
-    fieldName: TFieldName
-  ) => {
-    if (value) {
-      setText((prev) => ({
-        ...prev,
-        [fieldName]: { ...prev[fieldName], text: value },
-      }));
-    }
-    removeTextarea(textarea, fieldName);
-  };
-
-  const dblClickHandler = (fieldName: TFieldName) => {
-    const textPosition = textReff.current[fieldName]?.absolutePosition();
-    if (stageRef.current && textPosition) {
-      const areaPosition = {
-        x: stageRef.current.container().offsetLeft + textPosition.x,
-        y: stageRef.current.container().offsetTop + textPosition.y,
-      };
-      onTextDblClick({
-        textRef: textReff,
-        currentText: text[fieldName].text,
-        fieldName: fieldName,
-        areaPosition: areaPosition,
-        container: "canvas",
-        // onChange: onChange,
-        onEnter: onEnter,
-        onEscape: removeTextarea,
-      });
-    }
-  };
+  const { svg1, svg2, phoneSvg, websiteSvg, emailSvg, addressSvg } =
+    useGetCardSvgs({ primary, secondary });
 
   return (
-
     <Konva.Stage
-      ref={stageRef}
+      ref={props.editable ? props.stageRef : undefined}
       width={336}
       height={192}
       style={{ backgroundColor: "#ffff" }}
@@ -108,26 +26,39 @@ export default function CardComponent(props: ICanvasCardProps) {
         <Konva.Group y={67}>
           <CustomImage x={0} y={0} svgString={svg1} />
           <Konva.Text
-            ref={(ref) => (textReff.current.name = ref)}
+            ref={
+              props.editable
+                ? (ref) => (props.textRef.current.name = ref)
+                : undefined
+            }
             text={text.name.text}
             x={15}
-            y={7}
+            y={5}
             align="top"
             fontSize={text.name.fontSize}
             fill={text.name.color}
             width={122}
             height={19}
-            // fontStyle={text.name.t}
-            // onClick={() => onClickTextItem("name")}
+            fontStyle={text.name.fontStyle}
+            textDecoration={text.name.textDecoration}
             onDblClick={() => {
-              if (textReff.current && textReff.current.name && editable) {
-                textReff.current.name.hide();
-                dblClickHandler("name");
+              if (
+                props.editable &&
+                props.textRef.current &&
+                props.textRef.current.name &&
+                editable
+              ) {
+                props.textRef.current.name.hide();
+                props.dblClickHandler("name");
               }
             }}
           />
           <Konva.Text
-            ref={(ref) => (textReff.current.designation = ref)}
+            ref={
+              props.editable
+                ? (ref) => (props.textRef.current.designation = ref)
+                : undefined
+            }
             text={text.designation.text}
             x={15}
             y={24}
@@ -136,16 +67,17 @@ export default function CardComponent(props: ICanvasCardProps) {
             fill={text.designation.color}
             width={78}
             height={12}
-            // fontStyle={designation.fontStyle}
-            // onClick={() => onClickTextItem("designation")}
+            fontStyle={text.designation.fontStyle}
+            textDecoration={text.designation.textDecoration}
             onDblClick={() => {
               if (
-                textReff.current &&
-                textReff.current.designation &&
+                props.editable &&
+                props.textRef.current &&
+                props.textRef.current.designation &&
                 editable
               ) {
-                textReff.current.designation.hide();
-                dblClickHandler("designation");
+                props.textRef.current.designation.hide();
+                props.dblClickHandler("designation");
               }
             }}
           />
@@ -156,7 +88,11 @@ export default function CardComponent(props: ICanvasCardProps) {
             <Konva.Group y={0} x={15}>
               <CustomImage x={0} y={0} svgString={phoneSvg} />
               <Konva.Text
-                ref={(ref) => (textReff.current.phone = ref)}
+                ref={
+                  props.editable
+                    ? (ref) => (props.textRef.current.phone = ref)
+                    : undefined
+                }
                 text={text.phone.text}
                 x={25}
                 y={6}
@@ -165,11 +101,17 @@ export default function CardComponent(props: ICanvasCardProps) {
                 fill={text.phone.color}
                 width={70}
                 height={10}
-                // fontStyle={phone.fontStyle}
+                fontStyle={text.phone.fontStyle}
+                textDecoration={text.phone.textDecoration}
                 onDblClick={() => {
-                  if (textReff.current && textReff.current.phone && editable) {
-                    textReff.current.phone.hide();
-                    dblClickHandler("phone");
+                  if (
+                    props.editable &&
+                    props.textRef.current &&
+                    props.textRef.current.phone &&
+                    editable
+                  ) {
+                    props.textRef.current.phone.hide();
+                    props.dblClickHandler("phone");
                   }
                 }}
               />
@@ -177,7 +119,11 @@ export default function CardComponent(props: ICanvasCardProps) {
             <Konva.Group y={0} x={120}>
               <CustomImage x={0} y={0} svgString={websiteSvg} />
               <Konva.Text
-                ref={(ref) => (textReff.current.website = ref)}
+                ref={
+                  props.editable
+                    ? (ref) => (props.textRef.current.website = ref)
+                    : undefined
+                }
                 text={text.website.text}
                 x={25}
                 y={6}
@@ -186,15 +132,17 @@ export default function CardComponent(props: ICanvasCardProps) {
                 fill={text.website.color}
                 width={70}
                 height={10}
-                // fontStyle={website.fontStyle}
+                fontStyle={text.website.fontStyle}
+                textDecoration={text.website.textDecoration}
                 onDblClick={() => {
                   if (
-                    textReff.current &&
-                    textReff.current.website &&
+                    props.editable &&
+                    props.textRef.current &&
+                    props.textRef.current.website &&
                     editable
                   ) {
-                    textReff.current.website.hide();
-                    dblClickHandler("website");
+                    props.textRef.current.website.hide();
+                    props.dblClickHandler("website");
                   }
                 }}
               />
@@ -202,7 +150,11 @@ export default function CardComponent(props: ICanvasCardProps) {
             <Konva.Group y={30} x={15}>
               <CustomImage x={0} y={0} svgString={emailSvg} />
               <Konva.Text
-                ref={(ref) => (textReff.current.email = ref)}
+                ref={
+                  props.editable
+                    ? (ref) => (props.textRef.current.email = ref)
+                    : undefined
+                }
                 text={text.email.text}
                 x={25}
                 y={6}
@@ -211,11 +163,17 @@ export default function CardComponent(props: ICanvasCardProps) {
                 fill={text.email.color}
                 width={70}
                 height={10}
-                // fontStyle={email.fontStyle}
+                fontStyle={text.email.fontStyle}
+                textDecoration={text.email.textDecoration}
                 onDblClick={() => {
-                  if (textReff.current && textReff.current.email && editable) {
-                    textReff.current.email.hide();
-                    dblClickHandler("email");
+                  if (
+                    props.editable &&
+                    props.textRef.current &&
+                    props.textRef.current.email &&
+                    editable
+                  ) {
+                    props.textRef.current.email.hide();
+                    props.dblClickHandler("email");
                   }
                 }}
               />
@@ -223,7 +181,11 @@ export default function CardComponent(props: ICanvasCardProps) {
             <Konva.Group y={30} x={120}>
               <CustomImage x={0} y={0} svgString={addressSvg} />
               <Konva.Text
-                ref={(ref) => (textReff.current.address = ref)}
+                ref={
+                  props.editable
+                    ? (ref) => (props.textRef.current.address = ref)
+                    : undefined
+                }
                 text={text.address.text}
                 width={98}
                 height={20}
@@ -233,15 +195,17 @@ export default function CardComponent(props: ICanvasCardProps) {
                 align="top"
                 fontSize={text.address.fontSize}
                 fill={text.address.color}
-                // fontStyle={address.fontStyle}
+                fontStyle={text.address.fontStyle}
+                textDecoration={text.address.textDecoration}
                 onDblClick={() => {
                   if (
-                    textReff.current &&
-                    textReff.current.address &&
+                    props.editable &&
+                    props.textRef.current &&
+                    props.textRef.current.address &&
                     editable
                   ) {
-                    textReff.current.address.hide();
-                    dblClickHandler("address");
+                    props.textRef.current.address.hide();
+                    props.dblClickHandler("address");
                   }
                 }}
               />

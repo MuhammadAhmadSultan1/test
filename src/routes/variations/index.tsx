@@ -53,6 +53,8 @@ export const Variations = (props: ICommonProps) => {
       fontSize: 16,
       fontWeight: 600,
       lineHeight: 1.2,
+      fontStyle: "normal",
+      textDecoration: "empty string",
     },
     designation: {
       text: "Project Manager",
@@ -60,6 +62,8 @@ export const Variations = (props: ICommonProps) => {
       fontSize: 10,
       fontWeight: 400,
       lineHeight: 0.8,
+      fontStyle: "normal",
+      textDecoration: "empty string",
     },
     phone: {
       text: "+92 123 456 7890",
@@ -67,6 +71,8 @@ export const Variations = (props: ICommonProps) => {
       fontSize: 8,
       fontWeight: 400,
       lineHeight: 0.8,
+      fontStyle: "normal",
+      textDecoration: "empty string",
     },
     website: {
       text: "www.website.com",
@@ -74,6 +80,8 @@ export const Variations = (props: ICommonProps) => {
       fontSize: 8,
       fontWeight: 400,
       lineHeight: 0.8,
+      fontStyle: "normal",
+      textDecoration: "empty string",
     },
     email: {
       text: "test@gmail.com",
@@ -81,6 +89,8 @@ export const Variations = (props: ICommonProps) => {
       fontSize: 8,
       fontWeight: 400,
       lineHeight: 0.8,
+      fontStyle: "normal",
+      textDecoration: "empty string",
     },
     address: {
       text: "X park view, DHA Phase 8 Lahore Pakistan",
@@ -88,6 +98,8 @@ export const Variations = (props: ICommonProps) => {
       fontSize: 8,
       fontWeight: 400,
       lineHeight: 0.8,
+      fontStyle: "normal",
+      textDecoration: "empty string",
     },
     description: {
       text: "X park view, DHA Phase 8 Lahore Pakistan",
@@ -95,6 +107,8 @@ export const Variations = (props: ICommonProps) => {
       fontSize: 8,
       fontWeight: 400,
       lineHeight: 0.8,
+      fontStyle: "normal",
+      textDecoration: "empty string",
     },
     selected: false,
   };
@@ -137,7 +151,8 @@ export const Variations = (props: ICommonProps) => {
               <CardOptionWrapper selected={selectedVariation.card1}>
                 <Suspense fallback={"loading...."}>
                   <SelectedCard
-                    {...testCardData}
+                    text={testCardData}
+                    editable={false}
                     primary={colorVaraitions.primary[0]}
                     secondary={colorVaraitions.secondary[0]}
                   />
@@ -163,7 +178,8 @@ export const Variations = (props: ICommonProps) => {
               <CardOptionWrapper selected={selectedVariation.card2}>
                 <Suspense fallback={"loading...."}>
                   <SelectedCard
-                    {...testCardData}
+                    text={testCardData}
+                    editable={false}
                     primary={colorVaraitions.primary[1]}
                     secondary={colorVaraitions.secondary[1]}
                   />
@@ -189,7 +205,8 @@ export const Variations = (props: ICommonProps) => {
               <CardOptionWrapper selected={selectedVariation.card3}>
                 <Suspense>
                   <SelectedCard
-                    {...testCardData}
+                    text={testCardData}
+                    editable={false}
                     primary={colorVaraitions.primary[2]}
                     secondary={colorVaraitions.secondary[2]}
                   />

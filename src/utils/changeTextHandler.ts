@@ -10,6 +10,7 @@ export const onTextDblClick = (props: IChangeTextHanlerProps) => {
     onEnter,
     onEscape,
     // onChange,
+    onClick,
   } = props;
 
   const lineHeight = textRef.current[fieldName]?.lineHeight().toString();
@@ -18,8 +19,18 @@ export const onTextDblClick = (props: IChangeTextHanlerProps) => {
   const fillColor = textRef.current[fieldName]?.getAttr("fill");
   const width = textRef.current[fieldName]?.getAttr("width");
   const height = textRef.current[fieldName]?.getAttr("height");
+  let fontStyle: string = textRef.current[fieldName]?.getAttr("fontStyle");
+  let fontWeight: string = "normal";
+  const textDecoration = textRef.current[fieldName]?.getAttr("textDecoration");
+
+  const splitedFontStyle = fontStyle.split(" ");
+  if (splitedFontStyle.length) {
+    fontWeight = splitedFontStyle[0];
+    if (splitedFontStyle.length > 1) fontStyle = splitedFontStyle[1];
+  }
 
   const textarea = document.createElement("textarea");
+  textarea.id = fieldName;
   textarea.style.position = "absolute";
   textarea.style.top = areaPosition.y + "px";
   textarea.style.left = areaPosition.x + "px";
@@ -33,6 +44,9 @@ export const onTextDblClick = (props: IChangeTextHanlerProps) => {
   textarea.style.overflow = "hidden";
   textarea.style.height = `${height}px`;
   textarea.style.fontSize = `${fontSize}px`;
+  textarea.style.fontWeight = fontWeight;
+  textarea.style.fontStyle = fontStyle;
+  textarea.style.textDecoration = textDecoration;
   textarea.style.lineHeight = `${lineHeight}`;
   textarea.style.fontFamily = `${fontFamily}`;
   textarea.style.width = `${Math.round(width)}px`;
@@ -49,6 +63,10 @@ export const onTextDblClick = (props: IChangeTextHanlerProps) => {
   // textarea.addEventListener("change", () => {
   //   onChange(textarea.value, fieldName);
   // });
+
+  textarea.addEventListener("click", () => {
+    onClick(fieldName);
+  });
 
   document.getElementById(container)?.append(textarea);
   textarea.focus();

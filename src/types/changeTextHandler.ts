@@ -18,4 +18,5 @@ export interface IChangeTextHanlerProps {
   ) => void;
   onEscape: (textarea: HTMLTextAreaElement, fieldName: TFieldName) => void;
   // onChange: (value: string, fieldName: TFieldName) => void;
+  onClick: (fieldName: TFieldName) => void;
 }
