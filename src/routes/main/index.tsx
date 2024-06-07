@@ -16,6 +16,7 @@ import Goals from "../goals";
 import { Templates } from "../templates";
 import { Variations } from "../variations";
 import { CustomizeTemplate } from "../customizeTemplate";
+import PhoneNumber from "../phoneNumber";
 
 const Main = () => {
   // const navigate = useNavigate();
@@ -34,7 +35,7 @@ const Main = () => {
     <div className="flex flex-col items-center h-screen w-full ">
       {currentStep < 13 && <HeaderLogo />}
       <div>
-        {currentStep < 11 && <CustomStepper activeStep={currentStep} />}
+        {currentStep < 12 && <CustomStepper activeStep={currentStep} />}
       </div>
 
       {currentStep === 0 && (
@@ -50,33 +51,36 @@ const Main = () => {
         <ClientName onClickNext={onClickNext} onClickBack={onClickBack} />
       )}
       {currentStep === 4 && (
-        <Address onClickNext={onClickNext} onClickBack={onClickBack} />
+        <PhoneNumber onClickNext={onClickNext} onClickBack={onClickBack} />
       )}
       {currentStep === 5 && (
-        <Designation onClickNext={onClickNext} onClickBack={onClickBack} />
+        <Address onClickNext={onClickNext} onClickBack={onClickBack} />
       )}
       {currentStep === 6 && (
-        <UserEmail onClickNext={onClickNext} onClickBack={onClickBack} />
+        <Designation onClickNext={onClickNext} onClickBack={onClickBack} />
       )}
       {currentStep === 7 && (
-        <Services onClickNext={onClickNext} onClickBack={onClickBack} />
+        <UserEmail onClickNext={onClickNext} onClickBack={onClickBack} />
       )}
       {currentStep === 8 && (
-        <TargetAudience onClickNext={onClickNext} onClickBack={onClickBack} />
+        <Services onClickNext={onClickNext} onClickBack={onClickBack} />
       )}
       {currentStep === 9 && (
-        <Competitors onClickNext={onClickNext} onClickBack={onClickBack} />
+        <TargetAudience onClickNext={onClickNext} onClickBack={onClickBack} />
       )}
       {currentStep === 10 && (
-        <Goals onClickNext={onClickNext} onClickBack={onClickBack} />
+        <Competitors onClickNext={onClickNext} onClickBack={onClickBack} />
       )}
       {currentStep === 11 && (
-        <Templates onClickNext={onClickNext} onClickBack={onClickBack} />
+        <Goals onClickNext={onClickNext} onClickBack={onClickBack} />
       )}
       {currentStep === 12 && (
+        <Templates onClickNext={onClickNext} onClickBack={onClickBack} />
+      )}
+      {currentStep === 13 && (
         <Variations onClickNext={onClickNext} onClickBack={onClickBack} />
       )}
-      {currentStep === 13 && <CustomizeTemplate />}
+      {currentStep === 14 && <CustomizeTemplate />}
     </div>
   );
 };

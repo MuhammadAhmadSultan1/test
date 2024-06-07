@@ -22,6 +22,10 @@ interface IClientName {
   clientName: string;
 }
 
+interface IPhoneNumber {
+  phoneNumber: string;
+}
+
 interface IAddress {
   address: string;
 }

@@ -16,6 +16,10 @@ export const clientNameSchema = yup.object().shape({
   clientName: yup.string().trim().required("Client name is required"),
 });
 
+export const phoneNumberSchema = yup.object().shape({
+  phoneNumber: yup.string().trim().required("Client name is required"),
+});
+
 export const addressSchema = yup.object().shape({
   address: yup.string().trim().required("Address is required"),
 });
