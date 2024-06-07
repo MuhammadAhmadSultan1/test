@@ -57,10 +57,7 @@ const TargetAudience = ({ onClickNext, onClickBack }: ICommonProps) => {
   };
 
   const onClickItem = (index: Number) => {
-    const newArray = targetAudienceArray.filter((item, idx) => {
-      console.log({ item });
-      idx !== index
-    });
+    const newArray = targetAudienceArray.filter((_, idx) => idx !== index);
     setValue('targetAudienceArray', newArray, { shouldValidate: true, })
   }
 

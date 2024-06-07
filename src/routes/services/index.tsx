@@ -61,10 +61,7 @@ const Services = ({ onClickNext, onClickBack }: ICommonProps) => {
   };
 
   const onClickItem = (index: Number) => {
-    const newArray = serviceNameArray.filter((item, idx) => {
-      console.log({ item });
-      idx !== index
-    });
+    const newArray = serviceNameArray.filter((_, idx) => idx !== index);
     setValue('serviceNameArray', newArray, { shouldValidate: true, })
   }
 

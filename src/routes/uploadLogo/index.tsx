@@ -31,7 +31,7 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
 
   useEffect(() => {
     getSessionToken();
-    // cleatAllStates();
+    cleatAllStates();
   }, [])
 
 
