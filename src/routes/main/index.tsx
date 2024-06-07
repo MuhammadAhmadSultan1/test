@@ -20,7 +20,7 @@ import { CustomizeTemplate } from "../customizeTemplate";
 const Main = () => {
   // const navigate = useNavigate();
   // const dispatch = useAppDispatch();
-  const [currentStep, setCurrentStep] = useState<number>(0);
+  const [currentStep, setCurrentStep] = useState<number>(13);
 
   const onClickNext = () => {
     setCurrentStep(currentStep + 1);
@@ -31,8 +31,8 @@ const Main = () => {
   };
   // max-w-screen-sm
   return (
-    <div className=" mx-auto flex flex-col items-center h-screen container ">
-      <HeaderLogo />
+    <div className="flex flex-col items-center h-screen w-full ">
+      {currentStep < 13 && <HeaderLogo />}
       <div>
         {currentStep < 11 && <CustomStepper activeStep={currentStep} />}
       </div>

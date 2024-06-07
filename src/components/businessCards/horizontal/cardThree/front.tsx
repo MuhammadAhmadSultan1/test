@@ -2,9 +2,9 @@ import * as Konva from "react-konva";
 
 import { useGetCardSvgs } from "./svg/useGetCardSvgs";
 
-import CustomImage from "../../../../customImage";
+import CustomImage from "../../../customImage";
 
-import { TCanvasCardProps } from "../../../../../types/card";
+import { TCanvasCardProps } from "../../../../types/card";
 
 export default function CardThree(props: TCanvasCardProps) {
   const { editable, primary, text } = props;

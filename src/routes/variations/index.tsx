@@ -113,10 +113,16 @@ export const Variations = (props: ICommonProps) => {
     selected: false,
   };
 
-  const SelectedCard = useMemo(
-    () => lazy(() => import(`../../${selectedCard.path}`)),
-    [selectedCard.path]
-  );
+  const SelectedCard = useMemo(() => {
+    //Make sure the path must be 5 sized and end with the file name
+    const splitedPath = selectedCard.path.split("/");
+    return lazy(
+      () =>
+        import(
+          `../../${splitedPath[0]}/${splitedPath[1]}/${splitedPath[2]}/${splitedPath[3]}/${splitedPath[4]}.tsx`
+        )
+    );
+  }, [selectedCard.path]);
 
   const onSubmit: SubmitHandler<IVariation> = (formData) => {
     try {

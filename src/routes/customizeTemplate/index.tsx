@@ -6,6 +6,9 @@ import { FONT_STYLE, IRef, TFieldName } from "../../types/common";
 import { Stage } from "konva/lib/Stage";
 import { onTextDblClick } from "../../utils/changeTextHandler";
 
+import logo from "../../assets/dummylogo.png";
+import { Button } from "../../components/button";
+
 export const CustomizeTemplate = () => {
   const [text, setText] = useState<ICanvasCardProps>({
     logo: {
@@ -161,10 +164,16 @@ export const CustomizeTemplate = () => {
   //   selected: false,
   // };
 
-  const SelectedTemplate = useMemo(
-    () => lazy(() => import(`../../${selectedCard.path}`)),
-    [selectedCard.path]
-  );
+  const SelectedTemplate = useMemo(() => {
+    //Make sure the path must be 5 sized and end with the file name
+    const splitedPath = selectedCard.path.split("/");
+    return lazy(
+      () =>
+        import(
+          `../../${splitedPath[0]}/${splitedPath[1]}/${splitedPath[2]}/${splitedPath[3]}/${splitedPath[4]}.tsx`
+        )
+    );
+  }, [selectedCard.path]);
 
   const removeTextarea = (
     textarea: HTMLTextAreaElement,
@@ -318,28 +327,41 @@ export const CustomizeTemplate = () => {
   };
 
   return (
-    <div className="container">
-      <CustomToolbar
-        onClickBold={onClickBold}
-        onClickItalic={onClickItalic}
-        onClickUnderline={onClickUnderline}
-        onChangeTextSize={onChangeTextSize}
-        selectedStyles={selectedField && text[selectedField]}
-      />
-      <div className="flex w-full h-full justify-center items-center  bg-[#F2F2F2]">
-        <div className="relative w-fit">
-          <Suspense>
-            <SelectedTemplate
-              textRef={textReff}
-              stageRef={stageRef}
-              text={text}
-              dblClickHandler={dblClickHandler}
-              // {...testCardData}
-              editable={true}
-              primary={selectedColorVariation.primary}
-              secondary={selectedColorVariation.secondary}
-            />
-          </Suspense>
+    <div className="flex w-full h-full flex-col items-center ">
+      <div className="flex w-full items-center justify-center h-24 border-b border-b-lightOutline">
+        <div className="container flex items-center justify-between">
+          <div className="">
+            <img src={logo} alt="logo" className="w-28 h-14" />
+          </div>
+          <div className="flex gap-x-4">
+            <Button label="Go Back" varient="outlined" />
+            <Button label="Approve and Continue" varient="primary" />
+          </div>
+        </div>
+      </div>
+      <div className="h-3/4 container">
+        <CustomToolbar
+          onClickBold={onClickBold}
+          onClickItalic={onClickItalic}
+          onClickUnderline={onClickUnderline}
+          onChangeTextSize={onChangeTextSize}
+          selectedStyles={selectedField && text[selectedField]}
+        />
+        <div className="flex w-full h-full justify-center items-center  bg-[#F2F2F2]">
+          <div className="relative w-fit">
+            <Suspense>
+              <SelectedTemplate
+                textRef={textReff}
+                stageRef={stageRef}
+                text={text}
+                dblClickHandler={dblClickHandler}
+                // {...testCardData}
+                editable={true}
+                primary={selectedColorVariation.primary}
+                secondary={selectedColorVariation.secondary}
+              />
+            </Suspense>
+          </div>
         </div>
       </div>
     </div>

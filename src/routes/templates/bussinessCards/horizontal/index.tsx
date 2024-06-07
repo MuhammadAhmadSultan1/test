@@ -11,9 +11,9 @@ import { IHorizontalCard } from "../../../../types/horizontalCards";
 import { Button } from "../../../../components/button";
 // import Editor from "../../../editor";
 import { CardOptionWrapper } from "../../../../components/cardOptionWarpper";
-import CardComponent from "../../../../components/cards/One/front/cardComponent";
-import CardTow from "../../../../components/cards/businessCards/cardTow/front";
-import CardThree from "../../../../components/cards/businessCards/cardThree/front";
+import CardComponent from "../../../../components/businessCards/horizontal/cardOne/front";
+import CardTow from "../../../../components/businessCards/horizontal/cardTow/front";
+import CardThree from "../../../../components/businessCards/horizontal/cardThree/front";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 import { setSelectCard } from "../../../../redux/slices/selectedCard";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -25,10 +25,13 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
   const selectedCard = useAppSelector((state) => state.selectedCard);
 
   const [selected, setSelected] = useState({
-    card1: selectedCard.path === "components/cards/One/front/cardComponent",
-    card2: selectedCard.path === "components/cards/businessCards/cardTow/front",
+    card1:
+      selectedCard.path === "components/businessCards/horizontal/cardOne/front",
+    card2:
+      selectedCard.path === "components/businessCards/horizontal/cardTow/front",
     card3:
-      selectedCard.path === "components/cards/businessCards/cardThree/front",
+      selectedCard.path ===
+      "components/businessCards/horizontal/cardThree/front",
   });
 
   const dispatch = useAppDispatch();
@@ -143,11 +146,11 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
               </CardOptionWrapper>
             }
             register={register("selectedCard")}
-            value="components/cards/One/front/cardComponent"
+            value="components/businessCards/horizontal/cardOne/front"
             attributes={{
               defaultChecked:
                 selectedCard.path ===
-                "components/cards/One/front/cardComponent",
+                "components/businessCards/horizontal/cardOne/front",
             }}
             onChange={() => {
               setSelected(() => ({
@@ -164,11 +167,11 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
               </CardOptionWrapper>
             }
             register={register("selectedCard")}
-            value="components/cards/businessCards/cardTow/front"
+            value="components/businessCards/horizontal/cardTow/front"
             attributes={{
               defaultChecked:
                 selectedCard.path ===
-                "components/cards/businessCards/cardTow/front",
+                "components/businessCards/horizontal/cardTow/front",
             }}
             onChange={() => {
               setSelected(() => ({
@@ -185,11 +188,11 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
               </CardOptionWrapper>
             }
             register={register("selectedCard")}
-            value="components/cards/businessCards/cardThree/front"
+            value="components/businessCards/horizontal/cardThree/front"
             attributes={{
               defaultChecked:
                 selectedCard.path ===
-                "components/cards/businessCards/cardThree/front",
+                "components/businessCards/horizontal/cardThree/front",
             }}
             onChange={() => {
               setSelected(() => ({

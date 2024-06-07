@@ -1,4 +1,4 @@
-import { IColorVariation } from "../../../../../../types/common";
+import { IColorVariation } from "../../../../../types/common";
 
 export const useGetCardSvgs = (props: IColorVariation) => {
   const { primary, secondary } = props;

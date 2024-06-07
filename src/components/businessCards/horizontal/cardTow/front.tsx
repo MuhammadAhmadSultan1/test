@@ -2,11 +2,11 @@ import * as Konva from "react-konva";
 
 import { useGetCardSvgs } from "./svg/useGetCardSvgs";
 
-import CustomImage from "../../../../customImage";
+import CustomImage from "../../../customImage";
 
-import { TCanvasCardProps } from "../../../../../types/card";
+import { TCanvasCardProps } from "../../../../types/card";
 
-import LOGO from "../../../../../assets/logo.png";
+import LOGO from "../../../../assets/logo.png";
 
 export default function CardTow(props: TCanvasCardProps) {
   const { editable, primary, secondary, text } = props;
