@@ -60,6 +60,7 @@ const Goals = ({ onClickBack, onClickNext }: ICommonProps) => {
       address: userCard?.address,
       designation: userCard?.designation,
       aboutCompany: userCard?.aboutCompany,
+      // phoneNumber:userCard?.phoneNumber,
       userId: 0,
     };
     console.log({ data });

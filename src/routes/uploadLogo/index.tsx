@@ -14,6 +14,9 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
   const dispatch = useAppDispatch();
   const userCard = useAppSelector((state) => state?.userCard);
 
+  console.log("userCard----------->", userCard);
+
+
   const [userSession, { }] = useUserSessionMutation();
   const [uploadLogo, { error }] = useUploadLogoMutation();
 
@@ -42,30 +45,30 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
     }
   }, [selectedFile]);
 
-  // const cleatAllStates = () => {
-  //   const userCard = {
-  //     companyName: '',
-  //     email: "",
-  //     website: "",
-  //     clientInitials: "",
-  //     serviceName: "",
-  //     serviceNameArray: [],
-  //     targetAudience: "",
-  //     targetAudienceArray: [],
-  //     aboutCompany: "",
-  //     goals: "",
-  //     logo: "",
-  //     sessionId: "",
-  //     logoURL: "",
-  //     colors: [],
-  //     address: "",
-  //     clientName: "",
-  //     designation: "",
-  //     showHeaderAndStepper: true
-  //   };
-  //   dispatch(setUserCardInfo(userCard));
+  const cleatAllStates = () => {
+    const userCard = {
+      companyName: '',
+      email: "",
+      website: "",
+      clientInitials: "",
+      serviceName: "",
+      serviceNameArray: [],
+      targetAudience: "",
+      targetAudienceArray: [],
+      aboutCompany: "",
+      goals: "",
+      sessionId: "",
+      logo: "",
+      colors: [],
+      name: "",
+      address: "",
+      designation: "",
+      phoneNumber: "",
+      showHeaderAndStepper: true
+    };
+    dispatch(setUserCardInfo(userCard));
 
-  // }
+  }
 
   const getSessionToken = () => {
     let data = {}
@@ -106,7 +109,7 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
   };
 
   const handleContinue = () => {
-    if (userCard?.logoURL && !selectedFile) {
+    if (userCard?.logo && !selectedFile) {
       onClickNext?.();
     }
     if (selectedFile) {
@@ -119,7 +122,7 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
         console.log("result?.data------>", result?.data);
         if (result?.data) {
           const userCard = {
-            logoURL: result?.data?.content?.logoUrl,
+            logo: result?.data?.content?.logoUrl,
             colors: result?.data?.colors
           };
           dispatch(setUserCardInfo(userCard));
@@ -165,9 +168,9 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
               <>
                 <img
                   className="object-cover cursor-pointer"
-                  src={userCard?.logoURL || uploadImage}
+                  src={userCard?.logo || uploadImage}
                   alt="Upload Icon"
-                  style={{ width: userCard?.logoURL ? '78px' : '70.39', height: userCard?.logoURL ? '70px' : '50.39px', marginTop: 40, color: '#444444', borderRadius: userCard?.logoURL && 8 }}
+                  style={{ width: userCard?.logo ? '78px' : '70.39', height: userCard?.logo ? '70px' : '50.39px', marginTop: 40, color: '#444444', borderRadius: userCard?.logo && 8 }}
                   onClick={handleImageClick}
                 />
                 <h4 className="mt-5 text-[20px] font-semibold font-weight-[600] text-[#9E9E9E]">Choose file</h4>

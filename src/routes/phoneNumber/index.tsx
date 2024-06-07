@@ -4,32 +4,31 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import InputField from '../../components/inputField';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setUserCardInfo, } from '../../redux/slices/userInfo';
-import { clientNameSchema } from '../../schema';
+import { clientNameSchema, phoneNumberSchema } from '../../schema';
 import { Button } from '../../components/button';
 
-const ClientName = ({ onClickNext, onClickBack }: ICommonProps) => {
+const PhoneNumber = ({ onClickNext, onClickBack }: ICommonProps) => {
   const dispatch = useAppDispatch();
   const userCard = useAppSelector((state) => state?.userCard);
 
-  const defaultValues: IClientName = { clientName: userCard?.name ?? '' };
+  const defaultValues: IPhoneNumber = { phoneNumber: userCard?.phoneNumber ?? '' };
 
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<IClientName>({
-    resolver: yupResolver(clientNameSchema),
+  } = useForm<IPhoneNumber>({
+    resolver: yupResolver(phoneNumberSchema),
     defaultValues
   });
 
-  const onSubmit: SubmitHandler<IClientName> = (formData) => {
-    const { clientName } = formData
+  const onSubmit: SubmitHandler<IPhoneNumber> = (formData) => {
+    const { phoneNumber } = formData
     const userCard = {
-      name: clientName,
+      phoneNumber,
     };
     dispatch(setUserCardInfo(userCard));
     onClickNext?.();
-
   };
 
 
@@ -48,11 +47,11 @@ const ClientName = ({ onClickNext, onClickBack }: ICommonProps) => {
 
       <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
         <InputField
-          label="Client Name"
-          placeholder="Enter Client Name"
-          error={errors.clientName?.message}
+          label="Phone Number"
+          placeholder="Enter Phone number"
+          error={errors.phoneNumber?.message}
           register={register}
-          registerKey={'clientName'}
+          registerKey={'phoneNumber'}
         />
 
         <div className="mt-10 mb-10 flex gap-10 justify-center">
@@ -64,4 +63,4 @@ const ClientName = ({ onClickNext, onClickBack }: ICommonProps) => {
   );
 };
 
-export default ClientName;
+export default PhoneNumber;

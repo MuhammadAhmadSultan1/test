@@ -12,13 +12,13 @@ const initialState: IUserCard = {
   targetAudienceArray: [],
   aboutCompany: "",
   goals: "",
-  logo: "",
   sessionId: "",
-  logoURL: "",
+  logo: "",
   colors: [],
-  clientName: "",
+  name: "",
   address: "",
   designation: "",
+  phoneNumber:"",
   showHeaderAndStepper: true
 };
 

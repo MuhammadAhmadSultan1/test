@@ -11,10 +11,10 @@ export interface IUserCard {
     goals?: string;
     logo?: string;
     sessionId?: string;
-    logoURL?: string,
     colors?: string[];
-    clientName?: string;
+    name?: string;
     address?: string;
     designation?: string;
-    showHeaderAndStepper?: boolean
+    showHeaderAndStepper?: boolean;
+    phoneNumber?:string
 }
