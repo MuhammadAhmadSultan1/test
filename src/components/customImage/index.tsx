@@ -28,6 +28,13 @@ export default function CustomImage(props: {
   const [image] = useImage(url || imageUrl);
 
   return (
-    <Konva.Image image={image} width={width} height={height} x={x} y={y} />
+    <Konva.Image
+      image={image}
+      width={width}
+      height={height}
+      x={x}
+      y={y}
+      // draggable
+    />
   );
 }

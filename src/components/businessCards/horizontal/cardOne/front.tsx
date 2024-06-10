@@ -5,13 +5,18 @@ import { useGetCardSvgs } from "./svg/useGetCardSvgs";
 import CustomImage from "../../../customImage";
 
 import LOGO from "../../../../assets/logo.png";
+import watermark from "../../../../assets/watermark.png";
+
 import { TCanvasCardProps } from "../../../../types/card";
+import useImage from "use-image";
 
 export default function CardComponent(props: TCanvasCardProps) {
   const { editable, primary, secondary, text } = props;
 
   const { svg1, svg2, phoneSvg, websiteSvg, emailSvg, addressSvg } =
     useGetCardSvgs({ primary, secondary });
+
+  const [image] = useImage(watermark);
 
   return (
     <Konva.Stage
@@ -36,7 +41,8 @@ export default function CardComponent(props: TCanvasCardProps) {
             y={5}
             align="top"
             fontSize={text.name.fontSize}
-            fill={text.name.color}
+            fill={"#ffffff"}
+            fillPatternImage={image}
             width={122}
             height={19}
             fontStyle={text.name.fontStyle}
@@ -64,7 +70,7 @@ export default function CardComponent(props: TCanvasCardProps) {
             y={24}
             align="top"
             fontSize={text.designation.fontSize}
-            fill={text.designation.color}
+            fill={"#ffffff"}
             width={78}
             height={12}
             fontStyle={text.designation.fontStyle}
@@ -98,7 +104,7 @@ export default function CardComponent(props: TCanvasCardProps) {
                 y={6}
                 align="top"
                 fontSize={text.phone.fontSize}
-                fill={text.phone.color}
+                fill={"#ffffff"}
                 width={70}
                 height={10}
                 fontStyle={text.phone.fontStyle}
@@ -129,7 +135,7 @@ export default function CardComponent(props: TCanvasCardProps) {
                 y={6}
                 align="top"
                 fontSize={text.website.fontSize}
-                fill={text.website.color}
+                fill={"#ffffff"}
                 width={70}
                 height={10}
                 fontStyle={text.website.fontStyle}
@@ -160,7 +166,7 @@ export default function CardComponent(props: TCanvasCardProps) {
                 y={6}
                 align="top"
                 fontSize={text.email.fontSize}
-                fill={text.email.color}
+                fill={"#ffffff"}
                 width={70}
                 height={10}
                 fontStyle={text.email.fontStyle}
@@ -194,7 +200,7 @@ export default function CardComponent(props: TCanvasCardProps) {
                 y={5}
                 align="top"
                 fontSize={text.address.fontSize}
-                fill={text.address.color}
+                fill={"#ffffff"}
                 fontStyle={text.address.fontStyle}
                 textDecoration={text.address.textDecoration}
                 onDblClick={() => {

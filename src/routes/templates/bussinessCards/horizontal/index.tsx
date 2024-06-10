@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import { RadioButton } from "../../../../components/radioButton";
 
-import { ICanvasCardProps } from "../../../../types/card";
+// import { ICanvasCardProps } from "../../../../types/card";
 import { IHorizontalCard } from "../../../../types/horizontalCards";
 
 // import logo from "../../../../assets/logo.png";
@@ -23,6 +23,7 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
   // const [showEditor, setShowEditor] = useState<boolean>(false);
 
   const selectedCard = useAppSelector((state) => state.selectedCard);
+  const templateData = useAppSelector((state) => state.templateData);
 
   const [selected, setSelected] = useState({
     card1:
@@ -36,77 +37,77 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
 
   const dispatch = useAppDispatch();
 
-  const testCardData: ICanvasCardProps = {
-    logo: {
-      url: "",
-      width: 20,
-      height: 10,
-    },
-    name: {
-      text: "Jamie Maclaren",
-      color: "#ffffff",
-      fontSize: 16,
-      fontWeight: 600,
-      lineHeight: 1.2,
-      fontStyle: "normal",
-      textDecoration: "empty string",
-    },
-    designation: {
-      text: "Project Manager",
-      color: "#ffffff",
-      fontSize: 10,
-      fontWeight: 400,
-      lineHeight: 0.8,
-      fontStyle: "normal",
-      textDecoration: "empty string",
-    },
-    phone: {
-      text: "+92 123 456 7890",
-      color: "#ffffff",
-      fontSize: 8,
-      fontWeight: 400,
-      lineHeight: 0.8,
-      fontStyle: "normal",
-      textDecoration: "empty string",
-    },
-    website: {
-      text: "www.website.com",
-      color: "#ffffff",
-      fontSize: 8,
-      fontWeight: 400,
-      lineHeight: 0.8,
-      fontStyle: "normal",
-      textDecoration: "empty string",
-    },
-    email: {
-      text: "test@gmail.com",
-      color: "#ffffff",
-      fontSize: 8,
-      fontWeight: 400,
-      lineHeight: 0.8,
-      fontStyle: "normal",
-      textDecoration: "empty string",
-    },
-    address: {
-      text: "X park view, DHA Phase 8 Lahore Pakistan",
-      color: "#ffffff",
-      fontSize: 8,
-      fontWeight: 400,
-      lineHeight: 0.8,
-      fontStyle: "normal",
-      textDecoration: "empty string",
-    },
-    description: {
-      text: "X park view, DHA Phase 8 Lahore Pakistan",
-      color: "#ffffff",
-      fontSize: 8,
-      fontWeight: 400,
-      lineHeight: 0.8,
-      fontStyle: "normal",
-      textDecoration: "empty string",
-    },
-    selected: false,
-  };
+  // const testCardData: ICanvasCardProps = {
+  //   logo: {
+  //     url: "",
+  //     width: 20,
+  //     height: 10,
+  //   },
+  //   name: {
+  //     text: "Jamie Maclaren",
+  //     color: "#ffffff",
+  //     fontSize: 16,
+  //     fontWeight: 600,
+  //     lineHeight: 1.2,
+  //     fontStyle: "normal",
+  //     textDecoration: "empty string",
+  //   },
+  //   designation: {
+  //     text: "Project Manager",
+  //     color: "#ffffff",
+  //     fontSize: 10,
+  //     fontWeight: 400,
+  //     lineHeight: 0.8,
+  //     fontStyle: "normal",
+  //     textDecoration: "empty string",
+  //   },
+  //   phone: {
+  //     text: "+92 123 456 7890",
+  //     color: "#ffffff",
+  //     fontSize: 8,
+  //     fontWeight: 400,
+  //     lineHeight: 0.8,
+  //     fontStyle: "normal",
+  //     textDecoration: "empty string",
+  //   },
+  //   website: {
+  //     text: "www.website.com",
+  //     color: "#ffffff",
+  //     fontSize: 8,
+  //     fontWeight: 400,
+  //     lineHeight: 0.8,
+  //     fontStyle: "normal",
+  //     textDecoration: "empty string",
+  //   },
+  //   email: {
+  //     text: "test@gmail.com",
+  //     color: "#ffffff",
+  //     fontSize: 8,
+  //     fontWeight: 400,
+  //     lineHeight: 0.8,
+  //     fontStyle: "normal",
+  //     textDecoration: "empty string",
+  //   },
+  //   address: {
+  //     text: "X park view, DHA Phase 8 Lahore Pakistan",
+  //     color: "#ffffff",
+  //     fontSize: 8,
+  //     fontWeight: 400,
+  //     lineHeight: 0.8,
+  //     fontStyle: "normal",
+  //     textDecoration: "empty string",
+  //   },
+  //   description: {
+  //     text: "X park view, DHA Phase 8 Lahore Pakistan",
+  //     color: "#ffffff",
+  //     fontSize: 8,
+  //     fontWeight: 400,
+  //     lineHeight: 0.8,
+  //     fontStyle: "normal",
+  //     textDecoration: "empty string",
+  //   },
+  //   selected: false,
+  // };
 
   const {
     register,
@@ -142,7 +143,7 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
           <RadioButton
             Component={
               <CardOptionWrapper selected={selected.card1}>
-                <CardComponent text={testCardData} editable={false} />
+                <CardComponent text={templateData} editable={false} />
               </CardOptionWrapper>
             }
             register={register("selectedCard")}
@@ -163,7 +164,7 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
           <RadioButton
             Component={
               <CardOptionWrapper selected={selected.card2}>
-                <CardTow text={testCardData} editable={false} />
+                <CardTow text={templateData} editable={false} />
               </CardOptionWrapper>
             }
             register={register("selectedCard")}
@@ -184,7 +185,7 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
           <RadioButton
             Component={
               <CardOptionWrapper selected={selected.card3}>
-                <CardThree text={testCardData} editable={false} />
+                <CardThree text={templateData} editable={false} />
               </CardOptionWrapper>
             }
             register={register("selectedCard")}

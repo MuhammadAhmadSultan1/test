@@ -21,7 +21,7 @@ import PhoneNumber from "../phoneNumber";
 const Main = () => {
   // const navigate = useNavigate();
   // const dispatch = useAppDispatch();
-  const [currentStep, setCurrentStep] = useState<number>(13);
+  const [currentStep, setCurrentStep] = useState<number>(0);
 
   const onClickNext = () => {
     setCurrentStep(currentStep + 1);
@@ -32,8 +32,8 @@ const Main = () => {
   };
   // max-w-screen-sm
   return (
-    <div className="flex flex-col items-center h-screen w-full ">
-      {currentStep < 13 && <HeaderLogo />}
+    <div className="flex flex-col items-center h-[100vh] w-full ">
+      {currentStep < 14 && <HeaderLogo />}
       <div>
         {currentStep < 12 && <CustomStepper activeStep={currentStep} />}
       </div>

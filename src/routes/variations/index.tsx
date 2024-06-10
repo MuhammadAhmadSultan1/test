@@ -1,6 +1,6 @@
 import { Suspense, lazy, useMemo, useState } from "react";
 // import { importModule } from "../../utils/dynamicImports";
-import { ICanvasCardProps } from "../../types/card";
+// import { ICanvasCardProps } from "../../types/card";
 import { CardOptionWrapper } from "../../components/cardOptionWarpper";
 import { RadioButton } from "../../components/radioButton";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -31,6 +31,7 @@ export const Variations = (props: ICommonProps) => {
   });
 
   const selectedCard = useAppSelector((state) => state.selectedCard);
+  const templateData = useAppSelector((state) => state.templateData);
   const dispatch = useAppDispatch();
 
   const {
@@ -41,77 +42,77 @@ export const Variations = (props: ICommonProps) => {
     resolver: yupResolver(selectColorVariationSchema),
   });
 
-  const testCardData: ICanvasCardProps = {
-    logo: {
-      url: "",
-      width: 20,
-      height: 10,
-    },
-    name: {
-      text: "Jamie Maclaren",
-      color: "#ffffff",
-      fontSize: 16,
-      fontWeight: 600,
-      lineHeight: 1.2,
-      fontStyle: "normal",
-      textDecoration: "empty string",
-    },
-    designation: {
-      text: "Project Manager",
-      color: "#ffffff",
-      fontSize: 10,
-      fontWeight: 400,
-      lineHeight: 0.8,
-      fontStyle: "normal",
-      textDecoration: "empty string",
-    },
-    phone: {
-      text: "+92 123 456 7890",
-      color: "#ffffff",
-      fontSize: 8,
-      fontWeight: 400,
-      lineHeight: 0.8,
-      fontStyle: "normal",
-      textDecoration: "empty string",
-    },
-    website: {
-      text: "www.website.com",
-      color: "#ffffff",
-      fontSize: 8,
-      fontWeight: 400,
-      lineHeight: 0.8,
-      fontStyle: "normal",
-      textDecoration: "empty string",
-    },
-    email: {
-      text: "test@gmail.com",
-      color: "#ffffff",
-      fontSize: 8,
-      fontWeight: 400,
-      lineHeight: 0.8,
-      fontStyle: "normal",
-      textDecoration: "empty string",
-    },
-    address: {
-      text: "X park view, DHA Phase 8 Lahore Pakistan",
-      color: "#ffffff",
-      fontSize: 8,
-      fontWeight: 400,
-      lineHeight: 0.8,
-      fontStyle: "normal",
-      textDecoration: "empty string",
-    },
-    description: {
-      text: "X park view, DHA Phase 8 Lahore Pakistan",
-      color: "#ffffff",
-      fontSize: 8,
-      fontWeight: 400,
-      lineHeight: 0.8,
-      fontStyle: "normal",
-      textDecoration: "empty string",
-    },
-    selected: false,
-  };
+  // const testCardData: ICanvasCardProps = {
+  //   logo: {
+  //     url: "",
+  //     width: 20,
+  //     height: 10,
+  //   },
+  //   name: {
+  //     text: "Jamie Maclaren",
+  //     color: "#ffffff",
+  //     fontSize: 16,
+  //     fontWeight: 600,
+  //     lineHeight: 1.2,
+  //     fontStyle: "normal",
+  //     textDecoration: "empty string",
+  //   },
+  //   designation: {
+  //     text: "Project Manager",
+  //     color: "#ffffff",
+  //     fontSize: 10,
+  //     fontWeight: 400,
+  //     lineHeight: 0.8,
+  //     fontStyle: "normal",
+  //     textDecoration: "empty string",
+  //   },
+  //   phone: {
+  //     text: "+92 123 456 7890",
+  //     color: "#ffffff",
+  //     fontSize: 8,
+  //     fontWeight: 400,
+  //     lineHeight: 0.8,
+  //     fontStyle: "normal",
+  //     textDecoration: "empty string",
+  //   },
+  //   website: {
+  //     text: "www.website.com",
+  //     color: "#ffffff",
+  //     fontSize: 8,
+  //     fontWeight: 400,
+  //     lineHeight: 0.8,
+  //     fontStyle: "normal",
+  //     textDecoration: "empty string",
+  //   },
+  //   email: {
+  //     text: "test@gmail.com",
+  //     color: "#ffffff",
+  //     fontSize: 8,
+  //     fontWeight: 400,
+  //     lineHeight: 0.8,
+  //     fontStyle: "normal",
+  //     textDecoration: "empty string",
+  //   },
+  //   address: {
+  //     text: "X park view, DHA Phase 8 Lahore Pakistan",
+  //     color: "#ffffff",
+  //     fontSize: 8,
+  //     fontWeight: 400,
+  //     lineHeight: 0.8,
+  //     fontStyle: "normal",
+  //     textDecoration: "empty string",
+  //   },
+  //   description: {
+  //     text: "X park view, DHA Phase 8 Lahore Pakistan",
+  //     color: "#ffffff",
+  //     fontSize: 8,
+  //     fontWeight: 400,
+  //     lineHeight: 0.8,
+  //     fontStyle: "normal",
+  //     textDecoration: "empty string",
+  //   },
+  //   selected: false,
+  // };
 
   const SelectedCard = useMemo(() => {
     //Make sure the path must be 5 sized and end with the file name
@@ -157,7 +158,7 @@ export const Variations = (props: ICommonProps) => {
               <CardOptionWrapper selected={selectedVariation.card1}>
                 <Suspense fallback={"loading...."}>
                   <SelectedCard
-                    text={testCardData}
+                    text={templateData}
                     editable={false}
                     primary={colorVaraitions.primary[0]}
                     secondary={colorVaraitions.secondary[0]}
@@ -184,7 +185,7 @@ export const Variations = (props: ICommonProps) => {
               <CardOptionWrapper selected={selectedVariation.card2}>
                 <Suspense fallback={"loading...."}>
                   <SelectedCard
-                    text={testCardData}
+                    text={templateData}
                     editable={false}
                     primary={colorVaraitions.primary[1]}
                     secondary={colorVaraitions.secondary[1]}
@@ -211,7 +212,7 @@ export const Variations = (props: ICommonProps) => {
               <CardOptionWrapper selected={selectedVariation.card3}>
                 <Suspense>
                   <SelectedCard
-                    text={testCardData}
+                    text={templateData}
                     editable={false}
                     primary={colorVaraitions.primary[2]}
                     secondary={colorVaraitions.secondary[2]}

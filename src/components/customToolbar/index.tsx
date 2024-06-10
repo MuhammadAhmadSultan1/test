@@ -108,7 +108,11 @@ export const CustomToolbar = ({
           />
         </button>
       </div>
-      <Button label="Preview" varient="primary" />
+      <Button
+        label="Preview"
+        varient="primary"
+        attributes={{ className: "!bg-opacity-20 !text-primary !py-2 !px-5" }}
+      />
     </div>
   );
 };
