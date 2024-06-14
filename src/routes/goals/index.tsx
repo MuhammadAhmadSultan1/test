@@ -10,15 +10,28 @@ import TextareaField from "../../components/textareaField";
 import { goalSchema } from "../../schema";
 import { useQuestionnaireAddMutation } from "../../services/form";
 import { Button } from "../../components/button";
+import {
+  useGetTemplateQuery,
+  // useGetVariationsMutation,
+} from "../../services/template";
+import { setTemplateData } from "../../redux/slices/templateData";
+import { ITemplateAttributes } from "../../types/card";
+import { IUserCard } from "../../types/user";
 // import { Templates } from "../templates";
 
 const Goals = ({ onClickBack, onClickNext }: ICommonProps) => {
   const dispatch = useAppDispatch();
   const userCard = useAppSelector((state) => state?.userCard);
+  const templateData = useAppSelector((state) => state.selectedTemplateData);
+
   const defaultValues: IGoals = { goals: userCard?.goals ?? "" };
 
   const [questionnaireAdd, { error, isLoading }] =
     useQuestionnaireAddMutation();
+  const { data: templateConfig } = useGetTemplateQuery(templateData.sku, {
+    refetchOnMountOrArgChange: true,
+  });
+  // const [getVariations] = useGetVariationsMutation();
 
   const [formLoading, setFormLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -65,10 +78,50 @@ const Goals = ({ onClickBack, onClickNext }: ICommonProps) => {
     };
     console.log({ data });
 
-    questionnaireAdd(data).then((result) => {
-      console.log("result----->", result);
-
+    questionnaireAdd(data).then(async (result) => {
       if (result?.data) {
+        if (templateConfig && templateConfig.length) {
+          templateConfig.forEach((template) => {
+            const data = {
+              ...template,
+              templateAttributes: {
+                ...template.templateAttributes,
+              },
+            };
+
+            if (template.templateAttributes) {
+              Object.keys(template.templateAttributes).forEach((key) => {
+                if (key === "logo") {
+                  data.templateAttributes = {
+                    ...data.templateAttributes,
+                    [key]: {
+                      ...data.templateAttributes[key],
+                      url: userCard[key] as string,
+                    },
+                  };
+                } else {
+                  data.templateAttributes = {
+                    ...data.templateAttributes,
+                    [key]: {
+                      ...(data.templateAttributes[
+                        key as keyof ITemplateAttributes
+                      ] as object),
+                      text: userCard[key as keyof IUserCard],
+                    },
+                  };
+                }
+              });
+            }
+            dispatch(setTemplateData({ ...data }));
+          });
+
+          // try {
+          //   const response = await getVariations(templateData).unwrap();
+          //   console.log("variations ============ ", response);
+          // } catch (e) {
+          //   console.log("error", e);
+          // }
+        }
         onClickNext?.();
         // dispatch(setUserCardInfo(userCard));
       } else {

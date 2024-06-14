@@ -80,7 +80,7 @@ const Main = () => {
       {currentStep === 13 && (
         <Variations onClickNext={onClickNext} onClickBack={onClickBack} />
       )}
-      {currentStep === 14 && <CustomizeTemplate />}
+      {currentStep === 14 && <CustomizeTemplate onClickBack={onClickBack} />}
     </div>
   );
 };

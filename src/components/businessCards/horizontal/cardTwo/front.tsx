@@ -6,14 +6,12 @@ import CustomImage from "../../../customImage";
 
 import { TCanvasCardProps } from "../../../../types/card";
 
-import LOGO from "../../../../assets/logo.png";
-
 export default function CardTow(props: TCanvasCardProps) {
   const { editable, primary, secondary, text } = props;
 
   const { footerSvg, headerSvg, centerSvg } = useGetCardSvgs({
-    primary,
-    secondary,
+    primary: primary || text.primaryColor,
+    secondary: secondary || text.secondaryColor,
   });
 
   return (
@@ -27,7 +25,13 @@ export default function CardTow(props: TCanvasCardProps) {
       <Konva.Layer imageSmoothingEnabled>
         <CustomImage x={0} y={0} svgString={headerSvg} />
         <CustomImage x={0} y={188} svgString={footerSvg} />
-        <CustomImage height={49} width={89} x={30} y={70} url={LOGO} />
+        <CustomImage
+          height={49}
+          width={89}
+          x={30}
+          y={70}
+          url={text.templateAttributes.logo.url}
+        />
         <Konva.Group x={50} y={40}>
           <CustomImage x={120} y={0} svgString={centerSvg} />
         </Konva.Group>
@@ -38,16 +42,16 @@ export default function CardTow(props: TCanvasCardProps) {
                 ? (ref) => (props.textRef.current.name = ref)
                 : undefined
             }
-            text={text.name.text}
+            text={text.templateAttributes.name.text}
             x={15}
             y={7}
             align="top"
-            fontSize={text.name.fontSize}
+            fontSize={text.templateAttributes.name.fontSize}
             fill={"#000000"}
             width={122}
             height={19}
-            fontStyle={text.name.fontStyle}
-            textDecoration={text.name.textDecoration}
+            fontStyle={text.templateAttributes.name.fontStyle}
+            textDecoration={text.templateAttributes.name.textDecoration}
             onDblClick={() => {
               if (
                 props.editable &&
@@ -66,16 +70,16 @@ export default function CardTow(props: TCanvasCardProps) {
                 ? (ref) => (props.textRef.current.designation = ref)
                 : undefined
             }
-            text={text.designation.text}
+            text={text.templateAttributes.designation.text}
             x={15}
             y={24}
             align="top"
-            fontSize={text.designation.fontSize}
+            fontSize={text.templateAttributes.designation.fontSize}
             fill={"#000000"}
             width={70}
             height={10}
-            fontStyle={text.designation.fontStyle}
-            textDecoration={text.designation.textDecoration}
+            fontStyle={text.templateAttributes.designation.fontStyle}
+            textDecoration={text.templateAttributes.designation.textDecoration}
             // fontStyle={designation.fontStyle}
             // onClick={() => onClickTextItem("designation")}
             onDblClick={() => {
@@ -97,16 +101,16 @@ export default function CardTow(props: TCanvasCardProps) {
                   ? (ref) => (props.textRef.current.phone = ref)
                   : undefined
               }
-              text={text.phone.text}
+              text={text.templateAttributes.phone.text}
               x={15}
               y={7}
               align="top"
-              fontSize={text.phone.fontSize}
+              fontSize={text.templateAttributes.phone.fontSize}
               fill={"#000000"}
               width={70}
               height={10}
-              fontStyle={text.phone.fontStyle}
-              textDecoration={text.phone.textDecoration}
+              fontStyle={text.templateAttributes.phone.fontStyle}
+              textDecoration={text.templateAttributes.phone.textDecoration}
               onDblClick={() => {
                 if (
                   props.editable &&
@@ -125,16 +129,16 @@ export default function CardTow(props: TCanvasCardProps) {
                   ? (ref) => (props.textRef.current.website = ref)
                   : undefined
               }
-              text={text.website.text}
+              text={text.templateAttributes.website.text}
               x={15}
               y={18}
               align="top"
-              fontSize={text.website.fontSize}
+              fontSize={text.templateAttributes.website.fontSize}
               fill={"#000000"}
               width={70}
               height={10}
-              fontStyle={text.website.fontStyle}
-              textDecoration={text.website.textDecoration}
+              fontStyle={text.templateAttributes.website.fontStyle}
+              textDecoration={text.templateAttributes.website.textDecoration}
               // fontStyle={.website.fontStyle}
               // onClick={() => onClickTextItem(".website")}
               onDblClick={() => {
@@ -155,16 +159,16 @@ export default function CardTow(props: TCanvasCardProps) {
                   ? (ref) => (props.textRef.current.email = ref)
                   : undefined
               }
-              text={text.email.text}
+              text={text.templateAttributes.email.text}
               x={15}
               y={29}
               align="top"
-              fontSize={text.email.fontSize}
+              fontSize={text.templateAttributes.email.fontSize}
               fill={"#000000"}
               width={70}
               height={10}
-              fontStyle={text.email.fontStyle}
-              textDecoration={text.email.textDecoration}
+              fontStyle={text.templateAttributes.email.fontStyle}
+              textDecoration={text.templateAttributes.email.textDecoration}
               onDblClick={() => {
                 if (
                   props.editable &&
@@ -183,16 +187,16 @@ export default function CardTow(props: TCanvasCardProps) {
                   ? (ref) => (props.textRef.current.address = ref)
                   : undefined
               }
-              text={text.address.text}
+              text={text.templateAttributes.address.text}
               x={15}
               y={40}
               width={98}
               height={20}
               align="top"
-              fontSize={text.address.fontSize}
+              fontSize={text.templateAttributes.address.fontSize}
               fill={"#000000"}
-              fontStyle={text.address.fontStyle}
-              textDecoration={text.address.textDecoration}
+              fontStyle={text.templateAttributes.address.fontStyle}
+              textDecoration={text.templateAttributes.address.textDecoration}
               onDblClick={() => {
                 if (
                   props.editable &&

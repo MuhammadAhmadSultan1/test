@@ -14,19 +14,19 @@ export interface ICardProps {
 
 export interface IAttribute {
   text: string;
-  color: string;
+  // color: string;
   fontSize: number;
   fontWeight: number;
   fontStyle: "normal" | "bold" | "italic" | "bold italic";
   textDecoration: "empty string" | "underline" | "line-through";
   // fontFamily: string;
   lineHeight: number;
-  svgColor?: string;
-  svgAroundColor?: string;
+  // svgColor?: string;
+  // svgAroundColor?: string;
   //   bgColor?: string;
 }
 
-export interface ICanvasCardProps {
+export interface ITemplateAttributes {
   logo: {
     url: string;
     width: number;
@@ -43,6 +43,18 @@ export interface ICanvasCardProps {
   editable?: boolean;
   primary?: string;
   secondary?: string;
+}
+
+export interface ICanvasCardProps {
+  productId: string;
+  sessionId: string;
+  templateKey: string;
+  sku: string;
+  templateId: number;
+  variantId: string;
+  primaryColor: string;
+  secondaryColor: string;
+  templateAttributes: ITemplateAttributes;
 }
 
 export type TCanvasCardProps = {

@@ -27,6 +27,7 @@ export interface IRef {
   email: Text | null;
   website: Text | null;
   address: Text | null;
+  description: Text | null;
 }
 
 export interface ITextProperties {
@@ -54,12 +55,11 @@ export enum FONT_STYLE {
   BOLD = "bold",
   NORMAL = "normal",
   BOLD_ITALIC = "bold italic",
-
 }
 
 export enum TEXT_DECORATION {
   UNDERLINE = "underline",
-  EMPTY = '',
+  EMPTY = "",
 }
 
 // interface ITextPosition {

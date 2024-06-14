@@ -7,6 +7,7 @@ export const onTextDblClick = (props: IChangeTextHanlerProps) => {
     container,
     fieldName,
     textRef,
+    stageScale,
     onEnter,
     onEscape,
     // onChange,
@@ -34,6 +35,8 @@ export const onTextDblClick = (props: IChangeTextHanlerProps) => {
   textarea.style.position = "absolute";
   textarea.style.top = areaPosition.y + "px";
   textarea.style.left = areaPosition.x + "px";
+  textarea.style.scale = `${stageScale}`;
+  textarea.style.transformOrigin = "top left";
   textarea.style.color = fillColor;
   textarea.style.background = "none";
   textarea.style.outline = "none";

@@ -11,4 +11,4 @@ export const ADDRESS = "/address";
 export const DESIGNATION = "/designation";
 export const TEMPLATES = "/templates";
 
-export const MAIN = "/";
+export const MAIN = "/customizeTemplate";

@@ -17,6 +17,7 @@ interface ICustomToolbarProps {
   onClickItalic: () => void;
   onClickUnderline: () => void;
   selectedStyles: IAttribute | undefined;
+  setIsPreviewEnabled: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const selectedStyleClasses: string = " !bg-sky-100";
@@ -26,6 +27,7 @@ export const CustomToolbar = ({
   onClickBold,
   onClickItalic,
   onClickUnderline,
+  setIsPreviewEnabled,
   selectedStyles,
 }: ICustomToolbarProps) => {
   const isFontBold: boolean =
@@ -111,7 +113,12 @@ export const CustomToolbar = ({
       <Button
         label="Preview"
         varient="primary"
-        attributes={{ className: "!bg-opacity-20 !text-primary !py-2 !px-5" }}
+        attributes={{
+          className: "!bg-opacity-20 !text-primary !py-2 !px-5",
+          onClick: () => {
+            setIsPreviewEnabled(true);
+          },
+        }}
       />
     </div>
   );

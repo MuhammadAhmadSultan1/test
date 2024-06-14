@@ -8,6 +8,7 @@ import { baseApi } from "../services/baseApi";
 import selectedCard from "./slices/selectedCard";
 import selectedColorVariation from "./slices/selectedColorVariation";
 import templateData from "./slices/templateData";
+import selectedTemplateData from "./slices/selectedTemplate";
 
 const persistUserConfig = {
   key: "userCard",
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   selectedCard: selectedCard,
   selectedColorVariation: selectedColorVariation,
   templateData: templateData,
+  selectedTemplateData: selectedTemplateData,
   [baseApi.reducerPath]: baseApi.reducer,
 });
 

@@ -1,20 +1,21 @@
+import { useAppSelector } from "../../redux/hooks";
+import { SixByThreeBanners } from "./banners/sixByThree";
 import { HorizontalCards } from "./bussinessCards/horizontal";
 import { VerticalCards } from "./bussinessCards/vertical";
 import { StickersCircle } from "./stickers/circle";
 import { StickersLabel } from "./stickers/label";
 import { StickersOval } from "./stickers/oval";
 
-// type TSKU = "106BCH001" | "106BCV002"
-
 export const Templates = (props: ICommonProps) => {
-  const SKU: string = "106BCH001";
+  const sku = useAppSelector((state) => state.selectedTemplateData.sku);
   return (
     <>
-      {SKU === "106BCH001" && <HorizontalCards {...props} />}
-      {SKU === "106BCV002" && <VerticalCards />}
-      {SKU === "106SC001" && <StickersCircle />}
-      {SKU === "106SO001" && <StickersOval />}
-      {SKU === "106SL001" && <StickersLabel />}
+      {sku === "101HC005" && <HorizontalCards {...props} />}
+      {sku === "102VC006" && <VerticalCards {...props} />}
+      {sku === "103SC007" && <StickersCircle />}
+      {sku === "104SO008" && <StickersOval />}
+      {sku === "105LC009" && <StickersLabel />}
+      {sku === "106B6301" && <SixByThreeBanners {...props} />}
     </>
   );
 };

@@ -11,6 +11,7 @@ export interface IChangeTextHanlerProps {
   container: string;
   fieldName: TFieldName;
   textRef: React.MutableRefObject<IRef>;
+  stageScale: number;
   onEnter: (
     value: string,
     textarea: HTMLTextAreaElement,

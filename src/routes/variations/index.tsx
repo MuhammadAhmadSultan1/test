@@ -12,6 +12,8 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setSelectedColorVariation } from "../../redux/slices/selectedColorVariation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { selectColorVariationSchema } from "../../schema";
+// import { setTemplateData } from "../../redux/slices/templateData";
+import { setSelectedTemplateData } from "../../redux/slices/selectedTemplate";
 
 export const Variations = (props: ICommonProps) => {
   const { onClickBack, onClickNext } = props;
@@ -31,7 +33,9 @@ export const Variations = (props: ICommonProps) => {
   });
 
   const selectedCard = useAppSelector((state) => state.selectedCard);
-  const templateData = useAppSelector((state) => state.templateData);
+  const selectedTemplateData = useAppSelector(
+    (state) => state.selectedTemplateData
+  );
   const dispatch = useAppDispatch();
 
   const {
@@ -134,6 +138,14 @@ export const Variations = (props: ICommonProps) => {
             colorVaraitions.secondary[Number(formData.selectedVariation)],
         })
       );
+      dispatch(
+        setSelectedTemplateData({
+          primaryColor:
+            colorVaraitions.primary[Number(formData.selectedVariation)],
+          secondaryColor:
+            colorVaraitions.secondary[Number(formData.selectedVariation)],
+        })
+      );
       onClickNext?.();
     } catch (e) {
       console.log("Error", e);
@@ -158,7 +170,7 @@ export const Variations = (props: ICommonProps) => {
               <CardOptionWrapper selected={selectedVariation.card1}>
                 <Suspense fallback={"loading...."}>
                   <SelectedCard
-                    text={templateData}
+                    text={selectedTemplateData}
                     editable={false}
                     primary={colorVaraitions.primary[0]}
                     secondary={colorVaraitions.secondary[0]}
@@ -185,7 +197,7 @@ export const Variations = (props: ICommonProps) => {
               <CardOptionWrapper selected={selectedVariation.card2}>
                 <Suspense fallback={"loading...."}>
                   <SelectedCard
-                    text={templateData}
+                    text={selectedTemplateData}
                     editable={false}
                     primary={colorVaraitions.primary[1]}
                     secondary={colorVaraitions.secondary[1]}
@@ -212,7 +224,7 @@ export const Variations = (props: ICommonProps) => {
               <CardOptionWrapper selected={selectedVariation.card3}>
                 <Suspense>
                   <SelectedCard
-                    text={templateData}
+                    text={selectedTemplateData}
                     editable={false}
                     primary={colorVaraitions.primary[2]}
                     secondary={colorVaraitions.secondary[2]}

@@ -6,22 +6,44 @@ import CustomImage from "../../../customImage";
 
 import { TCanvasCardProps } from "../../../../types/card";
 
-export default function CardThree(props: TCanvasCardProps) {
-  const { editable, primary, text } = props;
+export default function VerticalCardOne(props: TCanvasCardProps) {
+  const { editable, primary, secondary, text } = props;
 
-  const { tileSvg } = useGetCardSvgs({ primary: primary || text.primaryColor });
+  const {
+    middleLeftSvg,
+    middleRightSvg,
+    phoneSvg,
+    emailSvg,
+    websiteSvg,
+    locationSvg,
+    footerSvg,
+  } = useGetCardSvgs({
+    primary: primary || text.primaryColor,
+    secondary: secondary || text.secondaryColor,
+  });
 
   return (
     <Konva.Stage
       ref={props.editable ? props.stageRef : undefined}
-      width={336}
-      height={192}
-      style={{ backgroundColor: "#ffffff" }}
+      width={192}
+      height={336}
+      style={{ backgroundColor: "white" }}
       id="canvas"
+      //   scale={{ x: 1.2, y: 1.2 }}
     >
       <Konva.Layer imageSmoothingEnabled>
-        <CustomImage x={310} y={75} svgString={tileSvg} />
-        <Konva.Group x={15} y={20}>
+        <CustomImage
+          height={44}
+          width={73}
+          x={60}
+          y={20}
+          url={text.templateAttributes.logo.url}
+        />
+
+        <Konva.Group x={0} y={90}>
+          <CustomImage x={0} y={0} svgString={middleLeftSvg} />
+          <CustomImage x={149} y={0} svgString={middleRightSvg} />
+
           <Konva.Text
             ref={
               props.editable
@@ -33,8 +55,8 @@ export default function CardThree(props: TCanvasCardProps) {
             y={7}
             align="top"
             fontSize={text.templateAttributes.name.fontSize}
-            fill={"#000000"}
-            width={122}
+            fill={"#ffff"}
+            width={121}
             height={19}
             fontStyle={text.templateAttributes.name.fontStyle}
             textDecoration={text.templateAttributes.name.textDecoration}
@@ -50,6 +72,7 @@ export default function CardThree(props: TCanvasCardProps) {
               }
             }}
           />
+
           <Konva.Text
             ref={
               props.editable
@@ -61,9 +84,9 @@ export default function CardThree(props: TCanvasCardProps) {
             y={24}
             align="top"
             fontSize={text.templateAttributes.designation.fontSize}
-            fill={"#000000"}
-            width={78}
-            height={12}
+            fill={"#ffff"}
+            width={100}
+            height={10}
             fontStyle={text.templateAttributes.designation.fontStyle}
             textDecoration={text.templateAttributes.designation.textDecoration}
             onDblClick={() => {
@@ -78,7 +101,11 @@ export default function CardThree(props: TCanvasCardProps) {
               }
             }}
           />
-          <Konva.Group y={80}>
+        </Konva.Group>
+
+        <Konva.Group x={30} y={180}>
+          <Konva.Group x={0} y={0}>
+            <CustomImage x={0} y={0} svgString={phoneSvg} />
             <Konva.Text
               ref={
                 props.editable
@@ -86,8 +113,8 @@ export default function CardThree(props: TCanvasCardProps) {
                   : undefined
               }
               text={text.templateAttributes.phone.text}
-              x={15}
-              y={7}
+              x={25}
+              y={6}
               align="top"
               fontSize={text.templateAttributes.phone.fontSize}
               fill={"#000000"}
@@ -107,34 +134,10 @@ export default function CardThree(props: TCanvasCardProps) {
                 }
               }}
             />
-            <Konva.Text
-              ref={
-                props.editable
-                  ? (ref) => (props.textRef.current.website = ref)
-                  : undefined
-              }
-              text={text.templateAttributes.website.text}
-              x={15}
-              y={20}
-              align="top"
-              fontSize={text.templateAttributes.website.fontSize}
-              fill={"#000000"}
-              width={70}
-              height={10}
-              fontStyle={text.templateAttributes.website.fontStyle}
-              textDecoration={text.templateAttributes.website.textDecoration}
-              onDblClick={() => {
-                if (
-                  props.editable &&
-                  props.textRef.current &&
-                  props.textRef.current.website &&
-                  editable
-                ) {
-                  props.textRef.current.website.hide();
-                  props.dblClickHandler("website");
-                }
-              }}
-            />
+          </Konva.Group>
+
+          <Konva.Group x={0} y={25}>
+            <CustomImage x={0} y={0} svgString={emailSvg} />
             <Konva.Text
               ref={
                 props.editable
@@ -142,8 +145,8 @@ export default function CardThree(props: TCanvasCardProps) {
                   : undefined
               }
               text={text.templateAttributes.email.text}
-              x={15}
-              y={33}
+              x={25}
+              y={6}
               align="top"
               fontSize={text.templateAttributes.email.fontSize}
               fill={"#000000"}
@@ -163,6 +166,42 @@ export default function CardThree(props: TCanvasCardProps) {
                 }
               }}
             />
+          </Konva.Group>
+
+          <Konva.Group x={0} y={50}>
+            <CustomImage x={0} y={0} svgString={websiteSvg} />
+            <Konva.Text
+              ref={
+                props.editable
+                  ? (ref) => (props.textRef.current.website = ref)
+                  : undefined
+              }
+              text={text.templateAttributes.website.text}
+              x={25}
+              y={6}
+              align="top"
+              fontSize={text.templateAttributes.website.fontSize}
+              fill={"#000000"}
+              width={70}
+              height={10}
+              fontStyle={text.templateAttributes.website.fontStyle}
+              textDecoration={text.templateAttributes.website.textDecoration}
+              onDblClick={() => {
+                if (
+                  props.editable &&
+                  props.textRef.current &&
+                  props.textRef.current.website &&
+                  editable
+                ) {
+                  props.textRef.current.website.hide();
+                  props.dblClickHandler("website");
+                }
+              }}
+            />
+          </Konva.Group>
+
+          <Konva.Group x={0} y={75}>
+            <CustomImage x={0} y={0} svgString={locationSvg} />
             <Konva.Text
               ref={
                 props.editable
@@ -170,13 +209,13 @@ export default function CardThree(props: TCanvasCardProps) {
                   : undefined
               }
               text={text.templateAttributes.address.text}
-              x={15}
-              y={46}
-              width={98}
-              height={20}
+              x={25}
+              y={6}
               align="top"
               fontSize={text.templateAttributes.address.fontSize}
               fill={"#000000"}
+              width={70}
+              height={10}
               fontStyle={text.templateAttributes.address.fontStyle}
               textDecoration={text.templateAttributes.address.textDecoration}
               onDblClick={() => {
@@ -193,6 +232,7 @@ export default function CardThree(props: TCanvasCardProps) {
             />
           </Konva.Group>
         </Konva.Group>
+        <CustomImage x={0} y={326} svgString={footerSvg} />
       </Konva.Layer>
     </Konva.Stage>
   );

@@ -92,3 +92,9 @@ button:focus-visible {
 .outlined {
   @apply border border-darkOutline text-fontColor bg-backgroundColor;
 }
+
+#canvas div.konvajs-content canvas {
+  background-image: url("./assets/watermark.png") !important;
+  background-repeat: repeat !important;
+  background-size: 100px !important;
+}

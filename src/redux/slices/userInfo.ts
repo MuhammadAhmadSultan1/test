@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit/react";
 import { IUserCard } from "../../types/user";
 
 const initialState: IUserCard = {
-  companyName: '',
+  companyName: "",
   email: "",
   website: "",
   clientInitials: "",
@@ -18,8 +18,8 @@ const initialState: IUserCard = {
   name: "",
   address: "",
   designation: "",
-  phoneNumber:"",
-  showHeaderAndStepper: true
+  phone: "",
+  showHeaderAndStepper: true,
 };
 
 const userSlice = createSlice({

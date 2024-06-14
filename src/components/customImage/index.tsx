@@ -12,8 +12,9 @@ export default function CustomImage(props: {
   color?: string;
   x: number;
   y: number;
+  opactity?: number;
 }) {
-  const { url, svgString, width, height, x, y } = props;
+  const { url, svgString, width, height, x, y, opactity } = props;
 
   const [imageUrl, setImageUrl] = useState("");
 
@@ -34,6 +35,7 @@ export default function CustomImage(props: {
       height={height}
       x={x}
       y={y}
+      opacity={opactity}
       // draggable
     />
   );

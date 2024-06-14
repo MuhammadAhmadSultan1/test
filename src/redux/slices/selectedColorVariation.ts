@@ -18,9 +18,14 @@ const selectedColorVariation = createSlice({
       state.secondary = action.payload.secondary;
       return state;
     },
+    resetSelectedColorVariation: (state) => {
+      state = variation;
+      return state;
+    },
   },
 });
 
-export const { setSelectedColorVariation } = selectedColorVariation.actions;
+export const { setSelectedColorVariation, resetSelectedColorVariation } =
+  selectedColorVariation.actions;
 
 export default selectedColorVariation.reducer;

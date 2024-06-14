@@ -8,10 +8,13 @@ import { useUploadLogoMutation } from "../../services/general";
 import { Button } from "../../components/button";
 
 import { successToast } from "../../utils/toaster";
+// import { setTemplateData } from "../../redux/slices/templateData";
+import { setSelectedTemplateData } from "../../redux/slices/selectedTemplate";
 
 const UploadLogo = ({ onClickNext }: ICommonProps) => {
   const dispatch = useAppDispatch();
   const userCard = useAppSelector((state) => state?.userCard);
+  const templateData = useAppSelector((state) => state.selectedTemplateData);
 
   // console.log("userCard----------->", userCard);
 
@@ -27,6 +30,14 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
 
   useEffect(() => {
     getSessionToken();
+    const params = new URLSearchParams(window.location.search);
+    dispatch(
+      setSelectedTemplateData({
+        sku: params.get("SKU") || "",
+        productId: params.get("productId") || "",
+        variantId: params.get("variantId") || "",
+      })
+    );
     // cleatAllStates();
   }, []);
 
@@ -40,38 +51,43 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
     }
   }, [selectedFile]);
 
-  const cleatAllStates = () => {
-    const userCard = {
-      companyName: "",
-      email: "",
-      website: "",
-      clientInitials: "",
-      serviceName: "",
-      serviceNameArray: [],
-      targetAudience: "",
-      targetAudienceArray: [],
-      aboutCompany: "",
-      goals: "",
-      sessionId: "",
-      logo: "",
-      colors: [],
-      name: "",
-      address: "",
-      designation: "",
-      phoneNumber: "",
-      showHeaderAndStepper: true,
-    };
-    dispatch(setUserCardInfo(userCard));
-  };
+  // const cleatAllStates = () => {
+  //   const userCard = {
+  //     companyName: "",
+  //     email: "",
+  //     website: "",
+  //     clientInitials: "",
+  //     serviceName: "",
+  //     serviceNameArray: [],
+  //     targetAudience: "",
+  //     targetAudienceArray: [],
+  //     aboutCompany: "",
+  //     goals: "",
+  //     sessionId: "",
+  //     logo: "",
+  //     colors: [],
+  //     name: "",
+  //     address: "",
+  //     designation: "",
+  //     phoneNumber: "",
+  //     showHeaderAndStepper: true,
+  //   };
+  //   dispatch(setUserCardInfo(userCard));
+  // };
 
   const getSessionToken = () => {
-    let data = {};
-    userSession(data).then((result) => {
+    // let data = {};
+    userSession({}).then((result) => {
       console.log("result?.data?.content----->", result?.data?.content);
       if (result) {
         const userCard = {
           sessionId: result?.data?.content?.sessionId,
         };
+        dispatch(
+          setSelectedTemplateData({
+            sessionId: result?.data?.content?.sessionId,
+          })
+        );
         setSessionIdLocal(result?.data?.content?.sessionId ?? "");
         dispatch(setUserCardInfo(userCard));
       } else {
@@ -80,13 +96,15 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
     });
   };
 
-  const handleFileChange = (event: any) => {
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.files) return;
     const file = event.target.files[0];
     if (
       file &&
       (file.type === "image/png" ||
         file.type === "image/jpeg" ||
         file.type === "image/jpg")
+      // || file.type === "image/svg+xml"
     ) {
       if (file.size > 10 * 1024 * 1024) {
         setErrorMessage("File size must be less than 10 MB");
@@ -97,7 +115,7 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
       setErrorMessage("");
     } else {
       if (selectedFile) return;
-      setErrorMessage("Please select a valid image file (png, jpg, jpeg)");
+      setErrorMessage("Please select a valid image file (png, jpg, jpeg, svg)");
       setSelectedFile(null);
     }
   };
@@ -123,6 +141,17 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
             logo: result?.data?.content?.logoUrl,
             colors: result?.data?.colors,
           };
+          dispatch(
+            setSelectedTemplateData({
+              templateAttributes: {
+                ...templateData.templateAttributes,
+                logo: {
+                  ...templateData.templateAttributes.logo,
+                  url: result?.data?.content?.logoUrl,
+                },
+              },
+            })
+          );
           dispatch(setUserCardInfo(userCard));
           successToast("Logo uploaded successfully");
           setLoading(false);
