@@ -2,7 +2,7 @@ import * as Konva from "react-konva";
 
 import { useGetCardSvgs } from "./svg/useGetCardSvgs";
 
-import BannerIcon from "../../../../assets/logo.png";
+// import BannerIcon from "../../../../assets/logo.png";
 import { TCanvasCardProps } from "../../../../types/card";
 import CustomImage from "../../../customImage";
 
@@ -20,8 +20,14 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
       id="canvas"
     >
       <Konva.Layer imageSmoothingEnabled>
-        <CustomImage height={42} width={77} x={470} y={20} url={BannerIcon} />
-        <Konva.Group x={25} y={80}>
+        <CustomImage
+          height={42}
+          width={77}
+          x={470}
+          y={20}
+          url={text.templateAttributes.logo.url}
+        />
+        <Konva.Group x={25} y={70}>
           <Konva.Text
             ref={
               props.editable
@@ -29,15 +35,19 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
                 : undefined
             }
             text={text.templateAttributes.name.text}
+            // text="CREATIVE MARKETING AGENCY"
             x={0}
             y={0}
             align="top"
             fontSize={text.templateAttributes.name.fontSize}
+            // fontSize={40}
             fill={"#ffff"}
-            width={250}
-            height={141}
+            width={230}
+            height={145}
+            fontFamily="Roboto"
             lineHeight={text.templateAttributes.name.lineHeight}
             fontStyle={text.templateAttributes.name.fontStyle}
+            // fontStyle="900"
             textDecoration={text.templateAttributes.name.textDecoration}
             onDblClick={() => {
               if (
@@ -58,13 +68,17 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
                 : undefined
             }
             text={text.templateAttributes.description.text}
+            // text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,"
             x={290}
-            y={20}
+            y={30}
             align="top"
+            // fontSize={16}
             fontSize={text.templateAttributes.description.fontSize}
             fill={"#ffff"}
             width={239}
             height={95}
+            fontFamily="Roboto"
+            // lineHeight={1.1}
             lineHeight={text.templateAttributes.description.lineHeight}
             fontStyle={text.templateAttributes.description.fontStyle}
             textDecoration={text.templateAttributes.description.textDecoration}
@@ -98,6 +112,7 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
             fill={"#FFF"}
             width={70}
             height={10}
+            fontFamily="Roboto"
             lineHeight={text.templateAttributes.phone.lineHeight}
             fontStyle={text.templateAttributes.phone.fontStyle}
             textDecoration={text.templateAttributes.phone.textDecoration}
@@ -131,6 +146,7 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
             fill={"#FFF"}
             width={70}
             height={10}
+            fontFamily="Roboto"
             lineHeight={text.templateAttributes.email.lineHeight}
             fontStyle={text.templateAttributes.email.fontStyle}
             textDecoration={text.templateAttributes.email.textDecoration}
@@ -164,6 +180,7 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
             fill={"#FFF"}
             width={70}
             height={10}
+            fontFamily="Roboto"
             lineHeight={text.templateAttributes.website.lineHeight}
             fontStyle={text.templateAttributes.website.fontStyle}
             textDecoration={text.templateAttributes.website.textDecoration}
@@ -189,14 +206,15 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
                 ? (ref) => (props.textRef.current.address = ref)
                 : undefined
             }
-            text={"X park view, DHA Phase 8 Lahore Pakistan"}
+            text={text.templateAttributes.address.text}
             x={15}
             y={1}
             align="top"
-            fontSize={8}
+            fontSize={text.templateAttributes.address.fontSize}
             fill={"#FFF"}
-            width={150}
+            width={91}
             height={20}
+            fontFamily="Roboto"
             lineHeight={text.templateAttributes.address.lineHeight}
             fontStyle={text.templateAttributes.address.fontStyle}
             textDecoration={text.templateAttributes.address.textDecoration}

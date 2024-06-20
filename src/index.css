@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -40,6 +42,7 @@ h1 {
 }
 
 button {
+  position: relative;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -97,4 +100,10 @@ button:focus-visible {
   background-image: url("./assets/watermark.png") !important;
   background-repeat: repeat !important;
   background-size: 100px !important;
+}
+
+button[aria-label]:focus:after,
+button[aria-label]:hover:after {
+  @apply absolute -top-8 -left-8 block overflow-hidden rounded-sm p-1 text-sm text-center z-10 transition-all duration-150 bg-backgroundColor;
+  content: attr(aria-label);
 }

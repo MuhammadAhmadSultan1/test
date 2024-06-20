@@ -11,6 +11,7 @@ import { goalSchema } from "../../schema";
 import { useQuestionnaireAddMutation } from "../../services/form";
 import { Button } from "../../components/button";
 import {
+  useGetDescriptionMutation,
   useGetTemplateQuery,
   // useGetVariationsMutation,
 } from "../../services/template";
@@ -26,11 +27,11 @@ const Goals = ({ onClickBack, onClickNext }: ICommonProps) => {
 
   const defaultValues: IGoals = { goals: userCard?.goals ?? "" };
 
-  const [questionnaireAdd, { error, isLoading }] =
-    useQuestionnaireAddMutation();
+  const [questionnaireAdd, { isLoading }] = useQuestionnaireAddMutation();
   const { data: templateConfig } = useGetTemplateQuery(templateData.sku, {
     refetchOnMountOrArgChange: true,
   });
+  const [getDescription] = useGetDescriptionMutation();
   // const [getVariations] = useGetVariationsMutation();
 
   const [formLoading, setFormLoading] = useState<boolean>(false);
@@ -61,45 +62,68 @@ const Goals = ({ onClickBack, onClickNext }: ICommonProps) => {
     submitForm();
   };
 
-  const submitForm = () => {
-    const data = {
-      companyName: userCard?.companyName,
-      companyWebsite: userCard?.website,
-      companyEmail: userCard?.email,
-      productOrService: userCard?.serviceNameArray?.join(","),
-      targetAudience: userCard?.targetAudienceArray?.join(","),
-      merchandiseGoal: getValues("goals"),
-      sessionId: userCard?.sessionId,
-      address: userCard?.address,
-      designation: userCard?.designation,
-      aboutCompany: userCard?.aboutCompany,
-      // phoneNumber:userCard?.phoneNumber,
-      userId: 0,
-    };
-    console.log({ data });
+  const submitForm = async () => {
+    try {
+      const data = {
+        companyName: userCard?.companyName,
+        companyWebsite: userCard?.website,
+        companyEmail: userCard?.email,
+        productOrService: userCard?.serviceNameArray?.join(","),
+        targetAudience: userCard?.targetAudienceArray?.join(","),
+        merchandiseGoal: getValues("goals"),
+        sessionId: userCard?.sessionId,
+        address: userCard?.address,
+        designation: userCard?.designation,
+        aboutCompany: userCard?.aboutCompany,
+        // phoneNumber:userCard?.phoneNumber,
+        userId: 0,
+      };
+      console.log({ data });
 
-    questionnaireAdd(data).then(async (result) => {
-      if (result?.data) {
-        if (templateConfig && templateConfig.length) {
-          templateConfig.forEach((template) => {
-            const data = {
-              ...template,
-              templateAttributes: {
-                ...template.templateAttributes,
-              },
-            };
+      await questionnaireAdd(data).unwrap();
 
-            if (template.templateAttributes) {
-              Object.keys(template.templateAttributes).forEach((key) => {
-                if (key === "logo") {
-                  data.templateAttributes = {
-                    ...data.templateAttributes,
-                    [key]: {
-                      ...data.templateAttributes[key],
-                      url: userCard[key] as string,
-                    },
-                  };
-                } else {
+      const getDescriptionPayload = {
+        companyName: userCard.companyName,
+        email: userCard.email,
+        website: userCard.website,
+        // clientInitials: "",
+        // serviceName: userCard.serviceName,
+        serviceNameArray: userCard.serviceNameArray,
+        // targetAudience: userCard.targetAudience,
+        targetAudienceArray: userCard.targetAudienceArray,
+        aboutCompany: userCard.aboutCompany,
+        goals: getValues("goals"),
+        // sessionId: "",
+        // logo: "",
+        // colors: [],
+        name: userCard.name,
+        address: userCard.address,
+        designation: userCard.designation,
+        phone: userCard.phone,
+        // showHeaderAndStepper: true,
+      };
+      const response = await getDescription(getDescriptionPayload).unwrap();
+      if (templateConfig && templateConfig.length) {
+        templateConfig.forEach((template) => {
+          const data = {
+            ...template,
+            templateAttributes: {
+              ...template.templateAttributes,
+            },
+          };
+
+          if (template.templateAttributes) {
+            Object.keys(template.templateAttributes).forEach((key) => {
+              if (key === "logo") {
+                data.templateAttributes = {
+                  ...data.templateAttributes,
+                  [key]: {
+                    ...data.templateAttributes[key],
+                    url: userCard[key] as string,
+                  },
+                };
+              } else {
+                if (userCard[key as keyof IUserCard]) {
                   data.templateAttributes = {
                     ...data.templateAttributes,
                     [key]: {
@@ -109,26 +133,32 @@ const Goals = ({ onClickBack, onClickNext }: ICommonProps) => {
                       text: userCard[key as keyof IUserCard],
                     },
                   };
+                  data.templateAttributes = {
+                    ...data.templateAttributes,
+                    description: {
+                      ...data.templateAttributes.description,
+                      text: response.content.description,
+                    },
+                  };
                 }
-              });
-            }
-            dispatch(setTemplateData({ ...data }));
-          });
+              }
+            });
+          }
+          dispatch(setTemplateData({ ...data }));
+        });
 
-          // try {
-          //   const response = await getVariations(templateData).unwrap();
-          //   console.log("variations ============ ", response);
-          // } catch (e) {
-          //   console.log("error", e);
-          // }
-        }
         onClickNext?.();
-        // dispatch(setUserCardInfo(userCard));
-      } else {
-        console.log("error----->", error);
-        setErrorMessage("Something went wrong");
+
+        // try {
+        //   const response = await getVariations(templateData).unwrap();
+        //   console.log("variations ============ ", response);
+        // } catch (e) {
+        //   console.log("error", e);
+        // }
       }
-    });
+    } catch (e) {
+      setErrorMessage("Something went wrong");
+    }
   };
 
   const onGoBack = () => {

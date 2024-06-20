@@ -1,4 +1,11 @@
-import { Suspense, lazy, useMemo, useState } from "react";
+import {
+  Suspense,
+  lazy,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 // import { importModule } from "../../utils/dynamicImports";
 // import { ICanvasCardProps } from "../../types/card";
 import { CardOptionWrapper } from "../../components/cardOptionWarpper";
@@ -14,28 +21,110 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { selectColorVariationSchema } from "../../schema";
 // import { setTemplateData } from "../../redux/slices/templateData";
 import { setSelectedTemplateData } from "../../redux/slices/selectedTemplate";
+import { useGetVariationsMutation } from "../../services/template";
+import { setGeneratedColor } from "../../redux/slices/generatedColorVariation";
 
 export const Variations = (props: ICommonProps) => {
   const { onClickBack, onClickNext } = props;
-  const colorVaraitions = {
-    primary: ["#004CE0", "#FF0000", "#008000"],
-    secondary: ["#323232", "#323232", "#323232"],
-  };
+
+  const [variations, setVariations] = useState<{
+    primary: string[];
+    secondary: string[];
+  }>({ primary: [], secondary: [] });
+
+  const logoColors = useAppSelector((state) => state.userCard.colors);
+  const selectedCard = useAppSelector((state) => state.selectedCard);
+  const selectedTemplateData = useAppSelector(
+    (state) => state.selectedTemplateData
+  );
+  const generatedColorVariations = useAppSelector(
+    (state) => state.generatedColors
+  );
+
+  const [getVariations, { isLoading }] = useGetVariationsMutation();
+
+  // const testColorVariations = useMemo(async () => {
+  //   try {
+  //     const response = await getVariations({
+  //       jsonInput: selectedTemplateData,
+  //       companyLogoColorsList: logoColors || [],
+  //     }).unwrap();
+  //     setVariations({
+  //       primary: response.content.primaryColor,
+  //       secondary: response.content.secondaryColor,
+  //     });
+  //     // return {
+  //     //   primary: response.content.primaryColor,
+  //     //   secondary: response.content.secondaryColor,
+  //     // };
+  //   } catch (e) {
+  //     setVariations({
+  //       primary: ["#004CE0", "#FF0000", "#008000"],
+  //       secondary: ["#323232", "#323232", "#323232"],
+  //     });
+  //   }
+  // }, [getVariations, logoColors, selectedTemplateData]);
+
+  const generateVariations = useCallback(
+    async (forceRegenerate?: boolean) => {
+      try {
+        // if (colorVariations.primary && colorVariations.secondary) return;
+        if (!forceRegenerate)
+          if (
+            generatedColorVariations.primary.length &&
+            generatedColorVariations.secondary.length &&
+            generatedColorVariations.templatePath === selectedCard.path
+          ) {
+            return setVariations({
+              primary: generatedColorVariations.primary,
+              secondary: generatedColorVariations.secondary,
+            });
+          }
+        const response = await getVariations({
+          jsonInput: selectedTemplateData,
+          companyLogoColorsList: logoColors || [],
+        }).unwrap();
+        setVariations({
+          primary: response.content.primaryColor,
+          secondary: response.content.secondaryColor,
+        });
+      } catch (e) {
+        setVariations({
+          primary: ["#004CE0", "#FF0000", "#008000"],
+          secondary: ["#323232", "#323232", "#323232"],
+        });
+      }
+    },
+    [
+      generatedColorVariations.primary,
+      generatedColorVariations.secondary,
+      generatedColorVariations.templatePath,
+      getVariations,
+      logoColors,
+      selectedCard.path,
+      selectedTemplateData,
+    ]
+  );
+
+  useEffect(() => {
+    generateVariations();
+  }, [generateVariations]);
+
+  // const variations = {
+  //   primary: ["#004CE0", "#FF0000", "#008000"],
+  //   secondary: ["#323232", "#323232", "#323232"],
+  // };
 
   const selectedColorVariation = useAppSelector(
     (state) => state.selectedColorVariation
   );
 
   const [selectedVariation, setSelectedVariation] = useState({
-    card1: colorVaraitions.primary[0] === selectedColorVariation.primary,
-    card2: colorVaraitions.primary[1] === selectedColorVariation.primary,
-    card3: colorVaraitions.primary[2] === selectedColorVariation.primary,
+    card1: variations.primary[0] === selectedColorVariation.primary,
+    card2: variations.primary[1] === selectedColorVariation.primary,
+    card3: variations.primary[2] === selectedColorVariation.primary,
   });
 
-  const selectedCard = useAppSelector((state) => state.selectedCard);
-  const selectedTemplateData = useAppSelector(
-    (state) => state.selectedTemplateData
-  );
   const dispatch = useAppDispatch();
 
   const {
@@ -133,17 +222,22 @@ export const Variations = (props: ICommonProps) => {
     try {
       dispatch(
         setSelectedColorVariation({
-          primary: colorVaraitions.primary[Number(formData.selectedVariation)],
-          secondary:
-            colorVaraitions.secondary[Number(formData.selectedVariation)],
+          primary: variations.primary[Number(formData.selectedVariation)],
+          secondary: variations.secondary[Number(formData.selectedVariation)],
         })
       );
       dispatch(
         setSelectedTemplateData({
-          primaryColor:
-            colorVaraitions.primary[Number(formData.selectedVariation)],
+          primaryColor: variations.primary[Number(formData.selectedVariation)],
           secondaryColor:
-            colorVaraitions.secondary[Number(formData.selectedVariation)],
+            variations.secondary[Number(formData.selectedVariation)],
+        })
+      );
+      dispatch(
+        setGeneratedColor({
+          primary: variations.primary,
+          secondary: variations.secondary,
+          templatePath: selectedCard.path,
         })
       );
       onClickNext?.();
@@ -156,15 +250,48 @@ export const Variations = (props: ICommonProps) => {
     onClickBack?.();
   };
 
+  if (isLoading) return <>Getting variations</>;
+
   return (
     <div className="flex flex-col items-center gap-4">
+      <div className="fixed bottom-4 right-4">
+        <Button
+          label=""
+          varient="outlined"
+          attributes={{
+            className: "!rounded-full !p-3",
+            "aria-label": "Regenerate",
+            onClick: () => {
+              generateVariations(true);
+            },
+            disabled: isLoading,
+          }}
+        >
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-4"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+              />
+            </svg>
+          </span>
+        </Button>
+      </div>
       <h2 className="text-4xl font-extrabold">Select one color</h2>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col w-full justify-center"
       >
-        <div className="flex md:flex-row flex-col w-full justify-center py-5 px-5 gap-4">
+        <div className="flex md:flex-row flex-col flex-wrap w-full justify-center py-5 px-5 gap-4">
           <RadioButton
             Component={
               <CardOptionWrapper selected={selectedVariation.card1}>
@@ -172,15 +299,15 @@ export const Variations = (props: ICommonProps) => {
                   <SelectedCard
                     text={selectedTemplateData}
                     editable={false}
-                    primary={colorVaraitions.primary[0]}
-                    secondary={colorVaraitions.secondary[0]}
+                    primary={variations.primary[0]}
+                    secondary={variations.secondary[0]}
                   />
                 </Suspense>
               </CardOptionWrapper>
             }
             attributes={{
               defaultChecked:
-                colorVaraitions.primary[0] === selectedColorVariation.primary,
+                variations.primary[0] === selectedColorVariation.primary,
             }}
             onChange={() => {
               setSelectedVariation(() => ({
@@ -199,15 +326,15 @@ export const Variations = (props: ICommonProps) => {
                   <SelectedCard
                     text={selectedTemplateData}
                     editable={false}
-                    primary={colorVaraitions.primary[1]}
-                    secondary={colorVaraitions.secondary[1]}
+                    primary={variations.primary[1]}
+                    secondary={variations.secondary[1]}
                   />
                 </Suspense>
               </CardOptionWrapper>
             }
             attributes={{
               defaultChecked:
-                colorVaraitions.primary[1] === selectedColorVariation.primary,
+                variations.primary[1] === selectedColorVariation.primary,
             }}
             onChange={() => {
               setSelectedVariation(() => ({
@@ -226,15 +353,15 @@ export const Variations = (props: ICommonProps) => {
                   <SelectedCard
                     text={selectedTemplateData}
                     editable={false}
-                    primary={colorVaraitions.primary[2]}
-                    secondary={colorVaraitions.secondary[2]}
+                    primary={variations.primary[2]}
+                    secondary={variations.secondary[2]}
                   />
                 </Suspense>
               </CardOptionWrapper>
             }
             attributes={{
               defaultChecked:
-                colorVaraitions.primary[2] === selectedColorVariation.primary,
+                variations.primary[2] === selectedColorVariation.primary,
             }}
             onChange={() => {
               setSelectedVariation(() => ({

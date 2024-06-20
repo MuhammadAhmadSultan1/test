@@ -50,8 +50,17 @@ export const CustomToolbar = ({
             onChangeTextSize(Number(event.target.value));
           }}
           style={{ outline: "none", borderRadius: "5px" }}
-          className="w-20 h-6 text-sm text-black border border-solid border-[#707070] mr-5"
+          className="w-20 h-6 text-sm text-black border border-solid border-[#707070] mr-5 cursor-pointer"
         >
+          {Array(60)
+            .fill(1)
+            .map((_, index) => (
+              <option key={index} value={index}>
+                {index}
+              </option>
+            ))}
+          {/* <option value={6}>6</option>
+          <option value={8}>8</option>
           <option>10</option>
           <option>11</option>
           <option>12</option>
@@ -62,7 +71,7 @@ export const CustomToolbar = ({
           <option>17</option>
           <option>18</option>
           <option>19</option>
-          <option>20</option>
+          <option>20</option> */}
         </select>
 
         <button

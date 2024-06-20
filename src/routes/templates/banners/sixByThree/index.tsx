@@ -8,6 +8,7 @@ import { setSelectedTemplateData } from "../../../../redux/slices/selectedTempla
 
 import BannerSixByThreeOne from "../../../../components/banners/sixByThree/cardOne/front";
 import BannerSixByThreeTwo from "../../../../components/banners/sixByThree/cardTwo/front";
+import BannerSixByThreeLast from "../../../../components/banners/sixByThree/cardThree/front";
 import { RadioButton } from "../../../../components/radioButton";
 import { CardOptionWrapper } from "../../../../components/cardOptionWarpper";
 import { Button } from "../../../../components/button";
@@ -15,6 +16,8 @@ import { Button } from "../../../../components/button";
 import { IHorizontalCard } from "../../../../types/horizontalCards";
 
 import { selectCardSchema } from "../../../../schema";
+import { toaster } from "../../../../utils/toaster";
+import { getErrorMessage } from "../../../../utils/errorHandler";
 
 export const SixByThreeBanners = ({
   onClickBack,
@@ -29,8 +32,7 @@ export const SixByThreeBanners = ({
     card1: selectedCard.path === "components/banners/sixByThree/cardOne/front",
     card2: selectedCard.path === "components/banners/sixByThree/cardTwo/front",
     card3:
-      selectedCard.path ===
-      "components/businessCards/horizontal/cardThree/front",
+      selectedCard.path === "components/banners/sixByThree/cardThree/front",
   });
 
   const foundedTemplatesData = useMemo(() => {
@@ -63,12 +65,12 @@ export const SixByThreeBanners = ({
         ? foundedTemplatesData.template2
         : foundedTemplatesData.template3;
       if (selectedData)
-        dispatch(setSelectedTemplateData({ ...selectedData, sku: "101HC005" }));
+        dispatch(setSelectedTemplateData({ ...selectedData, sku: "106B6301" }));
       if (onClickNext) {
         onClickNext();
       }
     } catch (e) {
-      console.log("Error", e);
+      toaster(getErrorMessage(e), "error");
     }
   };
 
@@ -77,13 +79,13 @@ export const SixByThreeBanners = ({
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex flex-col items-center gap-4 pb-8">
       <h2 className="text-4xl font-extrabold">Select one template</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col w-full justify-center"
       >
-        <div className="flex md:flex-row flex-col w-full justify-center py-5 px-5 gap-4">
+        <div className="flex md:flex-row flex-wrap flex-col w-full justify-center py-5 px-5 gap-4">
           {foundedTemplatesData.template1 && (
             <RadioButton
               Component={
@@ -132,6 +134,33 @@ export const SixByThreeBanners = ({
                   card1: false,
                   card2: true,
                   card3: false,
+                }));
+              }}
+            />
+          )}
+
+          {foundedTemplatesData.template3 && (
+            <RadioButton
+              Component={
+                <CardOptionWrapper selected={selected.card3}>
+                  <BannerSixByThreeLast
+                    text={foundedTemplatesData.template3}
+                    editable={false}
+                  />
+                </CardOptionWrapper>
+              }
+              register={register("selectedCard")}
+              value="components/banners/sixByThree/cardThree/front"
+              attributes={{
+                defaultChecked:
+                  selectedCard.path ===
+                  "components/banners/sixByThree/cardThree/front",
+              }}
+              onChange={() => {
+                setSelected(() => ({
+                  card1: false,
+                  card2: false,
+                  card3: true,
                 }));
               }}
             />

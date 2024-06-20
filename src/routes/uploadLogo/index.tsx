@@ -7,9 +7,14 @@ import { useUserSessionMutation } from "../../services/session";
 import { useUploadLogoMutation } from "../../services/general";
 import { Button } from "../../components/button";
 
-import { successToast } from "../../utils/toaster";
+import { toaster } from "../../utils/toaster";
 // import { setTemplateData } from "../../redux/slices/templateData";
 import { setSelectedTemplateData } from "../../redux/slices/selectedTemplate";
+import { getErrorMessage } from "../../utils/errorHandler";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { IUploadLogo } from "../../types/uploadLogo";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { uploadLogoSchema } from "../../schema";
 
 const UploadLogo = ({ onClickNext }: ICommonProps) => {
   const dispatch = useAppDispatch();
@@ -19,17 +24,41 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
   // console.log("userCard----------->", userCard);
 
   const [userSession] = useUserSessionMutation();
-  const [uploadLogo, { error }] = useUploadLogoMutation();
-
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [uploadLogo, { isLoading: isUploadingLogo }] = useUploadLogoMutation();
   const [sessionIdLocal, setSessionIdLocal] = useState<string>("");
-
   const [preview, setPreview] = useState("");
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IUploadLogo>(
+    userCard.logo
+      ? {}
+      : {
+          resolver: yupResolver(uploadLogoSchema),
+        }
+  );
+
   useEffect(() => {
-    getSessionToken();
+    // getSessionToken();
+    (async () => {
+      try {
+        const response = await userSession().unwrap();
+        const userCard = {
+          sessionId: response.content.sessionId,
+        };
+        dispatch(
+          setSelectedTemplateData({
+            sessionId: response.content.sessionId,
+          })
+        );
+        setSessionIdLocal(response.content.sessionId ?? "");
+        dispatch(setUserCardInfo(userCard));
+      } catch (e) {
+        toaster(getErrorMessage(e), "error");
+      }
+    })();
     const params = new URLSearchParams(window.location.search);
     dispatch(
       setSelectedTemplateData({
@@ -38,85 +67,16 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
         variantId: params.get("variantId") || "",
       })
     );
-    // cleatAllStates();
-  }, []);
-
-  useEffect(() => {
-    if (selectedFile instanceof File) {
-      const reader = new FileReader();
-      reader.readAsDataURL(selectedFile);
-      reader.onload = () => {
-        setPreview(reader.result as string);
-      };
-    }
-  }, [selectedFile]);
-
-  // const cleatAllStates = () => {
-  //   const userCard = {
-  //     companyName: "",
-  //     email: "",
-  //     website: "",
-  //     clientInitials: "",
-  //     serviceName: "",
-  //     serviceNameArray: [],
-  //     targetAudience: "",
-  //     targetAudienceArray: [],
-  //     aboutCompany: "",
-  //     goals: "",
-  //     sessionId: "",
-  //     logo: "",
-  //     colors: [],
-  //     name: "",
-  //     address: "",
-  //     designation: "",
-  //     phoneNumber: "",
-  //     showHeaderAndStepper: true,
-  //   };
-  //   dispatch(setUserCardInfo(userCard));
-  // };
-
-  const getSessionToken = () => {
-    // let data = {};
-    userSession({}).then((result) => {
-      console.log("result?.data?.content----->", result?.data?.content);
-      if (result) {
-        const userCard = {
-          sessionId: result?.data?.content?.sessionId,
-        };
-        dispatch(
-          setSelectedTemplateData({
-            sessionId: result?.data?.content?.sessionId,
-          })
-        );
-        setSessionIdLocal(result?.data?.content?.sessionId ?? "");
-        dispatch(setUserCardInfo(userCard));
-      } else {
-        console.log("error getting session Token  ----->", error);
-      }
-    });
-  };
+  }, [dispatch, userSession]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!event.target.files) return;
-    const file = event.target.files[0];
-    if (
-      file &&
-      (file.type === "image/png" ||
-        file.type === "image/jpeg" ||
-        file.type === "image/jpg")
-      // || file.type === "image/svg+xml"
-    ) {
-      if (file.size > 10 * 1024 * 1024) {
-        setErrorMessage("File size must be less than 10 MB");
-        setSelectedFile(null);
-        return;
-      }
-      setSelectedFile(file);
-      setErrorMessage("");
-    } else {
-      if (selectedFile) return;
-      setErrorMessage("Please select a valid image file (png, jpg, jpeg, svg)");
-      setSelectedFile(null);
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -124,53 +84,48 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
     (document.getElementById("fileInput") as HTMLInputElement).click();
   };
 
-  const handleContinue = () => {
-    if (userCard?.logo && !selectedFile) {
-      onClickNext?.();
-    }
-    if (selectedFile) {
-      setLoading(true);
+  const handleContinue: SubmitHandler<IUploadLogo> = async (data) => {
+    if (userCard.logo) return onClickNext?.();
+    try {
       const formData = new FormData();
       formData.append("sessionId", sessionIdLocal);
-      formData.append("logoAttachment", selectedFile);
+      formData.append(
+        "logoAttachment",
+        data.logoAttachment ? data.logoAttachment[0] : ""
+      );
 
-      uploadLogo(formData).then((result) => {
-        console.log("result?.data------>", result?.data);
-        if (result?.data) {
-          const userCard = {
-            logo: result?.data?.content?.logoUrl,
-            colors: result?.data?.colors,
-          };
-          dispatch(
-            setSelectedTemplateData({
-              templateAttributes: {
-                ...templateData.templateAttributes,
-                logo: {
-                  ...templateData.templateAttributes.logo,
-                  url: result?.data?.content?.logoUrl,
-                },
-              },
-            })
-          );
-          dispatch(setUserCardInfo(userCard));
-          successToast("Logo uploaded successfully");
-          setLoading(false);
-          setTimeout(() => {
-            onClickNext?.();
-          }, 2500);
-        } else {
-          setLoading(false);
-          console.log("error----->", error);
-          setErrorMessage("Something went wrong");
-        }
-      });
-    } else {
-      setErrorMessage("Logo is required");
+      const response = await uploadLogo(formData).unwrap();
+      const userCard = {
+        logo: response.content?.logoUrl,
+        colors: response.colors,
+      };
+      dispatch(
+        setSelectedTemplateData({
+          templateAttributes: {
+            ...templateData.templateAttributes,
+            logo: {
+              ...templateData.templateAttributes.logo,
+              url: response.content.logoUrl,
+            },
+          },
+        })
+      );
+      dispatch(setUserCardInfo(userCard));
+      toaster(response.message, "success");
+      // setLoading(false);
+      setTimeout(() => {
+        onClickNext?.();
+      }, 1500);
+    } catch (e) {
+      toaster(getErrorMessage(e), "success");
     }
   };
 
   return (
-    <div className="max-w-470px mx-auto flex items-center flex-col h-screen font-sans">
+    <form
+      onSubmit={handleSubmit(handleContinue)}
+      className=" mx-auto flex items-center flex-col h-screen font-sans"
+    >
       <h2 className="text-center text-4xl my-8 font-extrabold text-[#282828]">
         Upload your logo
       </h2>
@@ -179,11 +134,16 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
           <input
             type="file"
             id="fileInput"
-            onChange={handleFileChange}
+            {...register("logoAttachment", {
+              onChange: (event) => {
+                handleFileChange(event);
+              },
+            })}
+            // onChange={handleFileChange}
             style={{ display: "none" }}
           />
           <div className="flex flex-col items-center">
-            {selectedFile ? (
+            {preview ? (
               <img
                 className="object-contain cursor-pointer"
                 src={preview}
@@ -216,35 +176,29 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
                 </h4>
               </>
             )}
-            <h4 className="mt-5 text-20px text-gray-600  font-semibold ">
+            {/* <h4 className="mt-5 text-20px text-gray-600  font-semibold ">
               {selectedFile ? selectedFile.name : ""}
-            </h4>
+            </h4> */}
           </div>
         </div>
         <h4 className="mt-6 text-[14px] font-semibold font-weight-[600] text-[#444444] px-20 pb-10">
           Maximum resolution 300 DPI and size must be less than 10 MB
         </h4>
 
-        {errorMessage && <p className="text-red-500 mb-3">{errorMessage}</p>}
-
-        <input
-          id="fileInput"
-          type="file"
-          style={{ display: "none" }}
-          onChange={handleFileChange}
-        />
+        {errors.logoAttachment && (
+          <p className="text-red-500 mb-3">{errors.logoAttachment.message}</p>
+        )}
       </div>
 
       <div className="mt-10 mb-10 flex gap-10 justify-center">
         <Button
           label="Continue"
           varient="primary"
-          isLoading={loading}
-          attributes={{ onClick: handleContinue, className: "!max-w-max" }}
+          isLoading={isUploadingLogo}
+          attributes={{ type: "submit", className: "!max-w-max" }}
         />
-        {/* <CustomButton isLoading={true}/> */}
       </div>
-    </div>
+    </form>
   );
 };
 

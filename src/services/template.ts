@@ -1,4 +1,5 @@
 import { ICanvasCardProps, ITemplateAttributes } from "../types/card";
+import { IUserCard } from "../types/user";
 import baseApi from "./baseApi";
 
 type TemplateAttributes = {
@@ -19,6 +20,11 @@ interface ITemplateResponse {
   primaryColor: string;
   secondaryColor: string;
   templateAttributes: ITemplateAttributes;
+}
+
+interface IColorSuggestions {
+  primaryColor: [string];
+  secondaryColor: [string];
 }
 
 const templateAPI = baseApi.injectEndpoints({
@@ -128,18 +134,31 @@ const templateAPI = baseApi.injectEndpoints({
         return Promise.reject("Template not found");
       },
     }),
-    getVariations: builder.mutation<any, ICanvasCardProps>({
+    getVariations: builder.mutation<
+      IResponse<IColorSuggestions>,
+      { jsonInput: ICanvasCardProps; companyLogoColorsList: string[] }
+    >({
       query: (body) => ({
         url: "/marketing/process-template-attributes",
         method: "POST",
         body: body,
       }),
-      transformResponse: (res) => {
-        console.log(res);
-        return Promise.resolve(res);
-      },
+    }),
+    getDescription: builder.mutation<
+      IResponse<{ description: string }>,
+      Partial<IUserCard>
+    >({
+      query: (body) => ({
+        url: "/marketing/content",
+        method: "POST",
+        body: body,
+      }),
     }),
   }),
 });
 
-export const { useGetTemplateQuery, useGetVariationsMutation } = templateAPI;
+export const {
+  useGetTemplateQuery,
+  useGetVariationsMutation,
+  useGetDescriptionMutation,
+} = templateAPI;

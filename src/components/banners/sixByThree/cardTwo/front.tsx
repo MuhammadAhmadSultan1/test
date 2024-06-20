@@ -2,7 +2,7 @@ import * as Konva from "react-konva";
 
 import { useGetCardSvgs } from "./svg/useGetCardSvgs";
 
-import BannerIcon from "../../../../assets/logo.png";
+// import BannerIcon from "../../../../assets/logo.png";
 import { TCanvasCardProps } from "../../../../types/card";
 import CustomImage from "../../../customImage";
 
@@ -18,8 +18,8 @@ export default function BannerSixByThreeTwo(props: TCanvasCardProps) {
     secondSvg,
     rightLastSvg,
   } = useGetCardSvgs({
-    primary,
-    secondary,
+    primary: primary || text.primaryColor,
+    secondary: secondary || text.secondaryColor,
   });
 
   return (
@@ -31,6 +31,13 @@ export default function BannerSixByThreeTwo(props: TCanvasCardProps) {
       id="canvas"
     >
       <Konva.Layer imageSmoothingEnabled>
+        <CustomImage
+          height={55}
+          width={99}
+          x={453}
+          y={20}
+          url={text.templateAttributes.logo.url}
+        />
         <Konva.Group x={25} y={25}>
           <Konva.Text
             ref={
@@ -39,15 +46,20 @@ export default function BannerSixByThreeTwo(props: TCanvasCardProps) {
                 : undefined
             }
             text={text.templateAttributes.name.text}
+            // text="CREATIVE MARKETING"
             x={0}
             y={0}
             align="top"
             fontSize={text.templateAttributes.name.fontSize}
+            // fontSize={32}
             fill={"#323232"}
-            width={195}
-            height={76}
+            width={184}
+            height={74}
+            fontFamily="Roboto"
             lineHeight={text.templateAttributes.name.lineHeight}
             fontStyle={text.templateAttributes.name.fontStyle}
+            // lineHeight={1}
+            // fontStyle="bold"
             textDecoration={text.templateAttributes.name.textDecoration}
             onDblClick={() => {
               if (
@@ -61,8 +73,6 @@ export default function BannerSixByThreeTwo(props: TCanvasCardProps) {
               }
             }}
           />
-
-          <CustomImage height={55} width={99} x={430} y={0} url={BannerIcon} />
         </Konva.Group>
 
         <Konva.Group x={25} y={110}>
@@ -73,14 +83,18 @@ export default function BannerSixByThreeTwo(props: TCanvasCardProps) {
                 : undefined
             }
             text={text.templateAttributes.description.text}
+            // text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,"
             x={0}
             y={0}
             align="top"
             fontSize={text.templateAttributes.description.fontSize}
+            // fontSize={16}
             fill={"#323232"}
             width={358}
             height={76}
+            fontFamily="Roboto"
             lineHeight={text.templateAttributes.description.lineHeight}
+            // lineHeight={1.1}
             fontStyle={text.templateAttributes.description.fontStyle}
             textDecoration={text.templateAttributes.description.textDecoration}
             onDblClick={() => {

@@ -5,11 +5,19 @@ export const companyDetailsSchema = yup.object().shape({
 });
 
 export const emailSchema = yup.object().shape({
-  email: yup.string().trim().required("Email is required").email("Invalid email format"),
+  email: yup
+    .string()
+    .trim()
+    .required("Email is required")
+    .email("Invalid email format"),
 });
 
 export const websiteSchema = yup.object().shape({
-  website: yup.string().trim().url("Please enter a valid URL").required("Website is required")
+  website: yup
+    .string()
+    .trim()
+    .url("Please enter a valid URL")
+    .required("Website is required"),
 });
 
 export const clientNameSchema = yup.object().shape({
@@ -62,4 +70,31 @@ export const selectCardSchema = yup.object().shape({
 
 export const selectColorVariationSchema = yup.object().shape({
   selectedVariation: yup.string().required("Please select one template").trim(),
+});
+
+export const uploadLogoSchema = yup.object().shape({
+  logoAttachment: yup
+    .mixed<FileList>()
+    .test("required", "Logo is required", (file) => {
+      console.log(file);
+      if (!file || !file[0]) {
+        return false;
+      }
+      return true;
+    })
+    .test(
+      "type",
+      "Please select a valid image file (png, jpg, jpeg)",
+      (file) => {
+        if (file && file[0]) {
+          const supportedFileTypes = ["image/jpeg", "image/png", "image/jpg"];
+          return supportedFileTypes.includes(file[0].type);
+        }
+      }
+    )
+    .test("fileSize", "File size must be less than 10 MB", (file) => {
+      if (file && file[0]) {
+        return file[0].size <= 10000000;
+      }
+    }),
 });
