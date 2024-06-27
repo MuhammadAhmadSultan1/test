@@ -1,0 +1,1696 @@
+{
+  "Banners": {
+    "Banner1": {
+      "logo": {
+        "color": "#590595",
+        "width": 77,
+        "height": 42,
+        "x": 478,
+        "y": 20
+      },
+      "name": {
+        "text": "CREATIVE MARKETING AGENCY",
+        "width": 230,
+        "height": 145,
+        "x": 22,
+        "y": 74,
+        "fontSize": 40,
+        "fontWeight": 900,
+        "lineHeight": 1,
+        "fontStyle": "bold",
+        "textDecoration": "empty string"
+      },
+      "designation": {
+        "text": "Project Manager",
+        "width": 70,
+        "height": 10,
+        "x": 470,
+        "y": 20,
+        "fontSize": 10,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "phone": {
+        "text": "+92 123 456 7890",
+        "width": 70,
+        "height": 10,
+        "x": 58,
+        "y": 255,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "website": {
+        "text": "www.website.com",
+        "width": 70,
+        "height": 10,
+        "x": 314,
+        "y": 255,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "email": {
+        "text": "test@gmail.com",
+        "width": 70,
+        "height": 10,
+        "x": 189,
+        "y": 255,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "address": {
+        "text": "X park view, DHA Phase 8 Lahore Pakistan",
+        "width": 91,
+        "height": 20,
+        "x": 446,
+        "y": 257,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "description": {
+        "text": "Step up your eCommerce marketing game with Push Brands! Enhance your brand appeal and connect with over 500 innovative content creators to produce influential User-Generated Content (UGC). Simplify the process with our all-in-one platform that facilitates quick job postings, easy creator selection, and efficient content delivery.",
+        "width": 239,
+        "height": 95,
+        "x": 315,
+        "y": 101,
+        "fontSize": 16,
+        "fontWeight": 400,
+        "lineHeight": 1.1,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      }
+    },
+
+    "Banner2": {
+      "logo": {
+        "color": "#590595",
+        "width": 99,
+        "height": 55,
+        "x": 453,
+        "y": 16
+      },
+      "name": {
+        "text": "CREATIVE MARKETING",
+        "width": 184,
+        "height": 74,
+        "x": 24,
+        "y": 16,
+        "fontSize": 32,
+        "fontWeight": 900,
+        "lineHeight": 1,
+        "fontStyle": "bold",
+        "textDecoration": "empty string"
+      },
+      "designation": {
+        "text": "Project Manager",
+        "width": 70,
+        "height": 10,
+        "x": 470,
+        "y": 20,
+        "fontSize": 10,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "phone": {
+        "text": "+92 123 456 7890",
+        "width": 70,
+        "height": 10,
+        "x": 65,
+        "y": 251,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "website": {
+        "text": "www.website.com",
+        "width": 70,
+        "height": 10,
+        "x": 305,
+        "y": 251,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "email": {
+        "text": "test@gmail.com",
+        "width": 70,
+        "height": 10,
+        "x": 185,
+        "y": 251,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "address": {
+        "text": "X park view, DHA Phase 8 Lahore Pakistan",
+        "width": 91,
+        "height": 20,
+        "x": 415,
+        "y": 251,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "description": {
+        "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,",
+        "width": 358,
+        "height": 76,
+        "x": 24,
+        "y": 100,
+        "fontSize": 16,
+        "fontWeight": 400,
+        "lineHeight": 1.1,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      }
+    },
+
+    "Banner3": {
+      "logo": {
+        "color": "#590595",
+        "width": 99,
+        "height": 55,
+        "x": 453,
+        "y": 16
+      },
+      "name": {
+        "text": "CREATIVE MARKETING",
+        "width": 323,
+        "height": 94,
+        "x": 41,
+        "y": 33,
+        "fontSize": 40,
+        "fontWeight": 900,
+        "lineHeight": 1,
+        "fontStyle": "bold",
+        "textDecoration": "empty string"
+      },
+      "designation": {
+        "text": "Project Manager",
+        "width": 70,
+        "height": 10,
+        "x": 470,
+        "y": 20,
+        "fontSize": 10,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "phone": {
+        "text": "+92 123 456 7890",
+        "width": 70,
+        "height": 10,
+        "x": 65,
+        "y": 251,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "website": {
+        "text": "www.website.com",
+        "width": 70,
+        "height": 10,
+        "x": 305,
+        "y": 251,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "email": {
+        "text": "test@gmail.com",
+        "width": 70,
+        "height": 10,
+        "x": 185,
+        "y": 251,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "address": {
+        "text": "X park view, DHA Phase 8 Lahore Pakistan",
+        "width": 91,
+        "height": 20,
+        "x": 415,
+        "y": 251,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "description": {
+        "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,",
+        "width": 345,
+        "height": 42,
+        "x": 236,
+        "y": 222,
+        "fontSize": 10,
+        "fontWeight": 400,
+        "lineHeight": 1.2,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      }
+    },
+    "EightByThree": {
+      "Banner1": {
+        "logo": {
+          "color": "#590595",
+          "width": 77,
+          "height": 42,
+          "x": 597,
+          "y": 103
+        },
+        "name": {
+          "text": "CREATIVE MARKETING AGENCY",
+          "width": 323,
+          "height": 94,
+          "x": 25,
+          "y": 20,
+          "fontSize": 40,
+          "fontWeight": 900,
+          "lineHeight": 1.1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 70,
+          "height": 10,
+          "x": 470,
+          "y": 20,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 70,
+          "height": 10,
+          "x": 43,
+          "y": 253,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 70,
+          "height": 10,
+          "x": 226,
+          "y": 253,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 70,
+          "height": 10,
+          "x": 139,
+          "y": 253,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 91,
+          "height": 20,
+          "x": 322,
+          "y": 253,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "Step up your eCommerce marketing game with Push Brands! Enhance your brand appeal and connect with over 500 innovative content creators to produce influential User-Generated Content (UGC). Simplify the process with our all-in-one platform that facilitates quick job postings, easy creator selection, and efficient content delivery.",
+          "width": 395,
+          "height": 95,
+          "x": 25,
+          "y": 122,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
+      },
+      "Banner2": {
+        "logo": {
+          "color": "#590595",
+          "width": 77,
+          "height": 42,
+          "x": 20,
+          "y": 30
+        },
+        "name": {
+          "text": "CREATIVE MARKETING AGENCY",
+          "width": 323,
+          "height": 94,
+          "x": 354,
+          "y": 72,
+          "fontSize": 48,
+          "fontWeight": 900,
+          "lineHeight": 1.1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 70,
+          "height": 10,
+          "x": 470,
+          "y": 20,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 70,
+          "height": 10,
+          "x": 40,
+          "y": 251,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 70,
+          "height": 10,
+          "x": 225,
+          "y": 251,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 70,
+          "height": 10,
+          "x": 135,
+          "y": 251,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 91,
+          "height": 20,
+          "x": 335,
+          "y": 251,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "Step up your eCommerce marketing game with Push Brands! Enhance your brand appeal and connect with over 500 innovative content creators to produce influential User-Generated Content (UGC). Simplify the process with our all-in-one platform that facilitates quick job postings, easy creator selection, and efficient content delivery.",
+          "width": 283,
+          "height": 76,
+          "x": 19,
+          "y": 190,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
+      },
+      "Banner3": {
+        "logo": {
+          "color": "#590595",
+          "width": 77,
+          "height": 42,
+          "x": 666,
+          "y": 25
+        },
+        "name": {
+          "text": "CREATIVE MARKETING AGENCY",
+          "width": 258,
+          "height": 76,
+          "x": 23,
+          "y": 64,
+          "fontSize": 32,
+          "fontWeight": 900,
+          "lineHeight": 1.1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 70,
+          "height": 10,
+          "x": 470,
+          "y": 20,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 129,
+          "height": 19,
+          "x": 580,
+          "y": 85,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 129,
+          "height": 19,
+          "x": 580,
+          "y": 139,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 129,
+          "height": 19,
+          "x": 580,
+          "y": 112,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 169,
+          "height": 38,
+          "x": 580,
+          "y": 169,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "Step up your eCommerce marketing game with Push Brands! Enhance your brand appeal and connect with over 500 innovative content creators to produce influential User-Generated Content (UGC). Simplify the process with our all-in-one platform that facilitates quick job postings, easy creator selection, and efficient content delivery.",
+          "width": 303,
+          "height": 76,
+          "x": 23,
+          "y": 149,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
+      }
+    },
+    "EightByFour": {
+      "Banner1": {
+        "logo": {
+          "color": "#590595",
+          "width": 209,
+          "height": 117,
+          "x": 499,
+          "y": 133
+        },
+        "name": {
+          "text": "CREATIVE MARKETING AGENCY",
+          "width": 258,
+          "height": 76,
+          "x": 36,
+          "y": 112,
+          "fontSize": 32,
+          "fontWeight": 900,
+          "lineHeight": 1.1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 70,
+          "height": 10,
+          "x": 470,
+          "y": 20,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 70,
+          "height": 10,
+          "x": 655,
+          "y": 105,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 70,
+          "height": 10,
+          "x": 655,
+          "y": 155,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 70,
+          "height": 10,
+          "x": 655,
+          "y": 130,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 91,
+          "height": 20,
+          "x": 655,
+          "y": 183,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "Step up your eCommerce marketing game with Push Brands! Enhance your brand appeal and connect with over 500 innovative content creators to produce influential User-Generated Content (UGC). Simplify the process with our all-in-one platform that facilitates quick job postings, easy creator selection, and efficient content delivery.",
+          "width": 303,
+          "height": 76,
+          "x": 36,
+          "y": 196,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
+      },
+      "Banner2": {
+        "logo": {
+          "color": "#590595",
+          "width": 118,
+          "height": 66,
+          "x": 632,
+          "y": 28
+        },
+        "name": {
+          "text": "CREATIVE MARKETING AGENCY",
+          "width": 258,
+          "height": 76,
+          "x": 36,
+          "y": 112,
+          "fontSize": 32,
+          "fontWeight": 900,
+          "lineHeight": 1.1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 70,
+          "height": 10,
+          "x": 470,
+          "y": 20,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 70,
+          "height": 10,
+          "x": 655,
+          "y": 105,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 70,
+          "height": 10,
+          "x": 655,
+          "y": 155,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 70,
+          "height": 10,
+          "x": 655,
+          "y": 130,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 91,
+          "height": 20,
+          "x": 655,
+          "y": 183,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "Step up your eCommerce marketing game with Push Brands! Enhance your brand appeal and connect with over 500 innovative content creators to produce influential User-Generated Content (UGC). Simplify the process with our all-in-one platform that facilitates quick job postings, easy creator selection, and efficient content delivery.",
+          "width": 303,
+          "height": 76,
+          "x": 36,
+          "y": 196,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
+      },
+      "Banner3": {
+        "logo": {
+          "color": "#590595",
+          "width": 115,
+          "height": 64,
+          "x": 36,
+          "y": 24
+        },
+        "name": {
+          "text": "CREATIVE MARKETING AGENCY",
+          "width": 258,
+          "height": 76,
+          "x": 36,
+          "y": 105,
+          "fontSize": 32,
+          "fontWeight": 900,
+          "lineHeight": 1.1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 70,
+          "height": 10,
+          "x": 470,
+          "y": 20,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 70,
+          "height": 10,
+          "x": 655,
+          "y": 105,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 70,
+          "height": 10,
+          "x": 655,
+          "y": 155,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 70,
+          "height": 10,
+          "x": 655,
+          "y": 130,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 91,
+          "height": 20,
+          "x": 655,
+          "y": 183,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "Step up your eCommerce marketing game with Push Brands! Enhance your brand appeal and connect with over 500 innovative content creators to produce influential User-Generated Content (UGC). Simplify the process with our all-in-one platform that facilitates quick job postings, easy creator selection, and efficient content delivery.",
+          "width": 303,
+          "height": 76,
+          "x": 36,
+          "y": 189,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
+      }
+    },
+    "TenByFour": {
+      "Banner1": {
+        "logo": {
+          "color": "#590595",
+          "width": 97,
+          "height": 54,
+          "x": 33,
+          "y": 249
+        },
+        "name": {
+          "text": "CREATIVE MARKETING AGENCY",
+          "width": 480,
+          "height": 38,
+          "x": 310,
+          "y": 109,
+          "fontSize": 32,
+          "fontWeight": 900,
+          "lineHeight": 1.1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 70,
+          "height": 10,
+          "x": 470,
+          "y": 20,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 70,
+          "height": 10,
+          "x": 655,
+          "y": 105,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 70,
+          "height": 10,
+          "x": 655,
+          "y": 155,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 70,
+          "height": 10,
+          "x": 655,
+          "y": 130,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 91,
+          "height": 20,
+          "x": 655,
+          "y": 183,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "Step up your eCommerce marketing game with Push Brands! Enhance your brand appeal and connect with over 500 innovative content creators to produce influential User-Generated Content (UGC). Simplify the process with our all-in-one platform that facilitates quick job postings, easy creator selection, and efficient content delivery.",
+          "width": 599,
+          "height": 76,
+          "x": 310,
+          "y": 158,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
+      },
+      "Banner2": {
+        "logo": {
+          "color": "#590595",
+          "width": 194,
+          "height": 108,
+          "x": 55,
+          "y": 144
+        },
+        "name": {
+          "text": "CREATIVE MARKETING AGENCY",
+          "width": 251,
+          "height": 76,
+          "x": 674,
+          "y": 33,
+          "fontSize": 32,
+          "fontWeight": 900,
+          "lineHeight": 1.1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 70,
+          "height": 10,
+          "x": 470,
+          "y": 20,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 129,
+          "height": 19,
+          "x": 772,
+          "y": 285,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 129,
+          "height": 19,
+          "x": 770,
+          "y": 338,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 129,
+          "height": 19,
+          "x": 772,
+          "y": 310,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 91,
+          "height": 20,
+          "x": 655,
+          "y": 183,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "Step up your eCommerce marketing game with Push Brands! Enhance your brand appeal and connect with over 500 innovative content creators to produce influential User-Generated Content (UGC). Simplify the process with our all-in-one platform that facilitates quick job postings, easy creator selection, and efficient content delivery.",
+          "width": 335,
+          "height": 95,
+          "x": 590,
+          "y": 120,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
+      },
+      "Banner3": {
+        "logo": {
+          "color": "#590595",
+          "width": 118,
+          "height": 66,
+          "x": 33,
+          "y": 22
+        },
+        "name": {
+          "text": "CREATIVE MARKETING AGENCY",
+          "width": 719,
+          "height": 56,
+          "x": 121,
+          "y": 125,
+          "fontSize": 48,
+          "fontWeight": 900,
+          "lineHeight": 1.1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 70,
+          "height": 10,
+          "x": 470,
+          "y": 20,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 70,
+          "height": 10,
+          "x": 423,
+          "y": 349,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 100,
+          "height": 10,
+          "x": 695,
+          "y": 348,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 70,
+          "height": 10,
+          "x": 562,
+          "y": 351,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 91,
+          "height": 20,
+          "x": 835,
+          "y": 349,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "Step up your eCommerce marketing game with Push Brands! Enhance your brand appeal and connect with over 500 innovative content creators to produce influential User-Generated Content (UGC). Simplify the process with our all-in-one platform that facilitates quick job postings, easy creator selection, and efficient content delivery.",
+          "width": 883,
+          "height": 57,
+          "x": 39,
+          "y": 200,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
+      }
+    }
+  },
+
+  "horizontalCards": {
+    "card1": {
+      "logo": {
+        "color": "#590595",
+        "width": 89,
+        "height": 49,
+        "x": 227,
+        "y": 20
+      },
+      "name": {
+        "text": "Jamie Maclaren",
+        "width": 122,
+        "height": 19,
+        "x": 14,
+        "y": 70,
+        "fontSize": 16,
+        "fontWeight": 600,
+        "lineHeight": 1.2,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "designation": {
+        "text": "Project Manager",
+        "width": 78,
+        "height": 12,
+        "x": 14,
+        "y": 89,
+        "fontSize": 10,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "phone": {
+        "text": "+92 123 456 7890",
+        "width": 70,
+        "height": 10,
+        "x": 40,
+        "y": 130,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "website": {
+        "text": "www.website.com",
+        "width": 70,
+        "height": 10,
+        "x": 152,
+        "y": 130,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "email": {
+        "text": "test@gmail.com",
+        "width": 70,
+        "height": 10,
+        "x": 40,
+        "y": 159,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "address": {
+        "text": "X park view, DHA Phase 8 Lahore Pakistan",
+        "width": 98,
+        "height": 20,
+        "x": 152,
+        "y": 157,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "description": {
+        "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,",
+        "width": 358,
+        "height": 76,
+        "x": 250,
+        "y": 225,
+        "fontSize": 16,
+        "fontWeight": 400,
+        "lineHeight": 1.2,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      }
+    },
+
+    "card2": {
+      "logo": {
+        "color": "#590595",
+        "width": 89,
+        "height": 49,
+        "x": 26,
+        "y": 67
+      },
+      "name": {
+        "text": "Jamie Maclaren",
+        "width": 122,
+        "height": 19,
+        "x": 190,
+        "y": 28,
+        "fontSize": 16,
+        "fontWeight": 600,
+        "lineHeight": 1.2,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "designation": {
+        "text": "Project Manager",
+        "width": 78,
+        "height": 12,
+        "x": 190,
+        "y": 47,
+        "fontSize": 10,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "phone": {
+        "text": "+92 123 456 7890",
+        "width": 70,
+        "height": 10,
+        "x": 190,
+        "y": 103,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "website": {
+        "text": "www.website.com",
+        "width": 70,
+        "height": 10,
+        "x": 190,
+        "y": 117,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "email": {
+        "text": "test@gmail.com",
+        "width": 70,
+        "height": 10,
+        "x": 190,
+        "y": 131,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "address": {
+        "text": "X park view, DHA Phase 8 Lahore Pakistan",
+        "width": 98,
+        "height": 20,
+        "x": 190,
+        "y": 145,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "description": {
+        "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,",
+        "width": 358,
+        "height": 76,
+        "x": 250,
+        "y": 225,
+        "fontSize": 16,
+        "fontWeight": 400,
+        "lineHeight": 1.2,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      }
+    },
+
+    "card3": {
+      "logo": {
+        "color": "#590595",
+        "width": 89,
+        "height": 49,
+        "x": 310,
+        "y": 75
+      },
+      "name": {
+        "text": "Jamie Maclaren",
+        "width": 122,
+        "height": 19,
+        "x": 28,
+        "y": 28,
+        "fontSize": 16,
+        "fontWeight": 600,
+        "lineHeight": 1.2,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "designation": {
+        "text": "Project Manager",
+        "width": 78,
+        "height": 12,
+        "x": 28,
+        "y": 47,
+        "fontSize": 10,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "phone": {
+        "text": "+92 123 456 7890",
+        "width": 70,
+        "height": 10,
+        "x": 28,
+        "y": 91,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "website": {
+        "text": "www.website.com",
+        "width": 70,
+        "height": 10,
+        "x": 28,
+        "y": 109,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "email": {
+        "text": "test@gmail.com",
+        "width": 70,
+        "height": 10,
+        "x": 28,
+        "y": 127,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "address": {
+        "text": "X park view, DHA Phase 8 Lahore Pakistan",
+        "width": 98,
+        "height": 20,
+        "x": 28,
+        "y": 145,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "description": {
+        "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,",
+        "width": 358,
+        "height": 76,
+        "x": 250,
+        "y": 225,
+        "fontSize": 16,
+        "fontWeight": 400,
+        "lineHeight": 1.2,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      }
+    }
+  },
+
+  "verticalCards": {
+    "card1": {
+      "logo": {
+        "color": "#590595",
+        "width": 73,
+        "height": 44,
+        "x": 60,
+        "y": 20
+      },
+      "name": {
+        "text": "Jamie Maclaren",
+        "width": 122,
+        "height": 19,
+        "x": 19,
+        "y": 95,
+        "fontSize": 16,
+        "fontWeight": 600,
+        "lineHeight": 1.2,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "designation": {
+        "text": "Project Manager",
+        "width": 78,
+        "height": 12,
+        "x": 19,
+        "y": 114,
+        "fontSize": 10,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "phone": {
+        "text": "+92 123 456 7890",
+        "width": 70,
+        "height": 10,
+        "x": 60,
+        "y": 167,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "website": {
+        "text": "www.website.com",
+        "width": 70,
+        "height": 10,
+        "x": 60,
+        "y": 219,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "email": {
+        "text": "test@gmail.com",
+        "width": 70,
+        "height": 10,
+        "x": 60,
+        "y": 193,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "address": {
+        "text": "X park view, DHA Phase 8 Lahore Pakistan",
+        "width": 98,
+        "height": 20,
+        "x": 60,
+        "y": 241,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "description": {
+        "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,",
+        "width": 358,
+        "height": 76,
+        "x": 250,
+        "y": 225,
+        "fontSize": 16,
+        "fontWeight": 400,
+        "lineHeight": 1.2,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      }
+    },
+
+    "card2": {
+      "logo": {
+        "color": "#590595",
+        "width": 89,
+        "height": 49,
+        "x": 43,
+        "y": 73
+      },
+      "name": {
+        "text": "Jamie Maclaren",
+        "width": 122,
+        "height": 19,
+        "x": 43,
+        "y": 73,
+        "fontSize": 16,
+        "fontWeight": 600,
+        "lineHeight": 1.2,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "designation": {
+        "text": "Project Manager",
+        "width": 78,
+        "height": 12,
+        "x": 43,
+        "y": 92,
+        "fontSize": 10,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "phone": {
+        "text": "+92 123 456 7890",
+        "width": 70,
+        "height": 10,
+        "x": 41,
+        "y": 190,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "website": {
+        "text": "www.website.com",
+        "width": 70,
+        "height": 10,
+        "x": 41,
+        "y": 242,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "email": {
+        "text": "test@gmail.com",
+        "width": 70,
+        "height": 10,
+        "x": 41,
+        "y": 216,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "address": {
+        "text": "X park view, DHA Phase 8 Lahore Pakistan",
+        "width": 98,
+        "height": 20,
+        "x": 41,
+        "y": 268,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "description": {
+        "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,",
+        "width": 358,
+        "height": 76,
+        "x": 250,
+        "y": 225,
+        "fontSize": 16,
+        "fontWeight": 400,
+        "lineHeight": 1.2,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      }
+    },
+
+    "card3": {
+      "logo": {
+        "color": "#590595",
+        "width": 101,
+        "height": 25,
+        "x": 18,
+        "y": 20
+      },
+      "name": {
+        "text": "Jamie Maclaren",
+        "width": 122,
+        "height": 19,
+        "x": 18,
+        "y": 166,
+        "fontSize": 16,
+        "fontWeight": 600,
+        "lineHeight": 1,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "designation": {
+        "text": "Project Manager",
+        "width": 78,
+        "height": 12,
+        "x": 18,
+        "y": 185,
+        "fontSize": 10,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "phone": {
+        "text": "+92 123 456 7890",
+        "width": 70,
+        "height": 10,
+        "x": 36,
+        "y": 224,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "website": {
+        "text": "www.website.com",
+        "width": 70,
+        "height": 10,
+        "x": 36,
+        "y": 280,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "email": {
+        "text": "test@gmail.com",
+        "width": 70,
+        "height": 10,
+        "x": 36,
+        "y": 262,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 0.8,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "address": {
+        "text": "X park view, DHA Phase 8 Lahore Pakistan",
+        "width": 98,
+        "height": 20,
+        "x": 36,
+        "y": 298,
+        "fontSize": 8,
+        "fontWeight": 400,
+        "lineHeight": 1,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      },
+      "description": {
+        "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,",
+        "width": 358,
+        "height": 76,
+        "x": 250,
+        "y": 225,
+        "fontSize": 16,
+        "fontWeight": 400,
+        "lineHeight": 1.2,
+        "fontStyle": "normal",
+        "textDecoration": "empty string"
+      }
+    }
+  }
+}

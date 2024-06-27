@@ -27,11 +27,11 @@ export default function BannerSixByThreeLast(props: TCanvasCardProps) {
           height={55}
           width={99}
           x={453}
-          y={20}
+          y={16}
           url={text.templateAttributes.logo.url}
         />
 
-        <Konva.Group x={30} y={25}>
+        <Konva.Group x={41} y={33}>
           <Konva.Text
             ref={
               props.editable
@@ -41,7 +41,7 @@ export default function BannerSixByThreeLast(props: TCanvasCardProps) {
             text={text.templateAttributes.name.text}
             // text="LOREM IPSUM IS PLACEHOLDER"
             x={0}
-            y={20}
+            y={0}
             align="top"
             fontSize={text.templateAttributes.name.fontSize}
             // fontSize={40}
@@ -80,16 +80,16 @@ export default function BannerSixByThreeLast(props: TCanvasCardProps) {
             // text={
             //   "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the"
             // }
-            x={250}
-            y={120}
+            x={236}
+            y={117}
             align="center"
             // fontSize={10}
             fontSize={text.templateAttributes.description.fontSize}
             fill={"#fff"}
-            width={320}
+            width={text.templateAttributes.description.width}
             // lineHeight={1.2}
             lineHeight={text.templateAttributes.description.lineHeight}
-            height={42}
+            height={text.templateAttributes.description.height}
             fontFamily="Roboto"
             // fontVariant="condenced"
             fontStyle={text.templateAttributes.description.fontStyle}

@@ -27,8 +27,8 @@ export default function CardComponent(props: TCanvasCardProps) {
         <CustomImage
           height={49}
           width={89}
-          x={225}
-          y={30}
+          x={227}
+          y={20}
           url={text.templateAttributes.logo.url}
         />
         <Konva.Group y={67}>
@@ -40,15 +40,16 @@ export default function CardComponent(props: TCanvasCardProps) {
                 : undefined
             }
             text={text.templateAttributes.name.text}
-            x={15}
-            y={5}
-            align="top"
+            x={14}
+            y={3}
+            // align="top"
             fontSize={text.templateAttributes.name.fontSize}
             fill={"#ffffff"}
-            width={122}
-            height={19}
+            width={text.templateAttributes.name.width}
+            height={text.templateAttributes.name.height}
             fontStyle={text.templateAttributes.name.fontStyle}
             textDecoration={text.templateAttributes.name.textDecoration}
+            fontFamily="Inter"
             onDblClick={() => {
               if (
                 props.editable &&
@@ -68,15 +69,16 @@ export default function CardComponent(props: TCanvasCardProps) {
                 : undefined
             }
             text={text.templateAttributes.designation.text}
-            x={15}
-            y={24}
-            align="top"
+            x={14}
+            y={22}
+            // align="top"
             fontSize={text.templateAttributes.designation.fontSize}
             fill={"#ffffff"}
-            width={78}
-            height={12}
+            width={text.templateAttributes.designation.width}
+            height={text.templateAttributes.designation.height}
             fontStyle={text.templateAttributes.designation.fontStyle}
             textDecoration={text.templateAttributes.designation.textDecoration}
+            fontFamily="Inter"
             onDblClick={() => {
               if (
                 props.editable &&
@@ -104,13 +106,14 @@ export default function CardComponent(props: TCanvasCardProps) {
                 text={text.templateAttributes.phone.text}
                 x={25}
                 y={6}
-                align="top"
+                // align="top"
                 fontSize={text.templateAttributes.phone.fontSize}
                 fill={"#ffffff"}
-                width={70}
-                height={10}
+                width={text.templateAttributes.phone.width}
+                height={text.templateAttributes.phone.height}
                 fontStyle={text.templateAttributes.phone.fontStyle}
                 textDecoration={text.templateAttributes.phone.textDecoration}
+                fontFamily="Inter"
                 onDblClick={() => {
                   if (
                     props.editable &&
@@ -135,13 +138,14 @@ export default function CardComponent(props: TCanvasCardProps) {
                 text={text.templateAttributes.website.text}
                 x={25}
                 y={6}
-                align="top"
+                // align="top"
                 fontSize={text.templateAttributes.website.fontSize}
                 fill={"#ffffff"}
-                width={70}
-                height={10}
+                width={text.templateAttributes.website.width}
+                height={text.templateAttributes.website.height}
                 fontStyle={text.templateAttributes.website.fontStyle}
                 textDecoration={text.templateAttributes.website.textDecoration}
+                fontFamily="Inter"
                 onDblClick={() => {
                   if (
                     props.editable &&
@@ -166,13 +170,14 @@ export default function CardComponent(props: TCanvasCardProps) {
                 text={text.templateAttributes.email.text}
                 x={25}
                 y={6}
-                align="top"
+                // align="top"
                 fontSize={text.templateAttributes.email.fontSize}
                 fill={"#ffffff"}
-                width={70}
-                height={10}
+                width={text.templateAttributes.email.width}
+                height={text.templateAttributes.email.height}
                 fontStyle={text.templateAttributes.email.fontStyle}
                 textDecoration={text.templateAttributes.email.textDecoration}
+                fontFamily="Inter"
                 onDblClick={() => {
                   if (
                     props.editable &&
@@ -195,16 +200,17 @@ export default function CardComponent(props: TCanvasCardProps) {
                     : undefined
                 }
                 text={text.templateAttributes.address.text}
-                width={98}
-                height={20}
+                width={text.templateAttributes.address.width}
+                height={text.templateAttributes.address.height}
                 lineHeight={1.2}
                 x={25}
                 y={5}
-                align="top"
+                // align="top"
                 fontSize={text.templateAttributes.address.fontSize}
                 fill={"#ffffff"}
                 fontStyle={text.templateAttributes.address.fontStyle}
                 textDecoration={text.templateAttributes.address.textDecoration}
+                fontFamily="Inter"
                 onDblClick={() => {
                   if (
                     props.editable &&

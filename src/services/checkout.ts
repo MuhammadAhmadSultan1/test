@@ -10,6 +10,7 @@ interface ICheckout {
   processedImageUrl: string;
   productId: string;
   sessionId: string;
+  fileName: string;
 }
 
 const checkoutApi = baseApi.injectEndpoints({

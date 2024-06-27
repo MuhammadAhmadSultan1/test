@@ -35,10 +35,10 @@ export default function BannerSixByThreeTwo(props: TCanvasCardProps) {
           height={55}
           width={99}
           x={453}
-          y={20}
+          y={16}
           url={text.templateAttributes.logo.url}
         />
-        <Konva.Group x={25} y={25}>
+        <Konva.Group x={24} y={16}>
           <Konva.Text
             ref={
               props.editable
@@ -53,8 +53,8 @@ export default function BannerSixByThreeTwo(props: TCanvasCardProps) {
             fontSize={text.templateAttributes.name.fontSize}
             // fontSize={32}
             fill={"#323232"}
-            width={184}
-            height={74}
+            width={text.templateAttributes.name.width}
+            height={text.templateAttributes.name.height}
             fontFamily="Roboto"
             lineHeight={text.templateAttributes.name.lineHeight}
             fontStyle={text.templateAttributes.name.fontStyle}
@@ -75,7 +75,7 @@ export default function BannerSixByThreeTwo(props: TCanvasCardProps) {
           />
         </Konva.Group>
 
-        <Konva.Group x={25} y={110}>
+        <Konva.Group x={24} y={100}>
           <Konva.Text
             ref={
               props.editable
@@ -90,8 +90,8 @@ export default function BannerSixByThreeTwo(props: TCanvasCardProps) {
             fontSize={text.templateAttributes.description.fontSize}
             // fontSize={16}
             fill={"#323232"}
-            width={358}
-            height={76}
+            width={text.templateAttributes.description.width}
+            height={text.templateAttributes.description.height}
             fontFamily="Roboto"
             lineHeight={text.templateAttributes.description.lineHeight}
             // lineHeight={1.1}

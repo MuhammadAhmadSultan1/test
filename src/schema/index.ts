@@ -16,8 +16,15 @@ export const websiteSchema = yup.object().shape({
   website: yup
     .string()
     .trim()
-    .url("Please enter a valid URL")
-    .required("Website is required"),
+    .required("Website is required")
+    .test("Please enter a valid URL", (value) => {
+      const regex = RegExp(
+        /^(?=(?<http>(?:https?:\/\/){1}(?:www\.)?)?)((?=\k<http>?(?<ipaddr>(?:\d{1,3}\.){3}\d{1,3}(?::\d{1,5})?))\k<http>?\k<ipaddr>(?:\.[\w]{1,9})?|\k<http>(?:[\w]\.?){1,255}\.[\w]{1,9})(?:\/.*)?$/
+      );
+      if (regex.test(value)) return true;
+
+      return false;
+    }),
 });
 
 export const clientNameSchema = yup.object().shape({

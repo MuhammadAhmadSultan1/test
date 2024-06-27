@@ -1,6 +1,6 @@
 import { Suspense, lazy, useEffect, useMemo, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { ICanvasCardProps } from "../../types/card";
+// import { ICanvasCardProps } from "../../types/card";
 import { CustomToolbar } from "../../components/customToolbar";
 import { FONT_STYLE, IRef, TFieldName } from "../../types/common";
 import { Stage } from "konva/lib/Stage";
@@ -21,6 +21,8 @@ import {
 import { resetSelectedCard } from "../../redux/slices/selectedCard";
 import { resetSelectedColorVariation } from "../../redux/slices/selectedColorVariation";
 import { clearUserCardInfo } from "../../redux/slices/userInfo";
+import { useUndoRedo } from "./hooks/useUndoRedo";
+import { TFontStyle, TTextDecoration } from "../../types/card";
 // import { setZoom } from "../../utils/zoom";
 
 export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
@@ -30,7 +32,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
 
   const dispatch = useAppDispatch();
 
-  const [text, setText] = useState<ICanvasCardProps>(templateData);
+  // const [text, setText] = useState<ICanvasCardProps>(templateData);
   const [currentZoom, setCurrentZoom] = useState(0);
   const [actualSize, setActualSize] = useState({ width: 0, height: 0 });
   const [isPreviewEnabled, setIsPreviewEnabled] = useState(false);
@@ -49,6 +51,15 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
 
   const [createVarient] = useCraeteVariantMutation();
 
+  const {
+    currentState,
+    currentStep,
+    stateHistoryLength,
+    onRedo,
+    onUndo,
+    onStateChange,
+  } = useUndoRedo(templateData);
+
   useEffect(() => {
     if (stageRef && stageRef.current)
       setActualSize({
@@ -56,75 +67,6 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
         height: stageRef.current.height() - stageRef.current.height() * 0.1,
       });
   }, [stageRef, stageRef.current]);
-
-  // const actualSize = useMemo(() => {
-
-  // }, [stageRef.current]);
-
-  // const testCardData: ICanvasCardProps = {
-  //   logo: {
-  //     url: "",
-  //     width: 20,
-  //     height: 10,
-  //   },
-  //   name: {
-  //     text: "Jamie Maclaren",
-  //     color: "#ffffff",
-  //     fontSize: 16,
-  //     fontWeight: 600,
-  //     lineHeight: 1.2,
-  //     fontStyle: "normal",
-  //   },
-  //   designation: {
-  //     text: "Project Manager",
-  //     color: "#ffffff",
-  //     fontSize: 10,
-  //     fontWeight: 400,
-  //     lineHeight: 0.8,
-  //     fontStyle: "normal",
-  //   },
-  //   phone: {
-  //     text: "+92 123 456 7890",
-  //     color: "#ffffff",
-  //     fontSize: 8,
-  //     fontWeight: 400,
-  //     lineHeight: 0.8,
-  //     fontStyle: "normal",
-  //   },
-  //   website: {
-  //     text: "www.website.com",
-  //     color: "#ffffff",
-  //     fontSize: 8,
-  //     fontWeight: 400,
-  //     lineHeight: 0.8,
-  //     fontStyle: "normal",
-  //   },
-  //   email: {
-  //     text: "test@gmail.com",
-  //     color: "#ffffff",
-  //     fontSize: 8,
-  //     fontWeight: 400,
-  //     lineHeight: 0.8,
-  //     fontStyle: "normal",
-  //   },
-  //   address: {
-  //     text: "X park view, DHA Phase 8 Lahore Pakistan",
-  //     color: "#ffffff",
-  //     fontSize: 8,
-  //     fontWeight: 400,
-  //     lineHeight: 0.8,
-  //     fontStyle: "normal",
-  //   },
-  //   description: {
-  //     text: "X park view, DHA Phase 8 Lahore Pakistan",
-  //     color: "#ffffff",
-  //     fontSize: 8,
-  //     fontWeight: 400,
-  //     lineHeight: 0.8,
-  //     fontStyle: "normal",
-  //   },
-  //   selected: false,
-  // };
 
   const SelectedTemplate = useMemo(() => {
     //Make sure the path must be 5 sized and end with the file name
@@ -136,6 +78,10 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
         )
     );
   }, [selectedCard.path]);
+
+  // const onChangeStateHistory = () => {
+  //   setStateHistory(prev => )
+  // }
 
   const removeTextarea = (
     textarea: HTMLTextAreaElement,
@@ -152,13 +98,17 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
     fieldName: TFieldName
   ) => {
     if (value) {
-      setText((prev) => ({
-        ...prev,
-        templateAttributes: {
-          ...prev.templateAttributes,
-          [fieldName]: { ...prev.templateAttributes[fieldName], text: value },
-        },
-      }));
+      // setText((prev) => ({
+      //   ...prev,
+      //   templateAttributes: {
+      //     ...prev.templateAttributes,
+      //     [fieldName]: { ...prev.templateAttributes[fieldName], text: value },
+      //   },
+      // }));
+      if (currentState.templateAttributes[fieldName].text !== value)
+        onStateChange(fieldName, {
+          text: value,
+        });
     }
     removeTextarea(textarea, fieldName);
     setSelectedField(undefined);
@@ -178,7 +128,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
       setSelectedField(fieldName);
       onTextDblClick({
         textRef: textReff,
-        currentText: text.templateAttributes[fieldName].text,
+        currentText: currentState.templateAttributes[fieldName].text,
         fieldName: fieldName,
         areaPosition: areaPosition,
         container: "canvas",
@@ -197,31 +147,41 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
     if (textarea) {
       if (textarea.style.fontWeight === FONT_STYLE.BOLD) {
         textarea.style.fontWeight = FONT_STYLE.NORMAL;
-        setText((prev) => ({
-          ...prev,
-          templateAttributes: {
-            ...prev.templateAttributes,
-            [selectedField]: {
-              ...prev.templateAttributes[selectedField],
-              fontStyle: textarea.style.fontStyle,
-            },
-          },
-        }));
+        // setText((prev) => ({
+        //   ...prev,
+        //   templateAttributes: {
+        //     ...prev.templateAttributes,
+        //     [selectedField]: {
+        //       ...prev.templateAttributes[selectedField],
+        //       fontStyle: textarea.style.fontStyle,
+        //     },
+        //   },
+        // }));
+        onStateChange(selectedField, {
+          fontStyle: textarea.style.fontStyle as TFontStyle,
+        });
       } else {
         textarea.style.fontWeight = FONT_STYLE.BOLD;
-        setText((prev) => ({
-          ...prev,
-          templateAttributes: {
-            ...prev.templateAttributes,
-            [selectedField]: {
-              ...prev.templateAttributes[selectedField],
-              fontStyle:
-                textarea.style.fontStyle === FONT_STYLE.ITALIC
-                  ? `${textarea.style.fontWeight} ${textarea.style.fontStyle}`
-                  : textarea.style.fontWeight,
-            },
-          },
-        }));
+        // setText((prev) => ({
+        //   ...prev,
+        //   templateAttributes: {
+        //     ...prev.templateAttributes,
+        //     [selectedField]: {
+        //       ...prev.templateAttributes[selectedField],
+        //       fontStyle:
+        //         textarea.style.fontStyle === FONT_STYLE.ITALIC
+        //           ? `${textarea.style.fontWeight} ${textarea.style.fontStyle}`
+        //           : textarea.style.fontWeight,
+        //     },
+        //   },
+        // }));
+
+        onStateChange(selectedField, {
+          fontStyle:
+            textarea.style.fontStyle === FONT_STYLE.ITALIC
+              ? (`${textarea.style.fontWeight} ${textarea.style.fontStyle}` as TFontStyle)
+              : (textarea.style.fontWeight as TFontStyle),
+        });
       }
       textarea.focus();
     }
@@ -236,31 +196,41 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
         textarea.style.fontStyle === ""
       ) {
         textarea.style.fontStyle = FONT_STYLE.ITALIC;
-        setText((prev) => ({
-          ...prev,
-          templateAttributes: {
-            ...prev.templateAttributes,
-            [selectedField]: {
-              ...prev.templateAttributes[selectedField],
-              fontStyle:
-                textarea.style.fontWeight === FONT_STYLE.BOLD
-                  ? `${textarea.style.fontWeight} ${textarea.style.fontStyle}`
-                  : textarea.style.fontStyle,
-            },
-          },
-        }));
+        // setText((prev) => ({
+        //   ...prev,
+        //   templateAttributes: {
+        //     ...prev.templateAttributes,
+        //     [selectedField]: {
+        //       ...prev.templateAttributes[selectedField],
+        //       fontStyle:
+        //         textarea.style.fontWeight === FONT_STYLE.BOLD
+        //           ? `${textarea.style.fontWeight} ${textarea.style.fontStyle}`
+        //           : textarea.style.fontStyle,
+        //     },
+        //   },
+        // }));
+
+        onStateChange(selectedField, {
+          fontStyle:
+            textarea.style.fontWeight === FONT_STYLE.BOLD
+              ? (`${textarea.style.fontWeight} ${textarea.style.fontStyle}` as TFontStyle)
+              : (textarea.style.fontStyle as TFontStyle),
+        });
       } else {
         textarea.style.fontStyle = FONT_STYLE.NORMAL;
-        setText((prev) => ({
-          ...prev,
-          templateAttributes: {
-            ...prev.templateAttributes,
-            [selectedField]: {
-              ...prev.templateAttributes[selectedField],
-              fontStyle: textarea.style.fontWeight,
-            },
-          },
-        }));
+        // setText((prev) => ({
+        //   ...prev,
+        //   templateAttributes: {
+        //     ...prev.templateAttributes,
+        //     [selectedField]: {
+        //       ...prev.templateAttributes[selectedField],
+        //       fontStyle: textarea.style.fontWeight,
+        //     },
+        //   },
+        // }));
+        onStateChange(selectedField, {
+          fontStyle: textarea.style.fontWeight as TFontStyle,
+        });
       }
       textarea.focus();
     }
@@ -272,16 +242,20 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
     if (textarea) {
       textarea.style.fontSize = `${fontSize}px`;
       textarea.focus();
-      setText((prev) => ({
-        ...prev,
-        templateAttributes: {
-          ...prev.templateAttributes,
-          [selectedField]: {
-            ...prev.templateAttributes[selectedField],
-            fontSize: fontSize,
-          },
-        },
-      }));
+      // setText((prev) => ({
+      //   ...prev,
+      //   templateAttributes: {
+      //     ...prev.templateAttributes,
+      //     [selectedField]: {
+      //       ...prev.templateAttributes[selectedField],
+      //       fontSize: fontSize,
+      //     },
+      //   },
+      // }));
+
+      onStateChange(selectedField, {
+        fontSize: fontSize,
+      });
     }
   };
 
@@ -296,16 +270,19 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
         textarea.style.textDecoration = "none";
       }
       textarea.focus();
-      setText((prev) => ({
-        ...prev,
-        templateAttributes: {
-          ...prev.templateAttributes,
-          [selectedField]: {
-            ...prev.templateAttributes[selectedField],
-            textDecoration: textarea.style.textDecoration,
-          },
-        },
-      }));
+      // setText((prev) => ({
+      //   ...prev,
+      //   templateAttributes: {
+      //     ...prev.templateAttributes,
+      //     [selectedField]: {
+      //       ...prev.templateAttributes[selectedField],
+      //       textDecoration: textarea.style.textDecoration,
+      //     },
+      //   },
+      // }));
+      onStateChange(selectedField, {
+        textDecoration: textarea.style.textDecoration as TTextDecoration,
+      });
     }
   };
 
@@ -345,7 +322,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
             y: scale.y + 0.1,
           });
           setCurrentZoom((prev) => prev + 0.1);
-          Object.keys(text.templateAttributes).forEach((key) => {
+          Object.keys(currentState.templateAttributes).forEach((key) => {
             const textarea = document.getElementById(key);
             const textPosition =
               textReff?.current[key as keyof IRef]?.absolutePosition();
@@ -370,7 +347,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
             y: scale.y - 0.1,
           });
           setCurrentZoom((prev) => prev - 0.1);
-          Object.keys(text.templateAttributes).forEach((key) => {
+          Object.keys(currentState.templateAttributes).forEach((key) => {
             const textarea = document.getElementById(key);
             const textPosition =
               textReff?.current[key as keyof IRef]?.absolutePosition();
@@ -389,7 +366,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
     try {
       const response = await createVarient({
         ...templateData,
-        templateAttributes: { ...text.templateAttributes },
+        templateAttributes: { ...currentState.templateAttributes },
       }).unwrap();
       if (window.opener) {
         window.opener.postMessage(
@@ -400,6 +377,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
             SKU: templateData.sku,
             sessionId: response.content.sessionId,
             processedImageUrl: response.content.processedImageUrl,
+            fileName: response.content.fileName,
           },
           "https://codeninjaprint.myshopify.com"
         );
@@ -421,14 +399,14 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
     dispatch(
       setSelectedTemplateData({
         ...templateData,
-        templateAttributes: { ...text.templateAttributes },
+        templateAttributes: { ...currentState.templateAttributes },
       })
     );
     allTemplatesData.forEach((template) => {
       dispatch(
         setTemplateData({
           ...template,
-          templateAttributes: { ...text.templateAttributes },
+          templateAttributes: { ...currentState.templateAttributes },
         })
       );
     });
@@ -464,11 +442,15 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
           <CustomToolbar
             onClickBold={onClickBold}
             onClickItalic={onClickItalic}
+            onRedo={onRedo}
+            onUndo={onUndo}
+            currentStep={currentStep}
+            stateHistoryLength={stateHistoryLength}
             onClickUnderline={onClickUnderline}
             onChangeTextSize={onChangeTextSize}
             setIsPreviewEnabled={setIsPreviewEnabled}
             selectedStyles={
-              selectedField && text.templateAttributes[selectedField]
+              selectedField && currentState.templateAttributes[selectedField]
             }
           />
         )}
@@ -546,7 +528,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
                 <SelectedTemplate
                   textRef={textReff}
                   stageRef={stageRef}
-                  text={text}
+                  text={currentState}
                   dblClickHandler={dblClickHandler}
                   // {...testCardData}
                   editable={!isPreviewEnabled}

@@ -23,11 +23,11 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
         <CustomImage
           height={42}
           width={77}
-          x={470}
+          x={478}
           y={20}
           url={text.templateAttributes.logo.url}
         />
-        <Konva.Group x={25} y={70}>
+        <Konva.Group x={22} y={74}>
           <Konva.Text
             ref={
               props.editable
@@ -42,8 +42,8 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
             fontSize={text.templateAttributes.name.fontSize}
             // fontSize={40}
             fill={"#ffff"}
-            width={230}
-            height={145}
+            width={text.templateAttributes.name.width}
+            height={text.templateAttributes.name.height}
             fontFamily="Roboto"
             lineHeight={text.templateAttributes.name.lineHeight}
             fontStyle={text.templateAttributes.name.fontStyle}
@@ -69,12 +69,14 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
             }
             text={text.templateAttributes.description.text}
             // text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,"
-            x={290}
-            y={30}
+            x={293}
+            y={27}
             align="top"
             // fontSize={16}
             fontSize={text.templateAttributes.description.fontSize}
             fill={"#ffff"}
+            // width={text.templateAttributes.description.width}
+            // height={text.templateAttributes.description.height}
             width={239}
             height={95}
             fontFamily="Roboto"
@@ -96,7 +98,7 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
           />
         </Konva.Group>
 
-        <Konva.Group x={50} y={250}>
+        <Konva.Group x={40} y={254}>
           <CustomImage x={0} y={0} svgString={phoneSvg} />
           <Konva.Text
             ref={
@@ -105,13 +107,13 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
                 : undefined
             }
             text={text.templateAttributes.phone.text}
-            x={15}
+            x={18}
             y={1}
             align="top"
             fontSize={text.templateAttributes.phone.fontSize}
             fill={"#FFF"}
-            width={70}
-            height={10}
+            width={text.templateAttributes.phone.width}
+            height={text.templateAttributes.phone.height}
             fontFamily="Roboto"
             lineHeight={text.templateAttributes.phone.lineHeight}
             fontStyle={text.templateAttributes.phone.fontStyle}
@@ -130,7 +132,7 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
           />
         </Konva.Group>
 
-        <Konva.Group x={170} y={250}>
+        <Konva.Group x={171} y={254}>
           <CustomImage x={0} y={0} svgString={emailSvg} />
           <Konva.Text
             ref={
@@ -139,13 +141,13 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
                 : undefined
             }
             text={text.templateAttributes.email.text}
-            x={15}
+            x={18}
             y={1}
             align="top"
             fontSize={text.templateAttributes.email.fontSize}
             fill={"#FFF"}
-            width={70}
-            height={10}
+            width={text.templateAttributes.email.width}
+            height={text.templateAttributes.email.height}
             fontFamily="Roboto"
             lineHeight={text.templateAttributes.email.lineHeight}
             fontStyle={text.templateAttributes.email.fontStyle}
@@ -164,7 +166,7 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
           />
         </Konva.Group>
 
-        <Konva.Group x={290} y={250}>
+        <Konva.Group x={296} y={254}>
           <CustomImage x={0} y={0} svgString={websiteSvg} />
           <Konva.Text
             ref={
@@ -173,13 +175,13 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
                 : undefined
             }
             text={text.templateAttributes.website.text}
-            x={15}
+            x={18}
             y={1}
             align="top"
             fontSize={text.templateAttributes.website.fontSize}
             fill={"#FFF"}
-            width={70}
-            height={10}
+            width={text.templateAttributes.website.width}
+            height={text.templateAttributes.website.height}
             fontFamily="Roboto"
             lineHeight={text.templateAttributes.website.lineHeight}
             fontStyle={text.templateAttributes.website.fontStyle}
@@ -198,7 +200,7 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
           />
         </Konva.Group>
 
-        <Konva.Group x={400} y={250}>
+        <Konva.Group x={428} y={254}>
           <CustomImage x={0} y={0} svgString={locationSvg} />
           <Konva.Text
             ref={
@@ -207,13 +209,13 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
                 : undefined
             }
             text={text.templateAttributes.address.text}
-            x={15}
-            y={1}
+            x={18}
+            y={3}
             align="top"
             fontSize={text.templateAttributes.address.fontSize}
             fill={"#FFF"}
-            width={91}
-            height={20}
+            width={text.templateAttributes.address.width}
+            height={text.templateAttributes.address.height}
             fontFamily="Roboto"
             lineHeight={text.templateAttributes.address.lineHeight}
             fontStyle={text.templateAttributes.address.fontStyle}

@@ -12,13 +12,20 @@ export interface ICardProps {
   selected?: boolean;
 }
 
+export type TFontStyle = "normal" | "bold" | "italic" | "bold italic";
+export type TTextDecoration = "empty string" | "underline" | "line-through";
+
 export interface IAttribute {
   text: string;
   // color: string;
+  width: number;
+  height: number;
+  x: number;
+  y: number;
   fontSize: number;
   fontWeight: number;
-  fontStyle: "normal" | "bold" | "italic" | "bold italic";
-  textDecoration: "empty string" | "underline" | "line-through";
+  fontStyle: TFontStyle;
+  textDecoration: TTextDecoration;
   // fontFamily: string;
   lineHeight: number;
   // svgColor?: string;
@@ -31,6 +38,8 @@ export interface ITemplateAttributes {
     url: string;
     width: number;
     height: number;
+    x: number;
+    y: number;
   };
   name: IAttribute;
   designation: IAttribute;

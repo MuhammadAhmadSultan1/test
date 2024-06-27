@@ -18,6 +18,8 @@ import {
 import { setTemplateData } from "../../redux/slices/templateData";
 import { ITemplateAttributes } from "../../types/card";
 import { IUserCard } from "../../types/user";
+import { toaster } from "../../utils/toaster";
+import { getErrorMessage } from "../../utils/errorHandler";
 // import { Templates } from "../templates";
 
 const Goals = ({ onClickBack, onClickNext }: ICommonProps) => {
@@ -27,15 +29,17 @@ const Goals = ({ onClickBack, onClickNext }: ICommonProps) => {
 
   const defaultValues: IGoals = { goals: userCard?.goals ?? "" };
 
-  const [questionnaireAdd, { isLoading }] = useQuestionnaireAddMutation();
+  const [questionnaireAdd, { isLoading: isAddingQuestionire }] =
+    useQuestionnaireAddMutation();
   const { data: templateConfig } = useGetTemplateQuery(templateData.sku, {
     refetchOnMountOrArgChange: true,
   });
-  const [getDescription] = useGetDescriptionMutation();
+  const [getDescription, { isLoading: isGeneratingDescription }] =
+    useGetDescriptionMutation();
   // const [getVariations] = useGetVariationsMutation();
 
   const [formLoading, setFormLoading] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  // const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // const [showTemplates, setShowTemplates] = useState<boolean>(false);
   // const [showAboutCompany, setShowAboutCompany] = useState<boolean>(true);
@@ -78,7 +82,6 @@ const Goals = ({ onClickBack, onClickNext }: ICommonProps) => {
         // phoneNumber:userCard?.phoneNumber,
         userId: 0,
       };
-      console.log({ data });
 
       await questionnaireAdd(data).unwrap();
 
@@ -157,7 +160,7 @@ const Goals = ({ onClickBack, onClickNext }: ICommonProps) => {
         // }
       }
     } catch (e) {
-      setErrorMessage("Something went wrong");
+      toaster(getErrorMessage(e), "error");
     }
   };
 
@@ -193,7 +196,7 @@ const Goals = ({ onClickBack, onClickNext }: ICommonProps) => {
   return (
     <>
       <div className="max-w-470px mx-auto flex items-center flex-col h-screen font-sans mt-0">
-        {!isLoading ? (
+        {!isAddingQuestionire && !isGeneratingDescription ? (
           <>
             <h2 className="text-black text-center text-3xl my-8 font-semibold">
               What is the goal of this merchandise you are purchasing?
@@ -209,9 +212,9 @@ const Goals = ({ onClickBack, onClickNext }: ICommonProps) => {
                 registerKey={"goals"}
               />
 
-              {errorMessage && (
+              {/* {errorMessage && (
                 <p className="text-red-500 mb-3">{errorMessage}</p>
-              )}
+              )} */}
 
               <div className="mt-10 mb-10 flex gap-10 justify-center">
                 <Button
@@ -230,7 +233,7 @@ const Goals = ({ onClickBack, onClickNext }: ICommonProps) => {
           </>
         ) : (
           <>
-            {isLoading && (
+            {(isAddingQuestionire || isGeneratingDescription) && (
               <>
                 <div className="mt-40">
                   <Oval

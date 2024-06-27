@@ -85,7 +85,7 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
   };
 
   const handleContinue: SubmitHandler<IUploadLogo> = async (data) => {
-    if (userCard.logo) return onClickNext?.();
+    if (userCard.logo && !preview) return onClickNext?.();
     try {
       const formData = new FormData();
       formData.append("sessionId", sessionIdLocal);
@@ -113,9 +113,7 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
       dispatch(setUserCardInfo(userCard));
       toaster(response.message, "success");
       // setLoading(false);
-      setTimeout(() => {
-        onClickNext?.();
-      }, 1500);
+      onClickNext?.();
     } catch (e) {
       toaster(getErrorMessage(e), "success");
     }

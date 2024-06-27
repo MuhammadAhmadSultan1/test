@@ -52,6 +52,7 @@ export default function CardTow(props: TCanvasCardProps) {
             height={19}
             fontStyle={text.templateAttributes.name.fontStyle}
             textDecoration={text.templateAttributes.name.textDecoration}
+            fontFamily="Inter"
             onDblClick={() => {
               if (
                 props.editable &&
@@ -80,6 +81,7 @@ export default function CardTow(props: TCanvasCardProps) {
             height={10}
             fontStyle={text.templateAttributes.designation.fontStyle}
             textDecoration={text.templateAttributes.designation.textDecoration}
+            fontFamily="Inter"
             // fontStyle={designation.fontStyle}
             // onClick={() => onClickTextItem("designation")}
             onDblClick={() => {
@@ -111,6 +113,7 @@ export default function CardTow(props: TCanvasCardProps) {
               height={10}
               fontStyle={text.templateAttributes.phone.fontStyle}
               textDecoration={text.templateAttributes.phone.textDecoration}
+              fontFamily="Inter"
               onDblClick={() => {
                 if (
                   props.editable &&
@@ -139,6 +142,7 @@ export default function CardTow(props: TCanvasCardProps) {
               height={10}
               fontStyle={text.templateAttributes.website.fontStyle}
               textDecoration={text.templateAttributes.website.textDecoration}
+              fontFamily="Inter"
               // fontStyle={.website.fontStyle}
               // onClick={() => onClickTextItem(".website")}
               onDblClick={() => {
@@ -169,6 +173,7 @@ export default function CardTow(props: TCanvasCardProps) {
               height={10}
               fontStyle={text.templateAttributes.email.fontStyle}
               textDecoration={text.templateAttributes.email.textDecoration}
+              fontFamily="Inter"
               onDblClick={() => {
                 if (
                   props.editable &&
@@ -197,6 +202,7 @@ export default function CardTow(props: TCanvasCardProps) {
               fill={"#000000"}
               fontStyle={text.templateAttributes.address.fontStyle}
               textDecoration={text.templateAttributes.address.textDecoration}
+              fontFamily="Inter"
               onDblClick={() => {
                 if (
                   props.editable &&

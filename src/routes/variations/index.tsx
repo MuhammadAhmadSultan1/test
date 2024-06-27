@@ -31,6 +31,7 @@ export const Variations = (props: ICommonProps) => {
     primary: string[];
     secondary: string[];
   }>({ primary: [], secondary: [] });
+  const [rounded, setRounded] = useState("");
 
   const logoColors = useAppSelector((state) => state.userCard.colors);
   const selectedCard = useAppSelector((state) => state.selectedCard);
@@ -42,6 +43,26 @@ export const Variations = (props: ICommonProps) => {
   );
 
   const [getVariations, { isLoading }] = useGetVariationsMutation();
+
+  // const rounded = useMemo(() => {
+  //   const canvas = document.getElementById("canvas");
+  //   if (canvas && canvas.getAttribute("class")?.includes("rounded")) {
+  //     // console.log("here", canvas.getAttribute("class"));
+  //     return "rounded-[16px]";
+  //   }
+  //   return "";
+  // }, [selectedCard.path]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      const canvas = document.getElementById("canvas");
+      if (canvas && canvas.getAttribute("class")?.includes("rounded")) {
+        setRounded("rounded-[16px]");
+      } else {
+        setRounded("");
+      }
+    }
+  }, [isLoading]);
 
   // const testColorVariations = useMemo(async () => {
   //   try {
@@ -294,7 +315,10 @@ export const Variations = (props: ICommonProps) => {
         <div className="flex md:flex-row flex-col flex-wrap w-full justify-center py-5 px-5 gap-4">
           <RadioButton
             Component={
-              <CardOptionWrapper selected={selectedVariation.card1}>
+              <CardOptionWrapper
+                selected={selectedVariation.card1}
+                rounded={rounded}
+              >
                 <Suspense fallback={"loading...."}>
                   <SelectedCard
                     text={selectedTemplateData}
@@ -321,7 +345,10 @@ export const Variations = (props: ICommonProps) => {
           />
           <RadioButton
             Component={
-              <CardOptionWrapper selected={selectedVariation.card2}>
+              <CardOptionWrapper
+                selected={selectedVariation.card2}
+                rounded={rounded}
+              >
                 <Suspense fallback={"loading...."}>
                   <SelectedCard
                     text={selectedTemplateData}
@@ -348,7 +375,10 @@ export const Variations = (props: ICommonProps) => {
           />
           <RadioButton
             Component={
-              <CardOptionWrapper selected={selectedVariation.card3}>
+              <CardOptionWrapper
+                selected={selectedVariation.card3}
+                rounded={rounded}
+              >
                 <Suspense>
                   <SelectedCard
                     text={selectedTemplateData}
