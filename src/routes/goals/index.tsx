@@ -26,6 +26,7 @@ const Goals = ({ onClickBack, onClickNext }: ICommonProps) => {
   const dispatch = useAppDispatch();
   const userCard = useAppSelector((state) => state?.userCard);
   const templateData = useAppSelector((state) => state.selectedTemplateData);
+  const sku = useAppSelector((state) => state.selectedTemplateData.sku);
 
   const defaultValues: IGoals = { goals: userCard?.goals ?? "" };
 
@@ -123,6 +124,17 @@ const Goals = ({ onClickBack, onClickNext }: ICommonProps) => {
                   [key]: {
                     ...data.templateAttributes[key],
                     url: userCard[key] as string,
+                  },
+                };
+              } else if (key === "name") {
+                data.templateAttributes = {
+                  ...data.templateAttributes,
+                  [key]: {
+                    ...data.templateAttributes[key],
+                    text:
+                      sku === "101HC005" || sku === "102VC006"
+                        ? (userCard.name as string)
+                        : (userCard.companyName as string),
                   },
                 };
               } else {

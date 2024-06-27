@@ -20,11 +20,7 @@ import { selectCardSchema } from "../../../../schema";
 // import { setTemplateData } from "../../../../redux/slices/templateData";
 import { setSelectedTemplateData } from "../../../../redux/slices/selectedTemplate";
 
-export const VerticalCards = ({
-  onClickBack,
-  onClickNext,
-  onRegenerateDescription,
-}: ICommonProps) => {
+export const VerticalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
   // const [showEditor, setShowEditor] = useState<boolean>(false);
 
   const selectedCard = useAppSelector((state) => state.selectedCard);
@@ -182,11 +178,6 @@ export const VerticalCards = ({
             label="Go Back"
             varient="outlined"
             attributes={{ onClick: onGoBack, type: "button" }}
-          />
-          <Button
-            label="Regenerate Content"
-            varient="outlined"
-            attributes={{ onClick: onRegenerateDescription, type: "button" }}
           />
           <Button
             label="Continue"
