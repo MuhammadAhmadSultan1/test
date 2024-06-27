@@ -1,4 +1,4 @@
-name: CI/CD for printsource frontend
+name: CI/CD for printsource frontend .
 
 on:
   push:
