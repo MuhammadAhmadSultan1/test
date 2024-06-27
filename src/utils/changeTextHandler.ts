@@ -23,6 +23,7 @@ export const onTextDblClick = (props: IChangeTextHanlerProps) => {
   let fontStyle: string = textRef.current[fieldName]?.getAttr("fontStyle");
   let fontWeight: string = "normal";
   const textDecoration = textRef.current[fieldName]?.getAttr("textDecoration");
+  const textAlign = textRef.current[fieldName]?.getAttr("align");
 
   const splitedFontStyle = fontStyle.split(" ");
   if (splitedFontStyle.length) {
@@ -49,6 +50,7 @@ export const onTextDblClick = (props: IChangeTextHanlerProps) => {
   textarea.style.fontSize = `${fontSize}px`;
   textarea.style.fontWeight = fontWeight;
   textarea.style.fontStyle = fontStyle;
+  textarea.style.textAlign = textAlign;
   textarea.style.textDecoration = textDecoration;
   textarea.style.lineHeight = `${lineHeight}`;
   textarea.style.fontFamily = `${fontFamily}`;

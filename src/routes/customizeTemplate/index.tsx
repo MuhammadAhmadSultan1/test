@@ -16,7 +16,7 @@ import {
 } from "../../redux/slices/selectedTemplate";
 import {
   resetTemplatesData,
-  setTemplateData,
+  // setTemplateData,
 } from "../../redux/slices/templateData";
 import { resetSelectedCard } from "../../redux/slices/selectedCard";
 import { resetSelectedColorVariation } from "../../redux/slices/selectedColorVariation";
@@ -28,7 +28,7 @@ import { TFontStyle, TTextDecoration } from "../../types/card";
 export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
   const selectedCard = useAppSelector((state) => state.selectedCard);
   const templateData = useAppSelector((state) => state.selectedTemplateData);
-  const allTemplatesData = useAppSelector((state) => state.templateData);
+  // const allTemplatesData = useAppSelector((state) => state.templateData);
 
   const dispatch = useAppDispatch();
 
@@ -378,6 +378,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
             sessionId: response.content.sessionId,
             processedImageUrl: response.content.processedImageUrl,
             fileName: response.content.fileName,
+            processedImageSvgUrl: response.content.processedImageSvgUrl,
           },
           "https://codeninjaprint.myshopify.com"
         );
@@ -402,14 +403,14 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
         templateAttributes: { ...currentState.templateAttributes },
       })
     );
-    allTemplatesData.forEach((template) => {
-      dispatch(
-        setTemplateData({
-          ...template,
-          templateAttributes: { ...currentState.templateAttributes },
-        })
-      );
-    });
+    // allTemplatesData.forEach((template) => {
+    //   dispatch(
+    //     setTemplateData({
+    //       ...template,
+    //       templateAttributes: { ...template.templateAttributes },
+    //     })
+    //   );
+    // });
     onClickBack?.();
   };
 

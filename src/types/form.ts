@@ -61,4 +61,5 @@ interface IWebsite {
 interface ICommonProps {
   onClickNext?: Function;
   onClickBack?: Function;
+  onRegenerateDescription?: () => void;
 }

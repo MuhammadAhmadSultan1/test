@@ -275,7 +275,7 @@ export const Variations = (props: ICommonProps) => {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <div className="fixed bottom-4 right-4">
+      {/* <div className="fixed bottom-4 right-4">
         <Button
           label=""
           varient="outlined"
@@ -305,7 +305,7 @@ export const Variations = (props: ICommonProps) => {
             </svg>
           </span>
         </Button>
-      </div>
+      </div> */}
       <h2 className="text-4xl font-extrabold">Select one color</h2>
 
       <form
@@ -416,6 +416,18 @@ export const Variations = (props: ICommonProps) => {
             varient="outlined"
             attributes={{ onClick: onGoBack }}
           />
+          <Button
+            label="Regenerate Colors"
+            varient="outlined"
+            attributes={{
+              type: "button",
+              onClick: () => {
+                generateVariations(true);
+              },
+              disabled: isLoading,
+            }}
+          />
+
           <Button
             label="Continue"
             varient="primary"

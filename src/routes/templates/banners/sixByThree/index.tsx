@@ -22,6 +22,7 @@ import { getErrorMessage } from "../../../../utils/errorHandler";
 export const SixByThreeBanners = ({
   onClickBack,
   onClickNext,
+  onRegenerateDescription,
 }: ICommonProps) => {
   const selectedCard = useAppSelector((state) => state.selectedCard);
   const templateData = useAppSelector((state) => state.templateData);
@@ -177,9 +178,18 @@ export const SixByThreeBanners = ({
           <Button
             label="Go Back"
             varient="outlined"
-            attributes={{ onClick: onGoBack }}
+            attributes={{ onClick: onGoBack, type: "button" }}
           />
-          <Button label="Continue" varient="primary" />
+          <Button
+            label="Regenerate Content"
+            varient="outlined"
+            attributes={{ onClick: onRegenerateDescription, type: "button" }}
+          />
+          <Button
+            label="Continue"
+            varient="primary"
+            attributes={{ type: "submit" }}
+          />
         </div>
       </form>
     </div>

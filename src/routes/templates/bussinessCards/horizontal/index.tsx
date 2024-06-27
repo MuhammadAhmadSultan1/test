@@ -19,7 +19,11 @@ import { Button } from "../../../../components/button";
 import { selectCardSchema } from "../../../../schema";
 import { setSelectedTemplateData } from "../../../../redux/slices/selectedTemplate";
 
-export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
+export const HorizontalCards = ({
+  onClickBack,
+  onClickNext,
+  onRegenerateDescription,
+}: ICommonProps) => {
   // const [showEditor, setShowEditor] = useState<boolean>(false);
 
   const selectedCard = useAppSelector((state) => state.selectedCard);
@@ -178,9 +182,18 @@ export const HorizontalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
           <Button
             label="Go Back"
             varient="outlined"
-            attributes={{ onClick: onGoBack }}
+            attributes={{ onClick: onGoBack, type: "button" }}
           />
-          <Button label="Continue" varient="primary" />
+          <Button
+            label="Regenerate Content"
+            varient="outlined"
+            attributes={{ onClick: onRegenerateDescription, type: "button" }}
+          />
+          <Button
+            label="Continue"
+            varient="primary"
+            attributes={{ type: "submit" }}
+          />
         </div>
       </form>
     </div>
