@@ -67,7 +67,7 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
         variantId: params.get("variantId") || "",
       })
     );
-  }, [dispatch, userCard.sessionId, userSession]);
+  }, [dispatch, userSession]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
