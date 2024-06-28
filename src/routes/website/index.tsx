@@ -37,7 +37,7 @@ const Website = ({ onClickNext, onClickBack }: ICommonProps) => {
   };
   return (
     <div className="max-w-screen-sm mx-auto flex flex-col items-center h-screen">
-      <h2 className="text-black text-center text-3xl my-8 font-semibold">
+      <h2 className="text-center text-4xl my-8 font-extrabold text-[#282828]">
         Company Details
       </h2>
 

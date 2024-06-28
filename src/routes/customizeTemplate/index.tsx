@@ -380,7 +380,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
             fileName: response.content.fileName,
             processedImageSvgUrl: response.content.processedImageSvgUrl,
           },
-          "https://codeninjaprint.myshopify.com"
+          "https://myprintsource.com"
         );
         dispatch(resetSelectedCard());
         dispatch(resetSelectedColorVariation());

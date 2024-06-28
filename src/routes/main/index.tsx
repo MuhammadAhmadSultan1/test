@@ -12,7 +12,7 @@ import UserEmail from "../email";
 import Services from "../services";
 import TargetAudience from "../targetAudience";
 import Competitors from "../competitors";
-import Goals from "../goals";
+// import Goals from "../goals";
 import { Templates } from "../templates";
 import { Variations } from "../variations";
 import { CustomizeTemplate } from "../customizeTemplate";
@@ -33,9 +33,9 @@ const Main = () => {
   // max-w-screen-sm
   return (
     <div className="flex flex-col items-center h-[100vh] w-full ">
-      {currentStep < 14 && <HeaderLogo />}
+      {currentStep < 13 && <HeaderLogo />}
       <div>
-        {currentStep < 12 && <CustomStepper activeStep={currentStep} />}
+        {currentStep < 11 && <CustomStepper activeStep={currentStep} />}
       </div>
 
       {currentStep === 0 && (
@@ -71,16 +71,16 @@ const Main = () => {
       {currentStep === 10 && (
         <Competitors onClickNext={onClickNext} onClickBack={onClickBack} />
       )}
-      {currentStep === 11 && (
+      {/* {currentStep === 11 && (
         <Goals onClickNext={onClickNext} onClickBack={onClickBack} />
-      )}
-      {currentStep === 12 && (
+      )} */}
+      {currentStep === 11 && (
         <Templates onClickNext={onClickNext} onClickBack={onClickBack} />
       )}
-      {currentStep === 13 && (
+      {currentStep === 12 && (
         <Variations onClickNext={onClickNext} onClickBack={onClickBack} />
       )}
-      {currentStep === 14 && <CustomizeTemplate onClickBack={onClickBack} />}
+      {currentStep === 13 && <CustomizeTemplate onClickBack={onClickBack} />}
     </div>
   );
 };

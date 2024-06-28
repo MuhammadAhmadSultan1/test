@@ -33,8 +33,8 @@ export default function VerticalCardOne(props: TCanvasCardProps) {
     >
       <Konva.Layer imageSmoothingEnabled>
         <CustomImage
-          height={44}
-          width={73}
+          height={49}
+          width={89}
           x={60}
           y={20}
           url={text.templateAttributes.logo.url}

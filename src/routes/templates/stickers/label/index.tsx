@@ -78,115 +78,112 @@ export const StickersLabel = ({ onClickBack, onClickNext }: ICommonProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4 pb-8">
-      <h2 className="text-4xl font-extrabold">Select one template</h2>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col w-full justify-center"
-      >
-        <div className="flex md:flex-row flex-wrap flex-col w-full justify-center py-5 px-5 gap-4">
-          {foundedTemplatesData.template1 && (
-            <RadioButton
-              Component={
-                <CardOptionWrapper
-                  selected={selected.card1}
-                  rounded="rounded-2xl"
-                >
-                  <LabelCircleOne
-                    text={foundedTemplatesData.template1}
-                    editable={false}
-                  />
-                </CardOptionWrapper>
-              }
-              register={register("selectedCard")}
-              value="components/stickers/labelCircle/cardOne/front"
-              attributes={{
-                defaultChecked:
-                  selectedCard.path ===
-                  "components/stickers/labelCircle/cardOne/front",
-              }}
-              onChange={() => {
-                setSelected(() => ({
-                  card1: true,
-                  card2: false,
-                  card3: false,
-                }));
-              }}
-            />
-          )}
-          {foundedTemplatesData.template2 && (
-            <RadioButton
-              Component={
-                <CardOptionWrapper selected={selected.card2}>
-                  <LabelCircleTwo
-                    text={foundedTemplatesData.template2}
-                    editable={false}
-                  />
-                </CardOptionWrapper>
-              }
-              register={register("selectedCard")}
-              value="components/stickers/labelCircle/cardTwo/front"
-              attributes={{
-                defaultChecked:
-                  selectedCard.path ===
-                  "components/stickers/labelCircle/cardTwo/front",
-              }}
-              onChange={() => {
-                setSelected(() => ({
-                  card1: false,
-                  card2: true,
-                  card3: false,
-                }));
-              }}
-            />
-          )}
-
-          {foundedTemplatesData.template3 && (
-            <RadioButton
-              Component={
-                <CardOptionWrapper
-                  selected={selected.card3}
-                  rounded="rounded-2xl"
-                >
-                  <LableCircleThree
-                    text={foundedTemplatesData.template3}
-                    editable={false}
-                  />
-                </CardOptionWrapper>
-              }
-              register={register("selectedCard")}
-              value="components/stickers/labelCircle/cardThree/front"
-              attributes={{
-                defaultChecked:
-                  selectedCard.path ===
-                  "components/stickers/labelCircle/cardThree/front",
-              }}
-              onChange={() => {
-                setSelected(() => ({
-                  card1: false,
-                  card2: false,
-                  card3: true,
-                }));
-              }}
-            />
-          )}
-        </div>
-
-        {errors.selectedCard && (
-          <p className="text-red-500 text-right pr-5 text-sm">
-            {errors.selectedCard.message}
-          </p>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col w-full justify-center"
+    >
+      <div className="flex md:flex-row flex-wrap flex-col w-full justify-center py-5 px-5 gap-4">
+        {foundedTemplatesData.template1 && (
+          <RadioButton
+            Component={
+              <CardOptionWrapper
+                selected={selected.card1}
+                rounded="rounded-2xl"
+              >
+                <LabelCircleOne
+                  text={foundedTemplatesData.template1}
+                  editable={false}
+                />
+              </CardOptionWrapper>
+            }
+            register={register("selectedCard")}
+            value="components/stickers/labelCircle/cardOne/front"
+            attributes={{
+              defaultChecked:
+                selectedCard.path ===
+                "components/stickers/labelCircle/cardOne/front",
+            }}
+            onChange={() => {
+              setSelected(() => ({
+                card1: true,
+                card2: false,
+                card3: false,
+              }));
+            }}
+          />
+        )}
+        {foundedTemplatesData.template2 && (
+          <RadioButton
+            Component={
+              <CardOptionWrapper selected={selected.card2}>
+                <LabelCircleTwo
+                  text={foundedTemplatesData.template2}
+                  editable={false}
+                />
+              </CardOptionWrapper>
+            }
+            register={register("selectedCard")}
+            value="components/stickers/labelCircle/cardTwo/front"
+            attributes={{
+              defaultChecked:
+                selectedCard.path ===
+                "components/stickers/labelCircle/cardTwo/front",
+            }}
+            onChange={() => {
+              setSelected(() => ({
+                card1: false,
+                card2: true,
+                card3: false,
+              }));
+            }}
+          />
         )}
 
-        <div className="flex w-full justify-center gap-4 mt-10">
-          <Button
-            label="Go Back"
-            varient="outlined"
-            attributes={{ onClick: onGoBack }}
+        {foundedTemplatesData.template3 && (
+          <RadioButton
+            Component={
+              <CardOptionWrapper
+                selected={selected.card3}
+                rounded="rounded-2xl"
+              >
+                <LableCircleThree
+                  text={foundedTemplatesData.template3}
+                  editable={false}
+                />
+              </CardOptionWrapper>
+            }
+            register={register("selectedCard")}
+            value="components/stickers/labelCircle/cardThree/front"
+            attributes={{
+              defaultChecked:
+                selectedCard.path ===
+                "components/stickers/labelCircle/cardThree/front",
+            }}
+            onChange={() => {
+              setSelected(() => ({
+                card1: false,
+                card2: false,
+                card3: true,
+              }));
+            }}
           />
-          <Button label="Continue" varient="primary" />
-        </div>
-      </form>
-    </div>
+        )}
+      </div>
+
+      {errors.selectedCard && (
+        <p className="text-red-500 text-right pr-5 text-sm">
+          {errors.selectedCard.message}
+        </p>
+      )}
+
+      <div className="flex w-full justify-center gap-4 mt-10">
+        <Button
+          label="Go Back"
+          varient="outlined"
+          attributes={{ onClick: onGoBack }}
+        />
+        <Button label="Continue" varient="primary" />
+      </div>
+    </form>
   );
 };

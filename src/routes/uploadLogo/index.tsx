@@ -43,20 +43,22 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
   useEffect(() => {
     // getSessionToken();
     (async () => {
-      try {
-        const response = await userSession().unwrap();
-        const userCard = {
-          sessionId: response.content.sessionId,
-        };
-        dispatch(
-          setSelectedTemplateData({
+      if (!userCard.sessionId) {
+        try {
+          const response = await userSession().unwrap();
+          const userCard = {
             sessionId: response.content.sessionId,
-          })
-        );
-        setSessionIdLocal(response.content.sessionId ?? "");
-        dispatch(setUserCardInfo(userCard));
-      } catch (e) {
-        toaster(getErrorMessage(e), "error");
+          };
+          dispatch(
+            setSelectedTemplateData({
+              sessionId: response.content.sessionId,
+            })
+          );
+          setSessionIdLocal(response.content.sessionId ?? "");
+          dispatch(setUserCardInfo(userCard));
+        } catch (e) {
+          toaster(getErrorMessage(e), "error");
+        }
       }
     })();
     const params = new URLSearchParams(window.location.search);
@@ -67,7 +69,7 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
         variantId: params.get("variantId") || "",
       })
     );
-  }, [dispatch, userSession]);
+  }, [dispatch, userCard.sessionId, userSession]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];

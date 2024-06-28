@@ -15,6 +15,8 @@ import { StickersCircle } from "./stickers/circle";
 import { StickersLabel } from "./stickers/label";
 import { StickersOval } from "./stickers/oval";
 
+// import logo from "../../assets/logo.png";
+
 export const Templates = (props: ICommonProps) => {
   const sku = useAppSelector((state) => state.selectedTemplateData.sku);
   const userCard = useAppSelector((state) => state.userCard);
@@ -66,8 +68,52 @@ export const Templates = (props: ICommonProps) => {
     }
   };
   return (
-    <>
-      {/* {sku === "101HC005" && <HorizontalCards {...props} />} */}
+    <div className="flex flex-col items-center gap-4 pb-8">
+      <h2 className="text-center text-4xl my-8 font-extrabold text-[#282828]">
+        Select One Template
+      </h2>
+      {sku === "101HC005" && (
+        <HorizontalCards {...{ ...props, onRegenerateDescription }} />
+      )}
+      {sku === "102VC006" && (
+        <VerticalCards {...{ ...props, onRegenerateDescription }} />
+      )}
+      {sku === "103SC007" && (
+        <StickersCircle {...{ ...props, onRegenerateDescription }} />
+      )}
+      {/* {sku === "106B6301" && <StickersCircle {...{...props, onRegenerateDescription}} />} */}
+      {sku === "104SO008" && <StickersOval />}
+      {sku === "105LC009" && (
+        <StickersLabel {...{ ...props, onRegenerateDescription }} />
+      )}
+      {sku === "106B6301" && (
+        <SixByThreeBanners {...{ ...props, onRegenerateDescription }} />
+      )}
+      {sku === "107B8302" && (
+        <EightByThreeBanners {...{ ...props, onRegenerateDescription }} />
+      )}
+      {sku === "108B8403" && (
+        <EightByFourBanners {...{ ...props, onRegenerateDescription }} />
+      )}
+      {sku === "109B1044" && (
+        <TenByFourBanners {...{ ...props, onRegenerateDescription }} />
+      )}
+      {/* <div className="fixed bottom-3 right-3 ">
+        <div className="flex gap-2 justify-between">
+          <div className="w-64 min-h-14 rounded-s-lg mt-2 rounded-ee-lg border border-lightOutline">
+            <span>
+              Bam! Your text was just generated into 3 templates based on what
+              the AI found would fit your brand best. Don't like it? Hit the
+              “regenerate text” button and see what else the Ai has up its
+              sleeve!
+            </span>
+          </div>
+          <div className="flex items-center h-10 w-10 rounded-full border border-lightOutline">
+            <img src={logo} alt="logo" className="object-cover" />
+          </div>
+        </div>
+      </div> */}
+
       {/* <div className="fixed bottom-4 right-4">
         <Button
           label=""
@@ -97,32 +143,6 @@ export const Templates = (props: ICommonProps) => {
           </span>
         </Button>
       </div> */}
-      {sku === "101HC005" && (
-        <HorizontalCards {...{ ...props, onRegenerateDescription }} />
-      )}
-      {sku === "102VC006" && (
-        <VerticalCards {...{ ...props, onRegenerateDescription }} />
-      )}
-      {sku === "103SC007" && (
-        <StickersCircle {...{ ...props, onRegenerateDescription }} />
-      )}
-      {/* {sku === "106B6301" && <StickersCircle {...{...props, onRegenerateDescription}} />} */}
-      {sku === "104SO008" && <StickersOval />}
-      {sku === "105LC009" && (
-        <StickersLabel {...{ ...props, onRegenerateDescription }} />
-      )}
-      {sku === "106B6301" && (
-        <SixByThreeBanners {...{ ...props, onRegenerateDescription }} />
-      )}
-      {sku === "107B8302" && (
-        <EightByThreeBanners {...{ ...props, onRegenerateDescription }} />
-      )}
-      {sku === "108B8403" && (
-        <EightByFourBanners {...{ ...props, onRegenerateDescription }} />
-      )}
-      {sku === "109B1044" && (
-        <TenByFourBanners {...{ ...props, onRegenerateDescription }} />
-      )}
-    </>
+    </div>
   );
 };

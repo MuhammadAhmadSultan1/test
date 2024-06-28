@@ -81,111 +81,108 @@ export const VerticalCards = ({ onClickBack, onClickNext }: ICommonProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      <h2 className="text-4xl font-extrabold">Select one template</h2>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col w-full justify-center"
-      >
-        <div className="flex md:flex-row flex-col w-full justify-center py-5 px-5 gap-4">
-          {foundedTemplatesData.template1 && (
-            <RadioButton
-              Component={
-                <CardOptionWrapper selected={selected.card1}>
-                  <CardOne
-                    text={foundedTemplatesData.template1}
-                    editable={false}
-                  />
-                </CardOptionWrapper>
-              }
-              register={register("selectedCard")}
-              value="components/businessCards/vertical/cardOne/front"
-              attributes={{
-                defaultChecked:
-                  selectedCard.path ===
-                  "components/businessCards/vertical/cardOne/front",
-              }}
-              onChange={() => {
-                setSelected(() => ({
-                  card1: true,
-                  card2: false,
-                  card3: false,
-                }));
-              }}
-            />
-          )}
-          {foundedTemplatesData.template2 && (
-            <RadioButton
-              Component={
-                <CardOptionWrapper selected={selected.card2}>
-                  <CardTwo
-                    text={foundedTemplatesData.template2}
-                    editable={false}
-                  />
-                </CardOptionWrapper>
-              }
-              register={register("selectedCard")}
-              value="components/businessCards/vertical/cardTwo/front"
-              attributes={{
-                defaultChecked:
-                  selectedCard.path ===
-                  "components/businessCards/vertical/cardTwo/front",
-              }}
-              onChange={() => {
-                setSelected(() => ({
-                  card1: false,
-                  card2: true,
-                  card3: false,
-                }));
-              }}
-            />
-          )}
-          {foundedTemplatesData.template3 && (
-            <RadioButton
-              Component={
-                <CardOptionWrapper selected={selected.card3}>
-                  <CardThree
-                    text={foundedTemplatesData.template3}
-                    editable={false}
-                  />
-                </CardOptionWrapper>
-              }
-              register={register("selectedCard")}
-              value="components/businessCards/vertical/cardThree/front"
-              attributes={{
-                defaultChecked:
-                  selectedCard.path ===
-                  "components/businessCards/vertical/cardThree/front",
-              }}
-              onChange={() => {
-                setSelected(() => ({
-                  card1: false,
-                  card2: false,
-                  card3: true,
-                }));
-              }}
-            />
-          )}
-        </div>
-        {errors.selectedCard && (
-          <p className="text-red-500 text-right pr-5 text-sm">
-            {errors.selectedCard.message}
-          </p>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col w-full justify-center"
+    >
+      <div className="flex md:flex-row flex-col w-full justify-center py-5 px-5 gap-4">
+        {foundedTemplatesData.template1 && (
+          <RadioButton
+            Component={
+              <CardOptionWrapper selected={selected.card1}>
+                <CardOne
+                  text={foundedTemplatesData.template1}
+                  editable={false}
+                />
+              </CardOptionWrapper>
+            }
+            register={register("selectedCard")}
+            value="components/businessCards/vertical/cardOne/front"
+            attributes={{
+              defaultChecked:
+                selectedCard.path ===
+                "components/businessCards/vertical/cardOne/front",
+            }}
+            onChange={() => {
+              setSelected(() => ({
+                card1: true,
+                card2: false,
+                card3: false,
+              }));
+            }}
+          />
         )}
+        {foundedTemplatesData.template2 && (
+          <RadioButton
+            Component={
+              <CardOptionWrapper selected={selected.card2}>
+                <CardTwo
+                  text={foundedTemplatesData.template2}
+                  editable={false}
+                />
+              </CardOptionWrapper>
+            }
+            register={register("selectedCard")}
+            value="components/businessCards/vertical/cardTwo/front"
+            attributes={{
+              defaultChecked:
+                selectedCard.path ===
+                "components/businessCards/vertical/cardTwo/front",
+            }}
+            onChange={() => {
+              setSelected(() => ({
+                card1: false,
+                card2: true,
+                card3: false,
+              }));
+            }}
+          />
+        )}
+        {foundedTemplatesData.template3 && (
+          <RadioButton
+            Component={
+              <CardOptionWrapper selected={selected.card3}>
+                <CardThree
+                  text={foundedTemplatesData.template3}
+                  editable={false}
+                />
+              </CardOptionWrapper>
+            }
+            register={register("selectedCard")}
+            value="components/businessCards/vertical/cardThree/front"
+            attributes={{
+              defaultChecked:
+                selectedCard.path ===
+                "components/businessCards/vertical/cardThree/front",
+            }}
+            onChange={() => {
+              setSelected(() => ({
+                card1: false,
+                card2: false,
+                card3: true,
+              }));
+            }}
+          />
+        )}
+      </div>
+      {errors.selectedCard && (
+        <p className="text-red-500 text-right pr-5 text-sm">
+          {errors.selectedCard.message}
+        </p>
+      )}
 
-        <div className="flex w-full justify-center gap-4 mt-10">
-          <Button
-            label="Go Back"
-            varient="outlined"
-            attributes={{ onClick: onGoBack, type: "button" }}
-          />
-          <Button
-            label="Continue"
-            varient="primary"
-            attributes={{ type: "submit" }}
-          />
-        </div>
-      </form>
-    </div>
+      <div className="flex w-full justify-center gap-4 mt-10">
+        <Button
+          label="Go Back"
+          varient="outlined"
+          attributes={{ onClick: onGoBack, type: "button" }}
+        />
+        <Button
+          label="Continue"
+          varient="primary"
+          attributes={{ type: "submit" }}
+        />
+      </div>
+    </form>
   );
 };

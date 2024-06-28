@@ -49,7 +49,7 @@ export const designationSchema = yup.object().shape({
 export const serviceNameSchema = yup.object().shape({
   serviceNameArray: yup
     .array()
-    .min(1, "Minimum one service is required")
+    .min(1, "Type and hit Enter to add")
     .required("Service name is required"),
 });
 
@@ -59,7 +59,7 @@ export const serviceNameSchema = yup.object().shape({
 export const targetAudienceSchema = yup.object().shape({
   targetAudienceArray: yup
     .array()
-    .min(1, "Minimum one target is required")
+    .min(1, "Type and hit Enter to add")
     .required("Target Audience is required"),
 });
 

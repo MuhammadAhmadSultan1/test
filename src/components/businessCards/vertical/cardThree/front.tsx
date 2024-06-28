@@ -25,7 +25,7 @@ export default function VerticalCardThree(props: TCanvasCardProps) {
     >
       <Konva.Layer imageSmoothingEnabled>
         <CustomImage
-          height={25}
+          height={49}
           width={101}
           x={25}
           y={20}

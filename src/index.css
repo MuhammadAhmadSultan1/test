@@ -98,9 +98,10 @@ button:focus-visible {
 }
 
 #canvas div.konvajs-content canvas {
-  background-image: url("./assets/watermark.png") !important;
-  background-repeat: repeat !important;
-  background-size: 100px !important;
+  background-image: url("./assets/watermark.svg") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
 }
 
 button[aria-label]:focus:after,

@@ -18,7 +18,7 @@ export default function CustomStepper(props: { activeStep: number }) {
         { label: "" },
         { label: "" },
         { label: "" },
-        { label: "" },
+        // { label: "" },
       ]}
       activeStep={activeStep}
       connectorStateColors={true}

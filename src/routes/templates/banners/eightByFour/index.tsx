@@ -80,118 +80,123 @@ export const EightByFourBanners = ({
   };
 
   return (
-    <div className="flex flex-col items-center gap-4 pb-8">
-      <h2 className="text-4xl font-extrabold">Select one template</h2>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col w-full justify-center"
-      >
-        <div className="flex md:flex-row flex-wrap flex-col w-full justify-center py-5 px-5 gap-4">
-          {foundedTemplatesData.template1 && (
-            <RadioButton
-              Component={
-                <CardOptionWrapper selected={selected.card1}>
-                  <BannerEightByFourOne
-                    text={foundedTemplatesData.template1}
-                    editable={false}
-                  />
-                </CardOptionWrapper>
-              }
-              register={register("selectedCard")}
-              value="components/banners/eightByFour/cardOne/front"
-              attributes={{
-                defaultChecked:
-                  selectedCard.path ===
-                  "components/banners/eightByFour/cardOne/front",
-              }}
-              onChange={() => {
-                setSelected(() => ({
-                  card1: true,
-                  card2: false,
-                  card3: false,
-                }));
-              }}
-            />
-          )}
-          {foundedTemplatesData.template2 && (
-            <RadioButton
-              Component={
-                <CardOptionWrapper selected={selected.card2}>
-                  <BannerEightByFourTwo
-                    text={foundedTemplatesData.template2}
-                    editable={false}
-                  />
-                </CardOptionWrapper>
-              }
-              register={register("selectedCard")}
-              value="components/banners/eightByFour/cardTwo/front"
-              attributes={{
-                defaultChecked:
-                  selectedCard.path ===
-                  "components/banners/eightByFour/cardTwo/front",
-              }}
-              onChange={() => {
-                setSelected(() => ({
-                  card1: false,
-                  card2: true,
-                  card3: false,
-                }));
-              }}
-            />
-          )}
-
-          {foundedTemplatesData.template3 && (
-            <RadioButton
-              Component={
-                <CardOptionWrapper selected={selected.card3}>
-                  <BannerEightByFourLast
-                    text={foundedTemplatesData.template3}
-                    editable={false}
-                  />
-                </CardOptionWrapper>
-              }
-              register={register("selectedCard")}
-              value="components/banners/eightByFour/cardThree/front"
-              attributes={{
-                defaultChecked:
-                  selectedCard.path ===
-                  "components/banners/eightByFour/cardThree/front",
-              }}
-              onChange={() => {
-                setSelected(() => ({
-                  card1: false,
-                  card2: false,
-                  card3: true,
-                }));
-              }}
-            />
-          )}
-        </div>
-
-        {errors.selectedCard && (
-          <p className="text-red-500 text-right pr-5 text-sm">
-            {errors.selectedCard.message}
-          </p>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col w-full justify-center"
+    >
+      <div className="flex md:flex-row flex-wrap flex-col w-full justify-center py-5 px-5 gap-4">
+        {foundedTemplatesData.template1 && (
+          <RadioButton
+            Component={
+              <CardOptionWrapper selected={selected.card1}>
+                <BannerEightByFourOne
+                  text={foundedTemplatesData.template1}
+                  editable={false}
+                />
+              </CardOptionWrapper>
+            }
+            register={register("selectedCard")}
+            value="components/banners/eightByFour/cardOne/front"
+            attributes={{
+              defaultChecked:
+                selectedCard.path ===
+                "components/banners/eightByFour/cardOne/front",
+            }}
+            onChange={() => {
+              setSelected(() => ({
+                card1: true,
+                card2: false,
+                card3: false,
+              }));
+            }}
+          />
+        )}
+        {foundedTemplatesData.template2 && (
+          <RadioButton
+            Component={
+              <CardOptionWrapper selected={selected.card2}>
+                <BannerEightByFourTwo
+                  text={foundedTemplatesData.template2}
+                  editable={false}
+                />
+              </CardOptionWrapper>
+            }
+            register={register("selectedCard")}
+            value="components/banners/eightByFour/cardTwo/front"
+            attributes={{
+              defaultChecked:
+                selectedCard.path ===
+                "components/banners/eightByFour/cardTwo/front",
+            }}
+            onChange={() => {
+              setSelected(() => ({
+                card1: false,
+                card2: true,
+                card3: false,
+              }));
+            }}
+          />
         )}
 
-        <div className="flex w-full justify-center gap-4 mt-10">
-          <Button
-            label="Go Back"
-            varient="outlined"
-            attributes={{ onClick: onGoBack, type: "button" }}
+        {foundedTemplatesData.template3 && (
+          <RadioButton
+            Component={
+              <CardOptionWrapper selected={selected.card3}>
+                <BannerEightByFourLast
+                  text={foundedTemplatesData.template3}
+                  editable={false}
+                />
+              </CardOptionWrapper>
+            }
+            register={register("selectedCard")}
+            value="components/banners/eightByFour/cardThree/front"
+            attributes={{
+              defaultChecked:
+                selectedCard.path ===
+                "components/banners/eightByFour/cardThree/front",
+            }}
+            onChange={() => {
+              setSelected(() => ({
+                card1: false,
+                card2: false,
+                card3: true,
+              }));
+            }}
           />
-          <Button
-            label="Regenerate Content"
-            varient="outlined"
-            attributes={{ onClick: onRegenerateDescription, type: "button" }}
-          />
-          <Button
-            label="Continue"
-            varient="primary"
-            attributes={{ type: "submit" }}
-          />
-        </div>
-      </form>
-    </div>
+        )}
+      </div>
+
+      {errors.selectedCard && (
+        <p className="text-red-500 text-right pr-5 text-sm">
+          {errors.selectedCard.message}
+        </p>
+      )}
+
+      <div className="m-auto max-w-[600px] py-4 px-6  mt-2 rounded-lg border border-lightOutline">
+        <span>
+          Bam! Your text was just generated into 3 templates based on what the
+          AI found would fit your brand best. Don't like it? Hit the “Regenerate
+          Text” button and see what else the Ai has up its sleeve!
+        </span>
+      </div>
+
+      <div className="flex w-full justify-center gap-4 mt-10">
+        <Button
+          label="Go Back"
+          varient="outlined"
+          attributes={{ onClick: onGoBack, type: "button" }}
+        />
+        <Button
+          label="Regenerate Text"
+          varient="outlined"
+          attributes={{ onClick: onRegenerateDescription, type: "button" }}
+        />
+        <Button
+          label="Continue"
+          varient="primary"
+          attributes={{ type: "submit" }}
+        />
+      </div>
+    </form>
   );
 };
