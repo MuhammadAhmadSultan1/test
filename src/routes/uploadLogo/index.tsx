@@ -43,22 +43,20 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
   useEffect(() => {
     // getSessionToken();
     (async () => {
-      if (!userCard.sessionId) {
-        try {
-          const response = await userSession().unwrap();
-          const userCard = {
+      try {
+        const response = await userSession().unwrap();
+        const userCard = {
+          sessionId: response.content.sessionId,
+        };
+        dispatch(
+          setSelectedTemplateData({
             sessionId: response.content.sessionId,
-          };
-          dispatch(
-            setSelectedTemplateData({
-              sessionId: response.content.sessionId,
-            })
-          );
-          setSessionIdLocal(response.content.sessionId ?? "");
-          dispatch(setUserCardInfo(userCard));
-        } catch (e) {
-          toaster(getErrorMessage(e), "error");
-        }
+          })
+        );
+        setSessionIdLocal(response.content.sessionId ?? "");
+        dispatch(setUserCardInfo(userCard));
+      } catch (e) {
+        toaster(getErrorMessage(e), "error");
       }
     })();
     const params = new URLSearchParams(window.location.search);
