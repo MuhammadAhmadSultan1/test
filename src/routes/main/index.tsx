@@ -21,7 +21,7 @@ import PhoneNumber from "../phoneNumber";
 const Main = () => {
   // const navigate = useNavigate();
   // const dispatch = useAppDispatch();
-  const [currentStep, setCurrentStep] = useState<number>(11);
+  const [currentStep, setCurrentStep] = useState<number>(0);
 
   const onClickNext = () => {
     setCurrentStep(currentStep + 1);
