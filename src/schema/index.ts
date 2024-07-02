@@ -94,7 +94,12 @@ export const uploadLogoSchema = yup.object().shape({
       "Please select a valid image file (png, jpg, jpeg)",
       (file) => {
         if (file && file[0]) {
-          const supportedFileTypes = ["image/jpeg", "image/png", "image/jpg"];
+          const supportedFileTypes = [
+            "image/jpeg",
+            "image/png",
+            "image/jpg",
+            "image/svg+xml",
+          ];
           return supportedFileTypes.includes(file[0].type);
         }
       }

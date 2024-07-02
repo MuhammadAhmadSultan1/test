@@ -1126,6 +1126,498 @@
     }
   },
 
+  "Brouchers": {
+    "Flyer": {
+      "cardOne": {
+        "logo": {
+          "color": "#590595",
+          "width": 106,
+          "height": 58,
+          "x": 245,
+          "y": 13
+        },
+        "name": {
+          "text": "PUSH BRANDS",
+          "width": 382,
+          "height": 168,
+          "x": 107,
+          "y": 155,
+          "fontSize": 72,
+          "fontWeight": "700",
+          "fontStyle": "bold",
+          "lineHeight": 1.1,
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 70,
+          "height": 10,
+          "x": 470,
+          "y": 20,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 70,
+          "height": 10,
+          "x": 423,
+          "y": 349,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 100,
+          "height": 10,
+          "x": 695,
+          "y": 348,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 70,
+          "height": 10,
+          "x": 562,
+          "y": 351,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 91,
+          "height": 20,
+          "x": 835,
+          "y": 349,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "Step up your eCommerce marketing game with Push Brands! Enhance your brand appeal and connect with over 500 innovative content creators to produce influential User-Generated Content (UGC). Simplify the process with our all-in-one platform that facilitates quick job postings, easy creator selection, and efficient content delivery.",
+          "width": 486,
+          "height": 93,
+          "x": 54,
+          "y": 485,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "problem": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+          "width": 125,
+          "height": 58,
+          "x": 68,
+          "y": 720,
+          "fontSize": 10,
+          "fontStyle": "normal",
+          "fontWeight": 400,
+          "lineHeight": 1,
+          "textDecoration": "empty string"
+        },
+        "solution": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+          "width": 125,
+          "height": 58,
+          "x": 254,
+          "y": 720,
+          "fontSize": 10,
+          "fontStyle": "normal",
+          "fontWeight": 400,
+          "lineHeight": 1,
+          "textDecoration": "empty string"
+        },
+        "callToAction": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+          "width": 125,
+          "height": 58,
+          "x": 440,
+          "y": 720,
+          "fontSize": 10,
+          "fontStyle": "normal",
+          "fontWeight": 400,
+          "lineHeight": 1,
+          "textDecoration": "empty string"
+        }
+      },
+      "cardTwo": {
+        "logo": {
+          "color": "#590595",
+          "width": 118,
+          "height": 66,
+          "x": 441,
+          "y": 37
+        },
+        "name": {
+          "text": "PUSH BRANDS",
+          "width": 320,
+          "height": 92,
+          "x": 33,
+          "y": 147,
+          "fontSize": 38,
+          "fontWeight": 400,
+          "fontStyle": "normal",
+          "lineHeight": 1.1,
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 70,
+          "height": 10,
+          "x": 470,
+          "y": 20,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 70,
+          "height": 10,
+          "x": 423,
+          "y": 349,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 100,
+          "height": 10,
+          "x": 695,
+          "y": 348,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 70,
+          "height": 10,
+          "x": 562,
+          "y": 351,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 91,
+          "height": 20,
+          "x": 835,
+          "y": 349,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "Step up your eCommerce marketing game with Push Brands! Enhance your brand appeal and connect with over 500 innovative content creators to produce influential User-Generated Content (UGC). Simplify the process with our all-in-one platform that facilitates quick job postings, easy creator selection, and efficient content delivery.",
+          "width": 250,
+          "height": 156,
+          "x": 33,
+          "y": 320,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 1.1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "problem": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+          "width": 125,
+          "height": 58,
+          "x": 68,
+          "y": 720,
+          "fontSize": 10,
+          "fontStyle": "normal",
+          "fontWeight": 400,
+          "lineHeight": 1,
+          "textDecoration": "empty string"
+        },
+        "solution": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+          "width": 125,
+          "height": 58,
+          "x": 254,
+          "y": 720,
+          "fontSize": 10,
+          "fontStyle": "normal",
+          "fontWeight": 400,
+          "lineHeight": 1,
+          "textDecoration": "empty string"
+        },
+        "callToAction": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+          "width": 125,
+          "height": 58,
+          "x": 440,
+          "y": 720,
+          "fontSize": 10,
+          "fontStyle": "normal",
+          "fontWeight": 400,
+          "lineHeight": 1,
+          "textDecoration": "empty string"
+        },
+        "services": [
+          {
+            "text": "Brochures",
+            "width": 70,
+            "height": 12,
+            "x": 392,
+            "y": 320,
+            "fontSize": 10,
+            "fontStyle": "normal",
+            "fontWeight": 400,
+            "lineHeight": 1,
+            "textDecoration": "empty string"
+          },
+          {
+            "text": "Business Card",
+            "width": 70,
+            "height": 12,
+            "x": 392,
+            "y": 340,
+            "fontSize": 10,
+            "fontStyle": "normal",
+            "fontWeight": 400,
+            "lineHeight": 1,
+            "textDecoration": "empty string"
+          },
+          {
+            "text": "Banners",
+            "width": 70,
+            "height": 12,
+            "x": 392,
+            "y": 360,
+            "fontSize": 10,
+            "fontStyle": "normal",
+            "fontWeight": 400,
+            "lineHeight": 1,
+            "textDecoration": "empty string"
+          },
+          {
+            "text": "Stickers",
+            "width": 70,
+            "height": 12,
+            "x": 392,
+            "y": 380,
+            "fontSize": 10,
+            "fontStyle": "normal",
+            "fontWeight": 400,
+            "lineHeight": 1,
+            "textDecoration": "empty string"
+          }
+        ]
+      },
+      "cardThree": {
+        "logo": {
+          "color": "#590595",
+          "width": 80,
+          "height": 44,
+          "x": 37,
+          "y": 29
+        },
+        "name": {
+          "text": "PUSH BRANDS",
+          "width": 326,
+          "height": 92,
+          "x": 43,
+          "y": 264,
+          "fontSize": 38,
+          "fontWeight": 400,
+          "fontStyle": "bold",
+          "lineHeight": 1.1,
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 70,
+          "height": 10,
+          "x": 470,
+          "y": 20,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 70,
+          "height": 10,
+          "x": 136,
+          "y": 818,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 100,
+          "height": 10,
+          "x": 335,
+          "y": 818,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 61,
+          "height": 10,
+          "x": 240,
+          "y": 818,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 98,
+          "height": 20,
+          "x": 439,
+          "y": 818,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "Step up your eCommerce marketing game with Push Brands! Enhance your brand appeal and connect with over 500 innovative content creators to produce influential User-Generated Content (UGC). Simplify the process with our all-in-one platform that facilitates quick job postings, easy creator selection, and efficient content delivery.",
+          "width": 486,
+          "height": 93,
+          "x": 43,
+          "y": 371,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.1,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "problem": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+          "width": 125,
+          "height": 58,
+          "x": 55,
+          "y": 568,
+          "fontSize": 10,
+          "fontStyle": "normal",
+          "fontWeight": 400,
+          "lineHeight": 1,
+          "textDecoration": "empty string"
+        },
+        "solution": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+          "width": 125,
+          "height": 58,
+          "x": 242,
+          "y": 568,
+          "fontSize": 10,
+          "fontStyle": "normal",
+          "fontWeight": 400,
+          "lineHeight": 1,
+          "textDecoration": "empty string"
+        },
+        "callToAction": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+          "width": 125,
+          "height": 58,
+          "x": 429,
+          "y": 568,
+          "fontSize": 10,
+          "fontStyle": "normal",
+          "fontWeight": 400,
+          "lineHeight": 1,
+          "textDecoration": "empty string"
+        },
+        "services": [
+          {
+            "text": "Brochures",
+            "width": 70,
+            "height": 12,
+            "x": 392,
+            "y": 320,
+            "fontSize": 10,
+            "fontStyle": "normal",
+            "fontWeight": 400,
+            "lineHeight": 1,
+            "textDecoration": "empty string"
+          },
+          {
+            "text": "Business Card",
+            "width": 70,
+            "height": 12,
+            "x": 392,
+            "y": 340,
+            "fontSize": 10,
+            "fontStyle": "normal",
+            "fontWeight": 400,
+            "lineHeight": 1,
+            "textDecoration": "empty string"
+          },
+          {
+            "text": "Banners",
+            "width": 70,
+            "height": 12,
+            "x": 392,
+            "y": 360,
+            "fontSize": 10,
+            "fontStyle": "normal",
+            "fontWeight": 400,
+            "lineHeight": 1,
+            "textDecoration": "empty string"
+          },
+          {
+            "text": "Stickers",
+            "width": 70,
+            "height": 12,
+            "x": 392,
+            "y": 380,
+            "fontSize": 10,
+            "fontStyle": "normal",
+            "fontWeight": 400,
+            "lineHeight": 1,
+            "textDecoration": "empty string"
+          }
+        ]
+      }
+    }
+  },
+
   "horizontalCards": {
     "card1": {
       "logo": {

@@ -4,16 +4,17 @@ import { TCanvasCardProps } from "../../../../types/card";
 import CustomImage from "../../../customImage";
 import { useGetSvg } from "./svg/useGetSvg";
 
-export default function CircleOne(props: TCanvasCardProps) {
-  const { primary, text } = props;
+export default function OvalTwo(props: TCanvasCardProps) {
+  const { primary, secondary, text } = props;
 
-  const { stickerCircle } = useGetSvg({
+  const { stickerOval } = useGetSvg({
     primary: primary || text.primaryColor,
+    secondary: secondary || text.secondaryColor,
   });
   return (
     <Konva.Stage
-      width={288}
-      height={288}
+      width={555}
+      height={384}
       style={{
         backgroundColor: "#F2F2F2",
       }}
@@ -29,13 +30,13 @@ export default function CircleOne(props: TCanvasCardProps) {
           stroke={"white"}
           strokeWidth={6}
         /> */}
-        <CustomImage x={0} y={0} svgString={stickerCircle} />
+        <CustomImage x={0} y={0} svgString={stickerOval} />
 
         <CustomImage
-          width={205}
-          height={112}
-          x={43}
-          y={80}
+          width={392}
+          height={218}
+          x={81}
+          y={83}
           url={text.templateAttributes.logo.url}
         />
       </Konva.Layer>

@@ -2,13 +2,17 @@
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 // import { setSelectedTemplateData } from "../../redux/slices/selectedTemplate";
 import { setTemplateData } from "../../redux/slices/templateData";
-import { useGetDescriptionMutation } from "../../services/template";
+import {
+  useGetBroucherDescriptionMutation,
+  useGetDescriptionMutation,
+} from "../../services/template";
 import { getErrorMessage } from "../../utils/errorHandler";
 import { toaster } from "../../utils/toaster";
 import { EightByFourBanners } from "./banners/eightByFour";
 import { EightByThreeBanners } from "./banners/eightByThree";
 import { SixByThreeBanners } from "./banners/sixByThree";
 import { TenByFourBanners } from "./banners/tenByFour";
+import { Flyers } from "./broucher/flyer";
 import { HorizontalCards } from "./bussinessCards/horizontal";
 import { VerticalCards } from "./bussinessCards/vertical";
 import { StickersCircle } from "./stickers/circle";
@@ -28,6 +32,7 @@ export const Templates = (props: ICommonProps) => {
   const dispatch = useAppDispatch();
 
   const [getDescription] = useGetDescriptionMutation();
+  const [getBroucherDescription] = useGetBroucherDescriptionMutation();
 
   const onRegenerateDescription = async () => {
     try {
@@ -38,14 +43,17 @@ export const Templates = (props: ICommonProps) => {
         serviceNameArray: userCard.serviceNameArray,
         targetAudienceArray: userCard.targetAudienceArray,
         aboutCompany: userCard.aboutCompany,
-        goals: userCard.goals,
+        // goals: userCard.goals,
         name: userCard.name,
         address: userCard.address,
         designation: userCard.designation,
         phone: userCard.phone,
       };
 
-      const response = await getDescription(getDescriptionPayload).unwrap();
+      const response =
+        sku === "107BF001"
+          ? await getBroucherDescription(getDescriptionPayload).unwrap()
+          : await getDescription(getDescriptionPayload).unwrap();
 
       templateData.forEach((template) => {
         dispatch(
@@ -78,16 +86,15 @@ export const Templates = (props: ICommonProps) => {
       {sku === "102VC006" && (
         <VerticalCards {...{ ...props, onRegenerateDescription }} />
       )}
-      {sku === "103SC007" && (
-        <StickersCircle {...{ ...props, onRegenerateDescription }} />
-      )}
+      {sku === "103SC007" && <StickersCircle {...props} />}
       {/* {sku === "106B6301" && <StickersCircle {...{...props, onRegenerateDescription}} />} */}
-      {sku === "104SO008" && <StickersOval />}
-      {sku === "105LC009" && (
-        <StickersLabel {...{ ...props, onRegenerateDescription }} />
-      )}
+      {sku === "104SO008" && <StickersOval {...props} />}
+      {sku === "105LC009" && <StickersLabel {...props} />}
       {sku === "106B6301" && (
         <SixByThreeBanners {...{ ...props, onRegenerateDescription }} />
+      )}
+      {sku === "107BF001" && (
+        <Flyers {...{ ...props, onRegenerateDescription }} />
       )}
       {sku === "107B8302" && (
         <EightByThreeBanners {...{ ...props, onRegenerateDescription }} />

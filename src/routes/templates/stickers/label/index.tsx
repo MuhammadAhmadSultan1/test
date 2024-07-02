@@ -115,7 +115,10 @@ export const StickersLabel = ({ onClickBack, onClickNext }: ICommonProps) => {
         {foundedTemplatesData.template2 && (
           <RadioButton
             Component={
-              <CardOptionWrapper selected={selected.card2}>
+              <CardOptionWrapper
+                selected={selected.card2}
+                rounded="rounded-2xl"
+              >
                 <LabelCircleTwo
                   text={foundedTemplatesData.template2}
                   editable={false}

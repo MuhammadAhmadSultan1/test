@@ -9,7 +9,7 @@ import CustomImage from "../../../customImage";
 export default function LabelCircleTwo(props: TCanvasCardProps) {
   const { primary, secondary, text } = props;
 
-  const { squareSvg } = useGetCardSvgs({
+  const { innerSquareSvg } = useGetCardSvgs({
     primary: primary || text.primaryColor,
     secondary: secondary || text.secondaryColor,
   });
@@ -17,19 +17,21 @@ export default function LabelCircleTwo(props: TCanvasCardProps) {
   return (
     <Konva.Stage
       ref={props.editable ? props.stageRef : undefined}
-      width={480}
-      height={192}
-      style={{ backgroundColor: "white" }}
+      width={460}
+      height={172}
+      style={{ backgroundColor: "white", borderColor: primary || "#590595" }}
       id="canvas"
+      className="rounded-[10px] border-[10px]"
     >
       <Konva.Layer imageSmoothingEnabled>
-        <Konva.Group x={13} y={15}>
-          <CustomImage x={0} y={0} svgString={squareSvg} />
+        <Konva.Group x={0} y={0}>
+          {/* <CustomImage x={0} y={0} svgString={outerSquareSvg} /> */}
+          <CustomImage x={17} y={15} svgString={innerSquareSvg} />
           <CustomImage
-            width={215}
-            height={120}
+            width={195}
+            height={100}
             x={130}
-            y={20}
+            y={35}
             url={text.templateAttributes.logo.url}
           />
         </Konva.Group>

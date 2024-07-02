@@ -8,24 +8,27 @@ export const onTextDblClick = (props: IChangeTextHanlerProps) => {
     fieldName,
     textRef,
     stageScale,
+    index,
     onEnter,
     onEscape,
     // onChange,
     onClick,
   } = props;
 
-  const lineHeight = textRef.current[fieldName]?.lineHeight().toString();
-  const fontFamily = textRef.current[fieldName]?.fontFamily();
-  const fontSize = textRef.current[fieldName]?.fontSize();
-  const fillColor = textRef.current[fieldName]?.getAttr("fill");
-  const width = textRef.current[fieldName]?.getAttr("width");
-  const height = textRef.current[fieldName]?.getAttr("height");
-  let fontStyle: string = textRef.current[fieldName]?.getAttr("fontStyle");
-  let fontWeight: string = "normal";
-  const textDecoration = textRef.current[fieldName]?.getAttr("textDecoration");
-  const textAlign = textRef.current[fieldName]?.getAttr("align");
+  // console.log("areaPosition", areaPosition);
 
-  const splitedFontStyle = fontStyle.split(" ");
+  const lineHeight = textRef?.lineHeight().toString();
+  const fontFamily = textRef?.fontFamily();
+  const fontSize = textRef?.fontSize();
+  const fillColor = textRef?.getAttr("fill");
+  const width = textRef?.getAttr("width");
+  const height = textRef?.getAttr("height");
+  let fontStyle: string = textRef?.getAttr("fontStyle");
+  let fontWeight: string = "normal";
+  const textDecoration = textRef?.getAttr("textDecoration");
+  const textAlign = textRef?.getAttr("align");
+
+  const splitedFontStyle = fontStyle?.split(" ");
   if (splitedFontStyle.length) {
     fontWeight = splitedFontStyle[0];
     if (splitedFontStyle.length > 1) fontStyle = splitedFontStyle[1];
@@ -59,10 +62,10 @@ export const onTextDblClick = (props: IChangeTextHanlerProps) => {
   textarea.value = currentText;
   textarea.addEventListener("keydown", (e) => {
     if (e.code === "Enter" && !e.shiftKey) {
-      onEnter(textarea.value, textarea, fieldName);
+      onEnter(textarea.value, textarea, fieldName, index);
     }
     if (e.code === "Escape") {
-      onEscape(textarea, fieldName);
+      onEscape(textarea, fieldName, index);
     }
   });
   // textarea.addEventListener("change", () => {
@@ -70,7 +73,7 @@ export const onTextDblClick = (props: IChangeTextHanlerProps) => {
   // });
 
   textarea.addEventListener("click", () => {
-    onClick(fieldName);
+    onClick(fieldName, index);
   });
 
   document.getElementById(container)?.append(textarea);

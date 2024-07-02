@@ -8,6 +8,8 @@ import { aboutCompanySchema } from "../../schema";
 import { Button } from "../../components/button";
 import { useQuestionnaireAddMutation } from "../../services/form";
 import {
+  IBroucherDesctiption,
+  useGetBroucherDescriptionMutation,
   useGetDescriptionMutation,
   useGetTemplateQuery,
 } from "../../services/template";
@@ -31,6 +33,9 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
   });
   const [getDescription, { isLoading: isGeneratingDescription }] =
     useGetDescriptionMutation();
+
+  const [getBroucherDescription, { isLoading: isGettingBroucherDescription }] =
+    useGetBroucherDescriptionMutation();
 
   const defaultValues: IAboutCompany = {
     aboutCompany: userCard?.aboutCompany ?? "",
@@ -91,15 +96,21 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
         phone: userCard.phone,
         // showHeaderAndStepper: true,
       };
-      const response = await getDescription(getDescriptionPayload).unwrap();
+      const response =
+        sku !== "107BF001"
+          ? await getDescription(getDescriptionPayload).unwrap()
+          : await getBroucherDescription(getDescriptionPayload).unwrap();
       if (templateConfig && templateConfig.length) {
         templateConfig.forEach((template) => {
-          const data = {
-            ...template,
-            templateAttributes: {
-              ...template.templateAttributes,
-            },
-          };
+          const stringyfy = JSON.stringify(template);
+          // const data = {
+          //   ...template,
+          //   templateAttributes: {
+          //     ...template.templateAttributes,
+          //   },
+          // };
+
+          const data = JSON.parse(stringyfy);
 
           if (template.templateAttributes) {
             Object.keys(template.templateAttributes).forEach((key) => {
@@ -144,6 +155,38 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
               }
             });
           }
+
+          if (sku === "107BF001") {
+            Object.keys(response.content).forEach((key) => {
+              data.templateAttributes = {
+                ...data.templateAttributes,
+                [key]: {
+                  ...(data.templateAttributes[
+                    key as keyof ITemplateAttributes
+                  ] as object),
+                  text: response.content[key as keyof IBroucherDesctiption],
+                },
+              };
+            });
+
+            if (data.templateAttributes.services) {
+              data.templateAttributes.services.forEach(
+                (_: keyof ITemplateAttributes, index: number) => {
+                  if (
+                    userCard.serviceNameArray &&
+                    index < userCard.serviceNameArray.length
+                  ) {
+                    data.templateAttributes.services[index].text =
+                      userCard.serviceNameArray
+                        ? userCard.serviceNameArray[index]
+                        : "";
+                  } else {
+                    data.templateAttributes.services[index].text = "";
+                  }
+                }
+              );
+            }
+          }
           dispatch(setTemplateData({ ...data }));
         });
 
@@ -157,6 +200,7 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
         // }
       }
     } catch (e) {
+      console.log("error", e);
       toaster(getErrorMessage(e), "error");
     }
   };
@@ -169,7 +213,11 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
     // dispatch(setUserCardInfo(userCard));
   };
 
-  if (isAddingQuestionire || isGeneratingDescription)
+  if (
+    isAddingQuestionire ||
+    isGeneratingDescription ||
+    isGettingBroucherDescription
+  )
     return (
       <>
         <div className="mt-40">

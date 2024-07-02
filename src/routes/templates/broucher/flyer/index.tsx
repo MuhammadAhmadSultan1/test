@@ -6,9 +6,9 @@ import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 import { setSelectCard } from "../../../../redux/slices/selectedCard";
 import { setSelectedTemplateData } from "../../../../redux/slices/selectedTemplate";
 
-import CircleOne from "../../../../components/stickers/circle/cardOne/front";
-import CircleTwo from "../../../../components/stickers/circle/cardTwo/front";
-import CircleThree from "../../../../components/stickers/circle/cardThree/front";
+import FlyerOne from "../../../../components/broucher/flyers/cardOne/front";
+import FlyerTwo from "../../../../components/broucher/flyers/cardTwo/front";
+import FlyerThree from "../../../../components/broucher/flyers/cardThree/front";
 import { RadioButton } from "../../../../components/radioButton";
 import { CardOptionWrapper } from "../../../../components/cardOptionWarpper";
 import { Button } from "../../../../components/button";
@@ -19,16 +19,20 @@ import { selectCardSchema } from "../../../../schema";
 import { toaster } from "../../../../utils/toaster";
 import { getErrorMessage } from "../../../../utils/errorHandler";
 
-export const StickersCircle = ({ onClickBack, onClickNext }: ICommonProps) => {
+export const Flyers = ({
+  onClickBack,
+  onClickNext,
+  onRegenerateDescription,
+}: ICommonProps) => {
   const selectedCard = useAppSelector((state) => state.selectedCard);
   const templateData = useAppSelector((state) => state.templateData);
 
   const dispatch = useAppDispatch();
 
   const [selected, setSelected] = useState({
-    card1: selectedCard.path === "components/stickers/circle/cardOne/front",
-    card2: selectedCard.path === "components/stickers/circle/cardTwo/front",
-    card3: selectedCard.path === "components/stickers/circle/cardThree/front",
+    card1: selectedCard.path === "components/broucher/flyers/cardOne/front",
+    card2: selectedCard.path === "components/broucher/flyers/cardTwo/front",
+    card3: selectedCard.path === "components/broucher/flyers/cardThree/front",
   });
 
   const foundedTemplatesData = useMemo(() => {
@@ -61,7 +65,7 @@ export const StickersCircle = ({ onClickBack, onClickNext }: ICommonProps) => {
         ? foundedTemplatesData.template2
         : foundedTemplatesData.template3;
       if (selectedData)
-        dispatch(setSelectedTemplateData({ ...selectedData, sku: "103SC007" }));
+        dispatch(setSelectedTemplateData({ ...selectedData, sku: "107BF001" }));
       if (onClickNext) {
         onClickNext();
       }
@@ -83,22 +87,19 @@ export const StickersCircle = ({ onClickBack, onClickNext }: ICommonProps) => {
         {foundedTemplatesData.template1 && (
           <RadioButton
             Component={
-              <CardOptionWrapper
-                selected={selected.card1}
-                rounded="rounded-2xl"
-              >
-                <CircleOne
+              <CardOptionWrapper selected={selected.card1}>
+                <FlyerOne
                   text={foundedTemplatesData.template1}
                   editable={false}
                 />
               </CardOptionWrapper>
             }
             register={register("selectedCard")}
-            value="components/stickers/circle/cardOne/front"
+            value="components/broucher/flyers/cardOne/front"
             attributes={{
               defaultChecked:
                 selectedCard.path ===
-                "components/stickers/circle/cardOne/front",
+                "components/broucher/flyers/cardOne/front",
             }}
             onChange={() => {
               setSelected(() => ({
@@ -112,22 +113,19 @@ export const StickersCircle = ({ onClickBack, onClickNext }: ICommonProps) => {
         {foundedTemplatesData.template2 && (
           <RadioButton
             Component={
-              <CardOptionWrapper
-                selected={selected.card2}
-                rounded="rounded-2xl"
-              >
-                <CircleTwo
+              <CardOptionWrapper selected={selected.card2}>
+                <FlyerTwo
                   text={foundedTemplatesData.template2}
                   editable={false}
                 />
               </CardOptionWrapper>
             }
             register={register("selectedCard")}
-            value="components/stickers/circle/cardTwo/front"
+            value="components/broucher/flyers/cardTwo/front"
             attributes={{
               defaultChecked:
                 selectedCard.path ===
-                "components/stickers/circle/cardTwo/front",
+                "components/broucher/flyers/cardTwo/front",
             }}
             onChange={() => {
               setSelected(() => ({
@@ -142,22 +140,19 @@ export const StickersCircle = ({ onClickBack, onClickNext }: ICommonProps) => {
         {foundedTemplatesData.template3 && (
           <RadioButton
             Component={
-              <CardOptionWrapper
-                selected={selected.card3}
-                rounded="rounded-2xl"
-              >
-                <CircleThree
+              <CardOptionWrapper selected={selected.card3}>
+                <FlyerThree
                   text={foundedTemplatesData.template3}
                   editable={false}
                 />
               </CardOptionWrapper>
             }
             register={register("selectedCard")}
-            value="components/stickers/circle/cardThree/front"
+            value="components/broucher/flyers/cardThree/front"
             attributes={{
               defaultChecked:
                 selectedCard.path ===
-                "components/stickers/circle/cardThree/front",
+                "components/broucher/flyers/cardThree/front",
             }}
             onChange={() => {
               setSelected(() => ({
@@ -176,13 +171,30 @@ export const StickersCircle = ({ onClickBack, onClickNext }: ICommonProps) => {
         </p>
       )}
 
+      <div className="m-auto max-w-[600px] py-4 px-6  mt-2 rounded-lg border border-lightOutline">
+        <span>
+          Bam! Your text was just generated into 3 templates based on what the
+          AI found would fit your brand best. Don't like it? Hit the “Regenerate
+          Text” button and see what else the Ai has up its sleeve!
+        </span>
+      </div>
+
       <div className="flex w-full justify-center gap-4 mt-10">
         <Button
           label="Go Back"
           varient="outlined"
-          attributes={{ onClick: onGoBack }}
+          attributes={{ onClick: onGoBack, type: "button" }}
         />
-        <Button label="Continue" varient="primary" />
+        <Button
+          label="Regenerate Text"
+          varient="outlined"
+          attributes={{ onClick: onRegenerateDescription, type: "button" }}
+        />
+        <Button
+          label="Continue"
+          varient="primary"
+          attributes={{ type: "submit" }}
+        />
       </div>
     </form>
   );

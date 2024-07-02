@@ -115,7 +115,7 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
       // setLoading(false);
       onClickNext?.();
     } catch (e) {
-      toaster(getErrorMessage(e), "success");
+      toaster(getErrorMessage(e), "error");
     }
   };
 

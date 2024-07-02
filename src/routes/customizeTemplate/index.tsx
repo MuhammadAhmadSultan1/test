@@ -23,6 +23,7 @@ import { resetSelectedColorVariation } from "../../redux/slices/selectedColorVar
 import { clearUserCardInfo } from "../../redux/slices/userInfo";
 import { useUndoRedo } from "./hooks/useUndoRedo";
 import { TFontStyle, TTextDecoration } from "../../types/card";
+// import { Text } from "konva/lib/shapes/Text";
 // import { setZoom } from "../../utils/zoom";
 
 export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
@@ -36,7 +37,10 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
   const [currentZoom, setCurrentZoom] = useState(0);
   const [actualSize, setActualSize] = useState({ width: 0, height: 0 });
   const [isPreviewEnabled, setIsPreviewEnabled] = useState(false);
-  const [selectedField, setSelectedField] = useState<TFieldName>();
+  const [selectedField, setSelectedField] = useState<{
+    fieldName: TFieldName;
+    index?: number;
+  }>();
 
   const textReff = useRef<IRef>({
     name: null,
@@ -46,6 +50,10 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
     phone: null,
     website: null,
     description: null,
+    callToAction: null,
+    problem: null,
+    services: [],
+    solution: null,
   });
   const stageRef = useRef<Stage>(null);
 
@@ -85,17 +93,36 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
 
   const removeTextarea = (
     textarea: HTMLTextAreaElement,
-    fieldName: TFieldName
+    fieldName: TFieldName,
+    index?: number
   ) => {
-    window.removeEventListener("click", () => {});
     textarea.parentNode?.removeChild(textarea);
-    textReff.current[fieldName]?.show();
+    fieldName === "services"
+      ? textReff.current.services[index ?? 0]?.show()
+      : textReff.current[fieldName]?.show();
+  };
+
+  const removeAllActiveTextAreas = () => {
+    if (!selectedField?.fieldName) return;
+
+    const activeTextArea = document.querySelector<HTMLTextAreaElement>(
+      `#${selectedField.fieldName}`
+    );
+    if (activeTextArea) {
+      onEnter(
+        activeTextArea.value,
+        activeTextArea,
+        selectedField.fieldName,
+        selectedField.index
+      );
+    }
   };
 
   const onEnter = (
     value: string,
     textarea: HTMLTextAreaElement,
-    fieldName: TFieldName
+    fieldName: TFieldName,
+    index?: number
   ) => {
     if (value) {
       // setText((prev) => ({
@@ -105,34 +132,58 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
       //     [fieldName]: { ...prev.templateAttributes[fieldName], text: value },
       //   },
       // }));
-      if (currentState.templateAttributes[fieldName].text !== value)
-        onStateChange(fieldName, {
-          text: value,
-        });
+      if (
+        fieldName === "services"
+          ? currentState.templateAttributes.services[index ?? 0].text !== value
+          : currentState.templateAttributes[fieldName].text !== value
+      )
+        onStateChange(
+          fieldName,
+          {
+            text: value,
+          },
+          index
+        );
     }
-    removeTextarea(textarea, fieldName);
-    setSelectedField(undefined);
+    removeTextarea(textarea, fieldName, index);
   };
 
-  const onClickTextArea = (fieldName: TFieldName) => {
-    setSelectedField(fieldName);
+  const onClickTextArea = (fieldName: TFieldName, index?: number) => {
+    setSelectedField(() => ({ fieldName: fieldName, index: index }));
   };
 
-  const dblClickHandler = (fieldName: TFieldName) => {
-    const textPosition = textReff?.current[fieldName]?.absolutePosition();
+  const dblClickHandler = (fieldName: TFieldName, index?: number) => {
+    const textPosition =
+      fieldName === "services"
+        ? textReff?.current.services
+          ? textReff.current.services[index ?? 0]?.absolutePosition()
+          : { x: 0, y: 0 }
+        : textReff?.current[fieldName]?.absolutePosition();
     if (textReff && stageRef && stageRef.current && textPosition) {
       const areaPosition = {
         x: stageRef.current.container().offsetLeft + textPosition.x,
         y: stageRef.current.container().offsetTop + textPosition.y,
       };
-      setSelectedField(fieldName);
+      setSelectedField(() => ({ fieldName: fieldName, index: index }));
+
+      removeAllActiveTextAreas();
+
       onTextDblClick({
-        textRef: textReff,
-        currentText: currentState.templateAttributes[fieldName].text,
+        textRef:
+          fieldName === "services"
+            ? textReff.current.services[index ?? 0]
+            : textReff.current[fieldName],
+        currentText:
+          fieldName === "services"
+            ? index !== undefined
+              ? currentState.templateAttributes[fieldName][index].text
+              : ""
+            : currentState.templateAttributes[fieldName].text,
         fieldName: fieldName,
         areaPosition: areaPosition,
         container: "canvas",
         stageScale: stageRef.current.scaleX(),
+        index: index,
         // onChange: onChange,
         onEnter: onEnter,
         onEscape: removeTextarea,
@@ -143,7 +194,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
 
   const onClickBold = () => {
     if (!selectedField) return;
-    const textarea = document.getElementById(selectedField);
+    const textarea = document.getElementById(selectedField.fieldName);
     if (textarea) {
       if (textarea.style.fontWeight === FONT_STYLE.BOLD) {
         textarea.style.fontWeight = FONT_STYLE.NORMAL;
@@ -157,7 +208,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
         //     },
         //   },
         // }));
-        onStateChange(selectedField, {
+        onStateChange(selectedField.fieldName, {
           fontStyle: textarea.style.fontStyle as TFontStyle,
         });
       } else {
@@ -176,7 +227,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
         //   },
         // }));
 
-        onStateChange(selectedField, {
+        onStateChange(selectedField.fieldName, {
           fontStyle:
             textarea.style.fontStyle === FONT_STYLE.ITALIC
               ? (`${textarea.style.fontWeight} ${textarea.style.fontStyle}` as TFontStyle)
@@ -189,7 +240,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
 
   const onClickItalic = () => {
     if (!selectedField) return;
-    const textarea = document.getElementById(selectedField);
+    const textarea = document.getElementById(selectedField.fieldName);
     if (textarea) {
       if (
         textarea.style.fontStyle === FONT_STYLE.NORMAL ||
@@ -210,12 +261,16 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
         //   },
         // }));
 
-        onStateChange(selectedField, {
-          fontStyle:
-            textarea.style.fontWeight === FONT_STYLE.BOLD
-              ? (`${textarea.style.fontWeight} ${textarea.style.fontStyle}` as TFontStyle)
-              : (textarea.style.fontStyle as TFontStyle),
-        });
+        onStateChange(
+          selectedField.fieldName,
+          {
+            fontStyle:
+              textarea.style.fontWeight === FONT_STYLE.BOLD
+                ? (`${textarea.style.fontWeight} ${textarea.style.fontStyle}` as TFontStyle)
+                : (textarea.style.fontStyle as TFontStyle),
+          },
+          selectedField.index
+        );
       } else {
         textarea.style.fontStyle = FONT_STYLE.NORMAL;
         // setText((prev) => ({
@@ -228,9 +283,13 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
         //     },
         //   },
         // }));
-        onStateChange(selectedField, {
-          fontStyle: textarea.style.fontWeight as TFontStyle,
-        });
+        onStateChange(
+          selectedField.fieldName,
+          {
+            fontStyle: textarea.style.fontWeight as TFontStyle,
+          },
+          selectedField.index
+        );
       }
       textarea.focus();
     }
@@ -238,7 +297,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
 
   const onChangeTextSize = (fontSize: number) => {
     if (!selectedField) return;
-    const textarea = document.getElementById(selectedField);
+    const textarea = document.getElementById(selectedField.fieldName);
     if (textarea) {
       textarea.style.fontSize = `${fontSize}px`;
       textarea.focus();
@@ -253,7 +312,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
       //   },
       // }));
 
-      onStateChange(selectedField, {
+      onStateChange(selectedField.fieldName, {
         fontSize: fontSize,
       });
     }
@@ -262,7 +321,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
   const onClickUnderline = () => {
     if (!selectedField) return;
 
-    const textarea = document.getElementById(selectedField);
+    const textarea = document.getElementById(selectedField.fieldName);
     if (textarea) {
       if (textarea.style.textDecoration !== "underline") {
         textarea.style.textDecoration = "underline";
@@ -280,7 +339,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
       //     },
       //   },
       // }));
-      onStateChange(selectedField, {
+      onStateChange(selectedField.fieldName, {
         textDecoration: textarea.style.textDecoration as TTextDecoration,
       });
     }
@@ -305,6 +364,10 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
     if (stageRef.current) {
       const scale = stageRef.current.scale();
 
+      if (selectedField?.fieldName) {
+        removeAllActiveTextAreas();
+      }
+
       if (scale && scale.x && scale.y) {
         if (event === "in" && currentZoom < 2) {
           stageRef.current.setAttr(
@@ -322,17 +385,23 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
             y: scale.y + 0.1,
           });
           setCurrentZoom((prev) => prev + 0.1);
-          Object.keys(currentState.templateAttributes).forEach((key) => {
-            const textarea = document.getElementById(key);
-            const textPosition =
-              textReff?.current[key as keyof IRef]?.absolutePosition();
+          // Object.keys(currentState.templateAttributes).forEach((key) => {
+          //   const textarea = document.getElementById(key);
+          //   const textPosition =
+          //     key === "services"
+          //       ? textReff?.current.services[
+          //           selectedField?.index ?? 0
+          //         ]?.absolutePosition()
+          //       : (
+          //           textReff?.current[key as keyof IRef] as Text
+          //         )?.absolutePosition();
 
-            if (textarea && textPosition) {
-              textarea.style.top = textPosition.y + "px";
-              textarea.style.left = textPosition.x + "px";
-              textarea.style.scale = `${Number(textarea.style.scale) + 0.1}`;
-            }
-          });
+          //   if (textarea && textPosition) {
+          //     textarea.style.top = textPosition.y + "px";
+          //     textarea.style.left = textPosition.x + "px";
+          //     textarea.style.scale = `${Number(textarea.style.scale) + 0.1}`;
+          //   }
+          // });
         } else if (event === "out" && currentZoom >= 0.1) {
           stageRef.current.setAttr(
             "width",
@@ -347,16 +416,16 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
             y: scale.y - 0.1,
           });
           setCurrentZoom((prev) => prev - 0.1);
-          Object.keys(currentState.templateAttributes).forEach((key) => {
-            const textarea = document.getElementById(key);
-            const textPosition =
-              textReff?.current[key as keyof IRef]?.absolutePosition();
-            if (textarea && textPosition) {
-              textarea.style.top = textPosition.y + "px";
-              textarea.style.left = textPosition.x + "px";
-              textarea.style.scale = `${Number(textarea.style.scale) - 0.1}`;
-            }
-          });
+          // Object.keys(currentState.templateAttributes).forEach((key) => {
+          //   const textarea = document.getElementById(key);
+          //   const textPosition =
+          //     textReff?.current[key as keyof IRef]?.absolutePosition();
+          //   if (textarea && textPosition) {
+          //     textarea.style.top = textPosition.y + "px";
+          //     textarea.style.left = textPosition.x + "px";
+          //     textarea.style.scale = `${Number(textarea.style.scale) - 0.1}`;
+          //   }
+          // });
         }
       }
     }
@@ -451,7 +520,12 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
             onChangeTextSize={onChangeTextSize}
             setIsPreviewEnabled={setIsPreviewEnabled}
             selectedStyles={
-              selectedField && currentState.templateAttributes[selectedField]
+              selectedField &&
+              (selectedField.fieldName === "services"
+                ? currentState.templateAttributes[selectedField.fieldName][
+                    selectedField.index ?? 0
+                  ]
+                : currentState.templateAttributes[selectedField.fieldName])
             }
           />
         )}
@@ -524,7 +598,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
             </div>
           </div>
           <div className="flex w-full h-full justify-center items-center bg-[#F2F2F2] overflow-auto">
-            <div id="template" className="relative w-fit">
+            <div id="template" className="relative w-fit max-h-full">
               <Suspense>
                 <SelectedTemplate
                   textRef={textReff}

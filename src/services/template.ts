@@ -27,6 +27,13 @@ interface IColorSuggestions {
   secondaryColor: [string];
 }
 
+export interface IBroucherDesctiption {
+  description: string;
+  problem: string;
+  solution: string;
+  callToAction: string;
+}
+
 const templateAPI = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getTemplate: builder.query<ITemplateResponse[], string>({
@@ -136,6 +143,92 @@ const templateAPI = baseApi.injectEndpoints({
                   fontStyle: "normal",
                   textDecoration: "empty string",
                 },
+                problem: {
+                  text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                  width: 125,
+                  height: 58,
+                  x: 0,
+                  y: 0,
+                  fontSize: 10,
+                  fontWeight: 400,
+                  lineHeight: 1,
+                  fontStyle: "normal",
+                  textDecoration: "empty string",
+                },
+                solution: {
+                  text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                  width: 125,
+                  height: 58,
+                  x: 0,
+                  y: 0,
+                  fontSize: 10,
+                  fontWeight: 400,
+                  lineHeight: 1,
+                  fontStyle: "normal",
+                  textDecoration: "empty string",
+                },
+                callToAction: {
+                  text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                  width: 125,
+                  height: 58,
+                  x: 0,
+                  y: 0,
+                  fontSize: 10,
+                  fontWeight: 400,
+                  lineHeight: 1,
+                  fontStyle: "normal",
+                  textDecoration: "empty string",
+                },
+                services: [
+                  {
+                    text: "Brochures",
+                    width: 70,
+                    height: 12,
+                    x: 392,
+                    y: 320,
+                    fontSize: 10,
+                    fontStyle: "normal",
+                    fontWeight: 400,
+                    lineHeight: 1,
+                    textDecoration: "empty string",
+                  },
+                  {
+                    text: "Business Card",
+                    width: 70,
+                    height: 12,
+                    x: 392,
+                    y: 340,
+                    fontSize: 10,
+                    fontStyle: "normal",
+                    fontWeight: 400,
+                    lineHeight: 1,
+                    textDecoration: "empty string",
+                  },
+                  {
+                    text: "Banners",
+                    width: 70,
+                    height: 12,
+                    x: 392,
+                    y: 360,
+                    fontSize: 10,
+                    fontStyle: "normal",
+                    fontWeight: 400,
+                    lineHeight: 1,
+                    textDecoration: "empty string",
+                  },
+                  {
+                    text: "Stickers",
+                    width: 70,
+                    height: 12,
+                    x: 392,
+                    y: 380,
+                    fontSize: 10,
+                    fontStyle: "normal",
+                    fontWeight: 400,
+                    lineHeight: 1,
+                    textDecoration: "empty string",
+                  },
+                ],
               },
             };
             const json = JSON.parse(template.templateAttributes);
@@ -175,11 +268,21 @@ const templateAPI = baseApi.injectEndpoints({
       }),
     }),
     getDescription: builder.mutation<
-      IResponse<{ description: string }>,
+      IResponse<IBroucherDesctiption>,
       Partial<IUserCard>
     >({
       query: (body) => ({
         url: "/marketing/content",
+        method: "POST",
+        body: body,
+      }),
+    }),
+    getBroucherDescription: builder.mutation<
+      IResponse<IBroucherDesctiption>,
+      Partial<IUserCard>
+    >({
+      query: (body) => ({
+        url: "/marketing/brochure-content",
         method: "POST",
         body: body,
       }),
@@ -191,4 +294,5 @@ export const {
   useGetTemplateQuery,
   useGetVariationsMutation,
   useGetDescriptionMutation,
+  useGetBroucherDescriptionMutation,
 } = templateAPI;

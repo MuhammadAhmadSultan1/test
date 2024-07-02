@@ -4,7 +4,7 @@ import { TCanvasCardProps } from "../../../../types/card";
 import CustomImage from "../../../customImage";
 import { useGetSvg } from "./svg/useGetSvg";
 
-export default function CircleOne(props: TCanvasCardProps) {
+export default function CircleTwo(props: TCanvasCardProps) {
   const { primary, text } = props;
 
   const { stickerCircle } = useGetSvg({

@@ -22,29 +22,46 @@ export const useUndoRedo = (properties: ICanvasCardProps) => {
 
   const onStateChange = (
     fieldName: TFieldName,
-    properties: Partial<IAttribute>
+    properties: Partial<IAttribute>,
+    index?: number
   ) => {
     setStateHistory((prev) => {
-      const previousState = [...prev];
+      const stringyfy = JSON.stringify(prev);
+      const previousState = JSON.parse(stringyfy);
       if (currentStep < stateHistory.length - 1) {
         previousState.splice(currentStep + 1);
       }
 
-      return [
-        ...previousState,
-        {
-          ...previousState[previousState.length - 1],
-          templateAttributes: {
-            ...previousState[previousState.length - 1].templateAttributes,
-            [fieldName]: {
-              ...previousState[previousState.length - 1].templateAttributes[
-                fieldName
-              ],
-              ...properties,
+      if (fieldName === "services") {
+        previousState[previousState.length - 1].templateAttributes[fieldName][
+          index ?? 0
+        ] = {
+          ...previousState[previousState.length - 1].templateAttributes[
+            fieldName
+          ][index ?? 0],
+          ...properties,
+        };
+      }
+
+      console.log("previous", previousState, prev);
+
+      return fieldName === "services"
+        ? [...prev, previousState[previousState.length - 1]]
+        : [
+            ...previousState,
+            {
+              ...previousState[previousState.length - 1],
+              templateAttributes: {
+                ...previousState[previousState.length - 1].templateAttributes,
+                [fieldName]: {
+                  ...previousState[previousState.length - 1].templateAttributes[
+                    fieldName
+                  ],
+                  ...properties,
+                },
+              },
             },
-          },
-        },
-      ];
+          ];
     });
     // if (currentStep < stateHistory.length - 1) {
     //   setStateHistory((prev) => {
@@ -65,6 +82,8 @@ export const useUndoRedo = (properties: ICanvasCardProps) => {
     if (currentStep < stateHistory.length - 1)
       setCurrentStep((prev) => prev + 1);
   };
+
+  // console.log("current state history", stateHistory);
 
   return {
     currentState: currentState,

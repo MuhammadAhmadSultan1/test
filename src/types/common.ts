@@ -28,6 +28,10 @@ export interface IRef {
   website: Text | null;
   address: Text | null;
   description: Text | null;
+  problem: Text | null;
+  solution: Text | null;
+  callToAction: Text | null;
+  services: Array<Text | null>;
 }
 
 export interface ITextProperties {

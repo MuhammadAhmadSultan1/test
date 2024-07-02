@@ -48,6 +48,10 @@ export interface ITemplateAttributes {
   email: IAttribute;
   address: IAttribute;
   description: IAttribute;
+  problem: IAttribute;
+  solution: IAttribute;
+  services: IAttribute[];
+  callToAction: IAttribute;
   selected?: boolean;
   editable?: boolean;
   primary?: string;
@@ -76,7 +80,7 @@ export type TCanvasCardProps = {
       editable: true;
       textRef: React.MutableRefObject<IRef>;
       stageRef: React.RefObject<Stage>;
-      dblClickHandler: (fieldName: TFieldName) => void;
+      dblClickHandler: (fieldName: TFieldName, index?: number) => void;
     }
   | {
       editable: false;
