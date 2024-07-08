@@ -56,21 +56,21 @@ export default function FlyerOne(props: TCanvasCardProps) {
           }
           text={text.templateAttributes.name.text}
           // text="Lorem ipsum is placeholder"
-          x={107}
-          y={155}
+          x={text.templateAttributes.name.x}
+          y={text.templateAttributes.name.y}
           align="center"
           // fontSize={text.templateAttributes.name.fontSize}
-          fontSize={72}
+          fontSize={text.templateAttributes.name.fontSize}
           fill={primary || text.primaryColor}
           // width={text.templateAttributes.name.width}
           // height={text.templateAttributes.name.height}
-          width={382}
-          height={168}
+          width={text.templateAttributes.name.width}
+          height={text.templateAttributes.name.height}
           fontFamily="Roboto"
           // lineHeight={text.templateAttributes.name.lineHeight}
           // fontStyle={text.templateAttributes.name.fontStyle}
-          lineHeight={1.1}
-          fontStyle="900"
+          lineHeight={text.templateAttributes.name.lineHeight}
+          fontStyle={text.templateAttributes.name.fontStyle}
           textDecoration={text.templateAttributes.name.textDecoration}
           onDblClick={() => {
             if (
@@ -280,7 +280,7 @@ export default function FlyerOne(props: TCanvasCardProps) {
         />
 
         <Konva.Group x={0} y={0}>
-          <CustomImage x={98} y={808} svgString={phone} />
+          <CustomImage x={92} y={808} svgString={phone} />
           <Konva.Text
             ref={
               props.editable
@@ -319,7 +319,7 @@ export default function FlyerOne(props: TCanvasCardProps) {
         </Konva.Group>
 
         <Konva.Group x={0} y={0}>
-          <CustomImage x={227.93} y={808} svgString={email} />
+          <CustomImage x={221.93} y={808} svgString={email} />
           <Konva.Text
             ref={
               props.editable
@@ -358,7 +358,7 @@ export default function FlyerOne(props: TCanvasCardProps) {
         </Konva.Group>
 
         <Konva.Group x={0} y={0}>
-          <CustomImage x={404.18} y={808} svgString={webSite} />
+          <CustomImage x={398.18} y={808} svgString={webSite} />
           <Konva.Text
             ref={
               props.editable
