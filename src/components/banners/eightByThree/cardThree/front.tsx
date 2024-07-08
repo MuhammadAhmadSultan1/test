@@ -36,14 +36,14 @@ export default function BannerEightByThreeOne(props: TCanvasCardProps) {
         <CustomImage x={561} y={276} svgString={primaryBottom} />
         <CustomImage x={251} y={0} svgString={secondaryLeft} />
         <CustomImage x={331} y={213} svgString={secondaryBottom} />
-        {/* <CustomImage
-          height={42}
-          width={77}
-          x={666}
-          y={25}
+        <CustomImage
+          height={54}
+          width={97}
+          x={12}
+          y={27}
           url={text.templateAttributes.logo.url}
-        /> */}
-        <Konva.Group x={23} y={64}>
+        />
+        <Konva.Group x={11} y={102}>
           <Konva.Text
             ref={
               props.editable
@@ -89,7 +89,7 @@ export default function BannerEightByThreeOne(props: TCanvasCardProps) {
             text={text.templateAttributes.description.text}
             // text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be."
             x={0}
-            y={85}
+            y={84}
             align="top"
             // fontSize={16}
             fontSize={text.templateAttributes.description.fontSize}
@@ -117,7 +117,7 @@ export default function BannerEightByThreeOne(props: TCanvasCardProps) {
           />
         </Konva.Group>
 
-        <Konva.Group x={556} y={85}>
+        <Konva.Group x={535.5} y={73}>
           <Konva.Group x={0} y={0}>
             <CustomImage x={0} y={0} svgString={phoneSvg} />
             <Konva.Text
@@ -127,8 +127,8 @@ export default function BannerEightByThreeOne(props: TCanvasCardProps) {
                   : undefined
               }
               text={text.templateAttributes.phone.text}
-              x={25}
-              y={5}
+              x={24}
+              y={1}
               align="top"
               fontSize={text.templateAttributes.phone.fontSize}
               fill={"#323232"}
@@ -161,8 +161,8 @@ export default function BannerEightByThreeOne(props: TCanvasCardProps) {
                   : undefined
               }
               text={text.templateAttributes.email.text}
-              x={25}
-              y={5}
+              x={24}
+              y={2.5}
               align="top"
               fontSize={text.templateAttributes.email.fontSize}
               fill={"#323232"}
@@ -186,7 +186,7 @@ export default function BannerEightByThreeOne(props: TCanvasCardProps) {
             />
           </Konva.Group>
 
-          <Konva.Group x={0} y={50}>
+          <Konva.Group x={0} y={54}>
             <CustomImage x={0} y={0} svgString={websiteSvg} />
             <Konva.Text
               ref={
@@ -195,8 +195,8 @@ export default function BannerEightByThreeOne(props: TCanvasCardProps) {
                   : undefined
               }
               text={text.templateAttributes.website.text}
-              x={25}
-              y={5}
+              x={24}
+              y={1}
               align="top"
               fontSize={text.templateAttributes.website.fontSize}
               fill={"#323232"}
@@ -220,8 +220,8 @@ export default function BannerEightByThreeOne(props: TCanvasCardProps) {
             />
           </Konva.Group>
 
-          <Konva.Group x={0} y={78}>
-            <CustomImage x={2} y={5} svgString={locationSvg} />
+          <Konva.Group x={0} y={90}>
+            <CustomImage x={0} y={0} svgString={locationSvg} />
             <Konva.Text
               ref={
                 props.editable
@@ -230,7 +230,7 @@ export default function BannerEightByThreeOne(props: TCanvasCardProps) {
               }
               text={text.templateAttributes.address.text}
               // text="X park view, DHA Phase Lahore Pakistan"
-              x={25}
+              x={24}
               y={0}
               align="top"
               fontSize={text.templateAttributes.address.fontSize}

@@ -32,20 +32,19 @@ export const useUndoRedo = (properties: ICanvasCardProps) => {
         previousState.splice(currentStep + 1);
       }
 
-      if (fieldName === "services") {
-        previousState[previousState.length - 1].templateAttributes[fieldName][
-          index ?? 0
-        ] = {
-          ...previousState[previousState.length - 1].templateAttributes[
-            fieldName
-          ][index ?? 0],
+      const field =
+        previousState[previousState.length - 1].templateAttributes[fieldName];
+
+      if (Array.isArray(field)) {
+        field[index ?? 0] = {
+          ...field[index ?? 0],
           ...properties,
         };
       }
 
       console.log("previous", previousState, prev);
 
-      return fieldName === "services"
+      return Array.isArray(field)
         ? [...prev, previousState[previousState.length - 1]]
         : [
             ...previousState,

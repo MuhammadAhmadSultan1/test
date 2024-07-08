@@ -12,9 +12,10 @@ import {
   useGetBroucherDescriptionMutation,
   useGetDescriptionMutation,
   useGetTemplateQuery,
+  useGetTrifoldDescriptionMutation,
 } from "../../services/template";
 import { IUserCard } from "../../types/user";
-import { ITemplateAttributes } from "../../types/card";
+import { IAttribute, ITemplateAttributes } from "../../types/card";
 import { setTemplateData } from "../../redux/slices/templateData";
 import { toaster } from "../../utils/toaster";
 import { getErrorMessage } from "../../utils/errorHandler";
@@ -36,6 +37,9 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
 
   const [getBroucherDescription, { isLoading: isGettingBroucherDescription }] =
     useGetBroucherDescriptionMutation();
+
+  const [getTrifoldDescription, { isLoading: isGettingTrifoldDescription }] =
+    useGetTrifoldDescriptionMutation();
 
   const defaultValues: IAboutCompany = {
     aboutCompany: userCard?.aboutCompany ?? "",
@@ -65,7 +69,7 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
         companyEmail: userCard?.email,
         productOrService: userCard?.serviceNameArray?.join(","),
         targetAudience: userCard?.targetAudienceArray?.join(","),
-        // merchandiseGoal: getValues("goals"),
+        // merchandiseGoal: "Rise",
         sessionId: userCard?.sessionId,
         address: userCard?.address,
         designation: userCard?.designation,
@@ -86,7 +90,7 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
         // targetAudience: userCard.targetAudience,
         targetAudienceArray: userCard.targetAudienceArray,
         aboutCompany: userCard.aboutCompany,
-        // goals: getValues("goals"),
+        // merchandiseGoal: "Rise",
         // sessionId: "",
         // logo: "",
         // colors: [],
@@ -97,12 +101,14 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
         // showHeaderAndStepper: true,
       };
       const response =
-        sku !== "107BF001"
+        sku !== "107BF001" && sku !== "107BT001"
           ? await getDescription(getDescriptionPayload).unwrap()
-          : await getBroucherDescription(getDescriptionPayload).unwrap();
+          : sku === "107BF001"
+          ? await getBroucherDescription(getDescriptionPayload).unwrap()
+          : await getTrifoldDescription(getDescriptionPayload).unwrap();
       if (templateConfig && templateConfig.length) {
         templateConfig.forEach((template) => {
-          const stringyfy = JSON.stringify(template);
+          // const stringyfy = JSON.stringify(template);
           // const data = {
           //   ...template,
           //   templateAttributes: {
@@ -110,7 +116,7 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
           //   },
           // };
 
-          const data = JSON.parse(stringyfy);
+          const data = { ...template };
 
           if (template.templateAttributes) {
             Object.keys(template.templateAttributes).forEach((key) => {
@@ -156,6 +162,35 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
             });
           }
 
+          console.log("data before", data);
+
+          if (sku === "107BT001") {
+            Object.keys(response.content).forEach((key) => {
+              if (
+                key === "painPoints" ||
+                key === "benefits" ||
+                key === "featureHeadings" ||
+                key === "featureDescriptions"
+              ) {
+                data.templateAttributes = {
+                  ...data.templateAttributes,
+                  [key]: [
+                    ...data.templateAttributes[key].map(
+                      (item: IAttribute, index: number) => ({
+                        ...item,
+                        text: response.content[
+                          key as keyof IBroucherDesctiption
+                        ][index],
+                      })
+                    ),
+                  ],
+                };
+              }
+            });
+          }
+
+          console.log("data after", data);
+
           if (sku === "107BF001") {
             Object.keys(response.content).forEach((key) => {
               data.templateAttributes = {
@@ -170,21 +205,19 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
             });
 
             if (data.templateAttributes.services) {
-              data.templateAttributes.services.forEach(
-                (_: keyof ITemplateAttributes, index: number) => {
-                  if (
-                    userCard.serviceNameArray &&
-                    index < userCard.serviceNameArray.length
-                  ) {
-                    data.templateAttributes.services[index].text =
-                      userCard.serviceNameArray
-                        ? userCard.serviceNameArray[index]
-                        : "";
-                  } else {
-                    data.templateAttributes.services[index].text = "";
-                  }
+              data.templateAttributes.services.forEach((_, index) => {
+                if (
+                  userCard.serviceNameArray &&
+                  index < userCard.serviceNameArray.length
+                ) {
+                  data.templateAttributes.services[index].text =
+                    userCard.serviceNameArray
+                      ? userCard.serviceNameArray[index]
+                      : "";
+                } else {
+                  data.templateAttributes.services[index].text = "";
                 }
-              );
+              });
             }
           }
           dispatch(setTemplateData({ ...data }));
@@ -216,7 +249,8 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
   if (
     isAddingQuestionire ||
     isGeneratingDescription ||
-    isGettingBroucherDescription
+    isGettingBroucherDescription ||
+    isGettingTrifoldDescription
   )
     return (
       <>

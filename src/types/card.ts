@@ -52,6 +52,10 @@ export interface ITemplateAttributes {
   solution: IAttribute;
   services: IAttribute[];
   callToAction: IAttribute;
+  benefits: IAttribute[];
+  painPoints: IAttribute[];
+  featureHeadings: IAttribute[];
+  featureDescriptions: IAttribute[];
   selected?: boolean;
   editable?: boolean;
   primary?: string;

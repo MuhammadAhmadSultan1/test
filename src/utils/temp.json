@@ -22,7 +22,7 @@
       },
       "designation": {
         "text": "Project Manager",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 470,
         "y": 20,
@@ -34,7 +34,7 @@
       },
       "phone": {
         "text": "+92 123 456 7890",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 58,
         "y": 255,
@@ -46,7 +46,7 @@
       },
       "website": {
         "text": "www.website.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 314,
         "y": 255,
@@ -58,7 +58,7 @@
       },
       "email": {
         "text": "test@gmail.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 189,
         "y": 255,
@@ -116,7 +116,7 @@
       },
       "designation": {
         "text": "Project Manager",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 470,
         "y": 20,
@@ -128,7 +128,7 @@
       },
       "phone": {
         "text": "+92 123 456 7890",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 65,
         "y": 251,
@@ -140,7 +140,7 @@
       },
       "website": {
         "text": "www.website.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 305,
         "y": 251,
@@ -152,7 +152,7 @@
       },
       "email": {
         "text": "test@gmail.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 185,
         "y": 251,
@@ -210,7 +210,7 @@
       },
       "designation": {
         "text": "Project Manager",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 470,
         "y": 20,
@@ -222,7 +222,7 @@
       },
       "phone": {
         "text": "+92 123 456 7890",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 65,
         "y": 251,
@@ -234,7 +234,7 @@
       },
       "website": {
         "text": "www.website.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 305,
         "y": 251,
@@ -246,7 +246,7 @@
       },
       "email": {
         "text": "test@gmail.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 185,
         "y": 251,
@@ -304,7 +304,7 @@
         },
         "designation": {
           "text": "Project Manager",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 470,
           "y": 20,
@@ -316,7 +316,7 @@
         },
         "phone": {
           "text": "+92 123 456 7890",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 43,
           "y": 253,
@@ -328,7 +328,7 @@
         },
         "website": {
           "text": "www.website.com",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 226,
           "y": 253,
@@ -340,7 +340,7 @@
         },
         "email": {
           "text": "test@gmail.com",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 139,
           "y": 253,
@@ -397,7 +397,7 @@
         },
         "designation": {
           "text": "Project Manager",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 470,
           "y": 20,
@@ -409,7 +409,7 @@
         },
         "phone": {
           "text": "+92 123 456 7890",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 40,
           "y": 251,
@@ -421,7 +421,7 @@
         },
         "website": {
           "text": "www.website.com",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 225,
           "y": 251,
@@ -433,7 +433,7 @@
         },
         "email": {
           "text": "test@gmail.com",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 135,
           "y": 251,
@@ -490,7 +490,7 @@
         },
         "designation": {
           "text": "Project Manager",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 470,
           "y": 20,
@@ -585,7 +585,7 @@
         },
         "designation": {
           "text": "Project Manager",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 470,
           "y": 20,
@@ -597,7 +597,7 @@
         },
         "phone": {
           "text": "+92 123 456 7890",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 655,
           "y": 105,
@@ -609,7 +609,7 @@
         },
         "website": {
           "text": "www.website.com",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 655,
           "y": 155,
@@ -621,7 +621,7 @@
         },
         "email": {
           "text": "test@gmail.com",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 655,
           "y": 130,
@@ -678,7 +678,7 @@
         },
         "designation": {
           "text": "Project Manager",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 470,
           "y": 20,
@@ -690,7 +690,7 @@
         },
         "phone": {
           "text": "+92 123 456 7890",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 655,
           "y": 105,
@@ -702,7 +702,7 @@
         },
         "website": {
           "text": "www.website.com",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 655,
           "y": 155,
@@ -714,7 +714,7 @@
         },
         "email": {
           "text": "test@gmail.com",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 655,
           "y": 130,
@@ -771,7 +771,7 @@
         },
         "designation": {
           "text": "Project Manager",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 470,
           "y": 20,
@@ -783,7 +783,7 @@
         },
         "phone": {
           "text": "+92 123 456 7890",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 655,
           "y": 105,
@@ -795,7 +795,7 @@
         },
         "website": {
           "text": "www.website.com",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 655,
           "y": 155,
@@ -807,7 +807,7 @@
         },
         "email": {
           "text": "test@gmail.com",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 655,
           "y": 130,
@@ -866,7 +866,7 @@
         },
         "designation": {
           "text": "Project Manager",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 470,
           "y": 20,
@@ -878,7 +878,7 @@
         },
         "phone": {
           "text": "+92 123 456 7890",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 655,
           "y": 105,
@@ -890,7 +890,7 @@
         },
         "website": {
           "text": "www.website.com",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 655,
           "y": 155,
@@ -902,7 +902,7 @@
         },
         "email": {
           "text": "test@gmail.com",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 655,
           "y": 130,
@@ -959,7 +959,7 @@
         },
         "designation": {
           "text": "Project Manager",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 470,
           "y": 20,
@@ -1052,7 +1052,7 @@
         },
         "designation": {
           "text": "Project Manager",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 470,
           "y": 20,
@@ -1064,7 +1064,7 @@
         },
         "phone": {
           "text": "+92 123 456 7890",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 423,
           "y": 349,
@@ -1088,7 +1088,7 @@
         },
         "email": {
           "text": "test@gmail.com",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 562,
           "y": 351,
@@ -1150,7 +1150,7 @@
         },
         "designation": {
           "text": "Project Manager",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 470,
           "y": 20,
@@ -1162,7 +1162,7 @@
         },
         "phone": {
           "text": "+92 123 456 7890",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 423,
           "y": 349,
@@ -1186,7 +1186,7 @@
         },
         "email": {
           "text": "test@gmail.com",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 562,
           "y": 351,
@@ -1279,7 +1279,7 @@
         },
         "designation": {
           "text": "Project Manager",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 470,
           "y": 20,
@@ -1291,7 +1291,7 @@
         },
         "phone": {
           "text": "+92 123 456 7890",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 423,
           "y": 349,
@@ -1315,7 +1315,7 @@
         },
         "email": {
           "text": "test@gmail.com",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 562,
           "y": 351,
@@ -1388,7 +1388,7 @@
         "services": [
           {
             "text": "Brochures",
-            "width": 70,
+            "width": 100,
             "height": 12,
             "x": 392,
             "y": 320,
@@ -1400,7 +1400,7 @@
           },
           {
             "text": "Business Card",
-            "width": 70,
+            "width": 100,
             "height": 12,
             "x": 392,
             "y": 340,
@@ -1412,7 +1412,7 @@
           },
           {
             "text": "Banners",
-            "width": 70,
+            "width": 100,
             "height": 12,
             "x": 392,
             "y": 360,
@@ -1424,7 +1424,7 @@
           },
           {
             "text": "Stickers",
-            "width": 70,
+            "width": 100,
             "height": 12,
             "x": 392,
             "y": 380,
@@ -1458,7 +1458,7 @@
         },
         "designation": {
           "text": "Project Manager",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 470,
           "y": 20,
@@ -1470,7 +1470,7 @@
         },
         "phone": {
           "text": "+92 123 456 7890",
-          "width": 70,
+          "width": 100,
           "height": 10,
           "x": 136,
           "y": 818,
@@ -1567,7 +1567,7 @@
         "services": [
           {
             "text": "Brochures",
-            "width": 70,
+            "width": 100,
             "height": 12,
             "x": 392,
             "y": 320,
@@ -1579,7 +1579,7 @@
           },
           {
             "text": "Business Card",
-            "width": 70,
+            "width": 100,
             "height": 12,
             "x": 392,
             "y": 340,
@@ -1591,7 +1591,7 @@
           },
           {
             "text": "Banners",
-            "width": 70,
+            "width": 100,
             "height": 12,
             "x": 392,
             "y": 360,
@@ -1603,7 +1603,7 @@
           },
           {
             "text": "Stickers",
-            "width": 70,
+            "width": 100,
             "height": 12,
             "x": 392,
             "y": 380,
@@ -1653,7 +1653,7 @@
       },
       "phone": {
         "text": "+92 123 456 7890",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 40,
         "y": 130,
@@ -1665,7 +1665,7 @@
       },
       "website": {
         "text": "www.website.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 152,
         "y": 130,
@@ -1677,7 +1677,7 @@
       },
       "email": {
         "text": "test@gmail.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 40,
         "y": 159,
@@ -1747,7 +1747,7 @@
       },
       "phone": {
         "text": "+92 123 456 7890",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 190,
         "y": 103,
@@ -1759,7 +1759,7 @@
       },
       "website": {
         "text": "www.website.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 190,
         "y": 117,
@@ -1771,7 +1771,7 @@
       },
       "email": {
         "text": "test@gmail.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 190,
         "y": 131,
@@ -1841,7 +1841,7 @@
       },
       "phone": {
         "text": "+92 123 456 7890",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 28,
         "y": 91,
@@ -1853,7 +1853,7 @@
       },
       "website": {
         "text": "www.website.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 28,
         "y": 109,
@@ -1865,7 +1865,7 @@
       },
       "email": {
         "text": "test@gmail.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 28,
         "y": 127,
@@ -1937,7 +1937,7 @@
       },
       "phone": {
         "text": "+92 123 456 7890",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 60,
         "y": 167,
@@ -1949,7 +1949,7 @@
       },
       "website": {
         "text": "www.website.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 60,
         "y": 219,
@@ -1961,7 +1961,7 @@
       },
       "email": {
         "text": "test@gmail.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 60,
         "y": 193,
@@ -2031,7 +2031,7 @@
       },
       "phone": {
         "text": "+92 123 456 7890",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 41,
         "y": 190,
@@ -2043,7 +2043,7 @@
       },
       "website": {
         "text": "www.website.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 41,
         "y": 242,
@@ -2055,7 +2055,7 @@
       },
       "email": {
         "text": "test@gmail.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 41,
         "y": 216,
@@ -2125,7 +2125,7 @@
       },
       "phone": {
         "text": "+92 123 456 7890",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 36,
         "y": 224,
@@ -2137,7 +2137,7 @@
       },
       "website": {
         "text": "www.website.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 36,
         "y": 280,
@@ -2149,7 +2149,7 @@
       },
       "email": {
         "text": "test@gmail.com",
-        "width": 70,
+        "width": 100,
         "height": 10,
         "x": 36,
         "y": 262,
@@ -2182,6 +2182,852 @@
         "lineHeight": 1.2,
         "fontStyle": "normal",
         "textDecoration": "empty string"
+      }
+    }
+  },
+
+  "SignYards": {
+    "eighteenByTwelve": {
+      "cardOne": {
+        "logo": {
+          "color": "#590595",
+          "width": 89,
+          "height": 49,
+          "x": 227,
+          "y": 20
+        },
+        "name": {
+          "text": "OPEN HOUSE",
+          "width": 910,
+          "height": 560,
+          "x": 400.5,
+          "y": 262,
+          "fontSize": 280,
+          "fontWeight": 700,
+          "lineHeight": 1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 78,
+          "height": 12,
+          "x": 14,
+          "y": 89,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 100,
+          "height": 10,
+          "x": 40,
+          "y": 130,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 100,
+          "height": 10,
+          "x": 152,
+          "y": 130,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 100,
+          "height": 10,
+          "x": 40,
+          "y": 159,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 98,
+          "height": 20,
+          "x": 152,
+          "y": 157,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,",
+          "width": 358,
+          "height": 76,
+          "x": 250,
+          "y": 225,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.2,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
+      },
+      "cardTwo": {
+        "logo": {
+          "color": "#590595",
+          "width": 89,
+          "height": 49,
+          "x": 227,
+          "y": 20
+        },
+        "name": {
+          "text": "FOR SALE",
+          "width": 495,
+          "height": 552,
+          "x": 307,
+          "y": 274,
+          "fontSize": 203,
+          "fontWeight": 700,
+          "lineHeight": 1.3,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 78,
+          "height": 12,
+          "x": 14,
+          "y": 89,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 841.9,
+          "height": 73.47,
+          "x": 517.38,
+          "y": 894.11,
+          "fontSize": 100,
+          "fontWeight": 700,
+          "lineHeight": 1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 100,
+          "height": 10,
+          "x": 152,
+          "y": 130,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 100,
+          "height": 10,
+          "x": 40,
+          "y": 159,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 98,
+          "height": 20,
+          "x": 152,
+          "y": 157,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,",
+          "width": 358,
+          "height": 76,
+          "x": 250,
+          "y": 225,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.2,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
+      },
+      "cardThree": {
+        "logo": {
+          "color": "#590595",
+          "width": 89,
+          "height": 49,
+          "x": 227,
+          "y": 20
+        },
+        "name": {
+          "text": "OPEN HOUSE",
+          "width": 900,
+          "height": 518,
+          "x": 92,
+          "y": 170,
+          "fontSize": 250,
+          "fontWeight": 700,
+          "lineHeight": 1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 78,
+          "height": 12,
+          "x": 14,
+          "y": 89,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 841.9,
+          "height": 73.47,
+          "x": 301.49,
+          "y": 846.83,
+          "fontSize": 100,
+          "fontWeight": 700,
+          "lineHeight": 1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 100,
+          "height": 10,
+          "x": 152,
+          "y": 130,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 100,
+          "height": 10,
+          "x": 40,
+          "y": 159,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 98,
+          "height": 20,
+          "x": 152,
+          "y": 157,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,",
+          "width": 358,
+          "height": 76,
+          "x": 250,
+          "y": 225,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.2,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
+      }
+    },
+    "twentyFourByEighteen": {
+      "cardOne": {
+        "logo": {
+          "color": "#590595",
+          "width": 548,
+          "height": 306.64,
+          "x": 878,
+          "y": 390
+        },
+        "name": {
+          "text": "FOR SALE",
+          "width": 1582,
+          "height": 458,
+          "x": 361,
+          "y": 747,
+          "fontSize": 336,
+          "fontWeight": 700,
+          "lineHeight": 1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 78,
+          "height": 12,
+          "x": 14,
+          "y": 89,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 100,
+          "height": 10,
+          "x": 40,
+          "y": 130,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 100,
+          "height": 10,
+          "x": 152,
+          "y": 130,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 100,
+          "height": 10,
+          "x": 40,
+          "y": 159,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 98,
+          "height": 20,
+          "x": 152,
+          "y": 157,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,",
+          "width": 358,
+          "height": 76,
+          "x": 250,
+          "y": 225,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.2,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
+      },
+      "cardTwo": {
+        "logo": {
+          "color": "#590595",
+          "width": 89,
+          "height": 49,
+          "x": 227,
+          "y": 20
+        },
+        "name": {
+          "text": "WELCOME OPEN HOUSE",
+          "width": 1946,
+          "height": 640,
+          "x": 179,
+          "y": 712,
+          "fontSize": 300,
+          "fontWeight": 700,
+          "lineHeight": 1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 78,
+          "height": 12,
+          "x": 14,
+          "y": 89,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 841.9,
+          "height": 73.47,
+          "x": 517.38,
+          "y": 894.11,
+          "fontSize": 100,
+          "fontWeight": 700,
+          "lineHeight": 1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 100,
+          "height": 10,
+          "x": 152,
+          "y": 130,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 100,
+          "height": 10,
+          "x": 40,
+          "y": 159,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 98,
+          "height": 20,
+          "x": 152,
+          "y": 157,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,",
+          "width": 358,
+          "height": 76,
+          "x": 250,
+          "y": 225,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.2,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
+      },
+      "cardThree": {
+        "logo": {
+          "color": "#590595",
+          "width": 89,
+          "height": 49,
+          "x": 227,
+          "y": 20
+        },
+        "name": {
+          "text": "FOR SALE",
+          "width": 1582,
+          "height": 458,
+          "x": 409,
+          "y": 641.55,
+          "fontSize": 336,
+          "fontWeight": 700,
+          "lineHeight": 1.5,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 78,
+          "height": 12,
+          "x": 14,
+          "y": 89,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 1869,
+          "height": 304,
+          "x": 251,
+          "y": 1273.25,
+          "fontSize": 223,
+          "fontWeight": 700,
+          "lineHeight": 1.5,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 100,
+          "height": 10,
+          "x": 152,
+          "y": 130,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 100,
+          "height": 10,
+          "x": 40,
+          "y": 159,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 98,
+          "height": 20,
+          "x": 152,
+          "y": 157,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,",
+          "width": 358,
+          "height": 76,
+          "x": 250,
+          "y": 225,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.2,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
+      }
+    },
+    "thirtySixByTwentyFour": {
+      "cardOne": {
+        "logo": {
+          "color": "#590595",
+          "width": 548,
+          "height": 306.64,
+          "x": 878,
+          "y": 390
+        },
+        "name": {
+          "text": "STAY HOME STAY SAFE",
+          "width": 2782,
+          "height": 1722,
+          "x": 337,
+          "y": 510,
+          "fontSize": 550,
+          "fontWeight": 700,
+          "lineHeight": 1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 78,
+          "height": 12,
+          "x": 14,
+          "y": 89,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 100,
+          "height": 10,
+          "x": 40,
+          "y": 130,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 100,
+          "height": 10,
+          "x": 152,
+          "y": 130,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 100,
+          "height": 10,
+          "x": 40,
+          "y": 159,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 98,
+          "height": 20,
+          "x": 152,
+          "y": 157,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,",
+          "width": 358,
+          "height": 76,
+          "x": 250,
+          "y": 225,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.2,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
+      },
+      "cardTwo": {
+        "logo": {
+          "color": "#590595",
+          "width": 89,
+          "height": 49,
+          "x": 227,
+          "y": 20
+        },
+        "name": {
+          "text": "HOME FOR SALE",
+          "width": 2560,
+          "height": 1100,
+          "x": 497.2,
+          "y": 926.74,
+          "fontSize": 537,
+          "fontWeight": 700,
+          "lineHeight": 1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 78,
+          "height": 12,
+          "x": 14,
+          "y": 89,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 841.9,
+          "height": 73.47,
+          "x": 517.38,
+          "y": 894.11,
+          "fontSize": 100,
+          "fontWeight": 700,
+          "lineHeight": 1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 100,
+          "height": 10,
+          "x": 152,
+          "y": 130,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 100,
+          "height": 10,
+          "x": 40,
+          "y": 159,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 98,
+          "height": 20,
+          "x": 152,
+          "y": 157,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,",
+          "width": 358,
+          "height": 76,
+          "x": 250,
+          "y": 225,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.2,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
+      },
+      "cardThree": {
+        "logo": {
+          "color": "#590595",
+          "width": 89,
+          "height": 49,
+          "x": 227,
+          "y": 20
+        },
+        "name": {
+          "text": "HOME SWEET HOME",
+          "width": 1788.4,
+          "height": 1650,
+          "x": 263,
+          "y": 401,
+          "fontSize": 549.06,
+          "fontWeight": 700,
+          "lineHeight": 1,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "designation": {
+          "text": "Project Manager",
+          "width": 78,
+          "height": 12,
+          "x": 14,
+          "y": 89,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "phone": {
+          "text": "+92 123 456 7890",
+          "width": 1869,
+          "height": 304,
+          "x": 251,
+          "y": 1273.25,
+          "fontSize": 223,
+          "fontWeight": 700,
+          "lineHeight": 1.5,
+          "fontStyle": "bold",
+          "textDecoration": "empty string"
+        },
+        "website": {
+          "text": "www.website.com",
+          "width": 100,
+          "height": 10,
+          "x": 152,
+          "y": 130,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "email": {
+          "text": "test@gmail.com",
+          "width": 100,
+          "height": 10,
+          "x": 40,
+          "y": 159,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "address": {
+          "text": "X park view, DHA Phase 8 Lahore Pakistan",
+          "width": 98,
+          "height": 20,
+          "x": 152,
+          "y": 157,
+          "fontSize": 8,
+          "fontWeight": 400,
+          "lineHeight": 0.8,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        },
+        "description": {
+          "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will,",
+          "width": 358,
+          "height": 76,
+          "x": 250,
+          "y": 225,
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": 1.2,
+          "fontStyle": "normal",
+          "textDecoration": "empty string"
+        }
       }
     }
   }

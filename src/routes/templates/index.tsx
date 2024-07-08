@@ -5,6 +5,7 @@ import { setTemplateData } from "../../redux/slices/templateData";
 import {
   useGetBroucherDescriptionMutation,
   useGetDescriptionMutation,
+  useGetTrifoldDescriptionMutation,
 } from "../../services/template";
 import { getErrorMessage } from "../../utils/errorHandler";
 import { toaster } from "../../utils/toaster";
@@ -13,8 +14,12 @@ import { EightByThreeBanners } from "./banners/eightByThree";
 import { SixByThreeBanners } from "./banners/sixByThree";
 import { TenByFourBanners } from "./banners/tenByFour";
 import { Flyers } from "./broucher/flyer";
+import { Trifolds } from "./broucher/trifold";
 import { HorizontalCards } from "./bussinessCards/horizontal";
 import { VerticalCards } from "./bussinessCards/vertical";
+import { EighteenByTwelveSigns } from "./signs/eighteenByTwelve";
+import { ThirtySixByTwentyFourSigns } from "./signs/thirtySixByTwentyFour";
+import { TwentyFourByEighteenSigns } from "./signs/twentyFourByEighteen";
 import { StickersCircle } from "./stickers/circle";
 import { StickersLabel } from "./stickers/label";
 import { StickersOval } from "./stickers/oval";
@@ -33,6 +38,7 @@ export const Templates = (props: ICommonProps) => {
 
   const [getDescription] = useGetDescriptionMutation();
   const [getBroucherDescription] = useGetBroucherDescriptionMutation();
+  const [getTrifoldDescription] = useGetTrifoldDescriptionMutation();
 
   const onRegenerateDescription = async () => {
     try {
@@ -51,8 +57,10 @@ export const Templates = (props: ICommonProps) => {
       };
 
       const response =
-        sku === "107BF001"
-          ? await getBroucherDescription(getDescriptionPayload).unwrap()
+        sku === "107BF001" || sku === "107BT001"
+          ? sku === "107BF001"
+            ? await getBroucherDescription(getDescriptionPayload).unwrap()
+            : await getTrifoldDescription(getDescriptionPayload).unwrap()
           : await getDescription(getDescriptionPayload).unwrap();
 
       templateData.forEach((template) => {
@@ -96,6 +104,12 @@ export const Templates = (props: ICommonProps) => {
       {sku === "107BF001" && (
         <Flyers {...{ ...props, onRegenerateDescription }} />
       )}
+      {sku === "107BT001" && (
+        <Trifolds {...{ ...props, onRegenerateDescription }} />
+      )}
+      {sku === "107S1812" && <EighteenByTwelveSigns {...props} />}
+      {sku === "107S2418" && <TwentyFourByEighteenSigns {...props} />}
+      {sku === "107S3624" && <ThirtySixByTwentyFourSigns {...props} />}
       {sku === "107B8302" && (
         <EightByThreeBanners {...{ ...props, onRegenerateDescription }} />
       )}

@@ -272,7 +272,9 @@ export default function FlyerTwo(props: TCanvasCardProps) {
               y={service.y}
               fontFamily="Inter"
               fill="#FFFFFF"
-              fontStyle="normal"
+              fontStyle={service.fontStyle}
+              textDecoration={service.textDecoration}
+              lineHeight={service.lineHeight}
               onDblClick={() => {
                 if (
                   props.editable &&
@@ -473,7 +475,7 @@ export default function FlyerTwo(props: TCanvasCardProps) {
         </Konva.Group>
 
         <Konva.Group x={0} y={0}>
-          <CustomImage x={251} y={797} svgString={email} />
+          <CustomImage x={245} y={797} svgString={email} />
           <Konva.Text
             ref={
               props.editable
@@ -512,7 +514,7 @@ export default function FlyerTwo(props: TCanvasCardProps) {
         </Konva.Group>
 
         <Konva.Group x={0} y={0}>
-          <CustomImage x={385} y={797} svgString={webSite} />
+          <CustomImage x={425} y={797} svgString={webSite} />
           <Konva.Text
             ref={
               props.editable

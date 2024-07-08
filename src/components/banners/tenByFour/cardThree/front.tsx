@@ -113,7 +113,7 @@ export default function BannerTenByFourThree(props: TCanvasCardProps) {
         />
         {/* <CustomImage x={591} y={236} svgString={primaryTile} /> */}
 
-        <Konva.Group x={399} y={345}>
+        <Konva.Group x={403} y={345}>
           <Konva.Group x={0} y={0}>
             <CustomImage x={0} y={0} svgString={phoneSvg} />
             <Konva.Text
@@ -151,7 +151,7 @@ export default function BannerTenByFourThree(props: TCanvasCardProps) {
             />
           </Konva.Group>
 
-          <Konva.Group x={137} y={0}>
+          <Konva.Group x={119} y={0}>
             <CustomImage x={0} y={0} svgString={emailSvg} />
             <Konva.Text
               ref={
@@ -188,7 +188,7 @@ export default function BannerTenByFourThree(props: TCanvasCardProps) {
             />
           </Konva.Group>
 
-          <Konva.Group x={270} y={0}>
+          <Konva.Group x={284} y={0}>
             <CustomImage x={0} y={0} svgString={websiteSvg} />
             <Konva.Text
               ref={
@@ -225,7 +225,7 @@ export default function BannerTenByFourThree(props: TCanvasCardProps) {
               }}
             />
           </Konva.Group>
-          <Konva.Group x={410} y={0}>
+          <Konva.Group x={406} y={0}>
             <CustomImage x={0} y={0} svgString={address} />
             <Konva.Text
               ref={

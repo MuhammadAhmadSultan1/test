@@ -280,7 +280,7 @@ export default function FlyerOne(props: TCanvasCardProps) {
         />
 
         <Konva.Group x={0} y={0}>
-          <CustomImage x={105} y={808} svgString={phone} />
+          <CustomImage x={98} y={808} svgString={phone} />
           <Konva.Text
             ref={
               props.editable
@@ -319,7 +319,7 @@ export default function FlyerOne(props: TCanvasCardProps) {
         </Konva.Group>
 
         <Konva.Group x={0} y={0}>
-          <CustomImage x={250} y={808} svgString={email} />
+          <CustomImage x={227.93} y={808} svgString={email} />
           <Konva.Text
             ref={
               props.editable
@@ -358,7 +358,7 @@ export default function FlyerOne(props: TCanvasCardProps) {
         </Konva.Group>
 
         <Konva.Group x={0} y={0}>
-          <CustomImage x={385} y={808} svgString={webSite} />
+          <CustomImage x={404.18} y={808} svgString={webSite} />
           <Konva.Text
             ref={
               props.editable

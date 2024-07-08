@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, lazy, useMemo, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 // import { ICanvasCardProps } from "../../types/card";
 import { CustomToolbar } from "../../components/customToolbar";
@@ -35,7 +35,17 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
 
   // const [text, setText] = useState<ICanvasCardProps>(templateData);
   const [currentZoom, setCurrentZoom] = useState(0);
-  const [actualSize, setActualSize] = useState({ width: 0, height: 0 });
+  // const [actualSize, setActualSize] = useState({
+  //   width: 0,
+  //   height: 0,
+  //   actualScale: 0,
+  // });
+
+  const [zoomDetails, setZoomDetails] = useState({
+    layerWidth: 0,
+    layerHeight: 0,
+    actualScale: 0,
+  });
   const [isPreviewEnabled, setIsPreviewEnabled] = useState(false);
   const [selectedField, setSelectedField] = useState<{
     fieldName: TFieldName;
@@ -54,6 +64,10 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
     problem: null,
     services: [],
     solution: null,
+    benefits: [],
+    featureDescriptions: [],
+    featureHeadings: [],
+    painPoints: [],
   });
   const stageRef = useRef<Stage>(null);
 
@@ -68,13 +82,13 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
     onStateChange,
   } = useUndoRedo(templateData);
 
-  useEffect(() => {
-    if (stageRef && stageRef.current)
-      setActualSize({
-        width: stageRef.current.width() - stageRef.current.width() * 0.1,
-        height: stageRef.current.height() - stageRef.current.height() * 0.1,
-      });
-  }, [stageRef, stageRef.current]);
+  // useEffect(() => {
+  //   if (stageRef && stageRef.current)
+  //     setActualSize({
+  //       width: stageRef.current.width() - stageRef.current.width() * 0.1,
+  //       height: stageRef.current.height() - stageRef.current.height() * 0.1,
+  //     });
+  // }, [stageRef, stageRef.current]);
 
   const SelectedTemplate = useMemo(() => {
     //Make sure the path must be 5 sized and end with the file name
@@ -97,9 +111,17 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
     index?: number
   ) => {
     textarea.parentNode?.removeChild(textarea);
-    fieldName === "services"
-      ? textReff.current.services[index ?? 0]?.show()
-      : textReff.current[fieldName]?.show();
+
+    const field = textReff.current[fieldName];
+    if (Array.isArray(field)) {
+      field[index ?? 0]?.show();
+    } else {
+      field?.show();
+    }
+
+    // fieldName === "services"
+    //   ? textReff.current.services[index ?? 0]?.show()
+    //   : textReff.current[fieldName]?.show();
   };
 
   const removeAllActiveTextAreas = () => {
@@ -132,10 +154,11 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
       //     [fieldName]: { ...prev.templateAttributes[fieldName], text: value },
       //   },
       // }));
+      const field = currentState.templateAttributes[fieldName];
       if (
-        fieldName === "services"
-          ? currentState.templateAttributes.services[index ?? 0].text !== value
-          : currentState.templateAttributes[fieldName].text !== value
+        Array.isArray(field)
+          ? field[index ?? 0].text !== value
+          : field.text !== value
       )
         onStateChange(
           fieldName,
@@ -153,12 +176,16 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
   };
 
   const dblClickHandler = (fieldName: TFieldName, index?: number) => {
-    const textPosition =
-      fieldName === "services"
-        ? textReff?.current.services
-          ? textReff.current.services[index ?? 0]?.absolutePosition()
-          : { x: 0, y: 0 }
-        : textReff?.current[fieldName]?.absolutePosition();
+    const field = textReff?.current[fieldName];
+    const textPosition = Array.isArray(field)
+      ? field[index ?? 0]?.absolutePosition()
+      : field?.absolutePosition();
+    // const textPosition =
+    //   fieldName === "services"
+    //     ? textReff?.current.services
+    //       ? textReff.current.services[index ?? 0]?.absolutePosition()
+    //       : { x: 0, y: 0 }
+    //     : textReff?.current[fieldName]?.absolutePosition();
     if (textReff && stageRef && stageRef.current && textPosition) {
       const areaPosition = {
         x: stageRef.current.container().offsetLeft + textPosition.x,
@@ -168,17 +195,15 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
 
       removeAllActiveTextAreas();
 
+      const currentField = currentState.templateAttributes[fieldName];
+
       onTextDblClick({
-        textRef:
-          fieldName === "services"
-            ? textReff.current.services[index ?? 0]
-            : textReff.current[fieldName],
-        currentText:
-          fieldName === "services"
-            ? index !== undefined
-              ? currentState.templateAttributes[fieldName][index].text
-              : ""
-            : currentState.templateAttributes[fieldName].text,
+        textRef: Array.isArray(field) ? field[index ?? 0] : field,
+        currentText: Array.isArray(currentField)
+          ? index !== undefined
+            ? currentField[index].text
+            : ""
+          : currentField.text,
         fieldName: fieldName,
         areaPosition: areaPosition,
         container: "canvas",
@@ -364,21 +389,29 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
     if (stageRef.current) {
       const scale = stageRef.current.scale();
 
+      if (!zoomDetails.layerWidth && scale) {
+        setCurrentZoom((prev) => prev + scale?.x);
+        return setZoomDetails({
+          layerWidth: stageRef.current?.width() / scale?.x,
+          layerHeight: stageRef.current?.height() / scale?.y,
+          actualScale: scale?.x,
+        });
+      }
+
       if (selectedField?.fieldName) {
         removeAllActiveTextAreas();
       }
 
       if (scale && scale.x && scale.y) {
+        console.log("scale", zoomDetails.layerWidth * (currentZoom + 0.1));
         if (event === "in" && currentZoom < 2) {
           stageRef.current.setAttr(
             "width",
-            (actualSize.width || stageRef.current.width()) * 0.1 +
-              stageRef.current.width()
+            zoomDetails.layerWidth * (currentZoom + 0.1)
           );
           stageRef.current.setAttr(
             "height",
-            (actualSize.height || stageRef.current.height()) * 0.1 +
-              stageRef.current.height()
+            zoomDetails.layerHeight * (currentZoom + 0.1)
           );
           stageRef.current.setAttr("scale", {
             x: scale.x + 0.1,
@@ -402,14 +435,14 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
           //     textarea.style.scale = `${Number(textarea.style.scale) + 0.1}`;
           //   }
           // });
-        } else if (event === "out" && currentZoom >= 0.1) {
+        } else if (event === "out" && currentZoom >= zoomDetails.actualScale) {
           stageRef.current.setAttr(
             "width",
-            stageRef.current.width() - actualSize.width * 0.1
+            zoomDetails.layerWidth * (currentZoom - 0.1)
           );
           stageRef.current.setAttr(
             "height",
-            stageRef.current.height() - actualSize.height * 0.1
+            zoomDetails.layerHeight * (currentZoom - 0.1)
           );
           stageRef.current.setAttr("scale", {
             x: scale.x - 0.1,
@@ -519,14 +552,15 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
             onClickUnderline={onClickUnderline}
             onChangeTextSize={onChangeTextSize}
             setIsPreviewEnabled={setIsPreviewEnabled}
-            selectedStyles={
-              selectedField &&
-              (selectedField.fieldName === "services"
-                ? currentState.templateAttributes[selectedField.fieldName][
-                    selectedField.index ?? 0
-                  ]
-                : currentState.templateAttributes[selectedField.fieldName])
-            }
+            selectedStyles={(() => {
+              if (selectedField) {
+                const field =
+                  currentState.templateAttributes[selectedField.fieldName];
+                return Array.isArray(field)
+                  ? field[selectedField.index ?? 0]
+                  : field;
+              }
+            })()}
           />
         )}
 
@@ -564,7 +598,12 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
                 </svg>
               </span>
               <span className="select-none text-sm font-semibold text-darkOutline">
-                {Math.round((currentZoom / 2) * 100)} %
+                {Math.round(
+                  ((currentZoom - zoomDetails.actualScale) /
+                    (2 - zoomDetails.actualScale)) *
+                    100
+                )}{" "}
+                %
               </span>
               <span
                 onClick={() => {

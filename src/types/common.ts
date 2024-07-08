@@ -32,6 +32,10 @@ export interface IRef {
   solution: Text | null;
   callToAction: Text | null;
   services: Array<Text | null>;
+  painPoints: Array<Text | null>;
+  benefits: Array<Text | null>;
+  featureHeadings: Array<Text | null>;
+  featureDescriptions: Array<Text | null>;
 }
 
 export interface ITextProperties {

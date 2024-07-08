@@ -132,7 +132,7 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
           />
         </Konva.Group>
 
-        <Konva.Group x={171} y={254}>
+        <Konva.Group x={151} y={254}>
           <CustomImage x={0} y={0} svgString={emailSvg} />
           <Konva.Text
             ref={
@@ -166,7 +166,7 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
           />
         </Konva.Group>
 
-        <Konva.Group x={296} y={254}>
+        <Konva.Group x={304} y={254}>
           <CustomImage x={0} y={0} svgString={websiteSvg} />
           <Konva.Text
             ref={
@@ -200,7 +200,7 @@ export default function BannerSixByThreeOne(props: TCanvasCardProps) {
           />
         </Konva.Group>
 
-        <Konva.Group x={428} y={254}>
+        <Konva.Group x={413} y={254}>
           <CustomImage x={0} y={0} svgString={locationSvg} />
           <Konva.Text
             ref={

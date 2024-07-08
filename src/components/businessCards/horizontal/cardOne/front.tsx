@@ -92,7 +92,7 @@ export default function CardComponent(props: TCanvasCardProps) {
             }}
           />
         </Konva.Group>
-        <Konva.Group y={106}>
+        <Konva.Group y={102}>
           <CustomImage x={0} y={0} svgString={svg2} />
           <Konva.Group y={20}>
             <Konva.Group y={0} x={15}>
@@ -127,7 +127,7 @@ export default function CardComponent(props: TCanvasCardProps) {
                 }}
               />
             </Konva.Group>
-            <Konva.Group y={0} x={120}>
+            <Konva.Group y={0} x={176}>
               <CustomImage x={0} y={0} svgString={websiteSvg} />
               <Konva.Text
                 ref={
@@ -191,7 +191,7 @@ export default function CardComponent(props: TCanvasCardProps) {
                 }}
               />
             </Konva.Group>
-            <Konva.Group y={30} x={120}>
+            <Konva.Group y={30} x={176}>
               <CustomImage x={0} y={0} svgString={addressSvg} />
               <Konva.Text
                 ref={
