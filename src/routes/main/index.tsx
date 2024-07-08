@@ -19,7 +19,7 @@ import { CustomizeTemplate } from "../customizeTemplate";
 import PhoneNumber from "../phoneNumber";
 
 const Main = () => {
-  const [currentStep, setCurrentStep] = useState<number>(13);
+  const [currentStep, setCurrentStep] = useState<number>(0);
 
   const onClickNext = () => {
     setCurrentStep(currentStep + 1);
