@@ -267,10 +267,10 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
         </div>
 
         <h2 className="text-black text-center text-4xl my-4  font-medium mt-40">
-          Preparing your design
+          Preparing Your Design
         </h2>
         <h3 className="text-[#A7A7A7] text-center text-base font-normal">
-          Please wait we are working on your design
+          Please Wait We Are Working On Your Design
         </h3>
       </>
     );
