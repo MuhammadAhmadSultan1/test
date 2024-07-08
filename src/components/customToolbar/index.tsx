@@ -47,6 +47,9 @@ export const CustomToolbar = ({
   const isFontUnderline: boolean =
     selectedStyles?.textDecoration === TEXT_DECORATION.UNDERLINE;
 
+  const baseFontSize = selectedStyles?.fontSize;
+  const range = 20;
+
   return (
     <div className="flex justify-between items-center border border-solid border-lightOutline w-full p-2">
       <div className="flex w-full items-center justify-center gap-8">
@@ -92,13 +95,24 @@ export const CustomToolbar = ({
             style={{ outline: "none", borderRadius: "5px" }}
             className="w-20 h-6 text-sm text-black border border-solid border-[#707070] mr-5 cursor-pointer"
           >
-            {Array.from({ length: 61 }, (_, k) => k)
+            {/* {Array.from({ length: 61 }, (_, k) => k)
               .filter((i) => i >= 6)
               .map((value, index) => (
                 <option key={index} value={value}>
                   {value}
                 </option>
-              ))}
+              ))} */}
+            {baseFontSize &&
+              Array.from(
+                { length: range * 2 + 1 },
+                (_, k) => baseFontSize - range + k
+              )
+                .filter((i) => i >= 0) // Ensure font sizes are non-negative
+                .map((value, index) => (
+                  <option key={index} value={value}>
+                    {value}
+                  </option>
+                ))}
           </select>
 
           <button
