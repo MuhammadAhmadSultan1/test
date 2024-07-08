@@ -19,8 +19,6 @@ import { CustomizeTemplate } from "../customizeTemplate";
 import PhoneNumber from "../phoneNumber";
 
 const Main = () => {
-  // const navigate = useNavigate();
-  // const dispatch = useAppDispatch();
   const [currentStep, setCurrentStep] = useState<number>(0);
 
   const onClickNext = () => {
@@ -30,7 +28,6 @@ const Main = () => {
   const onClickBack = () => {
     setCurrentStep(currentStep - 1);
   };
-  // max-w-screen-sm
   return (
     <div className="flex flex-col items-center h-[100vh] w-full ">
       {currentStep < 13 && <HeaderLogo />}
