@@ -24,4 +24,4 @@ jobs:
         script: |
           cd my-print-source-frontend/
           git pull origin metaData
-          docker-compose up --build -d
+          docker compose up --build -d
