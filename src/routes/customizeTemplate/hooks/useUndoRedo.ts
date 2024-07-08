@@ -42,7 +42,7 @@ export const useUndoRedo = (properties: ICanvasCardProps) => {
         };
       }
 
-      console.log("previous", previousState, prev);
+      // console.log("previous", previousState, prev);
 
       return Array.isArray(field)
         ? [...prev, previousState[previousState.length - 1]]

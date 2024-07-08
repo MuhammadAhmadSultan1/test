@@ -83,7 +83,7 @@ export const uploadLogoSchema = yup.object().shape({
   logoAttachment: yup
     .mixed<FileList>()
     .test("required", "Logo is required", (file) => {
-      console.log(file);
+      // console.log(file);
       if (!file || !file[0]) {
         return false;
       }

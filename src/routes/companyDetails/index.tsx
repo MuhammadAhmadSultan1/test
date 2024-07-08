@@ -15,7 +15,7 @@ const CompanyDetails = ({ onClickNext, onClickBack }: ICommonProps) => {
     companyName: userCard?.companyName ?? "",
   };
 
-  console.log("userCard------>", userCard);
+  // console.log("userCard------>", userCard);
 
   const {
     handleSubmit,
@@ -38,7 +38,7 @@ const CompanyDetails = ({ onClickNext, onClickBack }: ICommonProps) => {
 
   const onGoBack = () => {
     const companyName = getValues("companyName");
-    console.log({ companyName });
+    // console.log({ companyName });
     const userCard = {
       companyName,
     };

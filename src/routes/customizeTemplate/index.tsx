@@ -403,7 +403,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
       }
 
       if (scale && scale.x && scale.y) {
-        console.log("scale", zoomDetails.layerWidth * (currentZoom + 0.1));
+        // console.log("scale", zoomDetails.layerWidth * (currentZoom + 0.1));
         if (event === "in" && currentZoom < 2) {
           stageRef.current.setAttr(
             "width",
