@@ -125,7 +125,7 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
       className=" mx-auto flex items-center flex-col h-screen font-sans"
     >
       <h2 className="text-center text-4xl my-8 font-extrabold text-[#282828]">
-        Upload your logo
+        Upload Your Logo
       </h2>
       <div className="max-w-566 max-h-224 bg-gray-100 flex justify-center items-center flex-col rounded-3xl">
         <div>

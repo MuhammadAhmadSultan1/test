@@ -67,7 +67,7 @@ const Services = ({ onClickNext, onClickBack }: ICommonProps) => {
   return (
     <div className="mx-auto flex w-1/2 items-center flex-col">
       <h2 className="text-center text-4xl my-8 font-extrabold text-[#282828]">
-        Tell us About Your Products or Services
+        Tell Us About Your Products Or Services
       </h2>
 
       <form
@@ -76,7 +76,7 @@ const Services = ({ onClickNext, onClickBack }: ICommonProps) => {
       >
         <div>
           <InputField
-            label="Product or Service"
+            label="Product Or Service"
             placeholder="Type and press Enter to add"
             onKeyDown={handleEnterKeyPress}
             error={

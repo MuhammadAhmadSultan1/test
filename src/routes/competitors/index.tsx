@@ -9,13 +9,14 @@ import { Button } from "../../components/button";
 import { useQuestionnaireAddMutation } from "../../services/form";
 import {
   IBroucherDesctiption,
+  ITemplateResponse,
   useGetBroucherDescriptionMutation,
   useGetDescriptionMutation,
   useGetTemplateQuery,
   useGetTrifoldDescriptionMutation,
 } from "../../services/template";
 import { IUserCard } from "../../types/user";
-import { IAttribute, ITemplateAttributes } from "../../types/card";
+import { ITemplateAttributes } from "../../types/card";
 import { setTemplateData } from "../../redux/slices/templateData";
 import { toaster } from "../../utils/toaster";
 import { getErrorMessage } from "../../utils/errorHandler";
@@ -116,7 +117,9 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
           //   },
           // };
 
-          const data = { ...template };
+          const stringyfy = JSON.stringify(template);
+
+          const data: ITemplateResponse = JSON.parse(stringyfy);
 
           if (template.templateAttributes) {
             Object.keys(template.templateAttributes).forEach((key) => {
@@ -162,8 +165,6 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
             });
           }
 
-          console.log("data before", data);
-
           if (sku === "107BT001") {
             Object.keys(response.content).forEach((key) => {
               if (
@@ -175,14 +176,12 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
                 data.templateAttributes = {
                   ...data.templateAttributes,
                   [key]: [
-                    ...data.templateAttributes[key].map(
-                      (item: IAttribute, index: number) => ({
-                        ...item,
-                        text: response.content[
-                          key as keyof IBroucherDesctiption
-                        ][index],
-                      })
-                    ),
+                    ...data.templateAttributes[key].map((item, index) => ({
+                      ...item,
+                      text: response.content[key as keyof IBroucherDesctiption][
+                        index
+                      ],
+                    })),
                   ],
                 };
               }

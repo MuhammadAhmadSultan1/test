@@ -187,7 +187,7 @@ export default function BannerEightByThreeOne(props: TCanvasCardProps) {
           />
         </Konva.Group>
 
-        <Konva.Group x={210} y={250}>
+        <Konva.Group x={252} y={250}>
           <CustomImage x={0} y={0} svgString={websiteSvg} />
           <Konva.Text
             ref={
@@ -221,7 +221,7 @@ export default function BannerEightByThreeOne(props: TCanvasCardProps) {
           />
         </Konva.Group>
 
-        <Konva.Group x={320} y={250}>
+        <Konva.Group x={346} y={250}>
           <CustomImage x={0} y={0} svgString={locationSvg} />
           <Konva.Text
             ref={

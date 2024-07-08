@@ -47,8 +47,8 @@ const ClientName = ({ onClickNext, onClickBack }: ICommonProps) => {
 
       <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
         <InputField
-          label="Client Name"
-          placeholder="Enter Client Name"
+          label="Your Name"
+          placeholder="Enter Your Name"
           error={errors.clientName?.message}
           register={register}
           registerKey={"clientName"}

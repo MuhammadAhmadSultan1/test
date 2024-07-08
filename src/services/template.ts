@@ -14,7 +14,7 @@ interface IResponse<T> {
   content: T;
 }
 
-interface ITemplateResponse {
+export interface ITemplateResponse {
   templateId: number;
   templateKey: string;
   primaryColor: string;

@@ -47,8 +47,8 @@ const Designation = ({ onClickNext, onClickBack }: ICommonProps) => {
 
       <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
         <InputField
-          label="Title or Position within company"
-          placeholder="Enter Title or Position within company"
+          label="Title Or Position Within Company"
+          placeholder="Enter Title Or Position Within Company"
           error={errors?.designation?.message}
           register={register}
           registerKey={"designation"}

@@ -307,7 +307,7 @@ export const Variations = (props: ICommonProps) => {
         </Button>
       </div> */}
       <h2 className="text-center text-4xl my-8 font-extrabold text-[#282828]">
-        Select one color
+        Select One Color
       </h2>
 
       <form

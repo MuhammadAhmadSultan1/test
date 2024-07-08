@@ -541,6 +541,15 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
       )}
 
       <div className="h-5/6 container ">
+        <div className="py-1 px-3 text-center text-xs rounded-lg mx-16 my-3 bg-violet-100">
+          <span>
+            If the generated text appears too large for the text box, please
+            adjust the font size to ensure it fits perfectly within your design.
+            This can be done easily using the font size adjustment tools
+            provided. If you need further assistance, feel free to reach out to
+            our support team.
+          </span>
+        </div>
         {!isPreviewEnabled && (
           <CustomToolbar
             onClickBold={onClickBold}
