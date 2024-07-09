@@ -105,8 +105,8 @@ export default function VerticalCardTwo(props: TCanvasCardProps) {
             align="top"
             fontSize={text.templateAttributes.phone.fontSize}
             fill={"#000000"}
-            width={70}
-            height={10}
+            width={text.templateAttributes.phone.width}
+            height={text.templateAttributes.phone.height}
             fontStyle={text.templateAttributes.phone.fontStyle}
             textDecoration={text.templateAttributes.phone.textDecoration}
             fontFamily="Inter"
@@ -138,8 +138,8 @@ export default function VerticalCardTwo(props: TCanvasCardProps) {
             align="top"
             fontSize={text.templateAttributes.email.fontSize}
             fill={"#000000"}
-            width={70}
-            height={10}
+            width={text.templateAttributes.email.width}
+            height={text.templateAttributes.email.height}
             fontStyle={text.templateAttributes.email.fontStyle}
             textDecoration={text.templateAttributes.email.textDecoration}
             fontFamily="Inter"
@@ -171,8 +171,8 @@ export default function VerticalCardTwo(props: TCanvasCardProps) {
             align="top"
             fontSize={text.templateAttributes.website.fontSize}
             fill={"#000000"}
-            width={70}
-            height={10}
+            width={text.templateAttributes.website.width}
+            height={text.templateAttributes.website.height}
             fontStyle={text.templateAttributes.website.fontStyle}
             textDecoration={text.templateAttributes.website.textDecoration}
             fontFamily="Inter"
@@ -204,8 +204,8 @@ export default function VerticalCardTwo(props: TCanvasCardProps) {
             align="top"
             fontSize={text.templateAttributes.address.fontSize}
             fill={"#000000"}
-            width={70}
-            height={10}
+            width={text.templateAttributes.address.width}
+            height={text.templateAttributes.address.height}
             fontStyle={text.templateAttributes.address.fontStyle}
             textDecoration={text.templateAttributes.address.textDecoration}
             fontFamily="Inter"
