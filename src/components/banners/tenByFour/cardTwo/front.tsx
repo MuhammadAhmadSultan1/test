@@ -123,7 +123,7 @@ export default function BannerTenByFourTwo(props: TCanvasCardProps) {
                   : undefined
               }
               text={text.templateAttributes.phone.text}
-              x={0}
+              x={5}
               y={6}
               align="right"
               fontSize={text.templateAttributes.phone.fontSize}
@@ -160,7 +160,7 @@ export default function BannerTenByFourTwo(props: TCanvasCardProps) {
                   : undefined
               }
               text={text.templateAttributes.email.text}
-              x={0}
+              x={-29}
               y={4}
               align="right"
               fontSize={text.templateAttributes.email.fontSize}
@@ -198,7 +198,7 @@ export default function BannerTenByFourTwo(props: TCanvasCardProps) {
                   : undefined
               }
               text={text.templateAttributes.website.text}
-              x={0}
+              x={38}
               y={5}
               align="right"
               fontSize={text.templateAttributes.website.fontSize}

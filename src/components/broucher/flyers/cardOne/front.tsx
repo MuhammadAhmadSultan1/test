@@ -358,7 +358,7 @@ export default function FlyerOne(props: TCanvasCardProps) {
         </Konva.Group>
 
         <Konva.Group x={0} y={0}>
-          <CustomImage x={398.18} y={816.81} svgString={webSite} />
+          <CustomImage x={382} y={816.81} svgString={webSite} />
           <Konva.Text
             ref={
               props.editable
