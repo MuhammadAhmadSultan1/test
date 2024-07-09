@@ -306,9 +306,18 @@ export const Variations = (props: ICommonProps) => {
           </span>
         </Button>
       </div> */}
-      <h2 className="text-center text-4xl my-8 font-extrabold text-[#282828]">
-        Select One Color
-      </h2>
+      <div className="flex flex-col w-1/2 gap-3">
+        <h2 className="text-center text-4xl font-extrabold text-[#282828]">
+          Step 3: Perfect Your Design
+        </h2>
+        <span className="text-xs text-center">
+          🎨 Now it's time to add your personal touch! Based on what our AI
+          determined fits best with your brand, we.ve selected these color
+          palettes for you to choose from. Remember, this step is all about
+          picking the perfect colors, and you can click the "Regenerate Colors"
+          button to see what other colors the AI deemed fit for you.
+        </span>
+      </div>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -411,6 +420,14 @@ export const Variations = (props: ICommonProps) => {
             {errors.selectedVariation.message}
           </p>
         )}
+
+        <div className="flex flex-col w-full gap-3 m-auto max-w-[600px] py-4 px-6 mt-2">
+          <span className="text-xs text-center">
+            ✏️ Don't worry if the text sizes aren't quite right yet! You'll be
+            able to adjust the text sizes in just a moment to make everything
+            perfect.
+          </span>
+        </div>
 
         <div className="flex w-full justify-center gap-4 mt-10">
           <Button

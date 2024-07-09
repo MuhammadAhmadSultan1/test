@@ -122,12 +122,12 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
   return (
     <form
       onSubmit={handleSubmit(handleContinue)}
-      className=" mx-auto flex items-center flex-col h-screen font-sans"
+      className=" mx-auto flex items-center flex-col w-1/2 h-screen font-sans"
     >
       <h2 className="text-center text-4xl my-8 font-extrabold text-[#282828]">
         Upload Your Logo
       </h2>
-      <div className="max-w-566 max-h-224 bg-gray-100 flex justify-center items-center flex-col rounded-3xl">
+      <div className="w-full p-3 pb-5 bg-gray-100 flex justify-center items-center flex-col rounded-3xl">
         <div>
           <input
             type="file"
@@ -179,9 +179,15 @@ const UploadLogo = ({ onClickNext }: ICommonProps) => {
             </h4> */}
           </div>
         </div>
-        <h4 className="mt-6 text-[14px] font-semibold font-weight-[600] text-[#444444] px-20 pb-10">
-          Maximum resolution 300 DPI and size must be less than 10 MB
-        </h4>
+        <div className="text-center ">
+          <h4 className="mt-6 text-[14px] font-semibold font-weight-[600] text-[#444444]">
+            Maximum resolution 300 DPI and size must be less than 10 MB
+          </h4>
+          <span className="text-xs">
+            To achieve the best results, please upload a file where the logo is
+            closely cropped with minimal blank space around it.
+          </span>
+        </div>
 
         {errors.logoAttachment && (
           <p className="text-red-500 mb-3">{errors.logoAttachment.message}</p>

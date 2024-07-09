@@ -436,7 +436,7 @@ export default function FlyerTwo(props: TCanvasCardProps) {
         />
 
         <Konva.Group x={0} y={0}>
-          <CustomImage x={85} y={797} svgString={phone} />
+          <CustomImage x={93} y={807.81} svgString={phone} />
           <Konva.Text
             ref={
               props.editable
@@ -475,7 +475,7 @@ export default function FlyerTwo(props: TCanvasCardProps) {
         </Konva.Group>
 
         <Konva.Group x={0} y={0}>
-          <CustomImage x={225} y={797} svgString={email} />
+          <CustomImage x={220} y={807.81} svgString={email} />
           <Konva.Text
             ref={
               props.editable
@@ -514,7 +514,7 @@ export default function FlyerTwo(props: TCanvasCardProps) {
         </Konva.Group>
 
         <Konva.Group x={0} y={0}>
-          <CustomImage x={405} y={797} svgString={webSite} />
+          <CustomImage x={367} y={807.81} svgString={webSite} />
           <Konva.Text
             ref={
               props.editable

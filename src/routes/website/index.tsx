@@ -48,7 +48,6 @@ const Website = ({ onClickNext, onClickBack }: ICommonProps) => {
           error={errors.website?.message}
           register={register}
           registerKey={"website"}
-          prefix="https://"
         />
 
         <div className="mt-10 mb-10 flex gap-10 justify-center">

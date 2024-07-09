@@ -580,7 +580,7 @@ export default function TrifoldOne(props: TCanvasCardProps) {
           text="About Us"
           x={371}
           y={141.5}
-          width={97}
+          width={100}
           height={28}
           fontFamily="Roboto"
           fontSize={24}
@@ -629,7 +629,7 @@ export default function TrifoldOne(props: TCanvasCardProps) {
         />
 
         <Konva.Group x={0} y={0}>
-          <CustomImage svgString={phoneSvg} x={342} y={444} />
+          <CustomImage svgString={phoneSvg} x={339} y={453.14} />
           <Konva.Text
             ref={
               props.editable
@@ -661,7 +661,7 @@ export default function TrifoldOne(props: TCanvasCardProps) {
           />
         </Konva.Group>
         <Konva.Group x={0} y={0}>
-          <CustomImage svgString={emailSvg} x={342} y={474} />
+          <CustomImage svgString={emailSvg} x={339} y={483.12} />
           <Konva.Text
             ref={
               props.editable
@@ -693,7 +693,7 @@ export default function TrifoldOne(props: TCanvasCardProps) {
           />
         </Konva.Group>
         <Konva.Group x={0} y={0}>
-          <CustomImage svgString={websiteSvg} x={342} y={504} />
+          <CustomImage svgString={websiteSvg} x={339} y={512.67} />
           <Konva.Text
             ref={
               props.editable
@@ -725,7 +725,7 @@ export default function TrifoldOne(props: TCanvasCardProps) {
           />
         </Konva.Group>
         <Konva.Group x={0} y={0}>
-          <CustomImage svgString={locationSvg} x={342} y={531} />
+          <CustomImage svgString={locationSvg} x={339} y={549.23} />
           <Konva.Text
             ref={
               props.editable

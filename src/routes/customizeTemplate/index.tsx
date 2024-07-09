@@ -541,7 +541,19 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
       )}
 
       <div className="h-5/6 container ">
-        <div className="py-1 px-3 text-center text-xs rounded-lg mx-16 my-3 bg-violet-100">
+        <div className="w-full py-3">
+          <div className="flex flex-col w-1/2 gap-3 m-auto">
+            <h2 className="text-center text-4xl font-extrabold text-[#282828]">
+              Step 4: Finalize Your Marketing
+            </h2>
+            <span className="text-xs text-center">
+              🛠️ You're almost there! Now, make any final adjustments to the
+              text sizes to ensure everything looks perfect. This is your chance
+              to fix any text that might be off.
+            </span>
+          </div>
+        </div>
+        {/* <div className="py-1 px-3 text-center text-xs rounded-lg mx-16 my-3 bg-violet-100">
           <span>
             If the generated text appears too large for the text box, please
             adjust the font size to ensure it fits perfectly within your design.
@@ -549,7 +561,7 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
             provided. If you need further assistance, feel free to reach out to
             our support team.
           </span>
-        </div>
+        </div> */}
         {!isPreviewEnabled && (
           <CustomToolbar
             onClickBold={onClickBold}
@@ -659,6 +671,13 @@ export const CustomizeTemplate = ({ onClickBack }: ICommonProps) => {
               </Suspense>
             </div>
           </div>
+        </div>
+        <div className="flex flex-col w-full gap-3 m-auto max-w-[600px] py-4 px-6 mt-2">
+          <span className="text-xs text-center">
+            🔁 Remember, you can use the undo and redo buttons at the top left
+            to easily correct any changes. And, for those nitty-gritty details,
+            use the zoom function at the bottom right to get a closer look.
+          </span>
         </div>
       </div>
     </div>

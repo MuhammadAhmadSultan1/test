@@ -171,11 +171,14 @@ export const Flyers = ({
         </p>
       )}
 
-      <div className="m-auto max-w-[600px] py-4 px-6  mt-2 rounded-lg border border-lightOutline">
-        <span>
-          Bam! Your text was just generated into 3 templates based on what the
-          AI found would fit your brand best. Don't like it? Hit the “Regenerate
-          Text” button and see what else the Ai has up its sleeve!
+      <div className="flex flex-col w-full gap-3 m-auto max-w-[600px] py-4 px-6 mt-2">
+        <h2 className="text-center text-4xl font-extrabold text-[#282828]">
+          Step 2: Choose Your Favorite Layout
+        </h2>
+        <span className="text-xs text-center">
+          🎨 Now, pick the layout that catches your eye. Don't worry if it's not
+          perfect! This is just the theme and you'll be able to customize the
+          colors and adjust the sizes in just a moment.
         </span>
       </div>
 

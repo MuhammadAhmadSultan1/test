@@ -9,14 +9,13 @@ import { Button } from "../../components/button";
 import { useQuestionnaireAddMutation } from "../../services/form";
 import {
   IBroucherDesctiption,
-  ITemplateResponse,
   useGetBroucherDescriptionMutation,
   useGetDescriptionMutation,
   useGetTemplateQuery,
   useGetTrifoldDescriptionMutation,
 } from "../../services/template";
 import { IUserCard } from "../../types/user";
-import { ITemplateAttributes } from "../../types/card";
+import { IAttribute, ITemplateAttributes } from "../../types/card";
 import { setTemplateData } from "../../redux/slices/templateData";
 import { toaster } from "../../utils/toaster";
 import { getErrorMessage } from "../../utils/errorHandler";
@@ -117,9 +116,9 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
           //   },
           // };
 
-          const stringyfy = JSON.stringify(template);
+          // const stringyfy = JSON.stringify(template);
 
-          const data: ITemplateResponse = JSON.parse(stringyfy);
+          const data = { ...template };
 
           if (template.templateAttributes) {
             Object.keys(template.templateAttributes).forEach((key) => {
@@ -188,33 +187,44 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
             });
           }
 
-          console.log("data after", data);
-
           if (sku === "107BF001") {
             Object.keys(response.content).forEach((key) => {
-              data.templateAttributes = {
-                ...data.templateAttributes,
-                [key]: {
-                  ...(data.templateAttributes[
-                    key as keyof ITemplateAttributes
-                  ] as object),
-                  text: response.content[key as keyof IBroucherDesctiption],
-                },
-              };
+              const stringyfy = JSON.stringify(
+                data.templateAttributes[key as keyof ITemplateAttributes]
+              );
+              const tempProperty: IAttribute = JSON.parse(stringyfy);
+              const res = response.content[key as keyof IBroucherDesctiption];
+              if (
+                !Array.isArray(res) &&
+                (key === "callToAction" ||
+                  key === "problem" ||
+                  key === "solution")
+              ) {
+                tempProperty.text = res;
+                data.templateAttributes[key] = { ...tempProperty };
+              }
             });
-
             if (data.templateAttributes.services) {
               data.templateAttributes.services.forEach((_, index) => {
                 if (
                   userCard.serviceNameArray &&
                   index < userCard.serviceNameArray.length
                 ) {
-                  data.templateAttributes.services[index].text =
-                    userCard.serviceNameArray
-                      ? userCard.serviceNameArray[index]
-                      : "";
+                  const stringyfy = JSON.stringify(
+                    data.templateAttributes.services
+                  );
+                  const tempServices: IAttribute[] = JSON.parse(stringyfy);
+                  tempServices[index].text = userCard.serviceNameArray
+                    ? userCard.serviceNameArray[index]
+                    : "";
+                  data.templateAttributes.services = [...tempServices];
                 } else {
-                  data.templateAttributes.services[index].text = "";
+                  const stringyfy = JSON.stringify(
+                    data.templateAttributes.services
+                  );
+                  const tempServices: IAttribute[] = JSON.parse(stringyfy);
+                  tempServices[index].text = "";
+                  data.templateAttributes.services = [...tempServices];
                 }
               });
             }
@@ -283,8 +293,8 @@ const Competitors = ({ onClickNext, onClickBack }: ICommonProps) => {
 
       <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
         <TextareaField
-          label="About Company"
-          placeholder="Type something about company"
+          label="About Our Company"
+          placeholder="Type something About Your Company"
           height={190}
           borderRadius={20}
           error={errors.aboutCompany?.message}

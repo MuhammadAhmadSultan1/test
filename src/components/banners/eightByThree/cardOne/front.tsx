@@ -119,7 +119,7 @@ export default function BannerEightByThreeOne(props: TCanvasCardProps) {
           />
         </Konva.Group>
 
-        <Konva.Group x={25} y={250}>
+        <Konva.Group x={15} y={250}>
           <CustomImage x={0} y={0} svgString={phoneSvg} />
           <Konva.Text
             ref={
@@ -128,7 +128,7 @@ export default function BannerEightByThreeOne(props: TCanvasCardProps) {
                 : undefined
             }
             text={text.templateAttributes.phone.text}
-            x={15}
+            x={13}
             y={1}
             align="top"
             fontSize={text.templateAttributes.phone.fontSize}
@@ -153,7 +153,7 @@ export default function BannerEightByThreeOne(props: TCanvasCardProps) {
           />
         </Konva.Group>
 
-        <Konva.Group x={120} y={250}>
+        <Konva.Group x={124} y={250}>
           <CustomImage x={0} y={0} svgString={emailSvg} />
           <Konva.Text
             ref={
@@ -162,8 +162,8 @@ export default function BannerEightByThreeOne(props: TCanvasCardProps) {
                 : undefined
             }
             text={text.templateAttributes.email.text}
-            x={15}
             y={1}
+            x={13}
             align="top"
             fontSize={text.templateAttributes.email.fontSize}
             fill={"#323232"}
@@ -221,7 +221,7 @@ export default function BannerEightByThreeOne(props: TCanvasCardProps) {
           />
         </Konva.Group>
 
-        <Konva.Group x={346} y={250}>
+        <Konva.Group x={342} y={250}>
           <CustomImage x={0} y={0} svgString={locationSvg} />
           <Konva.Text
             ref={

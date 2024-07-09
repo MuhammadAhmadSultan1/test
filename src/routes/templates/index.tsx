@@ -85,9 +85,16 @@ export const Templates = (props: ICommonProps) => {
   };
   return (
     <div className="flex flex-col items-center gap-4 pb-8">
-      <h2 className="text-center text-4xl my-8 font-extrabold text-[#282828]">
-        Select One Template
-      </h2>
+      <div className="flex flex-col w-1/2 gap-3">
+        <h2 className="text-center text-4xl font-extrabold text-[#282828]">
+          Step 1: Marvel at the Magic
+        </h2>
+        <span className="text-xs text-center">
+          ✨ Bam! Your text was just generated into 3 templates based on what
+          the Al found would fit your brand best. Don't like it? Hit the
+          "Regenerate Text" button and see what else the AI has up its sleeve!
+        </span>
+      </div>
       {sku === "101HC005" && (
         <HorizontalCards {...{ ...props, onRegenerateDescription }} />
       )}

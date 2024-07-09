@@ -33,13 +33,13 @@ export default function FlyerOne(props: TCanvasCardProps) {
       id="canvas"
     >
       <Konva.Layer imageSmoothingEnabled>
-        <CustomImage x={0} y={0} svgString={primaryTop} />
+        <CustomImage x={-12} y={-12} svgString={primaryTop} />
 
-        <CustomImage x={456} y={326} svgString={secondaryTopRight} />
-        <CustomImage x={0} y={346} svgString={primaryBottom} />
-        <CustomImage x={0} y={327} svgString={secondaryTopLeft} />
+        <CustomImage x={456} y={327} svgString={secondaryTopRight} />
+        <CustomImage x={-12} y={346} svgString={primaryBottom} />
+        <CustomImage x={-12} y={327} svgString={secondaryTopLeft} />
         <CustomImage x={0} y={635} svgString={whiteSvgBottom} />
-        <CustomImage x={183} y={634} svgString={secondaryBottom} />
+        <CustomImage x={183.06} y={634.4} svgString={secondaryBottom} />
         <CustomImage
           height={text.templateAttributes.logo.height}
           width={text.templateAttributes.logo.width}
@@ -88,13 +88,13 @@ export default function FlyerOne(props: TCanvasCardProps) {
         <Konva.Text
           text="About Company"
           fontSize={40}
-          x={118}
+          x={150}
           y={426}
           width={330}
           height={46}
           fontFamily="Roboto"
           fill="#FFFFFF"
-          align="right"
+          // align="right"
           fontStyle="600"
         />
 
@@ -280,7 +280,7 @@ export default function FlyerOne(props: TCanvasCardProps) {
         />
 
         <Konva.Group x={0} y={0}>
-          <CustomImage x={92} y={808} svgString={phone} />
+          <CustomImage x={108} y={816.81} svgString={phone} />
           <Konva.Text
             ref={
               props.editable
@@ -319,7 +319,7 @@ export default function FlyerOne(props: TCanvasCardProps) {
         </Konva.Group>
 
         <Konva.Group x={0} y={0}>
-          <CustomImage x={221.93} y={808} svgString={email} />
+          <CustomImage x={235} y={816.81} svgString={email} />
           <Konva.Text
             ref={
               props.editable
@@ -358,7 +358,7 @@ export default function FlyerOne(props: TCanvasCardProps) {
         </Konva.Group>
 
         <Konva.Group x={0} y={0}>
-          <CustomImage x={398.18} y={808} svgString={webSite} />
+          <CustomImage x={398.18} y={816.81} svgString={webSite} />
           <Konva.Text
             ref={
               props.editable

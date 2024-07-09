@@ -25,10 +25,10 @@ export default function CardComponent(props: TCanvasCardProps) {
     >
       <Konva.Layer imageSmoothingEnabled>
         <CustomImage
-          height={49}
-          width={89}
-          x={227}
-          y={20}
+          height={text.templateAttributes.logo.height}
+          width={text.templateAttributes.logo.width}
+          x={text.templateAttributes.logo.x}
+          y={text.templateAttributes.logo.y}
           url={text.templateAttributes.logo.url}
         />
         <Konva.Group y={67}>
@@ -93,7 +93,7 @@ export default function CardComponent(props: TCanvasCardProps) {
           />
         </Konva.Group>
         <Konva.Group y={102}>
-          <CustomImage x={0} y={0} svgString={svg2} />
+          <CustomImage x={0} y={4} svgString={svg2} />
           <Konva.Group y={20}>
             <Konva.Group y={0} x={15}>
               <CustomImage x={0} y={0} svgString={phoneSvg} />
